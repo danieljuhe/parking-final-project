@@ -23,13 +23,13 @@ class User(db.Model):
 
 class My_cars(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    car_id = db.Column(db.Integer, db.ForeignKey('car.id'), unique=True)
+    car_id = db.Column(db.Integer, db.ForeignKey('car.id'))
     car = db.relationship('Car', backref='my_cars', lazy=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), unique=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     user = db.relationship('User', backref='my_cars', lazy=True)
 
     def __repr__(self):
-        return f'ID:{user.id} / {user.name}, {user.surname}. Car: {car.plate}'
+        return f'ID:{self.id} / {self.car}, {self.user}'
 
     def serialize(self):
         return {
