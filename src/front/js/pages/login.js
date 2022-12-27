@@ -1,24 +1,44 @@
-import React, { useContext } from "react";
-import { Context } from "../store/appContext";
-import rigoImageUrl from "../../img/rigo-baby.jpg";
+import React, { useState } from "react";
 import "../../styles/home.css";
 
 export const Login = () => {
-  const { store, actions } = useContext(Context);
+  const [user, setUser] = useState({});
+
+  const handleChange = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
+
+  const handleClick = () => {
+    fetch(process.env.BACKEND_URL + "/api/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        localStorage.setItem("token", data.token);
+        console.log("Success:", data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
 
   return (
     <div>
       <input
         type="text"
         placeholder="E-Mail"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        onChange={handleChange}
+        name="email"
       />
       <input
         type="password"
         placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        onChange={handleChange}
+        name="password"
       />
       <button onClick={handleClick}>Login</button>
     </div>
