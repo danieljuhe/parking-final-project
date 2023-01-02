@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../../styles/home.css";
 
 export const Login = () => {
@@ -9,6 +10,8 @@ export const Login = () => {
   };
 
   const handleClick = () => {
+    let Navigate = useNavigate();
+
     fetch(process.env.BACKEND_URL + "/api/login", {
       method: "POST",
       headers: {
@@ -24,10 +27,13 @@ export const Login = () => {
       .catch((error) => {
         console.error("Error:", error);
       });
+    if (localStorage.getItem("token")) {
+      Navigate.push("/privateuser");
+    }
   };
 
   return (
-    <div>
+    <div className="text-center mt-5">
       <input
         type="text"
         placeholder="E-Mail"
