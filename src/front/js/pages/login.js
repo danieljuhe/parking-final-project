@@ -1,17 +1,22 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import "../../styles/home.css";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
   const [user, setUser] = useState({});
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      navigate("/user");
+    }
+  }, []);
 
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
   const handleClick = () => {
-    let Navigate = useNavigate();
-
     fetch(process.env.BACKEND_URL + "/api/login", {
       method: "POST",
       headers: {
@@ -27,9 +32,6 @@ export const Login = () => {
       .catch((error) => {
         console.error("Error:", error);
       });
-    if (localStorage.getItem("token")) {
-      Navigate.push("/privateuser");
-    }
   };
 
   return (
