@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../../styles/login.css";
+import { Register } from "../component/registerform";
 
 export const Login = () => {
   const [user, setUser] = useState({});
@@ -30,23 +31,7 @@ export const Login = () => {
     <div className="main">
       <div className="register">
         <h1>Registro</h1>
-        <form>
-          <label htmlFor="username">Name: </label>
-          <input id="name" type="text"></input>
-          <br />
-          <label htmlFor="username">Surname: </label>
-          <input id="surname" type="text"></input>
-          <br />
-          <label htmlFor="username">Email: </label>
-          <input id="email" type="text"></input>
-          <br />
-          <label htmlFor="username">Password: </label>
-          <input id="password" type="text"></input>
-          <br />
-          <label htmlFor="username">Telefono: </label>
-          <input id="telephon" type="text"></input>
-          <br />
-        </form>
+        <Register />
       </div>
       <div className="login">
         <h1>Login</h1>
