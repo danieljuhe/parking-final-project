@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import "../../styles/login.css";
-import { Register } from "../component/registerform";
-import { LoginForm } from "../component/loginform";
+import React, { useState, useEffect } from "react";
+import "../../styles/home.css";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
   const [user, setUser] = useState({});
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -20,8 +20,10 @@ export const Login = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        localStorage.setItem("token", data.token);
-        console.log("Success:", data);
+        if (data.token) {
+          localStorage.setItem("token", data.token);
+          navigate("/privateuser");
+        }
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -29,13 +31,20 @@ export const Login = () => {
   };
 
   return (
-    <div className="main">
-      <div className="reg">
-        <Register />
-      </div>
-      <div className="log">
-        <LoginForm />
-      </div>
+    <div className="text-center mt-5">
+      <input
+        type="text"
+        placeholder="E-Mail"
+        onChange={handleChange}
+        name="email"
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        onChange={handleChange}
+        name="password"
+      />
+      <button onClick={handleClick}>Login</button>
     </div>
   );
 };
