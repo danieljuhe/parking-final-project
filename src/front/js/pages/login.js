@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../../styles/login.css";
 import { Register } from "../component/registerform";
-import { Login } from "../component/loginform";
+import { LoginForm } from "../component/loginform";
 
 export const Login = () => {
   const [user, setUser] = useState({});
@@ -30,12 +30,11 @@ export const Login = () => {
 
   return (
     <div className="main">
-      <div className="register">
-        <h1>Registro</h1>
+      <div className="reg">
         <Register />
       </div>
-      <div className="login">
-        <Login />
+      <div className="log">
+        <LoginForm />
       </div>
     </div>
   );

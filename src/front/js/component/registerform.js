@@ -1,6 +1,5 @@
 import React from "react";
 import { useRef, useState, useEffect } from "react";
-import "./register.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCircleInfo,
@@ -89,13 +88,14 @@ export const Register = () => {
               {errMsg}
             </p>
             <h1>Register Form</h1>
+            <br />
             <form onSubmit={handleSubmit}>
               <label htmlFor="username">
-                Username:
-                <span className={validName ? "valid" : "hide"}>
+                Name:
+                <span className={validName ? "valid" : "d-none"}>
                   <FontAwesomeIcon icon={faCheck} />
                 </span>
-                <span className={validName || !user ? "hide" : "invalid"}>
+                <span className={validName || !user ? "d-none" : "invalid"}>
                   <FontAwesomeIcon icon={faTimes} />
                 </span>
               </label>
@@ -116,7 +116,7 @@ export const Register = () => {
               <p
                 id="uidnote"
                 className={
-                  userFocus && user && !validName ? "instructions" : "offscreen"
+                  userFocus && user && !validName ? "instructions" : "d-none"
                 }
               >
                 <FontAwesomeIcon icon={faCircleInfo} />
@@ -126,13 +126,15 @@ export const Register = () => {
                 <br />
                 Valido letras, numeros y guion bajo.
               </p>
+              <br />
+              <br />
 
               <label htmlFor="password">
                 Password:
-                <span className={validPwd ? "valid" : "hide"}>
+                <span className={validPwd ? "valid" : "d-none"}>
                   <FontAwesomeIcon icon={faCheck} />
                 </span>
-                <span className={validPwd || !pwd ? "hide" : "invalid"}>
+                <span className={validPwd || !pwd ? "d-none" : "invalid"}>
                   <FontAwesomeIcon icon={faTimes} />
                 </span>
               </label>
@@ -149,7 +151,7 @@ export const Register = () => {
               />
               <p
                 id="pwdnote"
-                className={pwdFocus && !validPwd ? "instructions" : "offscreen"}
+                className={pwdFocus && !validPwd ? "instructions" : "d-none"}
               >
                 <FontAwesomeIcon icon={faCircleInfo} />
                 Al menos 6 a 20 caracteres.
@@ -157,12 +159,16 @@ export const Register = () => {
                 Debe de contener mayusculas, minisculas, y un numero
                 obligatorio. <br />
               </p>
+              <br />
+              <br />
               <label htmlFor="confirm_pwd">
-                Confirm your password:
-                <span className={validMatch && matchPwd ? "valid" : "hide"}>
+                Confirma tu password:
+                <span className={validMatch && matchPwd ? "valid" : "d-none"}>
                   <FontAwesomeIcon icon={faCheck} />
                 </span>
-                <span className={validMatch || !matchPwd ? "hide" : "invalid"}>
+                <span
+                  className={validMatch || !matchPwd ? "d-none" : "invalid"}
+                >
                   <FontAwesomeIcon icon={faTimes} />
                 </span>
               </label>
@@ -181,11 +187,13 @@ export const Register = () => {
               <p
                 id="confirmnote"
                 className={
-                  matchFocus && !validMatch ? "instructions" : "offscreen"
+                  matchFocus && !validMatch ? "instructions" : "d-none"
                 }
               >
                 Debe ser igual al password.
               </p>
+              <br />
+              <br />
               <button
                 disabled={!validName || !validPwd || !validMatch ? true : false}
               >

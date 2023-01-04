@@ -1,7 +1,7 @@
 import React from "react";
 import { useRef, useState, useEffect } from "react";
 
-export const Login = () => {
+export const LoginForm = () => {
   const userRef = useRef();
   const errRef = useRef();
 
@@ -27,7 +27,7 @@ export const Login = () => {
   };
   return (
     <div className="main">
-      <div className="register">
+      <div className="login">
         {success ? (
           <section>
             <h1>Estas Logeado</h1>
