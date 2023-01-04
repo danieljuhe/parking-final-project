@@ -7,7 +7,7 @@ import {
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 
-const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
+const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_@.]{3,33}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{5,21}$/;
 
 export const Register = () => {
