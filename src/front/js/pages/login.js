@@ -1,6 +1,8 @@
+
 import React, { useState, useEffect } from "react";
 import "../../styles/home.css";
 import { useNavigate } from "react-router-dom";
+
 
 export const Login = () => {
   const [user, setUser] = useState({});
@@ -31,6 +33,7 @@ export const Login = () => {
   };
 
   return (
+
     <div className="text-center mt-5">
       <input
         type="text"
