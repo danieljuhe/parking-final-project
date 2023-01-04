@@ -3,11 +3,12 @@ import { Context } from "../store/appContext";
 
 const UserProfile = () => {
   const { store, actions } = useContext(Context);
+  const {} = useState;
 
   useEffect(() => {});
 
   return (
-    <div>
+    <div className="container mt-5">
       <div className="card">
         <div className="card-body">
           <h5 className="card-title">Card title</h5>

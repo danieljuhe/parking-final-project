@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import "../../styles/home.css";
+import "../../styles/login.css";
+import { Register } from "../component/registerform";
+import { LoginForm } from "../component/loginform";
 
 export const Login = () => {
   const [user, setUser] = useState({});
@@ -27,20 +29,13 @@ export const Login = () => {
   };
 
   return (
-    <div>
-      <input
-        type="text"
-        placeholder="E-Mail"
-        onChange={handleChange}
-        name="email"
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        onChange={handleChange}
-        name="password"
-      />
-      <button onClick={handleClick}>Login</button>
+    <div className="main">
+      <div className="reg">
+        <Register />
+      </div>
+      <div className="log">
+        <LoginForm />
+      </div>
     </div>
   );
 };
