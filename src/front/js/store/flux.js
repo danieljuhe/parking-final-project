@@ -3,6 +3,7 @@ const getState = ({ getStore, getActions, setStore }) => {
     store: {
       user: "",
       message: null,
+      token: null,
       demo: [
         {
           title: "FIRST",
@@ -20,6 +21,12 @@ const getState = ({ getStore, getActions, setStore }) => {
       // Use getActions to call a function within a fuction
       exampleFunction: () => {
         getActions().changeColor(0, "green");
+      },
+      setToken: (token) => {
+        setStore({ token: token });
+      },
+      removeToken: () => {
+        setStore({ token: null });
       },
       getUser: () => {
         fetch(process.env.BACKEND_URL + "/api/user")

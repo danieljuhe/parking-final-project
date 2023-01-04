@@ -8,7 +8,6 @@ const UserProfile = () => {
   const [user, setUser] = useState();
   const navigate = useNavigate();
 
-
   useEffect(() => {
     fetch(process.env.BACKEND_URL + "/api/user", {
       headers: {
@@ -27,9 +26,9 @@ const UserProfile = () => {
   }, []);
 
   return (
-
     <>
       <h1>{user && user.name}</h1>
+      <h1>{user && user.telephone}</h1>
       <button
         onClick={() => {
           localStorage.removeItem("token");
@@ -59,7 +58,6 @@ const UserProfile = () => {
     //     </div>
     //   </div>
     // </div>
-
   );
 };
 

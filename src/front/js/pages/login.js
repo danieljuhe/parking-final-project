@@ -1,12 +1,12 @@
-
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "../../styles/home.css";
 import { useNavigate } from "react-router-dom";
-
+import { Context } from "../store/appContext";
 
 export const Login = () => {
   const [user, setUser] = useState({});
   const navigate = useNavigate();
+  const { actions, store } = useContext(Context);
 
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -24,6 +24,7 @@ export const Login = () => {
       .then((data) => {
         if (data.token) {
           localStorage.setItem("token", data.token);
+          actions.setToken(data.token);
           navigate("/user");
         }
       })
@@ -33,7 +34,6 @@ export const Login = () => {
   };
 
   return (
-
     <div className="text-center mt-5">
       <input
         type="text"
