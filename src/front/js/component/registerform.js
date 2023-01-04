@@ -18,6 +18,14 @@ export const Register = () => {
   const [validName, setValidName] = useState(false);
   const [userFocus, setUserFocus] = useState(false);
 
+  const [userS, setUserS] = useState("");
+  const [validNameS, setValidNameS] = useState(false);
+  const [userSFocus, setUserSFocus] = useState(false);
+
+  const [mobile, setMobile] = useState("");
+  const [validMobile, setValidMobile] = useState(false);
+  const [mobileFocus, setMobileFocus] = useState(false);
+
   const [pwd, setPwd] = useState("");
   const [validPwd, setValidPwd] = useState(false);
   const [pwdFocus, setPwdFocus] = useState(false);
@@ -41,6 +49,18 @@ export const Register = () => {
   }, [user]);
 
   useEffect(() => {
+    const result = USER_REGEX.test(userS);
+    console.log(result);
+    console.log(userS);
+    setValidNameS(result);
+  }, [userS]);
+
+  useEffect(() => {
+    console.log(mobile);
+    setValidMobile(mobile);
+  }, [mobile]);
+
+  useEffect(() => {
     const result = PWD_REGEX.test(pwd);
     console.log(result);
     console.log(pwd);
@@ -52,7 +72,7 @@ export const Register = () => {
 
   useEffect(() => {
     setErrMsg("");
-  }, [user, pwd, matchPwd]);
+  }, [user, userS, mobile, pwd, matchPwd]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -62,7 +82,7 @@ export const Register = () => {
       setErrMsg("Campo incorrecto");
       return;
     }
-    console.log(user, pwd);
+    console.log(user, userS, mobile, pwd);
     setSuccess(true);
   };
 
@@ -88,7 +108,6 @@ export const Register = () => {
               {errMsg}
             </p>
             <h1>Register Form</h1>
-            <br />
             <form onSubmit={handleSubmit}>
               <label htmlFor="username">
                 Name:
@@ -127,6 +146,80 @@ export const Register = () => {
                 Valido letras, numeros y guion bajo.
               </p>
               <br />
+
+              <label htmlFor="surname">
+                Surname:
+                <span className={validNameS ? "valid" : "d-none"}>
+                  <FontAwesomeIcon icon={faCheck} />
+                </span>
+                <span className={validNameS || !userS ? "d-none" : "invalid"}>
+                  <FontAwesomeIcon icon={faTimes} />
+                </span>
+              </label>
+              <br />
+              <input
+                type="text"
+                id="surname"
+                ref={userRef}
+                autoComplete="off"
+                onChange={(e) => setUserS(e.target.value)}
+                aria-invalid={validNameS ? "false" : "true"}
+                aria-describedby="uidnote"
+                onFocus={() => setUserSFocus(true)}
+                onBlur={() => setUserSFocus(false)}
+              />
+
+              <p
+                id="uidnote"
+                className={
+                  userSFocus && user && !validNameS ? "instructions" : "d-none"
+                }
+              >
+                <FontAwesomeIcon icon={faCircleInfo} />
+                4 a 23 caracteres
+                <br />
+                Debe empezar con una letra.
+                <br />
+                Valido letras, numeros y guion bajo.
+              </p>
+              <br />
+
+              <label htmlFor="mobile">
+                Mobile:
+                <span className={validMobile ? "valid" : "d-none"}>
+                  <FontAwesomeIcon icon={faCheck} />
+                </span>
+                <span className={validMobile || !user ? "d-none" : "invalid"}>
+                  <FontAwesomeIcon icon={faTimes} />
+                </span>
+              </label>
+              <br />
+              <input
+                type="text"
+                id="mobile"
+                ref={userRef}
+                autoComplete="off"
+                onChange={(e) => setMobile(e.target.value)}
+                required
+                aria-invalid={validName ? "false" : "true"}
+                aria-describedby="uidnote"
+                onFocus={() => setMobileFocus(true)}
+                onBlur={() => setMobileFocus(false)}
+              />
+
+              <p
+                id="uidnote"
+                className={
+                  mobileFocus && mobile && !validMobile
+                    ? "instructions"
+                    : "d-none"
+                }
+              >
+                <FontAwesomeIcon icon={faCircleInfo} />
+                4 a 23 caracteres
+                <br />
+                Valido guion y mas - +.
+              </p>
               <br />
 
               <label htmlFor="password">
@@ -160,9 +253,9 @@ export const Register = () => {
                 obligatorio. <br />
               </p>
               <br />
-              <br />
+
               <label htmlFor="confirm_pwd">
-                Confirma tu password:
+                Confirm your password:
                 <span className={validMatch && matchPwd ? "valid" : "d-none"}>
                   <FontAwesomeIcon icon={faCheck} />
                 </span>
