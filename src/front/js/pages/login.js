@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../../styles/home.css";
+import "../../styles/login.css";
 import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
@@ -31,20 +31,30 @@ export const Login = () => {
   };
 
   return (
-    <div className="text-center mt-5">
-      <input
-        type="text"
-        placeholder="E-Mail"
-        onChange={handleChange}
-        name="email"
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        onChange={handleChange}
-        name="password"
-      />
-      <button onClick={handleClick}>Login</button>
+    <div className="main">
+      <div className="login">
+        <label htmlFor="username">Username: </label>
+        <input
+          type="text"
+          placeholder="E-Mail"
+          onChange={handleChange}
+          name="email"
+          required
+        />
+        <br />
+
+        <label htmlFor="username">Password: </label>
+        <input
+          type="password"
+          placeholder="Password"
+          onChange={handleChange}
+          name="password"
+          required
+        />
+        <br />
+
+        <button onClick={handleClick}>Login</button>
+      </div>
     </div>
   );
 };
