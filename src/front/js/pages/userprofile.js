@@ -29,7 +29,7 @@ const UserProfile = () => {
     <>
       <h1>{user && user.name}</h1>
       <h1>{user && user.telephone}</h1>
-      <button
+      {/* <button
         onClick={() => {
           localStorage.removeItem("token");
           navigate("/");
@@ -37,7 +37,7 @@ const UserProfile = () => {
         className="btn btn-primary"
       >
         Log out
-      </button>
+      </button> */}
     </>
 
     // <div>
