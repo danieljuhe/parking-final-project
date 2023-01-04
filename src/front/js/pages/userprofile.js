@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
+import { useNavigate } from "react-router-dom";
 
 const UserProfile = () => {
   const { store, actions } = useContext(Context);
   const [user, setUser] = useState();
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch(process.env.BACKEND_URL + "/api/user", {
@@ -25,6 +27,15 @@ const UserProfile = () => {
   return (
     <>
       <h1>{user && user.name}</h1>
+      <button
+        onClick={() => {
+          localStorage.removeItem("token");
+          navigate("/");
+        }}
+        className="btn btn-primary"
+      >
+        Log out
+      </button>
     </>
 
     // <div>

@@ -30,7 +30,6 @@ const getState = ({ getStore, getActions, setStore }) => {
             setStore({ user: responseAsJson });
           });
       },
-
       getMessage: async () => {
         try {
           // fetching data from the backend
