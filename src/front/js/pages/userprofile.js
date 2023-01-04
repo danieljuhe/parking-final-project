@@ -28,15 +28,7 @@ const UserProfile = () => {
   return (
     <>
       <h1>{user && user.name}</h1>
-      <button
-        onClick={() => {
-          localStorage.removeItem("token");
-          navigate("/");
-        }}
-        className="btn btn-primary"
-      >
-        Log out
-      </button>
+      <h1>{user && user.telephone}</h1>
     </>
 
     // <div>
