@@ -6,12 +6,6 @@ export const Login = () => {
   const [user, setUser] = useState({});
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (localStorage.getItem("token")) {
-      navigate("/user");
-    }
-  }, []);
-
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
@@ -26,8 +20,10 @@ export const Login = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        localStorage.setItem("token", data.token);
-        console.log("Success:", data);
+        if (data.token) {
+          localStorage.setItem("token", data.token);
+          navigate("/user");
+        }
       })
       .catch((error) => {
         console.error("Error:", error);
