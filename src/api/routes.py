@@ -31,6 +31,12 @@ def login():
 
     return jsonify({"message": "Usuario / contraseña incorrectos"}), 400
 
+@api.route ('/register', methods=['POST'])
+def create_user():
+    data = request.json
+    print(data)
+    return jsonify({"MESSAGE" : "Usuario creado"})
+
 
 
 

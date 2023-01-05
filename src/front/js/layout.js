@@ -8,6 +8,7 @@ import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import UserProfile from "./pages/userprofile";
+import { Reg } from "./pages/register";
 
 const Layout = () => {
   const basename = process.env.BASENAME || "";
@@ -21,6 +22,7 @@ const Layout = () => {
             <Route element={<Home />} path="/" />
             <Route element={<Demo />} path="/demo" />
             <Route element={<Login />} path="/login" />
+            <Route element={<Reg />} path="/register" />
             <Route element={<UserProfile />} path="/privateuser" />
             <Route element={<h1>Not found!</h1>} />
           </Routes>

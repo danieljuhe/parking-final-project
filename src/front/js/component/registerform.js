@@ -82,6 +82,17 @@ export const Register = () => {
       setErrMsg("Campo incorrecto");
       return;
     }
+    fetch(process.env.BACKEND_URL + "/api/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user, userS, mobile, pwd),
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+      });
     console.log(user, userS, mobile, pwd);
     setSuccess(true);
   };
@@ -292,9 +303,7 @@ export const Register = () => {
             Ya estas registrado?
             <br />
             <span className="line">
-              <a href="https://github.com/danielo8417/parking-final-projecthttp://www.4geeksacademy.com">
-                Sign In
-              </a>
+              <a href="/login">Login</a>
             </span>
           </p>
         </section>
