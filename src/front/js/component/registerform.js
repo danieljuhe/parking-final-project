@@ -87,224 +87,218 @@ export const Register = () => {
   };
 
   return (
-    <div className="main">
-      <div className="register">
-        {success ? (
-          <section>
-            <h1>Succes!</h1>
-            <p>
+    <>
+      {success ? (
+        <section>
+          <h1>Succes!</h1>
+          <p>
+            <a href="https://github.com/danielo8417/parking-final-projecthttp://www.4geeksacademy.com">
+              Sign In
+            </a>
+          </p>
+        </section>
+      ) : (
+        <section>
+          <p
+            ref={errRef}
+            className={errMsg ? "errmsg" : "offscreen"}
+            aria-live="assertive"
+          >
+            {errMsg}
+          </p>
+          <h1>Register Form</h1>
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="username">
+              Name:
+              <span className={validName ? "valid" : "d-none"}>
+                <FontAwesomeIcon icon={faCheck} />
+              </span>
+              <span className={validName || !user ? "d-none" : "invalid"}>
+                <FontAwesomeIcon icon={faTimes} />
+              </span>
+            </label>
+            <br />
+            <input
+              type="text"
+              id="username"
+              ref={userRef}
+              autoComplete="off"
+              onChange={(e) => setUser(e.target.value)}
+              required
+              aria-invalid={validName ? "false" : "true"}
+              aria-describedby="uidnote"
+              onFocus={() => setUserFocus(true)}
+              onBlur={() => setUserFocus(false)}
+            />
+
+            <p
+              id="uidnote"
+              className={
+                userFocus && user && !validName ? "instructions" : "d-none"
+              }
+            >
+              <FontAwesomeIcon icon={faCircleInfo} />
+              4 a 23 caracteres
+              <br />
+              Debe empezar con una letra.
+              <br />
+              Valido letras, numeros y guion bajo.
+            </p>
+            <br />
+
+            <label htmlFor="surname">
+              Surname:
+              <span className={validNameS ? "valid" : "d-none"}>
+                <FontAwesomeIcon icon={faCheck} />
+              </span>
+              <span className={validNameS || !userS ? "d-none" : "invalid"}>
+                <FontAwesomeIcon icon={faTimes} />
+              </span>
+            </label>
+            <br />
+            <input
+              type="text"
+              id="surname"
+              ref={userRef}
+              autoComplete="off"
+              onChange={(e) => setUserS(e.target.value)}
+              aria-invalid={validNameS ? "false" : "true"}
+              aria-describedby="uidnote"
+              onFocus={() => setUserSFocus(true)}
+              onBlur={() => setUserSFocus(false)}
+            />
+
+            <p
+              id="uidnote"
+              className={
+                userSFocus && user && !validNameS ? "instructions" : "d-none"
+              }
+            >
+              <FontAwesomeIcon icon={faCircleInfo} />
+              4 a 23 caracteres
+              <br />
+              Debe empezar con una letra.
+              <br />
+              Valido letras, numeros y guion bajo.
+            </p>
+            <br />
+
+            <label htmlFor="mobile">
+              Mobile:
+              <span className={validMobile ? "valid" : "d-none"}>
+                <FontAwesomeIcon icon={faCheck} />
+              </span>
+              <span className={validMobile || !user ? "d-none" : "invalid"}>
+                <FontAwesomeIcon icon={faTimes} />
+              </span>
+            </label>
+            <br />
+            <input
+              type="text"
+              id="mobile"
+              ref={userRef}
+              autoComplete="off"
+              onChange={(e) => setMobile(e.target.value)}
+              required
+              aria-invalid={validName ? "false" : "true"}
+              aria-describedby="uidnote"
+              onFocus={() => setMobileFocus(true)}
+              onBlur={() => setMobileFocus(false)}
+            />
+
+            <p
+              id="uidnote"
+              className={
+                mobileFocus && mobile && !validMobile
+                  ? "instructions"
+                  : "d-none"
+              }
+            >
+              <FontAwesomeIcon icon={faCircleInfo} />
+              4 a 23 caracteres
+              <br />
+              Valido guion y mas - +.
+            </p>
+            <br />
+
+            <label htmlFor="password">
+              Password:
+              <span className={validPwd ? "valid" : "d-none"}>
+                <FontAwesomeIcon icon={faCheck} />
+              </span>
+              <span className={validPwd || !pwd ? "d-none" : "invalid"}>
+                <FontAwesomeIcon icon={faTimes} />
+              </span>
+            </label>
+            <br />
+            <input
+              type="password"
+              id="password"
+              onChange={(e) => setPwd(e.target.value)}
+              required
+              aria-invalid={validPwd ? "false" : "true"}
+              aria-describedby="pwdnote"
+              onFocus={() => setPwdFocus(true)}
+              onBlur={() => setPwdFocus(false)}
+            />
+            <p
+              id="pwdnote"
+              className={pwdFocus && !validPwd ? "instructions" : "d-none"}
+            >
+              <FontAwesomeIcon icon={faCircleInfo} />
+              Al menos 6 a 20 caracteres.
+              <br />
+              Debe de contener mayusculas, minisculas, y un numero obligatorio.{" "}
+              <br />
+            </p>
+            <br />
+
+            <label htmlFor="confirm_pwd">
+              Confirm your password:
+              <span className={validMatch && matchPwd ? "valid" : "d-none"}>
+                <FontAwesomeIcon icon={faCheck} />
+              </span>
+              <span className={validMatch || !matchPwd ? "d-none" : "invalid"}>
+                <FontAwesomeIcon icon={faTimes} />
+              </span>
+            </label>
+            <br />
+            <input
+              type="password"
+              id="confirm_pwd"
+              onChange={(e) => setMatchPwd(e.target.value)}
+              required
+              aria-invalid={validMatch ? "false" : "true"}
+              aria-describedby="confirmnote"
+              onFocus={() => setMatchFocus(true)}
+              onBlur={() => setMatchFocus(false)}
+            />
+
+            <p
+              id="confirmnote"
+              className={matchFocus && !validMatch ? "instructions" : "d-none"}
+            >
+              Debe ser igual al password.
+            </p>
+            <br />
+            <br />
+            <button
+              disabled={!validName || !validPwd || !validMatch ? true : false}
+            >
+              Sign Up
+            </button>
+          </form>
+          <p>
+            Ya estas registrado?
+            <br />
+            <span className="line">
               <a href="https://github.com/danielo8417/parking-final-projecthttp://www.4geeksacademy.com">
                 Sign In
               </a>
-            </p>
-          </section>
-        ) : (
-          <section>
-            <p
-              ref={errRef}
-              className={errMsg ? "errmsg" : "offscreen"}
-              aria-live="assertive"
-            >
-              {errMsg}
-            </p>
-            <h1>Register Form</h1>
-            <form onSubmit={handleSubmit}>
-              <label htmlFor="username">
-                Name:
-                <span className={validName ? "valid" : "d-none"}>
-                  <FontAwesomeIcon icon={faCheck} />
-                </span>
-                <span className={validName || !user ? "d-none" : "invalid"}>
-                  <FontAwesomeIcon icon={faTimes} />
-                </span>
-              </label>
-              <br />
-              <input
-                type="text"
-                id="username"
-                ref={userRef}
-                autoComplete="off"
-                onChange={(e) => setUser(e.target.value)}
-                required
-                aria-invalid={validName ? "false" : "true"}
-                aria-describedby="uidnote"
-                onFocus={() => setUserFocus(true)}
-                onBlur={() => setUserFocus(false)}
-              />
-
-              <p
-                id="uidnote"
-                className={
-                  userFocus && user && !validName ? "instructions" : "d-none"
-                }
-              >
-                <FontAwesomeIcon icon={faCircleInfo} />
-                4 a 23 caracteres
-                <br />
-                Debe empezar con una letra.
-                <br />
-                Valido letras, numeros y guion bajo.
-              </p>
-              <br />
-
-              <label htmlFor="surname">
-                Surname:
-                <span className={validNameS ? "valid" : "d-none"}>
-                  <FontAwesomeIcon icon={faCheck} />
-                </span>
-                <span className={validNameS || !userS ? "d-none" : "invalid"}>
-                  <FontAwesomeIcon icon={faTimes} />
-                </span>
-              </label>
-              <br />
-              <input
-                type="text"
-                id="surname"
-                ref={userRef}
-                autoComplete="off"
-                onChange={(e) => setUserS(e.target.value)}
-                aria-invalid={validNameS ? "false" : "true"}
-                aria-describedby="uidnote"
-                onFocus={() => setUserSFocus(true)}
-                onBlur={() => setUserSFocus(false)}
-              />
-
-              <p
-                id="uidnote"
-                className={
-                  userSFocus && user && !validNameS ? "instructions" : "d-none"
-                }
-              >
-                <FontAwesomeIcon icon={faCircleInfo} />
-                4 a 23 caracteres
-                <br />
-                Debe empezar con una letra.
-                <br />
-                Valido letras, numeros y guion bajo.
-              </p>
-              <br />
-
-              <label htmlFor="mobile">
-                Mobile:
-                <span className={validMobile ? "valid" : "d-none"}>
-                  <FontAwesomeIcon icon={faCheck} />
-                </span>
-                <span className={validMobile || !user ? "d-none" : "invalid"}>
-                  <FontAwesomeIcon icon={faTimes} />
-                </span>
-              </label>
-              <br />
-              <input
-                type="text"
-                id="mobile"
-                ref={userRef}
-                autoComplete="off"
-                onChange={(e) => setMobile(e.target.value)}
-                required
-                aria-invalid={validName ? "false" : "true"}
-                aria-describedby="uidnote"
-                onFocus={() => setMobileFocus(true)}
-                onBlur={() => setMobileFocus(false)}
-              />
-
-              <p
-                id="uidnote"
-                className={
-                  mobileFocus && mobile && !validMobile
-                    ? "instructions"
-                    : "d-none"
-                }
-              >
-                <FontAwesomeIcon icon={faCircleInfo} />
-                4 a 23 caracteres
-                <br />
-                Valido guion y mas - +.
-              </p>
-              <br />
-
-              <label htmlFor="password">
-                Password:
-                <span className={validPwd ? "valid" : "d-none"}>
-                  <FontAwesomeIcon icon={faCheck} />
-                </span>
-                <span className={validPwd || !pwd ? "d-none" : "invalid"}>
-                  <FontAwesomeIcon icon={faTimes} />
-                </span>
-              </label>
-              <br />
-              <input
-                type="password"
-                id="password"
-                onChange={(e) => setPwd(e.target.value)}
-                required
-                aria-invalid={validPwd ? "false" : "true"}
-                aria-describedby="pwdnote"
-                onFocus={() => setPwdFocus(true)}
-                onBlur={() => setPwdFocus(false)}
-              />
-              <p
-                id="pwdnote"
-                className={pwdFocus && !validPwd ? "instructions" : "d-none"}
-              >
-                <FontAwesomeIcon icon={faCircleInfo} />
-                Al menos 6 a 20 caracteres.
-                <br />
-                Debe de contener mayusculas, minisculas, y un numero
-                obligatorio. <br />
-              </p>
-              <br />
-
-              <label htmlFor="confirm_pwd">
-                Confirm your password:
-                <span className={validMatch && matchPwd ? "valid" : "d-none"}>
-                  <FontAwesomeIcon icon={faCheck} />
-                </span>
-                <span
-                  className={validMatch || !matchPwd ? "d-none" : "invalid"}
-                >
-                  <FontAwesomeIcon icon={faTimes} />
-                </span>
-              </label>
-              <br />
-              <input
-                type="password"
-                id="confirm_pwd"
-                onChange={(e) => setMatchPwd(e.target.value)}
-                required
-                aria-invalid={validMatch ? "false" : "true"}
-                aria-describedby="confirmnote"
-                onFocus={() => setMatchFocus(true)}
-                onBlur={() => setMatchFocus(false)}
-              />
-
-              <p
-                id="confirmnote"
-                className={
-                  matchFocus && !validMatch ? "instructions" : "d-none"
-                }
-              >
-                Debe ser igual al password.
-              </p>
-              <br />
-              <br />
-              <button
-                disabled={!validName || !validPwd || !validMatch ? true : false}
-              >
-                Sign Up
-              </button>
-            </form>
-            <p>
-              Ya estas registrado?
-              <br />
-              <span className="line">
-                <a href="https://github.com/danielo8417/parking-final-projecthttp://www.4geeksacademy.com">
-                  Sign In
-                </a>
-              </span>
-            </p>
-          </section>
-        )}
-      </div>
-    </div>
+            </span>
+          </p>
+        </section>
+      )}
+    </>
   );
 };

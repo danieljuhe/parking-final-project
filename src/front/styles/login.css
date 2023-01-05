@@ -3,6 +3,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  justify-content: space-evenly;
   margin-top: 50px;
   margin-bottom: 50px;
 }
