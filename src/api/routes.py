@@ -34,8 +34,13 @@ def login():
 @api.route ('/register', methods=['POST'])
 def create_user():
     data = request.json
-    print(data)
-    return jsonify({"MESSAGE" : "Usuario creado"})
+    try:
+        user = User(name=data["name"], surname=data["surname"], email=data["email"], password=data["password"], tlephone=data["telephone"])
+        db.session.add(user)
+        db.session.commit()
+    except Exception:
+        return jsonify({"MESSAGE":"Error al registrar usuario"}), 400
+    return jsonify({"MESSAGE" : "Usuario creado"}), 200
 
 
 

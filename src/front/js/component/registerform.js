@@ -82,17 +82,23 @@ export const Register = () => {
       setErrMsg("Campo incorrecto");
       return;
     }
-    fetch(process.env.BACKEND_URL + "/api/register", {
+
+    const body = {
+        "name": user,
+        "surname": userS,
+        "password": pwd,
+        "telephone": mobile
+    }
+
+    let response = await fetch(process.env.BACKEND_URL + "/api/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(user, userS, mobile, pwd),
+      body: JSON.stringify(body),
     })
-      .then((response) => response.json())
-      .then((response) => {
-        console.log(response);
-      });
+    let json = await response.json();
+    console.log(json);
     console.log(user, userS, mobile, pwd);
     setSuccess(true);
   };
