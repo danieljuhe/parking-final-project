@@ -34,8 +34,9 @@ def login():
 @api.route ('/register', methods=['POST'])
 def create_user():
     data = request.json
+    print(data)
     try:
-        user = User(name=data["name"], surname=data["surname"], email=data["email"], password=data["password"], tlephone=data["telephone"])
+        user = User(name=data["name"], surname=data["surname"], email=data["email"], password=data["password"], telephone=data["telephone"])
         db.session.add(user)
         db.session.commit()
     except Exception:
