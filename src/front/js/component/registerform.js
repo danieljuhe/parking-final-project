@@ -26,6 +26,10 @@ export const Register = () => {
   const [validMobile, setValidMobile] = useState(false);
   const [mobileFocus, setMobileFocus] = useState(false);
 
+  const [email, setEmail] = useState("");
+  const [validEmail, setValidEmail] = useState(false);
+  const [emailFocus, setEmailFocus] = useState(false);
+
   const [pwd, setPwd] = useState("");
   const [validPwd, setValidPwd] = useState(false);
   const [pwdFocus, setPwdFocus] = useState(false);
@@ -60,6 +64,11 @@ export const Register = () => {
     setValidMobile(mobile);
   }, [mobile]);
 
+    useEffect(() => {
+    console.log(email);
+    setValidEmail(email);
+  }, [email]);
+
   useEffect(() => {
     const result = PWD_REGEX.test(pwd);
     console.log(result);
@@ -72,7 +81,7 @@ export const Register = () => {
 
   useEffect(() => {
     setErrMsg("");
-  }, [user, userS, mobile, pwd, matchPwd]);
+  }, [user, userS, mobile, email, pwd, matchPwd]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -87,6 +96,7 @@ export const Register = () => {
         "name": user,
         "surname": userS,
         "password": pwd,
+        "email": email,
         "telephone": mobile
     }
 
@@ -99,7 +109,7 @@ export const Register = () => {
     })
     let json = await response.json();
     console.log(json);
-    console.log(user, userS, mobile, pwd);
+    console.log(user, userS, mobile, email, pwd);
     setSuccess(true);
   };
 
@@ -109,9 +119,7 @@ export const Register = () => {
         <section>
           <h1>Succes!</h1>
           <p>
-            <a href="https://github.com/danielo8417/parking-final-projecthttp://www.4geeksacademy.com">
-              Sign In
-            </a>
+            <a href="/login">Login</a>
           </p>
         </section>
       ) : (
@@ -222,7 +230,6 @@ export const Register = () => {
               onFocus={() => setMobileFocus(true)}
               onBlur={() => setMobileFocus(false)}
             />
-
             <p
               id="uidnote"
               className={
@@ -238,6 +245,30 @@ export const Register = () => {
             </p>
             <br />
 
+            <label htmlFor="email">
+              Email:
+              <span className={validEmail ? "valid" : "d-none"}>
+                <FontAwesomeIcon icon={faCheck} />
+              </span>
+              <span className={validEmail || !user ? "d-none" : "invalid"}>
+                <FontAwesomeIcon icon={faTimes} />
+              </span>
+            </label>
+            <br />
+            <input
+              type="text"
+              id="email"
+              ref={userRef}
+              autoComplete="off"
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              aria-invalid={validEmail ? "false" : "true"}
+              aria-describedby="uidnote"
+              onFocus={() => setEmailFocus(true)}
+              onBlur={() => setEmailFocus(false)}
+            />
+
+            <br />
             <label htmlFor="password">
               Password:
               <span className={validPwd ? "valid" : "d-none"}>
