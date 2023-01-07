@@ -1,6 +1,6 @@
-footer {
+.navbar {
   position: absolute;
-  bottom: 0;
+  top: 0px;
   width: 100%;
   background-color: transparent;
 }
