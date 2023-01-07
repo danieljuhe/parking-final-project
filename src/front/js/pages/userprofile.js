@@ -28,6 +28,11 @@ const UserProfile = () => {
 
   return (
     <div className="userprofile">
+      <div class="box">
+        <div class="wave -one"></div>
+        <div class="wave -two"></div>
+        <div class="wave -three"></div>
+      </div>
       <aside class="sidebar">
         <nav class="nav">
           <ul>
