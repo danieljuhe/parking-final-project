@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export const CarForm = () => {
+export const BasicForm = () => {
   const [formData, setFormData] = useState({});
 
   const handleChange = (e) => {
