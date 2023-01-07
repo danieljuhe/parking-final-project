@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import "../../styles/userprofile.css";
 import { Context } from "../store/appContext";
 import { useNavigate } from "react-router-dom";
 
@@ -26,37 +27,38 @@ const UserProfile = () => {
   }, []);
 
   return (
-    <>
-      <h1>{user && user.name}</h1>
-      <button
-        onClick={() => {
-          localStorage.removeItem("token");
-          navigate("/");
-        }}
-        className="btn btn-primary"
-      >
-        Log out
-      </button>
-    </>
-
-    // <div>
-    //   <div className="card">
-    //     <div className="card-body">
-    //       <h5 className="card-title"></h5>
-    //       <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
-    //       <p className="card-text">
-    //         Some quick example text to build on the card title and make up the
-    //         bulk of the card's content.
-    //       </p>
-    //       <a href="#" className="card-link">
-    //         Card link
-    //       </a>
-    //       <a href="#" className="card-link">
-    //         Another link
-    //       </a>
-    //     </div>
-    //   </div>
-    // </div>
+    <div className="userprofile">
+      <aside class="sidebar">
+        <nav class="nav">
+          <ul>
+            <li class="active">
+              <a href="#">Welcome {user && user.name}</a>
+            </li>
+            <li>
+              <a href="#">My Cars</a>
+            </li>
+            <li>
+              <a href="#">Parking</a>
+            </li>
+            <li>
+              <a href="#">Bills</a>
+            </li>
+            <li>
+              <a
+                href="#"
+                onClick={() => {
+                  localStorage.removeItem("token");
+                  navigate("/");
+                }}
+              >
+                Log Out
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+      <div className="dashboard"></div>
+    </div>
   );
 };
 
