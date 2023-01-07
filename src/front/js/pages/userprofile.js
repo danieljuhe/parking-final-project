@@ -35,13 +35,13 @@ const UserProfile = () => {
               <a href="#">Welcome {user && user.name}</a>
             </li>
             <li>
-              <a href="#">Who We Are</a>
+              <a href="#">My Cars</a>
             </li>
             <li>
-              <a href="#">What We Do</a>
+              <a href="#">Parking</a>
             </li>
             <li>
-              <a href="#">Get In Touch</a>
+              <a href="#">Bills</a>
             </li>
             <li>
               <a

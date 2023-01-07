@@ -20,22 +20,21 @@
 }
 
 .dashboard {
-  width: 400px;
+  width: 50%;
   height: fit-content;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   display: flex;
-  width: 25%;
   height: 600px;
-  background: #312450;
+  background: #453c5969;
   font-size: 0.65em;
 }
 
 .sidebar {
   display: flex;
-  width: 25%;
+  width: 260px;
   height: 600px;
   background: #312450;
   font-size: 0.65em;
