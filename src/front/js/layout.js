@@ -10,7 +10,6 @@ import { Footer } from "./component/footer";
 import UserProfile from "./pages/userprofile";
 import { Reg } from "./pages/register";
 
-
 const Layout = () => {
   const basename = process.env.BASENAME || "";
 

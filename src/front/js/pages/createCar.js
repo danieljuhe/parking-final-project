@@ -1,16 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 const CreateCar = () => {
   const [data, setData] = useState({});
   const [categories, setCategories] = useState([]);
-
-  useEffect(() => {
-    fetch(process.env.BACKEND_URL + "/api/category")
-      .then((response) => response.json())
-      .then((response) => {
-        setCategories(response);
-      });
-  }, []);
 
   const handleChange = (event) => {
     setData({ ...data, [event.target.name]: event.target.value });
@@ -18,13 +10,23 @@ const CreateCar = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("se envia la informacion");
+    fetch(process.env.BACKEND_URL + "/api/car", {
+      methods: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+      });
   };
 
   return (
     <form onSubmit={handleSubmit} className="container">
       <div className="mb-3">
-        <label htmlFor="inputCategory" className="form-label">
+        <label htmlFor="exampleInputEmail1" className="form-label">
           Category
         </label>
         <select
@@ -46,37 +48,40 @@ const CreateCar = () => {
         </select>
       </div>
       <div className="mb-3">
-        <label htmlFor="inputPlate" className="form-label">
+        <label htmlFor="exampleInputEmail1" className="form-label">
           Plate
         </label>
         <input
           name="plate"
-          type="text"
+          type="email"
           className="form-control"
-          id="inputPlate"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
           onChange={handleChange}
         />
       </div>
       <div className="mb-3">
-        <label htmlFor="inputBarnd" className="form-label">
+        <label htmlFor="exampleInputEmail1" className="form-label">
           Brand
         </label>
         <input
-          type="text"
+          type="email"
           className="form-control"
-          id="inputBarnd"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
           name="brand"
           onChange={handleChange}
         />
       </div>
       <div className="mb-3">
-        <label htmlFor="inputModel" className="form-label">
+        <label htmlFor="exampleInputEmail1" className="form-label">
           Model
         </label>
         <input
-          type="text"
+          type="email"
           className="form-control"
-          id="inputModel"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
           name="model"
           onChange={handleChange}
         />
