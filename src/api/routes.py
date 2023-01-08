@@ -43,6 +43,13 @@ def create_user():
         return jsonify({"MESSAGE":"Error al registrar usuario"}), 400
     return jsonify({"MESSAGE" : "Usuario creado"}), 200
 
+@api.route ('/car', methods=['POST'])
+def create_car():
+
+
+@api.route ('/car', methods=['GET'])
+def list_car():
+
 
 
 

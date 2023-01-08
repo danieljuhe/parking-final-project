@@ -18,7 +18,17 @@ const CreateCar = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("se envia la informacion");
+    fetch(process.env.BACKEND_URL + "/api/car", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+      });
   };
 
   return (
@@ -88,5 +98,4 @@ const CreateCar = () => {
     </form>
   );
 };
-
 export default CreateCar;
