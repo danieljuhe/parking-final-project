@@ -1,86 +1,70 @@
-import React from "react";
-import { useRef, useState, useEffect } from "react";
+import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const LoginForm = () => {
-  const userRef = useRef();
-  const errRef = useRef();
+  const [user, setUser] = useState({});
+  const navigate = useNavigate();
 
-  const [user, setUser] = useState("");
-  const [pwd, setPwd] = useState("");
-  const [errMsg, sewtErrMsg] = useState("");
-  const [success, setSuccess] = useState("");
-
-  useEffect(() => {
-    userRef.current.focus();
-  }, []);
-
-  useEffect(() => {
-    sewtErrMsg("");
-  }, [user, pwd]);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log(user, pwd);
-    setUser("");
-    setPwd("");
-    setSuccess("");
+  const handleChange = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
   };
-  return (
-    <div className="main">
-      <div className="login">
-        {success ? (
-          <section>
-            <h1>Estas Logeado</h1>
-            <br />
-            <p>Vuelve a Home</p>
-          </section>
-        ) : (
-          <section>
-            <p
-              ref={errRef}
-              className={errMsg ? "errmsg" : "offscreen"}
-              aria-live="assertive"
-            >
-              {errMsg}
-            </p>
-            <h1>Sign In</h1>
-            <form onSubmit={handleSubmit}>
-              <label htmlFor="username">Username: </label>
-              <br />
-              <input
-                type="text"
-                id="username"
-                ref={userRef}
-                autoComplete="off"
-                onChange={(e) => setUser(e.target.value)}
-                value={user}
-                required
-              />
-              <br />
 
-              <label htmlFor="password">Password:</label>
-              <br />
-              <input
-                type="password"
-                id="password"
-                onChange={(e) => setPwd(e.target.value)}
-                value={pwd}
-                required
-              />
-              <br />
-              <br />
-              <button>Sign In</button>
-            </form>
-            <p>
-              Necesitas una cuenta?
-              <br />
-              <span className="line">
-                <a href="https://github.com/danielo8417">Registrate</a>
-              </span>
-            </p>
-          </section>
-        )}
+  const handleClick = () => {
+    fetch(process.env.BACKEND_URL + "/api/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.token) {
+          localStorage.setItem("token", data.token);
+          navigate("/privateuser");
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
+
+  return (
+    <>
+      <div class="box">
+        <div class="wave -one"></div>
+        <div class="wave -two"></div>
+        <div class="wave -three"></div>
       </div>
-    </div>
+      <label htmlFor="username">
+        <FontAwesomeIcon icon={faUser} />
+        <>&nbsp;&nbsp;&nbsp;&nbsp;</>
+        <input
+          type="text"
+          placeholder="E-Mail"
+          onChange={handleChange}
+          name="email"
+          required
+        />
+      </label>
+      <br />
+      <label htmlFor="username">
+        <FontAwesomeIcon icon={faLock} />
+        <>&nbsp;&nbsp;&nbsp;&nbsp;</>
+        <input
+          type="password"
+          placeholder="Password"
+          onChange={handleChange}
+          name="password"
+          required
+        />
+      </label>
+      <br />
+      <button clasName="registerbutton" onClick={handleClick}>
+        Login
+      </button>
+    </>
   );
 };
