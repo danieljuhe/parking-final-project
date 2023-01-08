@@ -5,6 +5,11 @@ import {
   faCircleInfo,
   faCheck,
   faTimes,
+  faUser,
+  faMobile,
+  faEnvelope,
+  faLock,
+  faShield,
 } from "@fortawesome/free-solid-svg-icons";
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_@.]{3,33}$/;
@@ -64,7 +69,7 @@ export const Register = () => {
     setValidMobile(mobile);
   }, [mobile]);
 
-    useEffect(() => {
+  useEffect(() => {
     console.log(email);
     setValidEmail(email);
   }, [email]);
@@ -93,12 +98,12 @@ export const Register = () => {
     }
 
     const body = {
-        "name": user,
-        "surname": userS,
-        "password": pwd,
-        "email": email,
-        "telephone": mobile
-    }
+      name: user,
+      surname: userS,
+      password: pwd,
+      email: email,
+      telephone: mobile,
+    };
 
     let response = await fetch(process.env.BACKEND_URL + "/api/register", {
       method: "POST",
@@ -106,7 +111,7 @@ export const Register = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(body),
-    })
+    });
     let json = await response.json();
     console.log(json);
     console.log(user, userS, mobile, email, pwd);
@@ -132,9 +137,11 @@ export const Register = () => {
             {errMsg}
           </p>
           <h1>Register Form</h1>
+          <br />
           <form onSubmit={handleSubmit}>
             <label htmlFor="username">
-              Name:
+              <FontAwesomeIcon icon={faUser} />
+              <>&nbsp;&nbsp;</>
               <span className={validName ? "valid" : "d-none"}>
                 <FontAwesomeIcon icon={faCheck} />
               </span>
@@ -142,8 +149,9 @@ export const Register = () => {
                 <FontAwesomeIcon icon={faTimes} />
               </span>
             </label>
-            <br />
+            <>&nbsp;&nbsp;&nbsp;&nbsp;</>
             <input
+              placeholder="Full Name"
               type="text"
               id="username"
               ref={userRef}
@@ -155,14 +163,15 @@ export const Register = () => {
               onFocus={() => setUserFocus(true)}
               onBlur={() => setUserFocus(false)}
             />
-
             <p
               id="uidnote"
               className={
                 userFocus && user && !validName ? "instructions" : "d-none"
               }
             >
+              <>&nbsp;&nbsp;</>
               <FontAwesomeIcon icon={faCircleInfo} />
+              <>&nbsp;&nbsp;</>
               4 a 23 caracteres
               <br />
               Debe empezar con una letra.
@@ -170,9 +179,11 @@ export const Register = () => {
               Valido letras, numeros y guion bajo.
             </p>
             <br />
+            <br />
 
             <label htmlFor="surname">
-              Surname:
+              <FontAwesomeIcon icon={faUser} />
+              <>&nbsp;&nbsp;</>
               <span className={validNameS ? "valid" : "d-none"}>
                 <FontAwesomeIcon icon={faCheck} />
               </span>
@@ -180,8 +191,9 @@ export const Register = () => {
                 <FontAwesomeIcon icon={faTimes} />
               </span>
             </label>
-            <br />
+            <>&nbsp;&nbsp;&nbsp;&nbsp;</>
             <input
+              placeholder="Surname"
               type="text"
               id="surname"
               ref={userRef}
@@ -199,7 +211,9 @@ export const Register = () => {
                 userSFocus && user && !validNameS ? "instructions" : "d-none"
               }
             >
+              <>&nbsp;&nbsp;</>
               <FontAwesomeIcon icon={faCircleInfo} />
+              <>&nbsp;&nbsp;</>
               4 a 23 caracteres
               <br />
               Debe empezar con una letra.
@@ -207,9 +221,11 @@ export const Register = () => {
               Valido letras, numeros y guion bajo.
             </p>
             <br />
+            <br />
 
             <label htmlFor="mobile">
-              Mobile:
+              <FontAwesomeIcon icon={faMobile} />
+              <>&nbsp;&nbsp;</>
               <span className={validMobile ? "valid" : "d-none"}>
                 <FontAwesomeIcon icon={faCheck} />
               </span>
@@ -217,8 +233,9 @@ export const Register = () => {
                 <FontAwesomeIcon icon={faTimes} />
               </span>
             </label>
-            <br />
+            <>&nbsp;&nbsp;&nbsp;&nbsp;</>
             <input
+              placeholder="Your mobile number"
               type="text"
               id="mobile"
               ref={userRef}
@@ -238,15 +255,19 @@ export const Register = () => {
                   : "d-none"
               }
             >
+              <>&nbsp;&nbsp;</>
               <FontAwesomeIcon icon={faCircleInfo} />
+              <>&nbsp;&nbsp;</>
               4 a 23 caracteres
               <br />
               Valido guion y mas - +.
             </p>
             <br />
+            <br />
 
             <label htmlFor="email">
-              Email:
+              <FontAwesomeIcon icon={faEnvelope} />
+              <>&nbsp;&nbsp;</>
               <span className={validEmail ? "valid" : "d-none"}>
                 <FontAwesomeIcon icon={faCheck} />
               </span>
@@ -254,8 +275,9 @@ export const Register = () => {
                 <FontAwesomeIcon icon={faTimes} />
               </span>
             </label>
-            <br />
+            <>&nbsp;&nbsp;&nbsp;&nbsp;</>
             <input
+              placeholder="Your email"
               type="text"
               id="email"
               ref={userRef}
@@ -267,10 +289,12 @@ export const Register = () => {
               onFocus={() => setEmailFocus(true)}
               onBlur={() => setEmailFocus(false)}
             />
-
             <br />
+            <br />
+
             <label htmlFor="password">
-              Password:
+              <FontAwesomeIcon icon={faLock} />
+              <>&nbsp;&nbsp;</>
               <span className={validPwd ? "valid" : "d-none"}>
                 <FontAwesomeIcon icon={faCheck} />
               </span>
@@ -278,8 +302,9 @@ export const Register = () => {
                 <FontAwesomeIcon icon={faTimes} />
               </span>
             </label>
-            <br />
+            <>&nbsp;&nbsp;&nbsp;&nbsp;</>
             <input
+              placeholder="Password"
               type="password"
               id="password"
               onChange={(e) => setPwd(e.target.value)}
@@ -293,16 +318,20 @@ export const Register = () => {
               id="pwdnote"
               className={pwdFocus && !validPwd ? "instructions" : "d-none"}
             >
-              <FontAwesomeIcon icon={faCircleInfo} />
+              <>&nbsp;&nbsp;</> <FontAwesomeIcon icon={faCircleInfo} />
+              <>&nbsp;&nbsp;</>
               Al menos 6 a 20 caracteres.
               <br />
-              Debe de contener mayusculas, minisculas, y un numero obligatorio.{" "}
+              Debe de contener
+              <br /> mayusculas, minisculas <br /> y un numero obligatorio.{" "}
               <br />
             </p>
             <br />
+            <br />
 
             <label htmlFor="confirm_pwd">
-              Confirm your password:
+              <FontAwesomeIcon icon={faShield} />
+              <>&nbsp;&nbsp;</>
               <span className={validMatch && matchPwd ? "valid" : "d-none"}>
                 <FontAwesomeIcon icon={faCheck} />
               </span>
@@ -310,8 +339,9 @@ export const Register = () => {
                 <FontAwesomeIcon icon={faTimes} />
               </span>
             </label>
-            <br />
+            <>&nbsp;&nbsp;&nbsp;&nbsp;</>
             <input
+              placeholder="Confirm your password"
               type="password"
               id="confirm_pwd"
               onChange={(e) => setMatchPwd(e.target.value)}
@@ -326,16 +356,20 @@ export const Register = () => {
               id="confirmnote"
               className={matchFocus && !validMatch ? "instructions" : "d-none"}
             >
-              Debe ser igual al password.
+              <>&nbsp;&nbsp;</>
+              <FontAwesomeIcon icon={faCircleInfo} />
+              <>&nbsp;&nbsp;</> Confirma el password.<>&nbsp;&nbsp;</>
             </p>
             <br />
             <br />
             <button
               disabled={!validName || !validPwd || !validMatch ? true : false}
+              className="registerbutton"
             >
               Sign Up
             </button>
           </form>
+          <br />
           <p>
             Ya estas registrado?
             <br />

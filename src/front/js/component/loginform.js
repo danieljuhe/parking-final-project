@@ -1,3 +1,5 @@
+import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -36,27 +38,33 @@ export const LoginForm = () => {
         <div class="wave -two"></div>
         <div class="wave -three"></div>
       </div>
-      <label htmlFor="username">Username: </label>
-      <input
-        type="text"
-        placeholder="E-Mail"
-        onChange={handleChange}
-        name="email"
-        required
-      />
+      <label htmlFor="username">
+        <FontAwesomeIcon icon={faUser} />
+        <>&nbsp;&nbsp;&nbsp;&nbsp;</>
+        <input
+          type="text"
+          placeholder="E-Mail"
+          onChange={handleChange}
+          name="email"
+          required
+        />
+      </label>
       <br />
-
-      <label htmlFor="username">Password: </label>
-      <input
-        type="password"
-        placeholder="Password"
-        onChange={handleChange}
-        name="password"
-        required
-      />
+      <label htmlFor="username">
+        <FontAwesomeIcon icon={faLock} />
+        <>&nbsp;&nbsp;&nbsp;&nbsp;</>
+        <input
+          type="password"
+          placeholder="Password"
+          onChange={handleChange}
+          name="password"
+          required
+        />
+      </label>
       <br />
-
-      <button onClick={handleClick}>Login</button>
+      <button clasName="registerbutton" onClick={handleClick}>
+        Login
+      </button>
     </>
   );
 };
