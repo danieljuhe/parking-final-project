@@ -57,7 +57,9 @@ def create_car():
 
 @api.route ('/car', methods=['GET'])
 def list_car():
-
+    cars = Car.query.all()
+    data = [car.serialize() for car in cars]
+    return jsonify(data)
 
 
 
