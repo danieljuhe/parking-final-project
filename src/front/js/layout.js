@@ -9,6 +9,7 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import UserProfile from "./pages/userprofile";
 import { Reg } from "./pages/register";
+import Date_Time from "./pages/time";
 
 const Layout = () => {
   const basename = process.env.BASENAME || "";
@@ -24,6 +25,7 @@ const Layout = () => {
             <Route element={<Login />} path="/login" />
             <Route element={<Reg />} path="/register" />
             <Route element={<UserProfile />} path="/privateuser" />
+            <Route element={<Date_Time />} path="/date" />
             <Route element={<h1>Not found!</h1>} />
           </Routes>
           <Footer />
