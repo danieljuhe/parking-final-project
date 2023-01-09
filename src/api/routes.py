@@ -45,11 +45,18 @@ def create_user():
 
 @api.route ('/car', methods=['POST'])
 def create_car():
+    data= request.json
+    try:
+        car= Car(plate=data["plate"], brand=data["brand"], model=data["model"], category=data["category"])
+        db.session.add(car)
+        db.session.commit()
+    except Exception:
+        return jsonify({"message":"Error al registrar el vehiculo"}), 400
+    return jsonify({"message": "vehiculo creado"}), 200
 
 
 @api.route ('/car', methods=['GET'])
 def list_car():
-
 
 
 
