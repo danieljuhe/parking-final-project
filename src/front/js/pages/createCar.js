@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from "react";
 
 const CreateCar = () => {
-  const [data, setData] = useState({});
+  const [formData, setFormData] = useState({});
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     fetch(process.env.BACKEND_URL + "/api/category")
       .then((response) => response.json())
       .then((response) => {
+        console.log(response);
         setCategories(response);
       });
   }, []);
 
   const handleChange = (event) => {
-    setData({ ...data, [event.target.name]: event.target.value });
+    setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
   const handleSubmit = (event) => {
@@ -23,11 +24,11 @@ const CreateCar = () => {
       headers: {
         "Content-type": "application/json",
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(formData),
     })
       .then((response) => response.json())
-      .then((response) => {
-        console.log(response);
+      .then((data) => {
+        setFormData(data);
       });
   };
 
@@ -40,15 +41,15 @@ const CreateCar = () => {
         <select
           className="form-select"
           aria-label="Default select example"
-          name="category"
+          name="category_id"
           onChange={handleChange}
         >
           <option disabled selected>
             Seleccione su categoria
           </option>
-          {categories.map((value, index) => {
+          {categories.map((value) => {
             return (
-              <option key={index} value={value.id}>
+              <option key={value.id} value={value.id}>
                 {value.name}
               </option>
             );

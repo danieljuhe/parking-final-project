@@ -47,11 +47,11 @@ def create_user():
 def create_car():
     data= request.json
     try:
-        car= Car(plate=data["plate"], brand=data["brand"], model=data["model"], category=data["category"])
+        car= Car(plate=data["plate"], brand=data["brand"], model=data["model"], category_id=data["category_id"])
         db.session.add(car)
         db.session.commit()
-    except Exception:
-        return jsonify({"message":"Error al registrar el vehiculo"}), 400
+    except Exception as e:
+        return jsonify ({"message": str(e)}), 400
     return jsonify({"message": "vehiculo creado"}), 200
 
 
