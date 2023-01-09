@@ -1,6 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
+      token: null,
       user: "",
       message: null,
       demo: [
@@ -30,7 +31,9 @@ const getState = ({ getStore, getActions, setStore }) => {
             setStore({ user: responseAsJson });
           });
       },
-
+      setToken: (token) => {
+        setStore({ token: token });
+      },
       getMessage: async () => {
         try {
           // fetching data from the backend
