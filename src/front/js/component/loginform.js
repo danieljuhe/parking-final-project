@@ -2,10 +2,13 @@ import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { Context } from "../store/appContext";
 
 export const LoginForm = () => {
   const [user, setUser] = useState({});
   const navigate = useNavigate();
+  const { actions, store } = useContext(Context);
 
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -23,6 +26,7 @@ export const LoginForm = () => {
       .then((data) => {
         if (data.token) {
           localStorage.setItem("token", data.token);
+          actions.setToken(data.token);
           navigate("/privateuser");
         }
       })

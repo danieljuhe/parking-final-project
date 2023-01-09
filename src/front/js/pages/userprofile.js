@@ -10,6 +10,11 @@ const UserProfile = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log(store.token);
+    if (!localStorage.getItem("token")) {
+      navigate("/login");
+    }
+
     fetch(process.env.BACKEND_URL + "/api/user", {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("token"),
