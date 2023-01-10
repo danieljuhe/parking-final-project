@@ -67,7 +67,35 @@ def list_car():
     data = [car.serialize() for car in cars]
     return jsonify(data)
 
+@api.route ('/edit_car', methods= ['PUT'])
+def edit_car():
+    try:
+        car = Car.query.get(id)
+    except:
+        return jsonify({"message": "No se pudo realizar la edicion"}), 400
 
+    new_plate = request.json.get("plate", car.plate)
+    new_brand = request.json.get("brand", car.brand)
+    new_model = request.json.get("model", car.model)
+    new_category = request.json.get("caregory", car.category)
+
+    setattr(car, "plate", new_plate)
+    setattr(car, "brand", new_brand)
+    setattr(car, "model", new_model)
+    setattr(car, "category", new_category)
+
+    db.session.commit()
+    return jsonify (car.serialize()), 200
+
+@api.route ('/delete_car', methods=['DELETE'])
+def delete_car():
+    try:
+        car = Car.querry.filter_by(id=id).first()
+        db.session.delete(car)
+        db.session.commit()
+    except:
+        return jsonify({"message": "No se pudo eliminar el vehiculo"}), 400
+    return jsonify ({"message": "vehiculo eliminado"}), 200
 
 
 
