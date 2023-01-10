@@ -7,7 +7,7 @@ const CarsInfo = () => {
   const [users, setUsers] = useState();
 
   useEffect(() => {
-    fetch(process.env.BACKEND_URL + "/api/car")
+    fetch(process.env.BACKEND_URL + "/api/list_car")
       .then((response) => response.json())
       .then((response) => {
         console.log(response);

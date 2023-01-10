@@ -49,7 +49,7 @@ def create_user():
         return jsonify({"MESSAGE":"Error al registrar usuario"}), 400
     return jsonify({"MESSAGE" : "Usuario creado"}), 200
 
-@api.route ('/car', methods=['POST'])
+@api.route ('/create_car', methods=['POST'])
 def create_car():
     data= request.json
     try:
@@ -61,7 +61,7 @@ def create_car():
     return jsonify({"message": "vehiculo creado"}), 200
 
 
-@api.route ('/car', methods=['GET'])
+@api.route ('/list_car', methods=['GET'])
 def list_car():
     cars = Car.query.all()
     data = [car.serialize() for car in cars]

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+Simport React, { useState, useEffect } from "react";
 import "../../styles/login.css";
 
 const CreateCar = () => {
@@ -20,7 +20,7 @@ const CreateCar = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch(process.env.BACKEND_URL + "/api/car", {
+    fetch(process.env.BACKEND_URL + "/api/create_car", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
