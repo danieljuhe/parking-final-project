@@ -1,12 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../styles/login.css";
 
 const CarsInfo = () => {
-  const [myCars, setMyCars] = useState();
+  const [form, setForm] = useState();
   const [cars, setCars] = useState();
+  const [users, setUsers] = useState();
+
+  useEffect(() => {
+    fetch(process.env.BACKEND_URL + "/api/car")
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+        setCars(response);
+      });
+
+    fetch(process.env.BACKEND_URL + "/api/users")
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+        setUsers(response);
+      });
+  }, []);
 
   const handleChange = (event) => {
-    setMyCars({ ...myCars, [event.target.name]: event.target.value });
+    setForm({ ...form, [event.target.name]: event.target.value });
   };
 
   return (
@@ -21,10 +38,10 @@ const CarsInfo = () => {
             <option disabled selected>
               Que coche vas a aparcar hoy?
             </option>
-            {mycars.map((value, index) => {
+            {cars?.map((value, index) => {
               return (
                 <option key={index} value={value.id}>
-                  {value.car}
+                  {value.plate}, {value.brand}
                 </option>
               );
             })}
@@ -35,6 +52,13 @@ const CarsInfo = () => {
             <option disabled selected>
               Usuario
             </option>
+            {users?.map((value, index) => {
+              return (
+                <option key={index} value={value.id}>
+                  {value.name}
+                </option>
+              );
+            })}
           </select>
         </div>
       </div>

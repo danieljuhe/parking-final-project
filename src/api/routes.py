@@ -21,6 +21,12 @@ def get_user():
     user = User.query.filter_by(id=user_id).first()
     return jsonify(user.serialize()), 200
 
+@api.route ('/users', methods=['GET'])
+def user():
+    users = User.query.all()
+    data = [user.serialize() for user in users]
+    return jsonify(data)
+
 @api.route('/login', methods=["POST"])
 def login():
     data = request.json
