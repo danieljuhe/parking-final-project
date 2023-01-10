@@ -43,6 +43,12 @@ def create_user():
         return jsonify({"MESSAGE":"Error al registrar usuario"}), 400
     return jsonify({"MESSAGE" : "Usuario creado"}), 200
 
+@api.route ('/parking', methods=['GET'])
+def parking_site():
+    parking = Car.query.all()
+    data = [car.serialize() for car in parking]
+    return jsonify(data), 200
+
 
 
 
