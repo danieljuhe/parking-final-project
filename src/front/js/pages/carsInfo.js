@@ -14,7 +14,7 @@ const CarsInfo = () => {
         setCars(response);
       });
 
-    fetch(process.env.BACKEND_URL + "/api/users")
+    fetch(process.env.BACKEND_URL + "/api/list_users")
       .then((response) => response.json())
       .then((response) => {
         console.log(response);

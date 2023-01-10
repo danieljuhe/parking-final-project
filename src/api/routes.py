@@ -21,8 +21,8 @@ def get_user():
     user = User.query.filter_by(id=user_id).first()
     return jsonify(user.serialize()), 200
 
-@api.route ('/users', methods=['GET'])
-def user():
+@api.route ('/list_users', methods=['GET'])
+def list_user():
     users = User.query.all()
     data = [user.serialize() for user in users]
     return jsonify(data)
