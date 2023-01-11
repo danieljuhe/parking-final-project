@@ -2,22 +2,6 @@ import React, { useEffect, useState } from "react";
 import "../../styles/parkingview.css";
 
 export const ParkingView = () => {
-  useEffect(() => {
-    fetch(process.env.BACKEND_URL + "/api/parking", {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        setCarCategory(response);
-        if (response[0].category_id == 1) {
-          setCCategory("Mini");
-        }
-      }),
-      [];
-  });
-
   const [carCategory, setCarCategory] = useState();
   const [cCategory, setCCategory] = useState("");
 
@@ -36,6 +20,21 @@ export const ParkingView = () => {
   const prm = () => {
     setCCategory("prm");
   };
+
+  useEffect(() => {
+    fetch(process.env.BACKEND_URL + "/api/parking", {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        setCarCategory(response);
+        if (response[1].category_id == 3) {
+          setCCategory("4X4");
+        }
+      });
+  }, []);
 
   return (
     <div className="parking">

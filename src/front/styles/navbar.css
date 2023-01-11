@@ -1,6 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+
 .navbar {
   position: absolute;
   top: 0px;
   width: 100%;
+  height: 100px;
   background-color: transparent;
+}
+
+.container span {
+  font-family: "Montserrat", sans-serif;
+  color: #f6f4e6;
+  text-decoration: none;
+  font-size: 1.7em;
+  text-transform: uppercase;
+  font-weight: 500;
+  display: inline-block;
+  width: 80px;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.container span:hover {
+  color: #fdb53a;
 }
