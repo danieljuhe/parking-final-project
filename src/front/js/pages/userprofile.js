@@ -11,6 +11,11 @@ const UserProfile = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log(store.token);
+    if (!localStorage.getItem("token")) {
+      navigate("/login");
+    }
+
     fetch(process.env.BACKEND_URL + "/api/user", {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("token"),
@@ -29,11 +34,6 @@ const UserProfile = () => {
 
   return (
     <div className="userprofile">
-      <div class="box">
-        <div class="wave -one"></div>
-        <div class="wave -two"></div>
-        <div class="wave -three"></div>
-      </div>
       <aside class="sidebar">
         <nav class="nav">
           <ul>
