@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import "../../styles/userprofile.css";
 import { Context } from "../store/appContext";
 import { useNavigate } from "react-router-dom";
+import CreateCar from "../component/createCar";
 
 const UserProfile = () => {
   const { store, actions } = useContext(Context);
@@ -62,7 +63,9 @@ const UserProfile = () => {
           </ul>
         </nav>
       </aside>
-      <div className="dashboard"></div>
+      <div className="dashboard">
+        <CreateCar />
+      </div>
     </div>
   );
 };

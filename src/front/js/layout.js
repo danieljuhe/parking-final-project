@@ -8,6 +8,8 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import UserProfile from "./pages/userprofile";
 import { Reg } from "./pages/register";
+import CreateCar from "./component/createCar";
+import CarsInfo from "./pages/carsInfo";
 import Date_Time from "./component/time";
 
 const Layout = () => {
@@ -21,10 +23,12 @@ const Layout = () => {
           <Routes>
             <Route element={<Home />} path="/" />
             <Route element={<Login />} path="/login" />
+            <Route element={<CreateCar />} path="/car" />
             <Route element={<Reg />} path="/register" />
             <Route element={<UserProfile />} path="/privateuser" />
             <Route element={<Date_Time />} path="/date" />
             <Route element={<h1>Not found!</h1>} />
+            <Route element={<CarsInfo />} path="/mycar" />
           </Routes>
           <Footer />
         </ScrollToTop>
