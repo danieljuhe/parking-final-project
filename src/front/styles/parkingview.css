@@ -5,6 +5,15 @@
   justify-content: center;
   padding-top: 100px;
 }
+.col1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+button {
+  border-color: transparent;
+}
 .a1 {
   color: aliceblue;
   background-color: purple;
@@ -42,15 +51,15 @@
 .a6 {
   background-color: orange;
   color: aliceblue;
-  width: 150px;
-  height: 50px;
+  width: 170px;
+  height: 60px;
   margin-top: 5px;
 }
 .a7 {
   background-color: orange;
   color: aliceblue;
-  width: 150px;
-  height: 50px;
+  width: 170px;
+  height: 60px;
   margin-top: 5px;
 }
 .a8 {
@@ -77,8 +86,8 @@
 .a11 {
   background-color: orange;
   color: aliceblue;
-  width: 150px;
-  height: 50px;
+  width: 170px;
+  height: 60px;
   margin-top: 5px;
 }
 .a12 {
@@ -93,5 +102,19 @@
   color: aliceblue;
   width: 100px;
   height: 40px;
+  margin-top: 5px;
+}
+.a21 {
+  color: aliceblue;
+  background-color: red;
+  width: 150px;
+  height: 50px;
+  margin-top: 5px;
+}
+.a71 {
+  color: aliceblue;
+  background-color: red;
+  width: 150px;
+  height: 50px;
   margin-top: 5px;
 }
