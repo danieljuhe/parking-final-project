@@ -33,10 +33,10 @@ const UserProfile = () => {
 
   return (
     <div className="userprofile">
-      <aside class="sidebar">
-        <nav class="nav">
+      <aside className="sidebar">
+        <nav className="nav">
           <ul>
-            <li class="active">
+            <li className="active">
               <a href="#">Welcome {user && user.name}</a>
             </li>
             <li>
