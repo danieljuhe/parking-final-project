@@ -49,6 +49,17 @@ def create_user():
         return jsonify({"MESSAGE":"Error al registrar usuario"}), 400
     return jsonify({"MESSAGE" : "Usuario creado"}), 200
 
+<<<<<<< HEAD
+@api.route ('/parking', methods=['GET'])
+def parking_site():
+    parking = Car.query.all()
+    data = [car.serialize() for car in parking]
+    return jsonify(data), 200
+
+
+
+
+=======
 @api.route ('/create_car', methods=['POST'])
 def create_car():
     data= request.json
@@ -96,6 +107,7 @@ def delete_car():
     except:
         return jsonify({"message": "No se pudo eliminar el vehiculo"}), 400
     return jsonify ({"message": "vehiculo eliminado"}), 200
+>>>>>>> ec7b31b0fbd3e097929bdbdb731471bb548704da
 
 
 

@@ -52,12 +52,14 @@ class Car(db.Model):
         return f'{self.brand}, {self.model}, {self.plate}'
 
     def serialize(self):
+        print(self.my_cars[0].user.serialize())
         return {
             "id": self.id,
             "plate": self.plate,
             "brand": self.brand,
             "model": self.model,
-            "category_id": self.category_id
+            "category_id": self.category_id,
+            "user": self.my_cars[0].user.serialize()
         }
 
 class Parking(db.Model):

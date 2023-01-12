@@ -8,6 +8,7 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import UserProfile from "./pages/userprofile";
 import { Reg } from "./pages/register";
+import { ParkingView } from "./component/parkingview";
 import CreateCar from "./component/createCar";
 import CarsInfo from "./pages/carsInfo";
 import Date_Time from "./component/time";
@@ -22,6 +23,8 @@ const Layout = () => {
           <Navbar />
           <Routes>
             <Route element={<Home />} path="/" />
+            <Route element={<ParkingView />} path="/parking" />
+            <Route element={<Demo />} path="/demo" />
             <Route element={<Login />} path="/login" />
             <Route element={<CreateCar />} path="/car" />
             <Route element={<Reg />} path="/register" />
