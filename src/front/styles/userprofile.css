@@ -8,7 +8,7 @@
 }
 
 .menu {
-  width: 400px;
+  width: 600px;
   height: fit-content;
   display: flex;
   flex-direction: column;
@@ -20,24 +20,32 @@
 }
 
 .dashboard {
-  width: 50%;
+  width: 60%;
   height: fit-content;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   display: flex;
   height: 600px;
-  background: #453c5969;
+  background: #232b4a69;
   font-size: 0.65em;
+  -webkit-box-shadow: 0px 0px 119px -6px rgb(168, 168, 168);
+  -moz-box-shadow: 0px 0px 119px -6px rgb(168, 168, 168);
+  box-shadow: 0px 0px 119px -6px rgba(168, 168, 168, 0);
 }
 
 .sidebar {
   display: flex;
+  border-radius: 5px;
   width: 260px;
   height: 600px;
-  background: #312450;
+  background: #161b34e1;
   font-size: 0.65em;
+  -webkit-box-shadow: 0px 0px 119px -6px rgba(168, 168, 168, 0.527);
+  -moz-box-shadow: 0px 0px 119px -6px rgb(168, 168, 168, 0.527);
+  box-shadow: 0px 0px 119px -6px rgb(168, 168, 168, 0.527);
 }
 
 .nav {
@@ -60,7 +68,7 @@
   text-transform: uppercase;
   text-decoration: none;
   letter-spacing: 0.4em;
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(255, 255, 255, 0.739);
   display: block;
   transition: all ease-out 300ms;
 }

@@ -21,6 +21,12 @@ def get_user():
     user = User.query.filter_by(id=user_id).first()
     return jsonify(user.serialize()), 200
 
+@api.route ('/list_users', methods=['GET'])
+def list_user():
+    users = User.query.all()
+    data = [user.serialize() for user in users]
+    return jsonify(data)
+
 @api.route('/login', methods=["POST"])
 def login():
     data = request.json
@@ -43,6 +49,7 @@ def create_user():
         return jsonify({"MESSAGE":"Error al registrar usuario"}), 400
     return jsonify({"MESSAGE" : "Usuario creado"}), 200
 
+<<<<<<< HEAD
 @api.route ('/parking', methods=['GET'])
 def parking_site():
     parking = Car.query.all()
@@ -52,6 +59,55 @@ def parking_site():
 
 
 
+=======
+@api.route ('/create_car', methods=['POST'])
+def create_car():
+    data= request.json
+    try:
+        car= Car(plate=data["plate"], brand=data["brand"], model=data["model"], category_id=data["category_id"])
+        db.session.add(car)
+        db.session.commit()
+    except Exception as e:
+        return jsonify ({"message": str(e)}), 400
+    return jsonify({"message": "vehiculo creado"}), 200
+
+
+@api.route ('/list_car', methods=['GET'])
+def list_car():
+    cars = Car.query.all()
+    data = [car.serialize() for car in cars]
+    return jsonify(data)
+
+@api.route ('/edit_car', methods= ['PUT'])
+def edit_car():
+    try:
+        car = Car.query.get(id)
+    except:
+        return jsonify({"message": "No se pudo realizar la edicion"}), 400
+
+    new_plate = request.json.get("plate", car.plate)
+    new_brand = request.json.get("brand", car.brand)
+    new_model = request.json.get("model", car.model)
+    new_category = request.json.get("caregory", car.category)
+
+    setattr(car, "plate", new_plate)
+    setattr(car, "brand", new_brand)
+    setattr(car, "model", new_model)
+    setattr(car, "category", new_category)
+
+    db.session.commit()
+    return jsonify (car.serialize()), 200
+
+@api.route ('/delete_car', methods=['DELETE'])
+def delete_car():
+    try:
+        car = Car.querry.filter_by(id=id).first()
+        db.session.delete(car)
+        db.session.commit()
+    except:
+        return jsonify({"message": "No se pudo eliminar el vehiculo"}), 400
+    return jsonify ({"message": "vehiculo eliminado"}), 200
+>>>>>>> ec7b31b0fbd3e097929bdbdb731471bb548704da
 
 
 

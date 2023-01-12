@@ -370,12 +370,14 @@ export const Register = () => {
             </button>
           </form>
           <br />
-          <p>
+          <p className="yaestas">
             Ya estas registrado?
             <br />
-            <span className="line">
-              <a href="/login">Login</a>
-            </span>
+            <div className="logearse">
+              <span className="line">
+                <a href="/login">Login</a>
+              </span>
+            </div>
           </p>
         </section>
       )}

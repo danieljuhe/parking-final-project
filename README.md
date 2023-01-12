@@ -25,7 +25,8 @@
 2. Run the migrations: `$ pipenv run upgrade`
 3. Install Jwt application: `$ pipenv install flask-jwt-extended`
 4. Run the application: `$ pipenv run start`
-5. Reset data Base:
+5. Install dependencies for date time : `$ npm i @material-ui/pickers npm i @date-io/date-fns@1.x date-fns npm i @material-ui/pickers`
+6. Reset data Base:
    `$ rm -R -f ./migrations && pipenv run init && psql -U gitpod -c 'DROP DATABASE example;' || true && psql -U gitpod -c 'CREATE DATABASE example;' && psql -U gitpod -c 'CREATE EXTENSION unaccent;' -d example && pipenv run migrate && pipenv run upgrade`
 
 ### Front-End Manual Installation:
