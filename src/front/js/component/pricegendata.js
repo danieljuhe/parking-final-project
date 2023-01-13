@@ -46,6 +46,7 @@ function PriceGen() {
               onChange={(e) => setStartDate(e.target.value)}
             />
           </label>
+          <>&nbsp;&nbsp;&nbsp;&nbsp;</>
           <label>
             Start Time:
             <input
@@ -54,6 +55,11 @@ function PriceGen() {
               onChange={(e) => setStartTime(e.target.value)}
             />
           </label>
+
+          <br />
+          <br />
+          <br />
+          <br />
           <label>
             End Date:
             <input
@@ -62,6 +68,7 @@ function PriceGen() {
               onChange={(e) => setEndDate(e.target.value)}
             />
           </label>
+          <>&nbsp;&nbsp;&nbsp;&nbsp;</>
           <label>
             End Time:
             <input
@@ -70,7 +77,13 @@ function PriceGen() {
               onChange={(e) => setEndTime(e.target.value)}
             />
           </label>
+          <br />
+          <br />
+          <br />
           <button type="submit">Calculate Price</button>
+
+          <br />
+          <br />
           <p>Price: €{price}</p>
         </form>
       </div>

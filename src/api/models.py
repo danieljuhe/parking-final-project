@@ -35,7 +35,7 @@ class My_cars(db.Model):
     def serialize(self):
         return {
             "id": self.id,
-            "car": self.car,
+            "car": self.car.serialize(),
             "user": self.user_id
         }
 

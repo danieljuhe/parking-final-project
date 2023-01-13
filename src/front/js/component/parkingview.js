@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "../../styles/parkingview.css";
-
 export const ParkingView = () => {
   const [carCategory, setCarCategory] = useState();
   const [cCategory, setCCategory] = useState("");
@@ -29,18 +28,19 @@ export const ParkingView = () => {
     fetch(process.env.BACKEND_URL + "/api/parking", {
       headers: {
         "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
       },
     })
       .then((response) => response.json())
       .then((response) => {
         setCarCategory(response);
-        if (response[0].category_id == 1) {
+        if (response[0].car.category_id == 1) {
           setCCategory("electric");
-        } else if (response[0].category_id == 2) {
+        } else if (response[0].car.category_id == 2) {
           setCCategory("prm");
-        } else if (response[0].category_id == 3) {
+        } else if (response[0].car.category_id == 3) {
           setCCategory("4X4");
-        } else if (response[0].category_id == 4) {
+        } else if (response[0].car.category_id == 4) {
           setCCategory("Mini");
         } else return setCCategory("standard");
       });
@@ -49,11 +49,13 @@ export const ParkingView = () => {
   return (
     <div className="parking">
       <div className="botones">
-        <h1>Bienvenido {carCategory && carCategory[0].user.name}</h1>
+        <h1>Bienvenido {carCategory && carCategory[0].car.user.name}</h1>
         <br />
         <h4>
-          Vas a aparcar tu {carCategory && carCategory[0].brand},{" "}
-          {carCategory && carCategory[0].plate}
+          Vas a aparcar tu {carCategory && carCategory[0].car.brand},{" "}
+          {carCategory && carCategory[0].car.model}
+          <br />
+          Matricula {carCategory && carCategory[0].car.plate}
           <br />
           Escoge una plaza de aparcamiento
         </h4>

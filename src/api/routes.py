@@ -48,9 +48,11 @@ def create_user():
     return jsonify({"MESSAGE" : "Usuario creado"}), 200
 
 @api.route ('/parking', methods=['GET'])
+@jwt_required()
 def parking_site():
-    parking = Car.query.all()
-    data = [car.serialize() for car in parking]
+    token_user_id = get_jwt_identity()
+    cars = My_cars.query.filter_by(user_id=token_user_id)
+    data = [car.serialize() for car in cars]
     return jsonify(data), 200
 
 
