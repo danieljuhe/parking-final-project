@@ -12,6 +12,7 @@ import { ParkingView } from "./component/parkingview";
 import CreateCar from "./component/createCar";
 import CarsInfo from "./pages/carsInfo";
 import Date_Time from "./component/time";
+import PriceGenerator from "./component/pricegenerator";
 
 const Layout = () => {
   const basename = process.env.BASENAME || "";
@@ -31,6 +32,7 @@ const Layout = () => {
             <Route element={<Date_Time />} path="/date" />
             <Route element={<h1>Not found!</h1>} />
             <Route element={<CarsInfo />} path="/mycar" />
+            <Route element={<PriceGenerator />} path="/price" />
           </Routes>
           <Footer />
         </ScrollToTop>
