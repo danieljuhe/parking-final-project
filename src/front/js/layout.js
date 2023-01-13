@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 import { Login } from "./pages/login";
 import { Home } from "./pages/home";
@@ -24,7 +24,6 @@ const Layout = () => {
           <Routes>
             <Route element={<Home />} path="/" />
             <Route element={<ParkingView />} path="/parking" />
-            <Route element={<Demo />} path="/demo" />
             <Route element={<Login />} path="/login" />
             <Route element={<CreateCar />} path="/car" />
             <Route element={<Reg />} path="/register" />

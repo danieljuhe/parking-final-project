@@ -34,13 +34,13 @@ export const ParkingView = () => {
       .then((response) => response.json())
       .then((response) => {
         setCarCategory(response);
-        if (response[3].category_id == 1) {
+        if (response[0].category_id == 1) {
           setCCategory("electric");
-        } else if (response[3].category_id == 2) {
+        } else if (response[0].category_id == 2) {
           setCCategory("prm");
-        } else if (response[3].category_id == 3) {
+        } else if (response[0].category_id == 3) {
           setCCategory("4X4");
-        } else if (response[3].category_id == 4) {
+        } else if (response[0].category_id == 4) {
           setCCategory("Mini");
         } else return setCCategory("standard");
       });
@@ -48,103 +48,32 @@ export const ParkingView = () => {
 
   return (
     <div className="parking">
-      <button onClick={mini}>Mini</button>
-      <button onClick={max}>4X4</button>
-      <button onClick={electric}>Electric</button>
-      <button onClick={prm}>PRM</button>
-      <button onClick={standard}>Standard</button>
-      <button
-        type="button"
-        class="btn btn-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
-      >
-        Launch demo modal
-      </button>
-      <div
-        class="modal fade"
-        id="exampleModal"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">
-                Modal title
-              </h1>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="modal-body">...</div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-              <button type="button" class="btn btn-primary">
-                Save changes
-              </button>
-            </div>
-          </div>
-        </div>
+      <div className="botones">
+        <h1>Bienvenido {carCategory && carCategory[0].user.name}</h1>
+        <br />
+        <h4>
+          Vas a aparcar tu {carCategory && carCategory[0].brand},{" "}
+          {carCategory && carCategory[0].plate}
+          <br />
+          Escoge una plaza de aparcamiento
+        </h4>
+        <button onClick={mini}>Mini</button>
+        <button onClick={max}>4X4</button>
+        <button onClick={electric}>Electric</button>
+        <button onClick={prm}>PRM</button>
+        <button onClick={standard}>Standard</button>
       </div>
       <div className="col1">
         <button
           type="button"
-          class="btn btn-primary"
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModal"
           className="a1"
+          id="m"
           style={{
             boxShadow: cCategory == "Mini" ? "0px 0px 40px violet" : "",
           }}
           onClick={() => {
             if (cCategory == "Mini") {
-              <div
-                class="modal fade"
-                id="exampleModal"
-                tabindex="-1"
-                aria-labelledby="exampleModalLabel"
-                aria-hidden="true"
-              >
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h1 class="modal-title fs-5" id="exampleModalLabel">
-                        Modal title
-                      </h1>
-                      <button
-                        type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                      ></button>
-                    </div>
-                    <div class="modal-body">...</div>
-                    <div class="modal-footer">
-                      <button
-                        type="button"
-                        class="btn btn-secondary"
-                        data-bs-dismiss="modal"
-                      >
-                        Close
-                      </button>
-                      <button type="button" class="btn btn-primary">
-                        Save changes
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>;
+              alert("Vas a reservar la plaza A1");
             }
           }}
         >
@@ -171,6 +100,7 @@ export const ParkingView = () => {
           }}
           onClick={() => {
             if (cCategory == "standard") {
+              alert("Vas a reservar la plaza A2");
             }
           }}
         >
@@ -197,7 +127,7 @@ export const ParkingView = () => {
           }}
           onClick={() => {
             if (cCategory == "electric") {
-              alert("Vas a reservas la plaza A1");
+              alert("Vas a reservar la plaza A4");
             }
           }}
         >
