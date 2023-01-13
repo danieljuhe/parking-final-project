@@ -52,11 +52,13 @@ def create_user():
 @api.route ('/create_car', methods=['POST'])
 def create_car():
     data= request.json
+    brand = request.json.get("brand", None)
     try:
-        car= Car(plate=data["plate"], brand=data["brand"], model=data["model"], category_id=data["category_id"])
+        car= Car(plate=data["plate"], brand=brand, model=data["model"], category_id=data["category_id"])
         db.session.add(car)
         db.session.commit()
     except Exception as e:
+        print(e)
         return jsonify ({"message": str(e)}), 400
     return jsonify({"message": "vehiculo creado"}), 200
 
@@ -96,6 +98,23 @@ def delete_car():
     except:
         return jsonify({"message": "No se pudo eliminar el vehiculo"}), 400
     return jsonify ({"message": "vehiculo eliminado"}), 200
+
+
+
+
+#@api.route ('/create_mycar', methods=['POST'])
+#def create_car():
+#    data= request.json
+ #   user = request.json.get("user", None)
+  #  car = request.json.get("car", None)
+   # try:
+#        my_car= My_car(user=user, car=car)
+#        db.session.add(my_car)
+#        db.session.commit()
+#    except Exception as e:
+#        print(e)
+#        return jsonify ({"message": str(e)}), 400
+#    return jsonify({"message": "relacion creado"}), 200
 
 
 

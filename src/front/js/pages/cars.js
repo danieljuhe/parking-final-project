@@ -6,12 +6,12 @@ const Cars = () => {
   const [listOfCars, setListOfCars] = useState([]);
 
   useEffect(() => {
-    fetch(process.env.BACKEND_URL + "/admin/car/")
+    fetch(process.env.BACKEND_URL + "/api/list_car/")
       .then((response) => {
         return response.json();
       })
       .then((response) => {
-        setListOfCars(response.results);
+        setListOfCars(response);
       });
   }, []);
 

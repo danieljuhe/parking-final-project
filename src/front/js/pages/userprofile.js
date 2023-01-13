@@ -39,15 +39,15 @@ const UserProfile = () => {
         <nav class="nav">
           <ul>
             <li class="active">
-              <a href="#">Welcome {user && user.name}</a>
+              <a href="#holaagos">Welcome {user && user.name}</a>
             </li>
-            <Link to="/cars">
+            {/* <Link to="/cars">
               <li>
                 <button href="#">My Cars</button>
               </li>
-            </Link>
+            </Link> */}
             <li>
-              <a href="#">Parking</a>
+              <a href="#holadani">Parking</a>
             </li>
             <li>
               <a href="#">Bills</a>
@@ -66,9 +66,17 @@ const UserProfile = () => {
           </ul>
         </nav>
       </aside>
-      <div className="dashboard">
-        <CreateCar />
+      <div id="wrapper">
+        <div id="holaagos" className="white">
+          {" "}
+          HOLA AGOS
+        </div>
+        <div id="holadani"> HOLA DANI</div>
       </div>
+
+      {/* <div className="dashboard">
+        <CreateCar />
+      </div> */}
     </div>
   );
 };
