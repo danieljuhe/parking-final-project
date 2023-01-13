@@ -1,6 +1,3 @@
-"""
-This module takes care of starting the API Server, Loading the DB and Adding the endpoints
-"""
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Car, Category, Parking, My_cars 
 from api.utils import generate_sitemap, APIException
@@ -49,7 +46,6 @@ def create_user():
         return jsonify({"MESSAGE":"Error al registrar usuario"}), 400
     return jsonify({"MESSAGE" : "Usuario creado"}), 200
 
-<<<<<<< HEAD
 @api.route ('/parking', methods=['GET'])
 def parking_site():
     parking = Car.query.all()
@@ -59,7 +55,7 @@ def parking_site():
 
 
 
-=======
+
 @api.route ('/create_car', methods=['POST'])
 def create_car():
     data= request.json
@@ -107,7 +103,7 @@ def delete_car():
     except:
         return jsonify({"message": "No se pudo eliminar el vehiculo"}), 400
     return jsonify ({"message": "vehiculo eliminado"}), 200
->>>>>>> ec7b31b0fbd3e097929bdbdb731471bb548704da
+
 
 
 
