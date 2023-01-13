@@ -13,6 +13,7 @@ import CreateCar from "./component/createCar";
 import CarsInfo from "./pages/carsInfo";
 import Date_Time from "./component/time";
 import PriceGenerator from "./component/pricegenerator";
+import PriceGen from "./component/pricegendata";
 
 const Layout = () => {
   const basename = process.env.BASENAME || "";
@@ -33,6 +34,7 @@ const Layout = () => {
             <Route element={<h1>Not found!</h1>} />
             <Route element={<CarsInfo />} path="/mycar" />
             <Route element={<PriceGenerator />} path="/price" />
+            <Route element={<PriceGen />} path="/pricegen" />
           </Routes>
           <Footer />
         </ScrollToTop>
