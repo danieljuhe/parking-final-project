@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import "../../styles/parkingview.css";
 import "../../styles/modal.css";
 
 export const ParkingView = () => {
+  const navigate = useNavigate();
+
   const [site, setSite] = useState();
   const [carCategory, setCarCategory] = useState();
   const [cCategory, setCCategory] = useState("");
@@ -11,7 +15,7 @@ export const ParkingView = () => {
   const handleCloseModal = () => setShowModal(false);
 
   const confirm = () => {
-    setSite("A1");
+    setSite("A13");
   };
 
   useEffect(() => {
@@ -94,6 +98,7 @@ export const ParkingView = () => {
                 onClick={() => {
                   handleCloseModal();
                   senddata();
+                  navigate("/date");
                 }}
               >
                 Cerrar

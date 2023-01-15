@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import "../../styles/login.css";
 
-function PriceGen() {
+export const PriceGen = () => {
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
   const [startDate, setStartDate] = useState("");
@@ -10,7 +11,7 @@ function PriceGen() {
   let currentDate = new Date();
   let currentDateString = currentDate.toISOString().slice(0, 16);
 
-  function handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const start = startTime.split(":");
     const end = endTime.split(":");
@@ -32,7 +33,7 @@ function PriceGen() {
     );
     const hours = (endTimeObject - startTimeObject) / (1000 * 60 * 60);
     setPrice(hours * 3);
-  }
+  };
 
   return (
     <div className="main">
@@ -84,11 +85,13 @@ function PriceGen() {
 
           <br />
           <br />
-          <p>Price: €{price}</p>
+          <p>
+            <h2>Price: €{price}</h2>
+          </p>
+          <br />
+          <button>Confirmar</button>
         </form>
       </div>
     </div>
   );
-}
-
-export default PriceGen;
+};
