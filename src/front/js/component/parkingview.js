@@ -1,27 +1,17 @@
 import React, { useEffect, useState } from "react";
 import "../../styles/parkingview.css";
+import "../../styles/modal.css";
+
 export const ParkingView = () => {
+  const [site, setSite] = useState();
   const [carCategory, setCarCategory] = useState();
   const [cCategory, setCCategory] = useState("");
+  const [showModal, setShowModal] = useState(false);
+  const handleOpenModal = () => setShowModal(true);
+  const handleCloseModal = () => setShowModal(false);
 
-  const mini = () => {
-    setCCategory("Mini");
-  };
-
-  const max = () => {
-    setCCategory("4X4");
-  };
-
-  const electric = () => {
-    setCCategory("electric");
-  };
-
-  const prm = () => {
-    setCCategory("prm");
-  };
-
-  const standard = () => {
-    setCCategory("standard");
+  const confirm = () => {
+    setSite("A1");
   };
 
   useEffect(() => {
@@ -34,17 +24,40 @@ export const ParkingView = () => {
       .then((response) => response.json())
       .then((response) => {
         setCarCategory(response);
-        if (response[0].car.category_id == 1) {
+        if (response[0].car.category_id.id == 1) {
           setCCategory("electric");
-        } else if (response[0].car.category_id == 2) {
+        } else if (response[0].car.category_id.id == 2) {
           setCCategory("prm");
-        } else if (response[0].car.category_id == 3) {
+        } else if (response[0].car.category_id.id == 3) {
           setCCategory("4X4");
-        } else if (response[0].car.category_id == 4) {
+        } else if (response[0].car.category_id.id == 4) {
           setCCategory("Mini");
         } else return setCCategory("standard");
       });
   }, []);
+
+  const senddata = async () => {
+    const parking = {
+      site: site,
+      car_plate: carCategory && carCategory[0].car.plate,
+      user_id: carCategory && carCategory[0].car.user.id,
+      category_id: carCategory && carCategory[0].car.category_id.id,
+    };
+
+    try {
+      const response = await fetch(process.env.BACKEND_URL + "/api/book", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(parking),
+      });
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
 
   return (
     <div className="parking">
@@ -54,16 +67,40 @@ export const ParkingView = () => {
         <h4>
           Vas a aparcar tu {carCategory && carCategory[0].car.brand},{" "}
           {carCategory && carCategory[0].car.model}
+        </h4>
+        <br />
+        <h6>
+          Es un coche {carCategory && carCategory[0].car.category_id.name}
           <br />
-          Matricula {carCategory && carCategory[0].car.plate}
+          Recuerda que solo tendras disponibles las plazas para dicha categoria
           <br />
           Escoge una plaza de aparcamiento
-        </h4>
-        <button onClick={mini}>Mini</button>
-        <button onClick={max}>4X4</button>
-        <button onClick={electric}>Electric</button>
-        <button onClick={prm}>PRM</button>
-        <button onClick={standard}>Standard</button>
+        </h6>
+
+        <button onClick={handleOpenModal}>Open Modal</button>
+        {showModal && (
+          <div className="modal-overlay">
+            <div className="modal-content">
+              <p>
+                Tu {carCategory && carCategory[0].car.brand},{" "}
+                {carCategory && carCategory[0].car.model}
+                <br />
+                se aparcara en la plaza A0
+              </p>
+              <button className="confirmar" onClick={confirm}>
+                Confirmar
+              </button>
+              <button
+                onClick={() => {
+                  handleCloseModal();
+                  senddata();
+                }}
+              >
+                Cerrar
+              </button>
+            </div>
+          </div>
+        )}
       </div>
       <div className="col1">
         <button

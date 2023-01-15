@@ -104,6 +104,17 @@ def delete_car():
         return jsonify({"message": "No se pudo eliminar el vehiculo"}), 400
     return jsonify ({"message": "vehiculo eliminado"}), 200
 
+@api.route ('/book', methods=['POST'])
+def book_site():
+    data = request.json
+    try:
+        parking = Parking(site=data["site"], car_plate=data["car_plate"], user_id=data["user_id"], category_id=data["category_id"])
+        db.session.add(parking)
+        db.session.commit()
+    except Exception:
+        return jsonify({"MESSAGE":"Error al reservar la plaza"}), 400
+    return jsonify({"MESSAGE" : "Plaza reservada correctamente"}), 200
+
 
 
 

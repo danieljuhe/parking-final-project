@@ -58,15 +58,15 @@ class Car(db.Model):
             "plate": self.plate,
             "brand": self.brand,
             "model": self.model,
-            "category_id": self.category_id,
+            "category_id": self.category.serialize(),
             "user": self.my_cars[0].user.serialize()
         }
 
 class Parking(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    site = db.Column(db.String(4),unique=True)
-    car_plate = db.Column(db.String(30), unique=True, nullable=True)
-    user_id = db.Column(db.String(30), unique=True, nullable=True)
+    site = db.Column(db.String(4),unique=False)
+    car_plate = db.Column(db.String(30),unique=False, nullable=True)
+    user_id = db.Column(db.String(30),unique=False, nullable=True)
     category_id = db.Column(db.Integer, unique=False, nullable=True)
  
     def serialize(self):
