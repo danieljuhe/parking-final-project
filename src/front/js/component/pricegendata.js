@@ -81,13 +81,11 @@ export const PriceGen = () => {
           <br />
           <br />
           <br />
-          <button type="submit">Calculate Price</button>
+          <button type="submit">Calcula Precio</button>
 
           <br />
           <br />
-          <p>
-            <h2>Price: €{price}</h2>
-          </p>
+          <h2>Precio: €{price}</h2>
           <br />
           <button>Confirmar</button>
         </form>

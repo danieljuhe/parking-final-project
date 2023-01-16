@@ -1,22 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import "../../styles/parkingview.css";
 import "../../styles/modal.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
 export const ParkingView = () => {
   const navigate = useNavigate();
-
+  const [modal, setModal] = useState();
   const [site, setSite] = useState();
   const [carCategory, setCarCategory] = useState();
   const [cCategory, setCCategory] = useState("");
   const [showModal, setShowModal] = useState(false);
   const handleOpenModal = () => setShowModal(true);
   const handleCloseModal = () => setShowModal(false);
-
-  const confirm = () => {
-    setSite("A13");
-  };
 
   useEffect(() => {
     fetch(process.env.BACKEND_URL + "/api/parking", {
@@ -80,32 +77,6 @@ export const ParkingView = () => {
           <br />
           Escoge una plaza de aparcamiento
         </h6>
-
-        <button onClick={handleOpenModal}>Open Modal</button>
-        {showModal && (
-          <div className="modal-overlay">
-            <div className="modal-content">
-              <p>
-                Tu {carCategory && carCategory[0].car.brand},{" "}
-                {carCategory && carCategory[0].car.model}
-                <br />
-                se aparcara en la plaza A0
-              </p>
-              <button className="confirmar" onClick={confirm}>
-                Confirmar
-              </button>
-              <button
-                onClick={() => {
-                  handleCloseModal();
-                  senddata();
-                  navigate("/date");
-                }}
-              >
-                Cerrar
-              </button>
-            </div>
-          </div>
-        )}
       </div>
       <div className="col1">
         <button
@@ -117,12 +88,14 @@ export const ParkingView = () => {
           }}
           onClick={() => {
             if (cCategory == "Mini") {
-              alert("Vas a reservar la plaza A1");
+              setModal("A1");
+              handleOpenModal();
             }
           }}
         >
           Mini
         </button>
+
         <button
           className="a2"
           id="m"
@@ -131,37 +104,31 @@ export const ParkingView = () => {
           }}
           onClick={() => {
             if (cCategory == "Mini") {
+              setModal("A2");
+              handleOpenModal();
             }
           }}
         >
           Mini
         </button>
+
         <button
-          className="a21"
+          className="a3"
           id="s"
           style={{
             boxShadow: cCategory == "standard" ? "0px 0px 40px red" : "",
           }}
           onClick={() => {
             if (cCategory == "standard") {
-              alert("Vas a reservar la plaza A2");
+              setModal("A3");
+
+              handleOpenModal();
             }
           }}
         >
           Standard
         </button>
-        <button
-          className="a3"
-          id="x"
-          style={{ boxShadow: cCategory == "4X4" ? "0px 0px 40px blue" : "" }}
-          onClick={() => {
-            if (cCategory == "4X4") {
-              alert("Vas a reservas la plaza A1");
-            }
-          }}
-        >
-          4X4
-        </button>
+
         <button
           className="a4"
           id="e"
@@ -171,12 +138,14 @@ export const ParkingView = () => {
           }}
           onClick={() => {
             if (cCategory == "electric") {
-              alert("Vas a reservar la plaza A4");
+              setModal("A4");
+              handleOpenModal();
             }
           }}
         >
           Electric
         </button>
+
         <button
           className="a5"
           id="e"
@@ -186,7 +155,8 @@ export const ParkingView = () => {
           }}
           onClick={() => {
             if (cCategory == "electric") {
-              alert("Vas a reservas la plaza A1");
+              setModal("A5");
+              handleOpenModal();
             }
           }}
         >
@@ -198,7 +168,8 @@ export const ParkingView = () => {
           style={{ boxShadow: cCategory == "prm" ? "0px 0px 40px orange" : "" }}
           onClick={() => {
             if (cCategory == "prm") {
-              alert("Vas a reservas la plaza A1");
+              setModal("A6");
+              handleOpenModal();
             }
           }}
         >
@@ -210,7 +181,8 @@ export const ParkingView = () => {
           style={{ boxShadow: cCategory == "prm" ? "0px 0px 40px orange" : "" }}
           onClick={() => {
             if (cCategory == "prm") {
-              alert("Vas a reservas la plaza A1");
+              setModal("A7");
+              handleOpenModal();
             }
           }}
         >
@@ -222,6 +194,12 @@ export const ParkingView = () => {
           style={{
             boxShadow: cCategory == "standard" ? "0px 0px 40px red" : "",
           }}
+          onClick={() => {
+            if (cCategory == "standard") {
+              setModal("A71");
+              handleOpenModal();
+            }
+          }}
         >
           Standard
         </button>
@@ -231,7 +209,8 @@ export const ParkingView = () => {
           style={{ boxShadow: cCategory == "4X4" ? "0px 0px 40px blue" : "" }}
           onClick={() => {
             if (cCategory == "4X4") {
-              alert("Vas a reservas la plaza A1");
+              setModal("A8");
+              handleOpenModal();
             }
           }}
         >
@@ -243,7 +222,8 @@ export const ParkingView = () => {
           style={{ boxShadow: cCategory == "4X4" ? "0px 0px 40px blue" : "" }}
           onClick={() => {
             if (cCategory == "4X4") {
-              alert("Vas a reservas la plaza A1");
+              setModal("A9");
+              handleOpenModal();
             }
           }}
         >
@@ -258,7 +238,8 @@ export const ParkingView = () => {
           }}
           onClick={() => {
             if (cCategory == "electric") {
-              alert("Vas a reservas la plaza A1");
+              setModal("A10");
+              handleOpenModal();
             }
           }}
         >
@@ -270,7 +251,8 @@ export const ParkingView = () => {
           style={{ boxShadow: cCategory == "prm" ? "0px 0px 40px orange" : "" }}
           onClick={() => {
             if (cCategory == "prm") {
-              alert("Vas a reservas la plaza A1");
+              setModal("A11");
+              handleOpenModal();
             }
           }}
         >
@@ -284,7 +266,8 @@ export const ParkingView = () => {
           }}
           onClick={() => {
             if (cCategory == "Mini") {
-              alert("Vas a reservas la plaza A1");
+              setModal("A12");
+              handleOpenModal();
             }
           }}
         >
@@ -298,12 +281,45 @@ export const ParkingView = () => {
           }}
           onClick={() => {
             if (cCategory == "Mini") {
-              alert("Vas a reservas la plaza A1");
+              setModal("A13");
+              handleOpenModal();
             }
           }}
         >
           Mini
         </button>
+        {showModal && (
+          <div className="modal-overlay">
+            <div className="modal-content">
+              <p>
+                Tu {carCategory && carCategory[0].car.brand},{" "}
+                {carCategory && carCategory[0].car.model}
+                <br />
+                {`se aparcara en la plaza ${modal}`}
+              </p>
+              <button
+                className="confirmar"
+                onClick={() => {
+                  setSite(modal);
+                }}
+              >
+                Confirmar{" "}
+                <span className={setSite == modal ? "valid" : "d-none"}>
+                  <FontAwesomeIcon icon={faCheck} />
+                </span>
+              </button>
+              <button
+                onClick={() => {
+                  handleCloseModal();
+                  senddata();
+                  navigate("/date");
+                }}
+              >
+                Reservar y pagar
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
