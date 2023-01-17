@@ -10,6 +10,7 @@ export const ParkingView = () => {
   const [modal, setModal] = useState();
   const [site, setSite] = useState();
   const [carCategory, setCarCategory] = useState();
+  const [parkingSites, setParkingSites] = useState();
   const [cCategory, setCCategory] = useState("");
   const [showModal, setShowModal] = useState(false);
   const handleOpenModal = () => setShowModal(true);
@@ -34,6 +35,16 @@ export const ParkingView = () => {
         } else if (response[0].car.category_id.id == 4) {
           setCCategory("Mini");
         } else return setCCategory("standard");
+      });
+
+    fetch(process.env.BACKEND_URL + "/api/parkingsites", {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        setParkingSites(response);
       });
   }, []);
 
@@ -304,9 +315,6 @@ export const ParkingView = () => {
                 }}
               >
                 Confirmar{" "}
-                <span className={setSite == modal ? "valid" : "d-none"}>
-                  <FontAwesomeIcon icon={faCheck} />
-                </span>
               </button>
               <button
                 onClick={() => {

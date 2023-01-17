@@ -75,7 +75,7 @@ class Parking(db.Model):
             "site": self.site,
             "car_plate": self.car_plate,
             "user_id": self.user_id,
-            "category_name": self.category_name
+            "category_id": self.category_id
         }
 
 class Category(db.Model):

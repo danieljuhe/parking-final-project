@@ -115,6 +115,12 @@ def book_site():
         return jsonify({"MESSAGE":"Error al reservar la plaza"}), 400
     return jsonify({"MESSAGE" : "Plaza reservada correctamente"}), 200
 
+@api.route ('/parkingsites', methods=['GET'])
+def parking_lot():
+    parkings = Parking.query.all()
+    data = [parking.serialize() for parking in parkings]
+    return jsonify(data)
+
 
 
 
