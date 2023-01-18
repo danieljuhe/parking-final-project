@@ -107,8 +107,9 @@ def delete_car():
 @api.route ('/book', methods=['POST'])
 def book_site():
     data = request.json
+    print(data)
     try:
-        parking = Parking(site=data["site"], car_plate=data["car_plate"], user_id=data["user_id"], category_id=data["category_id"])
+        parking = Parking(site=data["site"], car_plate=data["car_plate"], user_id=data["user_id"], category_id=data["category_id"], occupied=data["occupied"])
         db.session.add(parking)
         db.session.commit()
     except Exception:

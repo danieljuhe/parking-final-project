@@ -1,14 +1,8 @@
 """empty message
 
-<<<<<<<< HEAD:migrations/versions/c137457f0c1b_.py
-Revision ID: c137457f0c1b
+Revision ID: 4dd48159cb70
 Revises: 
-Create Date: 2023-01-09 17:54:09.543677
-========
-Revision ID: ea499693633b
-Revises: 
-Create Date: 2023-01-09 17:23:49.104550
->>>>>>>> main:migrations/versions/ea499693633b_.py
+Create Date: 2023-01-18 18:00:05.543647
 
 """
 from alembic import op
@@ -16,11 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-<<<<<<<< HEAD:migrations/versions/c137457f0c1b_.py
-revision = 'c137457f0c1b'
-========
-revision = 'ea499693633b'
->>>>>>>> main:migrations/versions/ea499693633b_.py
+revision = '4dd48159cb70'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -31,8 +21,7 @@ def upgrade():
     op.create_table('category',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=30), nullable=True),
-    sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('name')
+    sa.PrimaryKeyConstraint('id')
     )
     op.create_table('parking',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -40,10 +29,8 @@ def upgrade():
     sa.Column('car_plate', sa.String(length=30), nullable=True),
     sa.Column('user_id', sa.String(length=30), nullable=True),
     sa.Column('category_id', sa.Integer(), nullable=True),
-    sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('car_plate'),
-    sa.UniqueConstraint('site'),
-    sa.UniqueConstraint('user_id')
+    sa.Column('occupied', sa.Boolean(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
     )
     op.create_table('user',
     sa.Column('id', sa.Integer(), nullable=False),

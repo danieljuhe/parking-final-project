@@ -57,6 +57,7 @@ export const ParkingView = () => {
       car_plate: carCategory && carCategory[0].car.plate,
       user_id: carCategory && carCategory[0].car.user.id,
       category_id: carCategory && carCategory[0].car.category_id.id,
+      occupied: true,
     };
 
     try {
@@ -95,7 +96,15 @@ export const ParkingView = () => {
       <div className="col1">
         {parkingSites &&
           parkingSites.map((sites, index) => (
-            <button key={index}>{sites.site}</button>
+            <button
+              key={index}
+              className={sites.site}
+              style={{
+                boxShadow: sites.category_id == 4 ? "0px 0px 40px violet" : "",
+              }}
+            >
+              {sites.site}
+            </button>
           ))}
         <button
           type="button"
@@ -139,7 +148,6 @@ export const ParkingView = () => {
           onClick={() => {
             if (cCategory == "standard") {
               setModal("A3");
-
               handleOpenModal();
             }
           }}

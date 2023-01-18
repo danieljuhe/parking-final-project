@@ -68,6 +68,7 @@ class Parking(db.Model):
     car_plate = db.Column(db.String(30),unique=False, nullable=True)
     user_id = db.Column(db.String(30),unique=False, nullable=True)
     category_id = db.Column(db.Integer, unique=False, nullable=True)
+    occupied = db.Column(db.Boolean, default=False, nullable=True)
  
     def serialize(self):
         return {
@@ -75,7 +76,8 @@ class Parking(db.Model):
             "site": self.site,
             "car_plate": self.car_plate,
             "user_id": self.user_id,
-            "category_id": self.category_id
+            "category_id": self.category_id,
+            "occupied": self.occupied
         }
 
 class Category(db.Model):
