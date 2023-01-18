@@ -2,12 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../styles/parkingview.css";
 import "../../styles/modal.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
 export const ParkingView = () => {
   const navigate = useNavigate();
   const [modal, setModal] = useState();
+  const [ocupado, setOcupado] = useState();
   const [site, setSite] = useState();
   const [carCategory, setCarCategory] = useState();
   const [parkingSites, setParkingSites] = useState();
@@ -45,6 +44,10 @@ export const ParkingView = () => {
       .then((response) => response.json())
       .then((response) => {
         setParkingSites(response);
+        /*.map??*/
+        if (response[3].site == "a4") {
+          setOcupado(true);
+        }
       });
   }, []);
 
@@ -90,6 +93,10 @@ export const ParkingView = () => {
         </h6>
       </div>
       <div className="col1">
+        {parkingSites &&
+          parkingSites.map((sites, index) => (
+            <button key={index}>{sites.site}</button>
+          ))}
         <button
           type="button"
           className="a1"
@@ -147,6 +154,7 @@ export const ParkingView = () => {
             boxShadow:
               cCategory == "electric" ? "0px 0px 40px greenyellow" : "",
           }}
+          disabled={ocupado === true}
           onClick={() => {
             if (cCategory == "electric") {
               setModal("A4");
