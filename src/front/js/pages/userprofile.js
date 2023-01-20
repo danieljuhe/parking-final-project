@@ -3,6 +3,7 @@ import "../../styles/userprofile.css";
 import { Context } from "../store/appContext";
 import { useNavigate } from "react-router-dom";
 import CreateCar from "../component/createCar";
+import { Link } from "react-router-dom";
 
 const UserProfile = () => {
   const { store, actions } = useContext(Context);
@@ -38,13 +39,18 @@ const UserProfile = () => {
         <nav class="nav">
           <ul>
             <li class="active">
-              <a href="#">Welcome {user && user.name}</a>
+              <a href="#holaagos">Welcome {user && user.name}</a>
             </li>
+            <a href="/cars">My Cars</a>
             <li>
+
+              <a href="#holadani">Parking</a>
+
               <a href="#">My Cars</a>
             </li>
             <li>
               <a href="/parking">Parking</a>
+
             </li>
             <li>
               <a href="#">Bills</a>
@@ -63,9 +69,17 @@ const UserProfile = () => {
           </ul>
         </nav>
       </aside>
-      <div className="dashboard">
-        <CreateCar />
+      <div id="wrapper">
+        <div id="holaagos" className="white">
+          {" "}
+          HOLA AGOS
+        </div>
+        <div id="holadani"> HOLA DANI</div>
       </div>
+
+      {/* <div className="dashboard">
+        <CreateCar />
+      </div> */}
     </div>
   );
 };
