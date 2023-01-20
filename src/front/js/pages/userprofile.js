@@ -41,11 +41,7 @@ const UserProfile = () => {
             <li class="active">
               <a href="#holaagos">Welcome {user && user.name}</a>
             </li>
-            {/* <Link to="/cars">
-              <li>
-                <button href="#">My Cars</button>
-              </li>
-            </Link> */}
+            <a href="#">My Cars</a>
             <li>
               <a href="#holadani">Parking</a>
             </li>
