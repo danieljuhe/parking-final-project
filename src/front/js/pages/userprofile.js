@@ -44,7 +44,7 @@ const UserProfile = () => {
               <a href="#">My Cars</a>
             </li>
             <li>
-              <a href="#">Parking</a>
+              <a href="/parking">Parking</a>
             </li>
             <li>
               <a href="#">Bills</a>

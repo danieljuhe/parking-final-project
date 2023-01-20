@@ -1,155 +1,128 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../../styles/parkingview.css";
+import "../../styles/modal.css";
 
 export const ParkingView = () => {
+  const navigate = useNavigate();
+  const [modal, setModal] = useState();
+  const [ocupado, setOcupado] = useState();
+  const [site, setSite] = useState();
   const [carCategory, setCarCategory] = useState();
+  const [parkingSites, setParkingSites] = useState();
   const [cCategory, setCCategory] = useState("");
-
-  const mini = () => {
-    setCCategory("Mini");
-  };
-
-  const max = () => {
-    setCCategory("4X4");
-  };
-
-  const electric = () => {
-    setCCategory("electric");
-  };
-
-  const prm = () => {
-    setCCategory("prm");
-  };
-
-  const standard = () => {
-    setCCategory("standard");
-  };
+  const [showModal, setShowModal] = useState(false);
+  const handleOpenModal = () => setShowModal(true);
+  const handleCloseModal = () => setShowModal(false);
 
   useEffect(() => {
     fetch(process.env.BACKEND_URL + "/api/parking", {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        setCarCategory(response);
+        if (response[0].car.category_id.id == 1) {
+          setCCategory("electric");
+        } else if (response[0].car.category_id.id == 2) {
+          setCCategory("prm");
+        } else if (response[0].car.category_id.id == 3) {
+          setCCategory("4X4");
+        } else if (response[0].car.category_id.id == 4) {
+          setCCategory("Mini");
+        } else return setCCategory("standard");
+      });
+
+    fetch(process.env.BACKEND_URL + "/api/parkingsites", {
       headers: {
         "Content-Type": "application/json",
       },
     })
       .then((response) => response.json())
       .then((response) => {
-        setCarCategory(response);
-        if (response[3].category_id == 1) {
-          setCCategory("electric");
-        } else if (response[3].category_id == 2) {
-          setCCategory("prm");
-        } else if (response[3].category_id == 3) {
-          setCCategory("4X4");
-        } else if (response[3].category_id == 4) {
-          setCCategory("Mini");
-        } else return setCCategory("standard");
+        setParkingSites(response);
+        /*.map??*/
+        if (response[3].site == "a4") {
+          setOcupado(true);
+        }
       });
   }, []);
 
+  const senddata = async () => {
+    const parking = {
+      site: site,
+      car_plate: carCategory && carCategory[0].car.plate,
+      user_id: carCategory && carCategory[0].car.user.id,
+      category_id: carCategory && carCategory[0].car.category_id.id,
+      occupied: true,
+    };
+
+    try {
+      const response = await fetch(process.env.BACKEND_URL + "/api/book", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(parking),
+      });
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
   return (
     <div className="parking">
-      <button onClick={mini}>Mini</button>
-      <button onClick={max}>4X4</button>
-      <button onClick={electric}>Electric</button>
-      <button onClick={prm}>PRM</button>
-      <button onClick={standard}>Standard</button>
-      <button
-        type="button"
-        class="btn btn-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
-      >
-        Launch demo modal
-      </button>
-      <div
-        class="modal fade"
-        id="exampleModal"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">
-                Modal title
-              </h1>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="modal-body">...</div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-              <button type="button" class="btn btn-primary">
-                Save changes
-              </button>
-            </div>
-          </div>
-        </div>
+      <div className="botones">
+        <h1>Bienvenido {carCategory && carCategory[0].car.user.name}</h1>
+        <br />
+        <h4>
+          Vas a aparcar tu {carCategory && carCategory[0].car.brand},{" "}
+          {carCategory && carCategory[0].car.model}
+        </h4>
+        <br />
+        <h6>
+          Es un coche {carCategory && carCategory[0].car.category_id.name}
+          <br />
+          Recuerda que solo tendras disponibles las plazas para dicha categoria
+          <br />
+          Escoge una plaza de aparcamiento
+        </h6>
       </div>
       <div className="col1">
+        {parkingSites &&
+          parkingSites.map((sites, index) => (
+            <button
+              key={index}
+              className={sites.site}
+              style={{
+                boxShadow: sites.category_id == 4 ? "0px 0px 40px violet" : "",
+              }}
+            >
+              {sites.site}
+            </button>
+          ))}
         <button
           type="button"
-          class="btn btn-primary"
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModal"
           className="a1"
+          id="m"
           style={{
             boxShadow: cCategory == "Mini" ? "0px 0px 40px violet" : "",
           }}
           onClick={() => {
             if (cCategory == "Mini") {
-              <div
-                class="modal fade"
-                id="exampleModal"
-                tabindex="-1"
-                aria-labelledby="exampleModalLabel"
-                aria-hidden="true"
-              >
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h1 class="modal-title fs-5" id="exampleModalLabel">
-                        Modal title
-                      </h1>
-                      <button
-                        type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                      ></button>
-                    </div>
-                    <div class="modal-body">...</div>
-                    <div class="modal-footer">
-                      <button
-                        type="button"
-                        class="btn btn-secondary"
-                        data-bs-dismiss="modal"
-                      >
-                        Close
-                      </button>
-                      <button type="button" class="btn btn-primary">
-                        Save changes
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>;
+              setModal("A1");
+              handleOpenModal();
             }
           }}
         >
           Mini
         </button>
+
         <button
           className="a2"
           id="m"
@@ -158,36 +131,30 @@ export const ParkingView = () => {
           }}
           onClick={() => {
             if (cCategory == "Mini") {
+              setModal("A2");
+              handleOpenModal();
             }
           }}
         >
           Mini
         </button>
+
         <button
-          className="a21"
+          className="a3"
           id="s"
           style={{
             boxShadow: cCategory == "standard" ? "0px 0px 40px red" : "",
           }}
           onClick={() => {
             if (cCategory == "standard") {
+              setModal("A3");
+              handleOpenModal();
             }
           }}
         >
           Standard
         </button>
-        <button
-          className="a3"
-          id="x"
-          style={{ boxShadow: cCategory == "4X4" ? "0px 0px 40px blue" : "" }}
-          onClick={() => {
-            if (cCategory == "4X4") {
-              alert("Vas a reservas la plaza A1");
-            }
-          }}
-        >
-          4X4
-        </button>
+
         <button
           className="a4"
           id="e"
@@ -195,14 +162,17 @@ export const ParkingView = () => {
             boxShadow:
               cCategory == "electric" ? "0px 0px 40px greenyellow" : "",
           }}
+          disabled={ocupado === true}
           onClick={() => {
             if (cCategory == "electric") {
-              alert("Vas a reservas la plaza A1");
+              setModal("A4");
+              handleOpenModal();
             }
           }}
         >
           Electric
         </button>
+
         <button
           className="a5"
           id="e"
@@ -212,7 +182,8 @@ export const ParkingView = () => {
           }}
           onClick={() => {
             if (cCategory == "electric") {
-              alert("Vas a reservas la plaza A1");
+              setModal("A5");
+              handleOpenModal();
             }
           }}
         >
@@ -224,7 +195,8 @@ export const ParkingView = () => {
           style={{ boxShadow: cCategory == "prm" ? "0px 0px 40px orange" : "" }}
           onClick={() => {
             if (cCategory == "prm") {
-              alert("Vas a reservas la plaza A1");
+              setModal("A6");
+              handleOpenModal();
             }
           }}
         >
@@ -236,7 +208,8 @@ export const ParkingView = () => {
           style={{ boxShadow: cCategory == "prm" ? "0px 0px 40px orange" : "" }}
           onClick={() => {
             if (cCategory == "prm") {
-              alert("Vas a reservas la plaza A1");
+              setModal("A7");
+              handleOpenModal();
             }
           }}
         >
@@ -248,6 +221,12 @@ export const ParkingView = () => {
           style={{
             boxShadow: cCategory == "standard" ? "0px 0px 40px red" : "",
           }}
+          onClick={() => {
+            if (cCategory == "standard") {
+              setModal("A71");
+              handleOpenModal();
+            }
+          }}
         >
           Standard
         </button>
@@ -257,7 +236,8 @@ export const ParkingView = () => {
           style={{ boxShadow: cCategory == "4X4" ? "0px 0px 40px blue" : "" }}
           onClick={() => {
             if (cCategory == "4X4") {
-              alert("Vas a reservas la plaza A1");
+              setModal("A8");
+              handleOpenModal();
             }
           }}
         >
@@ -269,7 +249,8 @@ export const ParkingView = () => {
           style={{ boxShadow: cCategory == "4X4" ? "0px 0px 40px blue" : "" }}
           onClick={() => {
             if (cCategory == "4X4") {
-              alert("Vas a reservas la plaza A1");
+              setModal("A9");
+              handleOpenModal();
             }
           }}
         >
@@ -284,7 +265,8 @@ export const ParkingView = () => {
           }}
           onClick={() => {
             if (cCategory == "electric") {
-              alert("Vas a reservas la plaza A1");
+              setModal("A10");
+              handleOpenModal();
             }
           }}
         >
@@ -296,7 +278,8 @@ export const ParkingView = () => {
           style={{ boxShadow: cCategory == "prm" ? "0px 0px 40px orange" : "" }}
           onClick={() => {
             if (cCategory == "prm") {
-              alert("Vas a reservas la plaza A1");
+              setModal("A11");
+              handleOpenModal();
             }
           }}
         >
@@ -310,7 +293,8 @@ export const ParkingView = () => {
           }}
           onClick={() => {
             if (cCategory == "Mini") {
-              alert("Vas a reservas la plaza A1");
+              setModal("A12");
+              handleOpenModal();
             }
           }}
         >
@@ -324,12 +308,42 @@ export const ParkingView = () => {
           }}
           onClick={() => {
             if (cCategory == "Mini") {
-              alert("Vas a reservas la plaza A1");
+              setModal("A13");
+              handleOpenModal();
             }
           }}
         >
           Mini
         </button>
+        {showModal && (
+          <div className="modal-overlay">
+            <div className="modal-content">
+              <p>
+                Tu {carCategory && carCategory[0].car.brand},{" "}
+                {carCategory && carCategory[0].car.model}
+                <br />
+                {`se aparcara en la plaza ${modal}`}
+              </p>
+              <button
+                className="confirmar"
+                onClick={() => {
+                  setSite(modal);
+                }}
+              >
+                Confirmar{" "}
+              </button>
+              <button
+                onClick={() => {
+                  handleCloseModal();
+                  senddata();
+                  navigate("/date");
+                }}
+              >
+                Reservar y pagar
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

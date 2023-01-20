@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 import { Login } from "./pages/login";
 import { Home } from "./pages/home";
@@ -11,7 +11,8 @@ import { Reg } from "./pages/register";
 import { ParkingView } from "./component/parkingview";
 import CreateCar from "./component/createCar";
 import CarsInfo from "./pages/carsInfo";
-import Date_Time from "./component/time";
+import { PriceGen } from "./component/pricegendata";
+import { Plazas } from "./component/pruebaparking";
 
 const Layout = () => {
   const basename = process.env.BASENAME || "";
@@ -28,9 +29,10 @@ const Layout = () => {
             <Route element={<CreateCar />} path="/car" />
             <Route element={<Reg />} path="/register" />
             <Route element={<UserProfile />} path="/privateuser" />
-            <Route element={<Date_Time />} path="/date" />
             <Route element={<h1>Not found!</h1>} />
             <Route element={<CarsInfo />} path="/mycar" />
+            <Route element={<PriceGen />} path="/date" />
+            <Route element={<Plazas />} path="/plazas" />
           </Routes>
           <Footer />
         </ScrollToTop>
