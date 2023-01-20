@@ -18,7 +18,6 @@ import Cars from "./pages/cars";
 import { PriceGen } from "./component/pricegendata";
 import { Plazas } from "./component/pruebaparking";
 
-
 const Layout = () => {
   const basename = process.env.BASENAME || "";
 
@@ -41,7 +40,6 @@ const Layout = () => {
 
             <Route element={<PriceGen />} path="/date" />
             <Route element={<Plazas />} path="/plazas" />
-
           </Routes>
           <Footer />
         </ScrollToTop>
