@@ -41,7 +41,7 @@ const UserProfile = () => {
             <li class="active">
               <a href="#holaagos">Welcome {user && user.name}</a>
             </li>
-            <a href="#">My Cars</a>
+            <a href="/cars">My Cars</a>
             <li>
               <a href="#holadani">Parking</a>
             </li>
