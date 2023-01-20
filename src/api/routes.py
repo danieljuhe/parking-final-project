@@ -2,6 +2,8 @@ from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Car, Category, Parking, My_cars 
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
+import stripe
+stripe.api_key = "sk_test_51MP8c5ATXRJOJbwMsczEGrPvNzkoY1efoZ0KsWWN2ro8z6yeoB1c5TSpvD28HBSYgBJj6cyf24XUKusV9MpO4HHj00o3sUmWVX"
 
 api = Blueprint('api', __name__)
 
@@ -123,7 +125,17 @@ def parking_lot():
     data = [parking.serialize() for parking in parkings]
     return jsonify(data)
 
-
+@api.route ('/stripe', methods=['POST'])
+def create_payment():
+    data = request.json
+    intent = stripe.PaymentIntent.create(
+            amount=data['amount'],
+            currency='eur'
+            
+        )
+    print(intent);    
+    # bill = Bill(stripe_payment_id = intent['id'], parking_id=x, user_id=x)
+    return jsonify({"Message": data }), 200
 
 
 

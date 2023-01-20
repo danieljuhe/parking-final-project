@@ -17,6 +17,7 @@ import Cars from "./pages/cars";
 
 import { PriceGen } from "./component/pricegendata";
 import { Plazas } from "./component/pruebaparking";
+import App from "./component/stripe";
 
 const Layout = () => {
   const basename = process.env.BASENAME || "";
@@ -33,6 +34,7 @@ const Layout = () => {
             <Route element={<CreateCar />} path="/car" />
             <Route element={<Reg />} path="/register" />
             <Route element={<UserProfile />} path="/privateuser" />
+            <Route element={<App />} path="/test" />
             <Route element={<h1>Not found!</h1>} />
             <Route element={<CarsInfo />} path="/mycar" />
 
