@@ -108,8 +108,12 @@ def book_site():
     data = request.json
     print(data)
     try:
-        parking = Parking(site=data["site"], car_plate=data["car_plate"], user_id=data["user_id"], category_id=data["category_id"], occupied=data["occupied"])
-        db.session.add(parking)
+        parking = Parking.query.filter_by(id=data["id"]).first()
+        parking.car_plate=data["car_plate"]
+        parking.site=data["site"]
+        parking.user_id=data["user_id"]
+        parking.category_id=data["category_id"]
+        parking.occupied=data["occupied"]
         db.session.commit()
     except Exception:
         return jsonify({"MESSAGE":"Error al reservar la plaza"}), 400
