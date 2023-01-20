@@ -35,7 +35,7 @@ class My_cars(db.Model):
     def serialize(self):
         return {
             "id": self.id,
-            "car": self.car,
+            "car": self.car.serialize(),
             "user": self.user_id
         }
 
@@ -52,20 +52,23 @@ class Car(db.Model):
         return f'{self.brand}, {self.model}, {self.plate}'
 
     def serialize(self):
+        print(self.my_cars[0].user.serialize())
         return {
             "id": self.id,
             "plate": self.plate,
             "brand": self.brand,
             "model": self.model,
-            "category_id": self.category_id
+            "category_id": self.category.serialize(),
+            "user": self.my_cars[0].user.serialize()
         }
 
 class Parking(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    site = db.Column(db.String(4),unique=True)
-    car_plate = db.Column(db.String(30), unique=True, nullable=True)
-    user_id = db.Column(db.String(30), unique=True, nullable=True)
+    site = db.Column(db.String(4),unique=False)
+    car_plate = db.Column(db.String(30),unique=False, nullable=True)
+    user_id = db.Column(db.String(30),unique=False, nullable=True)
     category_id = db.Column(db.Integer, unique=False, nullable=True)
+    occupied = db.Column(db.Boolean, default=False, nullable=True)
  
     def serialize(self):
         return {
@@ -73,7 +76,8 @@ class Parking(db.Model):
             "site": self.site,
             "car_plate": self.car_plate,
             "user_id": self.user_id,
-            "category_name": self.category_name
+            "category_id": self.category_id,
+            "occupied": self.occupied
         }
 
 class Category(db.Model):

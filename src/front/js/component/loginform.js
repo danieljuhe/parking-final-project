@@ -37,11 +37,6 @@ export const LoginForm = () => {
 
   return (
     <>
-      <div class="box">
-        <div class="wave -one"></div>
-        <div class="wave -two"></div>
-        <div class="wave -three"></div>
-      </div>
       <label htmlFor="username">
         <FontAwesomeIcon icon={faUser} />
         <>&nbsp;&nbsp;&nbsp;&nbsp;</>
@@ -66,7 +61,7 @@ export const LoginForm = () => {
         />
       </label>
       <br />
-      <button clasName="registerbutton" onClick={handleClick}>
+      <button className="registerbutton" onClick={handleClick}>
         Login
       </button>
     </>

@@ -1,6 +1,3 @@
-"""
-This module takes care of starting the API Server, Loading the DB and Adding the endpoints
-"""
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Car, Category, Parking, My_cars 
 from api.utils import generate_sitemap, APIException
@@ -48,6 +45,14 @@ def create_user():
     except Exception:
         return jsonify({"MESSAGE":"Error al registrar usuario"}), 400
     return jsonify({"MESSAGE" : "Usuario creado"}), 200
+
+@api.route ('/parking', methods=['GET'])
+@jwt_required()
+def parking_site():
+    token_user_id = get_jwt_identity()
+    cars = My_cars.query.filter_by(user_id=token_user_id)
+    data = [car.serialize() for car in cars]
+    return jsonify(data), 200
 
 @api.route ('/create_car', methods=['POST'])
 def create_car():
@@ -98,6 +103,26 @@ def delete_car():
     except:
         return jsonify({"message": "No se pudo eliminar el vehiculo"}), 400
     return jsonify ({"message": "vehiculo eliminado"}), 200
+
+
+@api.route ('/book', methods=['POST'])
+def book_site():
+    data = request.json
+    print(data)
+    try:
+        parking = Parking(site=data["site"], car_plate=data["car_plate"], user_id=data["user_id"], category_id=data["category_id"], occupied=data["occupied"])
+        db.session.add(parking)
+        db.session.commit()
+    except Exception:
+        return jsonify({"MESSAGE":"Error al reservar la plaza"}), 400
+    return jsonify({"MESSAGE" : "Plaza reservada correctamente"}), 200
+
+@api.route ('/parkingsites', methods=['GET'])
+def parking_lot():
+    parkings = Parking.query.all()
+    data = [parking.serialize() for parking in parkings]
+    return jsonify(data)
+
 
 
 
