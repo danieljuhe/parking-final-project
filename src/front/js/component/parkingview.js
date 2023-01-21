@@ -2,6 +2,15 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../styles/parkingview.css";
 import "../../styles/modal.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCar,
+  faChargingStation,
+  faPersonRifle,
+  faVanShuttle,
+  faWheelchair,
+  faBan,
+} from "@fortawesome/free-solid-svg-icons";
 
 export const ParkingView = () => {
   const navigate = useNavigate();
@@ -70,7 +79,6 @@ export const ParkingView = () => {
     }
   };
 
-  let bgColor = "";
   let bxColor = "";
 
   return (
@@ -78,47 +86,40 @@ export const ParkingView = () => {
       <div className="col1">
         {parkingSites.map((parkingSite, index) => {
           if (parkingSite.occupied == true) {
-            bgColor = "gray";
             bxColor = "none";
           } else if (parkingSite.category_id == 1) {
-            bgColor = "green";
             if (parkingSite.category_id === cCategory) {
-              bxColor = "0px 0px 40px green";
+              bxColor = "inset 0px 0px 20px greenyellow";
             } else {
               bxColor = "none";
             }
           } else if (parkingSite.category_id == 2) {
-            bgColor = "red";
             if (parkingSite.category_id === cCategory) {
-              bxColor = "0px 0px 40px red";
+              bxColor = "inset 0px 0px 40px red";
             } else {
               bxColor = "none";
             }
           } else if (parkingSite.category_id == 3) {
-            bgColor = "purple";
             if (parkingSite.category_id === cCategory) {
-              bxColor = "0px 0px 40px purple";
+              bxColor = "inset 0px 0px 40px purple";
             } else {
               bxColor = "none";
             }
           } else if (parkingSite.category_id == 4) {
-            bgColor = "gold";
             if (parkingSite.category_id === cCategory) {
-              bxColor = "0px 0px 40px gold";
+              bxColor = "inset 0px 0px 40px gold";
             } else {
               bxColor = "none";
             }
           } else if (parkingSite.category_id == 5) {
-            bgColor = "white";
             if (parkingSite.category_id === cCategory) {
-              bxColor = "0px 0px 40px white";
+              bxColor = "inset 0px 0px 40px white";
             } else {
               bxColor = "none";
             }
           }
 
           const divStyle = {
-            backgroundColor: bgColor,
             boxShadow: bxColor,
           };
           return (
@@ -136,7 +137,27 @@ export const ParkingView = () => {
               }}
               style={divStyle}
             >
-              {parkingSite.site}
+              {parkingSite.category_id == 1 &&
+                parkingSite.occupied == false && (
+                  <FontAwesomeIcon icon={faChargingStation} />
+                )}
+              {parkingSite.category_id == 2 &&
+                parkingSite.occupied == false && (
+                  <FontAwesomeIcon icon={faWheelchair} />
+                )}
+              {parkingSite.category_id == 3 &&
+                parkingSite.occupied == false && (
+                  <FontAwesomeIcon icon={faVanShuttle} />
+                )}
+              {parkingSite.category_id == 4 &&
+                parkingSite.occupied == false && (
+                  <FontAwesomeIcon icon={faPersonRifle} />
+                )}
+              {parkingSite.category_id == 5 && parkingSite.occupied == false ? (
+                <FontAwesomeIcon icon={faCar} />
+              ) : (
+                <FontAwesomeIcon icon={faBan} />
+              )}
             </div>
           );
         })}

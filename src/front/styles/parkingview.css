@@ -1,5 +1,5 @@
 .parking {
-  background-color: rgba(54, 54, 54, 0.195);
+  background-color: rgba(54, 54, 54, 0.801);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -55,6 +55,9 @@ button {
 }
 
 .A1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   border-top: 2px solid rgb(255, 230, 0);
   border-bottom: 5px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
@@ -63,6 +66,9 @@ button {
   height: 50px;
 }
 .A2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   border-top: 5px solid rgb(255, 230, 0);
   border-bottom: 5px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
@@ -71,6 +77,9 @@ button {
   height: 50px;
 }
 .A3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   border-top: 5px solid rgb(255, 230, 0);
   border-bottom: 5px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
@@ -79,6 +88,9 @@ button {
   height: 50px;
 }
 .A4 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   border-top: 5px solid rgb(255, 230, 0);
   border-bottom: 5px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
@@ -87,6 +99,9 @@ button {
   height: 50px;
 }
 .A5 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   border-top: 5px solid rgb(255, 230, 0);
   border-bottom: 5px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
@@ -95,6 +110,9 @@ button {
   height: 50px;
 }
 .A6 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   border-top: 5px solid rgb(255, 230, 0);
   border-bottom: 5px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
@@ -103,6 +121,9 @@ button {
   height: 50px;
 }
 .A7 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   border-top: 5px solid rgb(255, 230, 0);
   border-bottom: 5px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
@@ -111,6 +132,9 @@ button {
   height: 50px;
 }
 .A8 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   border-top: 5px solid rgb(255, 230, 0);
   border-bottom: 5px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
@@ -119,6 +143,9 @@ button {
   height: 50px;
 }
 .A9 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   border-top: 5px solid rgb(255, 230, 0);
   border-bottom: 5px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
@@ -127,6 +154,9 @@ button {
   height: 50px;
 }
 .A10 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   border-top: 5px solid rgb(255, 230, 0);
   border-bottom: 5px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
@@ -134,7 +164,10 @@ button {
   width: 150px;
   height: 50px;
 }
-.b1 {
+.A11 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   border-top: 5px solid rgb(255, 230, 0);
   border-bottom: 5px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
@@ -151,6 +184,8 @@ button {
   height: 50px;
 }
 .b3 {
+  background-color: greenyellow;
+  box-shadow: 0 0 10px 40px rgba(172, 255, 47, 0.341);
   border-top: 5px solid rgb(255, 230, 0);
   border-bottom: 5px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
