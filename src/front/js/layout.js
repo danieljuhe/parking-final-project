@@ -12,7 +12,6 @@ import { ParkingView } from "./component/parkingview";
 import CreateCar from "./component/createCar";
 import CarsInfo from "./pages/carsInfo";
 import { PriceGen } from "./component/pricegendata";
-import { Plazas } from "./component/pruebaparking";
 
 const Layout = () => {
   const basename = process.env.BASENAME || "";
@@ -32,7 +31,6 @@ const Layout = () => {
             <Route element={<h1>Not found!</h1>} />
             <Route element={<CarsInfo />} path="/mycar" />
             <Route element={<PriceGen />} path="/date" />
-            <Route element={<Plazas />} path="/plazas" />
           </Routes>
           <Footer />
         </ScrollToTop>

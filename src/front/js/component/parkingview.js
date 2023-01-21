@@ -3,14 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../../styles/parkingview.css";
 import "../../styles/modal.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCar,
-  faChargingStation,
-  faPersonRifle,
-  faVanShuttle,
-  faWheelchair,
-  faBan,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCar, faChargingStation, faPersonRifle, faVanShuttle, faWheelchair } from "@fortawesome/free-solid-svg-icons";
 
 export const ParkingView = () => {
   const navigate = useNavigate();
@@ -44,14 +37,10 @@ export const ParkingView = () => {
       });
 
     fetch(process.env.BACKEND_URL + "/api/parkingsites", {
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json", },
     })
       .then((response) => response.json())
-      .then((response) => {
-        setParkingSites(response);
-      });
+      .then((response) => { setParkingSites(response); });
   }, []);
 
   const senddata = async (id) => {
@@ -63,20 +52,16 @@ export const ParkingView = () => {
       category_id: carCategory && carCategory[0].car.category_id.id,
       occupied: true,
     };
-
     try {
       const response = await fetch(process.env.BACKEND_URL + "/api/book", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json", },
         body: JSON.stringify(parking),
       });
       const data = await response.json();
       console.log(data);
-    } catch (error) {
-      console.error("Error:", error);
     }
+    catch (error) { console.error("Error:", error); }
   };
 
   let bxColor = "";
@@ -118,7 +103,6 @@ export const ParkingView = () => {
               bxColor = "none";
             }
           }
-
           const divStyle = {
             boxShadow: bxColor,
           };
@@ -135,29 +119,12 @@ export const ParkingView = () => {
                   handleOpenModal();
                 }
               }}
-              style={divStyle}
-            >
-              {parkingSite.category_id == 1 &&
-                parkingSite.occupied == false && (
-                  <FontAwesomeIcon icon={faChargingStation} />
-                )}
-              {parkingSite.category_id == 2 &&
-                parkingSite.occupied == false && (
-                  <FontAwesomeIcon icon={faWheelchair} />
-                )}
-              {parkingSite.category_id == 3 &&
-                parkingSite.occupied == false && (
-                  <FontAwesomeIcon icon={faVanShuttle} />
-                )}
-              {parkingSite.category_id == 4 &&
-                parkingSite.occupied == false && (
-                  <FontAwesomeIcon icon={faPersonRifle} />
-                )}
-              {parkingSite.category_id == 5 && parkingSite.occupied == false ? (
-                <FontAwesomeIcon icon={faCar} />
-              ) : (
-                <FontAwesomeIcon icon={faBan} />
-              )}
+              style={divStyle}>
+              {parkingSite.category_id == 1 && (<FontAwesomeIcon icon={faChargingStation} />)}
+              {parkingSite.category_id == 2 && (<FontAwesomeIcon icon={faWheelchair} />)}
+              {parkingSite.category_id == 3 && (<FontAwesomeIcon icon={faVanShuttle} />)}
+              {parkingSite.category_id == 4 && (<FontAwesomeIcon icon={faPersonRifle} />)}
+              {parkingSite.category_id == 5 && (<FontAwesomeIcon icon={faCar} />)}
             </div>
           );
         })}
@@ -165,49 +132,21 @@ export const ParkingView = () => {
       {showModal && (
         <div className="modal-overlay">
           <div className="modal-content">
-            <p>
-              Tu {carCategory && carCategory[0].car.brand},{" "}
+            <p>Tu {carCategory && carCategory[0].car.brand},{" "}
               {carCategory && carCategory[0].car.model}
               <br />
               {`se aparcara en la plaza ${modal.site}`}
             </p>
-            <button onClick={handleCloseModal} className="cancelar">
-              X
-            </button>
+            <button onClick={handleCloseModal} className="cancelar">X</button>
             <button
               onClick={() => {
                 handleCloseModal();
                 senddata(modal.id);
                 navigate("/date");
-              }}
-            >
-              Reservar y pagar
-            </button>
+              }}>Reservar y pagar</button>
           </div>
         </div>
       )}
-      {/* <div className="col1">
-        <div
-          className="a1"
-          id="m"
-          style={{
-            boxShadow:
-              cCategory == "Mini" && ocupado == false
-                ? "0px 0px 40px violet"
-                : "",
-          }}
-          onClick={() => {
-            if (cCategory == "Mini") {
-              setModal("A1");
-              handleOpenModal();
-            }
-          }}
-        >
-          Mini
-        </div>
-
-       
-      </div> */}
     </div>
   );
 };
