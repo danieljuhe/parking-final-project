@@ -6,7 +6,7 @@ import { Home } from "./pages/home";
 import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
-import UserProfile from "./pages/userprofile";
+import { UserProfile } from "./pages/userprofile";
 import { Reg } from "./pages/register";
 import { ParkingView } from "./component/parkingview";
 import CreateCar from "./component/createCar";

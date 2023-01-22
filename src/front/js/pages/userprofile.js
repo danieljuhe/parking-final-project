@@ -4,7 +4,7 @@ import { Context } from "../store/appContext";
 import { useNavigate } from "react-router-dom";
 import CreateCar from "../component/createCar";
 
-const UserProfile = () => {
+export const UserProfile = () => {
   const { store, actions } = useContext(Context);
 
   const [user, setUser] = useState();
@@ -69,5 +69,3 @@ const UserProfile = () => {
     </div>
   );
 };
-
-export default UserProfile;
