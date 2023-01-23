@@ -15,20 +15,21 @@ const Cars = () => {
       });
   }, []);
 
-  const onClick = { handleClick };
-  fetch(process.env.BACKEND_URL + "/api/edit_car/", {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(form),
-  })
-    .then((response) => {
-      return response.json();
+  const handleClick = () => {
+    fetch(process.env.BACKEND_URL + "/api/edit_car/", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(),
     })
-    .then((response) => {
-      listOfCars(response);
-    });
+      .then((response) => {
+        return response.json();
+      })
+      .then((response) => {
+        listOfCars(response);
+      });
+  };
 
   return (
     <div className="container">
