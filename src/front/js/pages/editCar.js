@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 const EditCar = () => {
+  const params = useParams();
+
+  useEffect(() => {
+    fetch(process.env.BACKEND_URL + "/api/get_onecar/" + params.car_id)
+      .then((res) => res.json())
+      .then();
+  }, []);
+
   const handleSubmit = () => {
     fetch(process.env.BACKEND_URL + "/api/edit_car/", {
       method: "PUT",

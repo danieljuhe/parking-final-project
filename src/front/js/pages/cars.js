@@ -1,9 +1,11 @@
 import { faPlateWheat } from "@fortawesome/free-solid-svg-icons";
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Car from "./car";
 
 const Cars = () => {
   const [listOfCars, setListOfCars] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch(process.env.BACKEND_URL + "/api/list_car/")
@@ -15,20 +17,8 @@ const Cars = () => {
       });
   }, []);
 
-  const handleClick = () => {
-    fetch(process.env.BACKEND_URL + "/api/edit_car/", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(),
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((response) => {
-        listOfCars(response);
-      });
+  const handleClick = (id) => {
+    navigate("/editcar/" + id);
   };
 
   return (
@@ -45,7 +35,7 @@ const Cars = () => {
                 category={car.caregory}
               />
               <button
-                onClick={handleClick}
+                onClick={() => handleClick(car.id)}
                 type="button"
                 className="btn btn-secondary"
               >

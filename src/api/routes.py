@@ -79,6 +79,11 @@ def list_car():
     data = [car.serialize() for car in cars]
     return jsonify(data)
 
+@api.route ('/get_onecar/<int:id>', methods=['GET'])
+def get_onecar(id):
+    car = Car.query.filter_by(id=id).first()
+    return jsonify(car.serialize())
+
 @api.route ('/edit_car', methods= ['PUT'])
 def edit_car():
     try:

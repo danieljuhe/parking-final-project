@@ -35,22 +35,15 @@ const UserProfile = () => {
 
   return (
     <div className="userprofile">
-      <aside class="sidebar">
-        <nav class="nav">
+      <aside className="sidebar">
+        <nav className="nav">
           <ul>
-            <li class="active">
+            <li className="active">
               <a href="#holaagos">Welcome {user && user.name}</a>
             </li>
             <a href="/cars">My Cars</a>
             <li>
-
-              <a href="#holadani">Parking</a>
-
-              <a href="#">My Cars</a>
-            </li>
-            <li>
               <a href="/parking">Parking</a>
-
             </li>
             <li>
               <a href="#">Bills</a>
