@@ -9,6 +9,8 @@ import {
 } from "@stripe/react-stripe-js";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { Context } from "../store/appContext";
 
 const stripePromise = loadStripe(
   "pk_test_51MP8c5ATXRJOJbwMBzkJ8FyZ9oXijO0a0ckRcDG8uiV0deCsU8pzOexsPnBUaYjymmtFeAMHFIcEsnEWozrt98Op00fAIhgqmM"
@@ -19,6 +21,7 @@ const CheckoutForm = () => {
   const elements = useElements();
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { actions, store } = useContext(Context);
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -39,7 +42,7 @@ const CheckoutForm = () => {
         },
         body: JSON.stringify({
           id,
-          amount: 10000,
+          amount: store.price * 100,
         }),
       })
         .then((res) => {
@@ -65,7 +68,7 @@ const CheckoutForm = () => {
         className="img-fluid"
       />
 
-      <h3 className="text-center my-2">Price: 100$</h3>
+      <h3 className="text-center my-2">Price: {store.price}$</h3>
       <div className="form-group">
         <CardElement className="form-control" />
       </div>
@@ -82,7 +85,7 @@ const CheckoutForm = () => {
   );
 };
 
-function App() {
+function AppPay() {
   return (
     <Elements stripe={stripePromise}>
       <div className="container p-4">
@@ -96,4 +99,4 @@ function App() {
   );
 }
 
-export default App;
+export default AppPay;
