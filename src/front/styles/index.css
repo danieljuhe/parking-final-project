@@ -1,6 +1,10 @@
 /* 
     General Styles used on every website (Don't Repeat Yourself)
 */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .contenedor {
   width: 90%;
   max-width: 1000px;

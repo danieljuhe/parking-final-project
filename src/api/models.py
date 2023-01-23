@@ -52,15 +52,15 @@ class Car(db.Model):
         return f'{self.brand}, {self.model}, {self.plate}'
 
     def serialize(self):
-        print(self.my_cars[0].user.serialize())
-        return {
+        data = {
             "id": self.id,
             "plate": self.plate,
             "brand": self.brand,
             "model": self.model,
-            "category_id": self.category.serialize(),
-            "user": self.my_cars[0].user.serialize()
+            "category_id": self.category.serialize()
         }
+        data["user"] = self.my_cars[0].user.serialize() if self.my_cars else None
+        return data
 
 class Parking(db.Model):
     id = db.Column(db.Integer, primary_key=True)

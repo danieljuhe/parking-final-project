@@ -44,7 +44,8 @@ def create_user():
         user = User(name=data["name"], surname=data["surname"], email=data["email"], password=data["password"], telephone=data["telephone"])
         db.session.add(user)
         db.session.commit()
-    except Exception:
+    except Exception as e:
+        print(e)
         return jsonify({"MESSAGE":"Error al registrar usuario"}), 400
     return jsonify({"MESSAGE" : "Usuario creado"}), 200
 
@@ -59,9 +60,13 @@ def parking_site():
 @api.route ('/create_car', methods=['POST'])
 def create_car():
     data= request.json
+    print(data)
     brand = request.json.get("brand", None)
+    model = request.json.get("model", None)
+    plate = request.json.get("plate", None)
+    category_id = request.json.get("category_id", None)
     try:
-        car= Car(plate=data["plate"], brand=brand, model=data["model"], category_id=data["category_id"])
+        car= Car(plate=plate, brand=brand, model=model, category_id=category_id)
         db.session.add(car)
         db.session.commit()
     except Exception as e:
@@ -75,6 +80,11 @@ def list_car():
     cars = Car.query.all()
     data = [car.serialize() for car in cars]
     return jsonify(data)
+
+@api.route ('/get_onecar/<int:id>', methods=['GET'])
+def get_onecar(id):
+    car = Car.query.filter_by(id=id).first()
+    return jsonify(car.serialize())
 
 @api.route ('/edit_car', methods= ['PUT'])
 def edit_car():
