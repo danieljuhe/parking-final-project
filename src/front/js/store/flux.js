@@ -1,6 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
+      price: null,
       token: null,
       user: "",
       message: null,
@@ -33,6 +34,9 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       setToken: (token) => {
         setStore({ token: token });
+      },
+      setPrice: (price) => {
+        setStore({ price: price });
       },
       getMessage: async () => {
         try {
