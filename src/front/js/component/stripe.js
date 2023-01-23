@@ -88,9 +88,9 @@ const CheckoutForm = () => {
 function AppPay() {
   return (
     <Elements stripe={stripePromise}>
-      <div className="container p-4">
-        <div className="row">
-          <div className="col-md-4 offset-md-4">
+      <div classNameName="container p-4">
+        <div classNameName="row">
+          <div classNameName="col-md-4 offset-md-4">
             <CheckoutForm />
           </div>
         </div>
