@@ -35,15 +35,17 @@ export const UserProfile = () => {
 
   return (
     <div className="userprofile">
-      <aside className="sidebar">
-        <nav className="nav">
+      <aside class="sidebar">
+        <nav class="nav">
           <ul>
-            <li className="active">
-              <a href="#holaagos">Welcome {user && user.name}</a>
+            <li class="active">
+              <a href="#">Welcome {user && user.name}</a>
             </li>
-            <a href="/cars">My Cars</a>
             <li>
-              <a href="/parking">Parking</a>
+              <a href="#">My Cars</a>
+            </li>
+            <li>
+              <a href="#">Parking</a>
             </li>
             <li>
               <a href="#">Bills</a>
@@ -62,17 +64,10 @@ export const UserProfile = () => {
           </ul>
         </nav>
       </aside>
-      <div id="wrapper">
-        <div id="holaagos" className="white">
-          {" "}
-          HOLA AGOS
-        </div>
-        <div id="holadani"> HOLA DANI</div>
-      </div>
-
-      {/* <div className="dashboard">
+      <div className="dashboard">
         <CreateCar />
-      </div> */}
+      </div>{" "}
+      */}
     </div>
   );
 };

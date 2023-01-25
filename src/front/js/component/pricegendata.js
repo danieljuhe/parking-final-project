@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import "../../styles/login.css";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { Context } from "../store/appContext";
 
 export const PriceGen = () => {
   const [startTime, setStartTime] = useState("");
@@ -7,9 +10,15 @@ export const PriceGen = () => {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [price, setPrice] = useState(0);
+  const navigate = useNavigate();
+  const { actions, store } = useContext(Context);
 
   let currentDate = new Date();
   let currentDateString = currentDate.toISOString().slice(0, 16);
+
+  const stripe = () => {
+    navigate("/payment");
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,6 +42,7 @@ export const PriceGen = () => {
     );
     const hours = (endTimeObject - startTimeObject) / (1000 * 60 * 60);
     setPrice(hours * 3);
+    actions.setPrice(hours * 3);
   };
 
   return (
@@ -87,7 +97,7 @@ export const PriceGen = () => {
           <br />
           <h2>Precio: €{price}</h2>
           <br />
-          <button>Confirmar</button>
+          <button onClick={stripe}>Confirmar</button>
         </form>
       </div>
     </div>

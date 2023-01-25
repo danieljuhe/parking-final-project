@@ -1,9 +1,9 @@
-import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "../store/appContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 export const LoginForm = () => {
   const [user, setUser] = useState({});
@@ -48,18 +48,17 @@ export const LoginForm = () => {
           required
         />
       </label>
+
       <br />
-      <label htmlFor="username">
-        <FontAwesomeIcon icon={faLock} />
-        <>&nbsp;&nbsp;&nbsp;&nbsp;</>
-        <input
-          type="password"
-          placeholder="Password"
-          onChange={handleChange}
-          name="password"
-          required
-        />
-      </label>
+
+      <label htmlFor="username">Password: </label>
+      <input
+        type="password"
+        placeholder="Password"
+        onChange={handleChange}
+        name="password"
+        required
+      />
       <br />
       <button className="registerbutton" onClick={handleClick}>
         Login
