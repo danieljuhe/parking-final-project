@@ -92,3 +92,19 @@ class Category(db.Model):
             "id": self.id,
             "name": self.name
         }
+
+class Bills(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    amount = db.Column(db.String(10), unique=False, nullable=False)
+    date = db.Column(db.String(20), unique=False, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user = db.relationship('User', backref='bills', lazy=True)
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "amount": self.amount,
+            "date": self.date,
+            "user": self.user.serialize()
+        }
+        
