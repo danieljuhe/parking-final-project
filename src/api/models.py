@@ -99,12 +99,15 @@ class Bills(db.Model):
     date = db.Column(db.String(20), unique=False, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     user = db.relationship('User', backref='bills', lazy=True)
+    parking_id = db.Column(db.Integer, db.ForeignKey('parking.id'))
+    user = db.relationship('Parking', backref='bills', lazy=True)
 
     def serialize(self):
         return {
             "id": self.id,
             "amount": self.amount,
             "date": self.date,
-            "user": self.user.serialize()
+            "user": self.user.serialize(),
+            "parking_id": self.parking.serialize()
         }
         
