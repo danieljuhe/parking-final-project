@@ -22,46 +22,66 @@ const CarsInfo = () => {
       });
   }, []);
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    fetch(process.env.BACKEND_URL + "/api/create_car", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(form),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setForm(data);
+      });
+  };
+
   const handleChange = (event) => {
     setForm({ ...form, [event.target.name]: event.target.value });
   };
 
   return (
     <div className="main">
-      <div className="register">
-        <div className="mb-3">
-          <select
-            id="disabledSelect"
-            className="form-select"
-            onChange={handleChange}
-          >
-            <option disabled selected>
-              Que coche vas a aparcar hoy?
-            </option>
-            {cars?.map((value, index) => {
-              return (
-                <option key={index} value={value.id}>
-                  {value.plate}, {value.brand}
-                </option>
-              );
-            })}
-          </select>
+      <form onSubmit={handleSubmit} className="container">
+        <div className="register">
+          <div className="mb-3">
+            <select
+              id="disabledSelect"
+              className="form-select"
+              onChange={handleChange}
+            >
+              <option disabled selected>
+                Que coche vas a aparcar hoy?
+              </option>
+              {cars?.map((value, index) => {
+                return (
+                  <option key={index} value={value.id}>
+                    {value.plate}, {value.brand}, {value.model}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+          <div className="mb-3">
+            <select id="disabledSelect" className="form-select">
+              <option disabled selected>
+                Usuario
+              </option>
+              {users?.map((value, index) => {
+                return (
+                  <option key={index} value={value.id}>
+                    {value.name}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+          <button type="button" class="btn btn-light">
+            registrar
+          </button>
         </div>
-        <div className="mb-3">
-          <select id="disabledSelect" className="form-select">
-            <option disabled selected>
-              Usuario
-            </option>
-            {users?.map((value, index) => {
-              return (
-                <option key={index} value={value.id}>
-                  {value.name}
-                </option>
-              );
-            })}
-          </select>
-        </div>
-      </div>
+      </form>
     </div>
   );
 };

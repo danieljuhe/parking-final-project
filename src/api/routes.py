@@ -42,7 +42,8 @@ def create_user():
         user = User(name=data["name"], surname=data["surname"], email=data["email"], password=data["password"], telephone=data["telephone"])
         db.session.add(user)
         db.session.commit()
-    except Exception:
+    except Exception as e:
+        print(e)
         return jsonify({"MESSAGE":"Error al registrar usuario"}), 400
     return jsonify({"MESSAGE" : "Usuario creado"}), 200
 
@@ -57,11 +58,17 @@ def parking_site():
 @api.route ('/create_car', methods=['POST'])
 def create_car():
     data= request.json
+    print(data)
+    brand = request.json.get("brand", None)
+    model = request.json.get("model", None)
+    plate = request.json.get("plate", None)
+    category_id = request.json.get("category_id", None)
     try:
-        car= Car(plate=data["plate"], brand=data["brand"], model=data["model"], category_id=data["category_id"])
+        car= Car(plate=plate, brand=brand, model=model, category_id=category_id)
         db.session.add(car)
         db.session.commit()
     except Exception as e:
+        print(e)
         return jsonify ({"message": str(e)}), 400
     return jsonify({"message": "vehiculo creado"}), 200
 
@@ -71,6 +78,11 @@ def list_car():
     cars = Car.query.all()
     data = [car.serialize() for car in cars]
     return jsonify(data)
+
+@api.route ('/get_onecar/<int:id>', methods=['GET'])
+def get_onecar(id):
+    car = Car.query.filter_by(id=id).first()
+    return jsonify(car.serialize())
 
 @api.route ('/edit_car', methods= ['PUT'])
 def edit_car():
@@ -125,6 +137,23 @@ def parking_lot():
     data = [parking.serialize() for parking in parkings]
     return jsonify(data)
 
+
+
+
+
+#@api.route ('/create_mycar', methods=['POST'])
+#def create_car():
+#    data= request.json
+ #   user = request.json.get("user", None)
+  #  car = request.json.get("car", None)
+   # try:
+#        my_car= My_car(user=user, car=car)
+#        db.session.add(my_car)
+#        db.session.commit()
+#    except Exception as e:
+#        print(e)
+#        return jsonify ({"message": str(e)}), 400
+#    return jsonify({"message": "relacion creado"}), 200
 
 
 
