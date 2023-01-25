@@ -147,7 +147,20 @@ def create_payment():
     # bill = Bill(stripe_payment_id = intent['id'], parking_id=x, user_id=x)
     return jsonify({"Message": data }), 200
 
-
+@api.route ('/create_category', methods=['POST'])
+def create_category():
+    data= request.json
+    print(data)
+    category = request.json.get("category", None)
+   
+    try:
+        category= Category(name = category)
+        db.session.add(category)
+        db.session.commit()
+    except Exception as e:
+        print(e)
+        return jsonify ({"message": str(e)}), 400
+    return jsonify({"message": "categoria creada"}), 200
 
 #@api.route ('/create_mycar', methods=['POST'])
 #def create_car():
