@@ -54,7 +54,7 @@ button {
   background-color: transparent;
 }
 
-.A1 {
+.A01 {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -65,7 +65,7 @@ button {
   width: 150px;
   height: 50px;
 }
-.A2 {
+.A02 {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -76,7 +76,7 @@ button {
   width: 150px;
   height: 50px;
 }
-.A3 {
+.A03 {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -87,7 +87,7 @@ button {
   width: 150px;
   height: 50px;
 }
-.A4 {
+.A04 {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -98,7 +98,7 @@ button {
   width: 150px;
   height: 50px;
 }
-.A5 {
+.A05 {
   display: flex;
   flex-direction: column;
   justify-content: center;
