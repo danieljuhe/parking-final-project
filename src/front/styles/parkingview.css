@@ -1,0 +1,127 @@
+.parking {
+  background-color: rgba(35, 34, 38, 0.633);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding-top: 100px;
+  justify-content: space-evenly;
+}
+.botones {
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+h4 {
+  color: aliceblue;
+}
+h6 {
+  color: aliceblue;
+}
+.col1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+button {
+  border-color: transparent;
+}
+.a1 {
+  color: aliceblue;
+  background-color: purple;
+  width: 100px;
+  height: 40px;
+}
+.a2 {
+  margin-top: 5px;
+  color: aliceblue;
+  background-color: purple;
+  width: 100px;
+  height: 40px;
+}
+.a3 {
+  color: aliceblue;
+  background-color: red;
+  width: 150px;
+  height: 50px;
+  margin-top: 5px;
+}
+.a4 {
+  background-color: greenyellow;
+  color: aliceblue;
+  width: 150px;
+  margin-top: 5px;
+  height: 50px;
+}
+.a5 {
+  background-color: greenyellow;
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+  margin-top: 5px;
+}
+.a6 {
+  background-color: orange;
+  color: aliceblue;
+  width: 170px;
+  height: 60px;
+  margin-top: 5px;
+}
+.a7 {
+  background-color: orange;
+  color: aliceblue;
+  width: 170px;
+  height: 60px;
+  margin-top: 5px;
+}
+.a8 {
+  background-color: blue;
+  color: aliceblue;
+  width: 170px;
+  height: 70px;
+  margin-top: 5px;
+}
+.a9 {
+  background-color: blue;
+  color: aliceblue;
+  width: 170px;
+  height: 70px;
+  margin-top: 5px;
+}
+.a10 {
+  background-color: greenyellow;
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+  margin-top: 5px;
+}
+.a11 {
+  background-color: orange;
+  color: aliceblue;
+  width: 170px;
+  height: 60px;
+  margin-top: 5px;
+}
+.a12 {
+  background-color: purple;
+  color: aliceblue;
+  width: 100px;
+  height: 40px;
+  margin-top: 5px;
+}
+.a13 {
+  background-color: purple;
+  color: aliceblue;
+  width: 100px;
+  height: 40px;
+  margin-top: 5px;
+}
+.a71 {
+  color: aliceblue;
+  background-color: red;
+  width: 150px;
+  height: 50px;
+  margin-top: 5px;
+}

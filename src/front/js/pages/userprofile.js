@@ -3,6 +3,7 @@ import "../../styles/userprofile.css";
 import { Context } from "../store/appContext";
 import { useNavigate } from "react-router-dom";
 import CreateCar from "../component/createCar";
+import { Link } from "react-router-dom";
 
 const UserProfile = () => {
   const { store, actions } = useContext(Context);
@@ -34,10 +35,10 @@ const UserProfile = () => {
 
   return (
     <div className="userprofile">
-      <aside className="sidebar">
-        <nav className="nav">
+      <aside class="sidebar">
+        <nav class="nav">
           <ul>
-            <li className="active">
+            <li class="active">
               <a href="#">Welcome {user && user.name}</a>
             </li>
             <li>
@@ -65,7 +66,8 @@ const UserProfile = () => {
       </aside>
       <div className="dashboard">
         <CreateCar />
-      </div>
+      </div>{" "}
+      */}
     </div>
   );
 };

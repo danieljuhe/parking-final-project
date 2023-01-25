@@ -4,6 +4,7 @@ import "../../styles/login.css";
 const CreateCar = () => {
   const [formData, setFormData] = useState({});
   const [categories, setCategories] = useState([]);
+  const [user, setUser] = useState();
 
   useEffect(() => {
     fetch(process.env.BACKEND_URL + "/api/category")
@@ -11,6 +12,20 @@ const CreateCar = () => {
       .then((response) => {
         console.log(response);
         setCategories(response);
+      });
+    fetch(process.env.BACKEND_URL + "/api/user", {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token"),
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+        setUser(data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
       });
   }, []);
 

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "../store/appContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 export const LoginForm = () => {
   const [user, setUser] = useState({});
@@ -58,12 +60,9 @@ export const LoginForm = () => {
         required
       />
       <br />
-
       <button className="registerbutton" onClick={handleClick}>
         Login
       </button>
-
-      <button onClick={handleClick}>Login</button>
     </>
   );
 };
