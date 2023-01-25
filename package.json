@@ -80,6 +80,7 @@
 		"@fortawesome/free-solid-svg-icons": "^6.2.1",
 		"@fortawesome/react-fontawesome": "^0.2.0",
 		"@material-ui/pickers": "^3.3.10",
+		"boostrap": "^2.0.0",
 		"date-fns": "^2.29.3",
 		"i": "^0.3.7",
 		"npm": "^9.3.1",
