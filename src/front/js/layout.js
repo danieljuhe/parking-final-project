@@ -11,13 +11,12 @@ import { Reg } from "./pages/register";
 import { ParkingView } from "./component/parkingview";
 import CreateCar from "./component/createCar";
 import CarsInfo from "./pages/carsInfo";
-
-import Date_Time from "./component/time";
 import Cars from "./pages/cars";
 import EditCar from "./pages/editCar";
 import { PriceGen } from "./component/pricegendata";
 import { Plazas } from "./component/pruebaparking";
 import AppPay from "./component/stripe";
+import { Map } from "./component/maps";
 
 const Layout = () => {
   const basename = process.env.BASENAME || "";
@@ -39,7 +38,7 @@ const Layout = () => {
             <Route element={<CarsInfo />} path="/mycar" />
             <Route element={<EditCar />} path="/editcar/:car_id" />
             <Route element={<Cars />} path="/cars" />
-
+            <Route element={<Map />} path="/map" />
             <Route element={<PriceGen />} path="/date" />
             <Route element={<Plazas />} path="/plazas" />
           </Routes>
