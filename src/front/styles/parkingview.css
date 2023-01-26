@@ -1,5 +1,5 @@
 .parking {
-  background-color: rgba(35, 34, 38, 0.633);
+  background-color: rgba(54, 54, 54, 0.801);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -25,103 +25,387 @@ h6 {
   justify-content: center;
 }
 
+.col2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.col3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.col4 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.row1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 button {
   border-color: transparent;
+  background-color: transparent;
 }
-.a1 {
+
+.A01 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2px solid rgb(255, 230, 0);
+  border-bottom: 5px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
   color: aliceblue;
-  background-color: purple;
-  width: 100px;
-  height: 40px;
-}
-.a2 {
-  margin-top: 5px;
-  color: aliceblue;
-  background-color: purple;
-  width: 100px;
-  height: 40px;
-}
-.a3 {
-  color: aliceblue;
-  background-color: red;
   width: 150px;
   height: 50px;
-  margin-top: 5px;
 }
-.a4 {
+.A02 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 5px solid rgb(255, 230, 0);
+  border-bottom: 5px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.A03 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 5px solid rgb(255, 230, 0);
+  border-bottom: 5px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.A04 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 5px solid rgb(255, 230, 0);
+  border-bottom: 5px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.A5 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 5px solid rgb(255, 230, 0);
+  border-bottom: 5px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.A6 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 5px solid rgb(255, 230, 0);
+  border-bottom: 5px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.A7 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 5px solid rgb(255, 230, 0);
+  border-bottom: 5px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.A8 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 5px solid rgb(255, 230, 0);
+  border-bottom: 5px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.A9 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 5px solid rgb(255, 230, 0);
+  border-bottom: 5px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.A10 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 5px solid rgb(255, 230, 0);
+  border-bottom: 5px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.A11 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 5px solid rgb(255, 230, 0);
+  border-bottom: 5px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.b2 {
+  border-top: 5px solid rgb(255, 230, 0);
+  border-bottom: 5px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.b3 {
   background-color: greenyellow;
-  color: aliceblue;
-  width: 150px;
-  margin-top: 5px;
-  height: 50px;
-}
-.a5 {
-  background-color: greenyellow;
+  box-shadow: 0 0 10px 40px rgba(172, 255, 47, 0.341);
+  border-top: 5px solid rgb(255, 230, 0);
+  border-bottom: 5px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
   color: aliceblue;
   width: 150px;
   height: 50px;
-  margin-top: 5px;
 }
-.a6 {
-  background-color: orange;
-  color: aliceblue;
-  width: 170px;
-  height: 60px;
-  margin-top: 5px;
-}
-.a7 {
-  background-color: orange;
-  color: aliceblue;
-  width: 170px;
-  height: 60px;
-  margin-top: 5px;
-}
-.a8 {
-  background-color: blue;
-  color: aliceblue;
-  width: 170px;
-  height: 70px;
-  margin-top: 5px;
-}
-.a9 {
-  background-color: blue;
-  color: aliceblue;
-  width: 170px;
-  height: 70px;
-  margin-top: 5px;
-}
-.a10 {
-  background-color: greenyellow;
+.b4 {
+  border-top: 5px solid rgb(255, 230, 0);
+  border-bottom: 5px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
   color: aliceblue;
   width: 150px;
   height: 50px;
-  margin-top: 5px;
 }
-.a11 {
-  background-color: orange;
+.b5 {
+  border-top: 5px solid rgb(255, 230, 0);
+  border-bottom: 5px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
   color: aliceblue;
-  width: 170px;
-  height: 60px;
-  margin-top: 5px;
-}
-.a12 {
-  background-color: purple;
-  color: aliceblue;
-  width: 100px;
-  height: 40px;
-  margin-top: 5px;
-}
-.a13 {
-  background-color: purple;
-  color: aliceblue;
-  width: 100px;
-  height: 40px;
-  margin-top: 5px;
-}
-.a71 {
-  color: aliceblue;
-  background-color: red;
   width: 150px;
   height: 50px;
-  margin-top: 5px;
+}
+.b6 {
+  border-top: 5px solid rgb(255, 230, 0);
+  border-bottom: 5px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.b7 {
+  border-top: 5px solid rgb(255, 230, 0);
+  border-bottom: 5px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.b8 {
+  border-top: 5px solid rgb(255, 230, 0);
+  border-bottom: 5px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.b9 {
+  border-top: 5px solid rgb(255, 230, 0);
+  border-bottom: 5px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.b10 {
+  border-top: 5px solid rgb(255, 230, 0);
+  border-bottom: 5px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.c1 {
+  border-top: 5px solid rgb(255, 230, 0);
+  border-bottom: 5px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.c2 {
+  border-top: 5px solid rgb(255, 230, 0);
+  border-bottom: 5px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.c3 {
+  border-top: 5px solid rgb(255, 230, 0);
+  border-bottom: 5px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.c4 {
+  border-top: 5px solid rgb(255, 230, 0);
+  border-bottom: 5px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.c5 {
+  border-top: 5px solid rgb(255, 230, 0);
+  border-bottom: 5px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.c6 {
+  border-top: 5px solid rgb(255, 230, 0);
+  border-bottom: 5px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.c7 {
+  border-top: 5px solid rgb(255, 230, 0);
+  border-bottom: 5px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.c8 {
+  border-top: 5px solid rgb(255, 230, 0);
+  border-bottom: 5px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.c9 {
+  border-top: 5px solid rgb(255, 230, 0);
+  border-bottom: 5px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.c10 {
+  border-top: 5px solid rgb(255, 230, 0);
+  border-bottom: 5px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.d1 {
+  border-top: 5px solid rgb(255, 230, 0);
+  border-bottom: 5px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.d2 {
+  border-top: 5px solid rgb(255, 230, 0);
+  border-bottom: 5px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.d3 {
+  border-top: 5px solid rgb(255, 230, 0);
+  border-bottom: 5px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.d4 {
+  border-top: 5px solid rgb(255, 230, 0);
+  border-bottom: 5px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.d5 {
+  border-top: 5px solid rgb(255, 230, 0);
+  border-bottom: 5px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.d6 {
+  border-top: 5px solid rgb(255, 230, 0);
+  border-bottom: 5px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.d7 {
+  border-top: 5px solid rgb(255, 230, 0);
+  border-bottom: 5px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.d8 {
+  border-top: 5px solid rgb(255, 230, 0);
+  border-bottom: 5px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.d9 {
+  border-top: 5px solid rgb(255, 230, 0);
+  border-bottom: 5px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.d10 {
+  border-top: 5px solid rgb(255, 230, 0);
+  border-bottom: 5px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
 }
