@@ -11,3 +11,27 @@ export const Map = () => {
     ></iframe>
   );
 };
+// import React, { useState, useEffect } from 'react';
+// import { GoogleMap, useLoadScript, Marker } from 'react-google-maps';
+
+// const Map = () => {
+//   const { isLoaded, loadError } = useLoadScript({
+//     googleMapsApiKey: 'YOUR_API_KEY'
+//   });
+
+//   const [currentPosition, setCurrentPosition] = useState({lat: 40.427860269252314, lng: -3.6870110131372043});
+
+//   if (loadError) return 'Error cargando Google Maps';
+//   if (!isLoaded) return 'Cargando Google Maps';
+
+//   return (
+//     <GoogleMap
+//       mapContainerStyle={{ height: '400px', width: '100%' }}
+//       zoom={14}
+//       center={currentPosition}
+//     >
+//     </GoogleMap>
+//   );
+// };
+
+// export default Map;
