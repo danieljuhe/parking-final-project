@@ -14,7 +14,6 @@ import CarsInfo from "./pages/carsInfo";
 import Cars from "./pages/cars";
 import EditCar from "./pages/editCar";
 import { PriceGen } from "./component/pricegendata";
-import { Plazas } from "./component/pruebaparking";
 import AppPay from "./component/stripe";
 
 
