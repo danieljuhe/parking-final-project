@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import "../../styles/login.css";
 import { loadStripe } from "@stripe/stripe-js";
 import {
   Elements,
@@ -61,7 +61,7 @@ const CheckoutForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="card card-body my-5">
+    <form onSubmit={handleSubmit} className="card card-body my-5 stripe">
       <img
         src="https://p.turbosquid.com/ts-thumb/pZ/r1ai8T/MB/daciaduster2022_00/jpg/1633694860/600x600/fit_q87/9c5de101f40c3810e0fd2f617ea215fa2c8f2d6b/daciaduster2022_00.jpg"
         alt="Parking Rent"
@@ -88,9 +88,9 @@ const CheckoutForm = () => {
 function AppPay() {
   return (
     <Elements stripe={stripePromise}>
-      <div classNameName="container p-4">
-        <div classNameName="row">
-          <div classNameName="col-md-4 offset-md-4">
+      <div className="container p-4">
+        <div className="row h-100">
+          <div className="col-md-4 offset-md-4 h-100">
             <CheckoutForm />
           </div>
         </div>

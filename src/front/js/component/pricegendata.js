@@ -22,6 +22,7 @@ export const PriceGen = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const start = startTime.split(":");
     const end = endTime.split(":");
     let startDateObject = new Date(startDate);

@@ -135,3 +135,7 @@ body {
   overflow-x: hidden;
   overflow-y: hidden;
 }
+
+.stripe {
+  margin-top: 7rem !important;
+}
