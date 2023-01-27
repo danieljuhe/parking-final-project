@@ -1,8 +1,9 @@
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Car, Category, Parking, My_cars 
+from api.models import db, User, Car, Category, Parking, My_cars, Bills 
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 import stripe
+import datetime
 stripe.api_key = "sk_test_51MP8c5ATXRJOJbwMsczEGrPvNzkoY1efoZ0KsWWN2ro8z6yeoB1c5TSpvD28HBSYgBJj6cyf24XUKusV9MpO4HHj00o3sUmWVX"
 
 api = Blueprint('api', __name__)
@@ -140,15 +141,21 @@ def parking_lot():
     return jsonify(data)
 
 @api.route ('/stripe', methods=['POST'])
+@jwt_required()
 def create_payment():
     data = request.json
+    user_id = get_jwt_identity()
     intent = stripe.PaymentIntent.create(
             amount=data['amount'],
             currency='eur'
             
         )
-    print(intent);    
-    # bill = Bill(stripe_payment_id = intent['id'], parking_id=x, user_id=x)
+    print(intent)
+    fecha = datetime.datetime.strptime(data['date'], "%Y-%m-%dT%H:%M:%S.%fZ").date()
+    bill = Bills(stripe_id=intent['id'], amount=int(intent['amount']/100), date=fecha, user_id=user_id, parking_id=data['parking_id'])  
+    db.session.add(bill)
+    db.session.commit()
+
     return jsonify({"Message": data }), 200
 
 @api.route ('/create_category', methods=['POST'])

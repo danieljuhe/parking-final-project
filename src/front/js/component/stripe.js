@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../styles/login.css";
 import { loadStripe } from "@stripe/stripe-js";
 import {
@@ -8,7 +8,7 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "../store/appContext";
 
@@ -16,12 +16,21 @@ const stripePromise = loadStripe(
   "pk_test_51MP8c5ATXRJOJbwMBzkJ8FyZ9oXijO0a0ckRcDG8uiV0deCsU8pzOexsPnBUaYjymmtFeAMHFIcEsnEWozrt98Op00fAIhgqmM"
 );
 
+
 const CheckoutForm = () => {
+
   const stripe = useStripe();
   const elements = useElements();
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { actions, store } = useContext(Context);
+  const params = useParams();
+  useEffect(() => {
+    console.log(store.token);
+    if (!localStorage.getItem("token")) {
+      navigate("/login");
+    }
+  }, []);
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -39,10 +48,13 @@ const CheckoutForm = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: "Bearer " + localStorage.getItem("token"),
         },
         body: JSON.stringify({
           id,
-          amount: store.price * 100,
+          amount: parseInt(store.price * 100),
+          date: new Date(),
+          parking_id: params.parking_id,
         }),
       })
         .then((res) => {
@@ -86,6 +98,7 @@ const CheckoutForm = () => {
 };
 
 function AppPay() {
+
   return (
     <Elements stripe={stripePromise}>
       <div className="container p-4">
