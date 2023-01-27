@@ -66,7 +66,6 @@ export const UserProfile = () => {
       <div className="dashboard">
         <CreateCar />
       </div>{" "}
-      */}
     </div>
   );
 };
