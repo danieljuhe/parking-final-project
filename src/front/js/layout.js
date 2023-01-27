@@ -15,6 +15,7 @@ import Cars from "./pages/cars";
 import EditCar from "./pages/editCar";
 import { PriceGen } from "./component/pricegendata";
 import AppPay from "./component/stripe";
+import DeleteCar from "./pages/deletecar";
 
 
 const Layout = () => {
@@ -36,6 +37,7 @@ const Layout = () => {
             <Route element={<h1>Not found!</h1>} />
             <Route element={<CarsInfo />} path="/mycar" />
             <Route element={<EditCar />} path="/editcar/:car_id" />
+            <Route element={<DeleteCar />} path="/deletecar/:car_id" />
             <Route element={<Cars />} path="/cars" />
             <Route element={<PriceGen />} path="/date" />
           </Routes>
