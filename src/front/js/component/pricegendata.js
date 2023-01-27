@@ -3,6 +3,7 @@ import "../../styles/login.css";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "../store/appContext";
+import { useParams } from "react-router-dom";
 
 
 export const PriceGen = () => {
@@ -13,6 +14,7 @@ export const PriceGen = () => {
   const [price, setPrice] = useState(0);
   const navigate = useNavigate();
   const { actions, store } = useContext(Context);
+  const params = useParams();
 
   let currentDate = new Date();
   let currentDateString = currentDate.toISOString().slice(0, 16);
@@ -23,7 +25,7 @@ export const PriceGen = () => {
     }
   }, []);
   const stripe = () => {
-    navigate("/payment");
+    navigate("/payment/" + params.parking_id);
   };
 
   const handleSubmit = (e) => {
@@ -91,7 +93,7 @@ export const PriceGen = () => {
             End Time:
             <input
               type="time"
-              min={currentDateString.slice(11, 16)}
+              min={currentDateString.slice(0, 10)}
               onChange={(e) => setEndTime(e.target.value)}
             />
           </label>

@@ -95,16 +95,18 @@ class Category(db.Model):
 
 class Bills(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    stripe_id = db.Column(db.String(30), unique=False, nullable=False)
     amount = db.Column(db.String(10), unique=False, nullable=False)
     date = db.Column(db.String(20), unique=False, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     user = db.relationship('User', backref='bills', lazy=True)
     parking_id = db.Column(db.Integer, db.ForeignKey('parking.id'))
-    user = db.relationship('Parking', backref='bills', lazy=True)
+    parking = db.relationship('Parking', backref='bills', lazy=True)
 
     def serialize(self):
         return {
             "id": self.id,
+            "stripe_id": self.stripe_id,
             "amount": self.amount,
             "date": self.date,
             "user": self.user.serialize(),

@@ -8,7 +8,7 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "../store/appContext";
 
@@ -24,6 +24,7 @@ const CheckoutForm = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { actions, store } = useContext(Context);
+  const params = useParams();
   useEffect(() => {
     console.log(store.token);
     if (!localStorage.getItem("token")) {
@@ -47,10 +48,13 @@ const CheckoutForm = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: "Bearer " + localStorage.getItem("token"),
         },
         body: JSON.stringify({
           id,
-          amount: store.price * 100,
+          amount: parseInt(store.price * 100),
+          date: new Date(),
+          parking_id: params.parking_id,
         }),
       })
         .then((res) => {
