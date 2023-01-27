@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../styles/login.css";
 import { loadStripe } from "@stripe/stripe-js";
 import {
@@ -16,12 +16,20 @@ const stripePromise = loadStripe(
   "pk_test_51MP8c5ATXRJOJbwMBzkJ8FyZ9oXijO0a0ckRcDG8uiV0deCsU8pzOexsPnBUaYjymmtFeAMHFIcEsnEWozrt98Op00fAIhgqmM"
 );
 
+
 const CheckoutForm = () => {
+
   const stripe = useStripe();
   const elements = useElements();
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { actions, store } = useContext(Context);
+  useEffect(() => {
+    console.log(store.token);
+    if (!localStorage.getItem("token")) {
+      navigate("/login");
+    }
+  }, []);
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -86,6 +94,7 @@ const CheckoutForm = () => {
 };
 
 function AppPay() {
+
   return (
     <Elements stripe={stripePromise}>
       <div className="container p-4">

@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../styles/login.css";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "../store/appContext";
+
 
 export const PriceGen = () => {
   const [startTime, setStartTime] = useState("");
@@ -15,7 +16,12 @@ export const PriceGen = () => {
 
   let currentDate = new Date();
   let currentDateString = currentDate.toISOString().slice(0, 16);
-
+  useEffect(() => {
+    console.log(store.token);
+    if (!localStorage.getItem("token")) {
+      navigate("/login");
+    }
+  }, []);
   const stripe = () => {
     navigate("/payment");
   };
