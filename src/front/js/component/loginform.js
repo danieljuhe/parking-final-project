@@ -37,18 +37,15 @@ export const LoginForm = () => {
 
   return (
     <>
-      <label htmlFor="username">
-        <FontAwesomeIcon icon={faUser} />
-        <>&nbsp;&nbsp;&nbsp;&nbsp;</>
-        <input
-          type="text"
-          placeholder="E-Mail"
-          onChange={handleChange}
-          name="email"
-          required
-        />
-      </label>
-
+      <label htmlFor="username">Username:</label>
+      <br />
+      <input
+        type="text"
+        placeholder="E-Mail"
+        onChange={handleChange}
+        name="email"
+        required
+      />
       <br />
 
       <label htmlFor="username">Password: </label>
