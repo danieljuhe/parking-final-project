@@ -137,7 +137,9 @@ def book_site():
 def parking_lot():
     parkings = Parking.query.all()
     data = [parking.serialize() for parking in parkings]
-    return jsonify(data)
+    n = 10
+    result = [data[i:i + n] for i in range(0, len(data), n)]
+    return jsonify(result)
 
 @api.route ('/stripe', methods=['POST'])
 def create_payment():
