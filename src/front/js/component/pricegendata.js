@@ -84,7 +84,7 @@ export const PriceGen = () => {
             End Date:
             <input
               type="date"
-              min={currentDateString.slice(0, 10)}
+              min={startDate ? startDate : currentDateString.slice(0, 10)}
               onChange={(e) => setEndDate(e.target.value)}
             />
           </label>
@@ -93,7 +93,7 @@ export const PriceGen = () => {
             End Time:
             <input
               type="time"
-              min={currentDateString.slice(0, 10)}
+              min={startTime && startDate == endDate ? startTime : ""}
               onChange={(e) => setEndTime(e.target.value)}
             />
           </label>
