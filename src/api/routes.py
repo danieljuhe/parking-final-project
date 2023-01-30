@@ -87,8 +87,8 @@ def get_onecar(id):
     car = Car.query.filter_by(id=id).first()
     return jsonify(car.serialize())
 
-@api.route ('/edit_car', methods= ['PUT'])
-def edit_car():
+@api.route ('/edit_car/<int:id>', methods= ['PUT'])
+def edit_car(id):
     try:
         car = Car.query.get(id)
     except:
@@ -97,7 +97,7 @@ def edit_car():
     new_plate = request.json.get("plate", car.plate)
     new_brand = request.json.get("brand", car.brand)
     new_model = request.json.get("model", car.model)
-    new_category = request.json.get("caregory", car.category)
+    new_category = request.json.get("category", car.category)
 
     setattr(car, "plate", new_plate)
     setattr(car, "brand", new_brand)
@@ -107,10 +107,10 @@ def edit_car():
     db.session.commit()
     return jsonify (car.serialize()), 200
 
-@api.route ('/delete_car', methods=['DELETE'])
-def delete_car():
+@api.route ('/delete_car/<int:id>', methods=['DELETE'])
+def delete_car(id):
     try:
-        car = Car.querry.filter_by(id=id).first()
+        car = Car.query.filter_by(id=id).first()
         db.session.delete(car)
         db.session.commit()
     except:
