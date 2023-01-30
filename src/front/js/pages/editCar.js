@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 const EditCar = () => {
   const params = useParams();
   const [categories, setCategories] = useState([]);
-  const [listOfCars, setListOfCars] = useState([]);
+  const [listOfCars, setListOfCars] = useState({});
 
   useEffect(() => {
     fetch(process.env.BACKEND_URL + "/api/category")
@@ -24,8 +24,9 @@ const EditCar = () => {
       })
   }, []);
 
-  const handleSubmit = () => {
-    fetch(process.env.BACKEND_URL + "/api/edit_car/", {
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    fetch(process.env.BACKEND_URL + "/api/edit_car/" + listOfCars.id, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -37,7 +38,9 @@ const EditCar = () => {
         setListOfCars(data);
       });
   };
-  return (
+
+
+  return listOfCars && listOfCars.model ? (
     <form onSubmit={handleSubmit}>
       <div className="mb-3">
         <label for="Plate" className="form-label">
@@ -79,11 +82,14 @@ const EditCar = () => {
           className="form-control"
           id="Model"
           aria-describedby="emailHelp"
+          onChange={(e) => {
+            setListOfCars({ ...listOfCars, model: e.target.value });
+          }}
         />
       </div>
       <div className="mb-3">
         <label htmlFor="inputCategory" className="form-label">
-          Category
+          Category {listOfCars.category_id.id}
         </label>
         <select
           className="form-select"
@@ -96,18 +102,25 @@ const EditCar = () => {
           </option>
           {categories.map((value) => {
             return (
-              <option key={value.id} value={value.id} placeholder={listOfCars.category}>
+              <option
+                key={value.id}
+                value={value.id}
+                selected={listOfCars.category_id.id == value.id ? "selected" : ""}
+              >
                 {value.name}
               </option>
             );
           })}
         </select>
       </div>
-      <button type="button" className="btn btn-secondary">
+      <button
+        type="submit"
+        className="btn btn-secondary"
+      >
         Guardar
       </button>
     </form>
-  );
+  ) : "";
 };
 
 export default EditCar;
