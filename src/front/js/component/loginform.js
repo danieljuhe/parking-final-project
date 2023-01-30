@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "../store/appContext";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 export const LoginForm = () => {
   const [user, setUser] = useState({});
@@ -37,17 +35,14 @@ export const LoginForm = () => {
 
   return (
     <>
-      <label htmlFor="username">Username:</label>
-      <br />
+      <label htmlFor="username">User:</label>
       <input
         type="text"
         placeholder="E-Mail"
         onChange={handleChange}
         name="email"
         required
-      />
-      <br />
-
+      /> <br />
       <label htmlFor="username">Password: </label>
       <input
         type="password"
@@ -55,11 +50,8 @@ export const LoginForm = () => {
         onChange={handleChange}
         name="password"
         required
-      />
-      <br />
-      <button className="registerbutton" onClick={handleClick}>
-        Login
-      </button>
+      /> <br />
+      <button className="registerbutton" onClick={handleClick}></button>
     </>
   );
 };

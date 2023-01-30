@@ -135,7 +135,7 @@ def book_site():
 
 @api.route ('/parkingsites', methods=['GET'])
 def parking_lot():
-    parkings = Parking.query.all()
+    parkings = Parking.query.order_by(Parking.site.asc()).all()
     data = [parking.serialize() for parking in parkings]
     n = 10
     result = [data[i:i + n] for i in range(0, len(data), n)]

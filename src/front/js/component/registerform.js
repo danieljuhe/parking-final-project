@@ -331,21 +331,21 @@ export const Register = () => {
             <br />
             <br />
             <button
+              className="registerbutton"
               disabled={!validName || !validPwd || !validMatch ? true : false}
             >
-              Sign Up
             </button>
           </form>
 
           <p>
-            Ya estas registrado?
-            <br />
-            <div className="logearse">
-              <span className="line">
-                <a href="/login">Login</a>
-              </span>
-            </div>
-          </p>
+            Ya estas registrado?</p>
+          <br />
+          <div className="logearse">
+            <span className="line">
+              <a href="/login">Login</a>
+            </span>
+          </div>
+
         </section>
       )}
     </>

@@ -41,15 +41,7 @@ export const ParkingView = () => {
     })
       .then((response) => response.json())
       .then((response) => {
-        setParkingSites(response.sort((a, b) => {
-          if (a.site < b.site) {
-            return -1;
-          }
-          if (a.site > b.site) {
-            return 1;
-          }
-          return 0;
-        }))
+        setParkingSites(response)
       });
   }, []);
 

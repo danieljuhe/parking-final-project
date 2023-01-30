@@ -15,7 +15,6 @@ import Cars from "./pages/cars";
 import EditCar from "./pages/editCar";
 import { PriceGen } from "./component/pricegendata";
 import AppPay from "./component/stripe";
-import { Map } from "./component/maps";
 
 
 const Layout = () => {
@@ -38,13 +37,9 @@ const Layout = () => {
             <Route element={<CarsInfo />} path="/mycar" />
             <Route element={<EditCar />} path="/editcar/:car_id" />
             <Route element={<Cars />} path="/cars" />
-<<<<<<< HEAD
-=======
             <Route element={<Map />} path="/map" />
->>>>>>> 1ec7c4b (maps running)
             <Route element={<PriceGen />} path="/date" />
           </Routes>
-
           <Footer />
         </ScrollToTop>
       </BrowserRouter>
