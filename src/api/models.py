@@ -100,7 +100,7 @@ class Bills(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     user = db.relationship('User', backref='bills', lazy=True)
     parking_id = db.Column(db.Integer, db.ForeignKey('parking.id'))
-    user = db.relationship('Parking', backref='bills', lazy=True)
+    parking = db.relationship('Parking', backref='bills', lazy=True)
 
     def serialize(self):
         return {
