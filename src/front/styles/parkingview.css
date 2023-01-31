@@ -1,23 +1,18 @@
 .parking {
   background-color: rgba(54, 54, 54, 0.801);
   display: flex;
+  height: 600px;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   padding-top: 100px;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
-.botones {
-  height: 300px;
+
+.col0 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-h4 {
-  color: aliceblue;
-}
-h6 {
-  color: aliceblue;
 }
 .col1 {
   display: flex;
@@ -39,13 +34,8 @@ h6 {
 
 .col4 {
   display: flex;
+  vertical-align: top;
   flex-direction: column;
-  justify-content: center;
-}
-
-.row1 {
-  display: flex;
-  flex-direction: row;
   justify-content: center;
 }
 
@@ -54,7 +44,7 @@ h6 {
   flex-direction: column;
   justify-content: center;
   border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
+  border-bottom: 2.5px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
   color: aliceblue;
   width: 150px;
@@ -64,8 +54,8 @@ h6 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid rgb(255, 230, 0);
+  border-bottom: 4px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
   color: aliceblue;
   width: 150px;
@@ -75,8 +65,8 @@ h6 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid rgb(255, 230, 0);
+  border-bottom: 4px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
   color: aliceblue;
   width: 150px;
@@ -86,8 +76,8 @@ h6 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid rgb(255, 230, 0);
+  border-bottom: 4px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
   color: aliceblue;
   width: 150px;
@@ -97,8 +87,8 @@ h6 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid rgb(255, 230, 0);
+  border-bottom: 4px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
   color: aliceblue;
   width: 150px;
@@ -108,8 +98,8 @@ h6 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid rgb(255, 230, 0);
+  border-bottom: 4px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
   color: aliceblue;
   width: 150px;
@@ -119,8 +109,8 @@ h6 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid rgb(255, 230, 0);
+  border-bottom: 4px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
   color: aliceblue;
   width: 150px;
@@ -130,8 +120,8 @@ h6 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid rgb(255, 230, 0);
+  border-bottom: 4px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
   color: aliceblue;
   width: 150px;
@@ -141,8 +131,8 @@ h6 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid rgb(255, 230, 0);
+  border-bottom: 4px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
   color: aliceblue;
   width: 150px;
@@ -152,7 +142,7 @@ h6 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid rgb(255, 230, 0);
   border-bottom: 5px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
   color: aliceblue;
@@ -164,8 +154,8 @@ h6 {
   flex-direction: column;
   justify-content: center;
   border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-bottom: 4px solid rgb(255, 230, 0);
+  border-right: 5px solid rgb(255, 230, 0);
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -174,9 +164,9 @@ h6 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid rgb(255, 230, 0);
+  border-bottom: 4px solid rgb(255, 230, 0);
+  border-right: 5px solid rgb(255, 230, 0);
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -185,9 +175,9 @@ h6 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid rgb(255, 230, 0);
+  border-bottom: 4px solid rgb(255, 230, 0);
+  border-right: 5px solid rgb(255, 230, 0);
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -196,9 +186,9 @@ h6 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid rgb(255, 230, 0);
+  border-bottom: 4px solid rgb(255, 230, 0);
+  border-right: 5px solid rgb(255, 230, 0);
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -207,9 +197,9 @@ h6 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid rgb(255, 230, 0);
+  border-bottom: 4px solid rgb(255, 230, 0);
+  border-right: 5px solid rgb(255, 230, 0);
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -218,9 +208,9 @@ h6 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid rgb(255, 230, 0);
+  border-bottom: 4px solid rgb(255, 230, 0);
+  border-right: 5px solid rgb(255, 230, 0);
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -229,9 +219,9 @@ h6 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid rgb(255, 230, 0);
+  border-bottom: 4px solid rgb(255, 230, 0);
+  border-right: 5px solid rgb(255, 230, 0);
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -240,9 +230,9 @@ h6 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid rgb(255, 230, 0);
+  border-bottom: 4px solid rgb(255, 230, 0);
+  border-right: 5px solid rgb(255, 230, 0);
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -251,9 +241,9 @@ h6 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid rgb(255, 230, 0);
+  border-bottom: 4px solid rgb(255, 230, 0);
+  border-right: 5px solid rgb(255, 230, 0);
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -262,167 +252,337 @@ h6 {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  border-top: 2.5px solid rgb(255, 230, 0);
+  border-bottom: 5px solid rgb(255, 230, 0);
+  border-right: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.C01 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   border-top: 5px solid rgb(255, 230, 0);
+  border-bottom: 4px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.C02 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2.5px solid rgb(255, 230, 0);
+  border-bottom: 4px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.C03 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2.5px solid rgb(255, 230, 0);
+  border-bottom: 4px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.C04 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2.5px solid rgb(255, 230, 0);
+  border-bottom: 4px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.C05 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2.5px solid rgb(255, 230, 0);
+  border-bottom: 4px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.C06 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2.5px solid rgb(255, 230, 0);
+  border-bottom: 4px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.C07 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2.5px solid rgb(255, 230, 0);
+  border-bottom: 4px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.C08 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2.5px solid rgb(255, 230, 0);
+  border-bottom: 4px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.C09 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2.5px solid rgb(255, 230, 0);
+  border-bottom: 4px solid rgb(255, 230, 0);
+  border-left: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.C10 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2.5px solid rgb(255, 230, 0);
   border-bottom: 5px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
   color: aliceblue;
   width: 150px;
   height: 50px;
 }
-.c1 {
+.D01 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   border-top: 5px solid rgb(255, 230, 0);
+  border-bottom: 4px solid rgb(255, 230, 0);
+  border-right: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.D02 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2.5px solid rgb(255, 230, 0);
+  border-bottom: 4px solid rgb(255, 230, 0);
+  border-right: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.D03 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2.5px solid rgb(255, 230, 0);
+  border-bottom: 4px solid rgb(255, 230, 0);
+  border-right: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.D04 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2.5px solid rgb(255, 230, 0);
+  border-bottom: 4px solid rgb(255, 230, 0);
+  border-right: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.D05 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2.5px solid rgb(255, 230, 0);
+  border-bottom: 4px solid rgb(255, 230, 0);
+  border-right: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.D06 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2.5px solid rgb(255, 230, 0);
+  border-bottom: 4px solid rgb(255, 230, 0);
+  border-right: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.D07 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2.5px solid rgb(255, 230, 0);
+  border-bottom: 4px solid rgb(255, 230, 0);
+  border-right: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.D08 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2.5px solid rgb(255, 230, 0);
+  border-bottom: 4px solid rgb(255, 230, 0);
+  border-right: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.D09 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2.5px solid rgb(255, 230, 0);
+  border-bottom: 4px solid rgb(255, 230, 0);
+  border-right: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.D10 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2.5px solid rgb(255, 230, 0);
   border-bottom: 5px solid rgb(255, 230, 0);
+  border-right: 5px solid rgb(255, 230, 0);
+  color: aliceblue;
+  width: 150px;
+  height: 50px;
+}
+.E01 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 5px solid rgb(255, 230, 0);
+  border-bottom: 4px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
   color: aliceblue;
   width: 150px;
   height: 50px;
 }
-.c2 {
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
+.E02 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2.5px solid rgb(255, 230, 0);
+  border-bottom: 4px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
   color: aliceblue;
   width: 150px;
   height: 50px;
 }
-.c3 {
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
+.E03 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2.5px solid rgb(255, 230, 0);
+  border-bottom: 4px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
   color: aliceblue;
   width: 150px;
   height: 50px;
 }
-.c4 {
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
+.E04 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2.5px solid rgb(255, 230, 0);
+  border-bottom: 4px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
   color: aliceblue;
   width: 150px;
   height: 50px;
 }
-.c5 {
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
+.E05 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2.5px solid rgb(255, 230, 0);
+  border-bottom: 4px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
   color: aliceblue;
   width: 150px;
   height: 50px;
 }
-.c6 {
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
+.E06 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2.5px solid rgb(255, 230, 0);
+  border-bottom: 4px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
   color: aliceblue;
   width: 150px;
   height: 50px;
 }
-.c7 {
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
+.E07 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2.5px solid rgb(255, 230, 0);
+  border-bottom: 4px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
   color: aliceblue;
   width: 150px;
   height: 50px;
 }
-.c8 {
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
+.E08 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2.5px solid rgb(255, 230, 0);
+  border-bottom: 4px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
   color: aliceblue;
   width: 150px;
   height: 50px;
 }
-.c9 {
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
+.E09 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2.5px solid rgb(255, 230, 0);
+  border-bottom: 4px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
   color: aliceblue;
   width: 150px;
   height: 50px;
 }
-.c10 {
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
-  color: aliceblue;
-  width: 150px;
-  height: 50px;
-}
-.d1 {
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
-  color: aliceblue;
-  width: 150px;
-  height: 50px;
-}
-.d2 {
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
-  color: aliceblue;
-  width: 150px;
-  height: 50px;
-}
-.d3 {
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
-  color: aliceblue;
-  width: 150px;
-  height: 50px;
-}
-.d4 {
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
-  color: aliceblue;
-  width: 150px;
-  height: 50px;
-}
-.d5 {
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
-  color: aliceblue;
-  width: 150px;
-  height: 50px;
-}
-.d6 {
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
-  color: aliceblue;
-  width: 150px;
-  height: 50px;
-}
-.d7 {
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
-  color: aliceblue;
-  width: 150px;
-  height: 50px;
-}
-.d8 {
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
-  color: aliceblue;
-  width: 150px;
-  height: 50px;
-}
-.d9 {
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
-  color: aliceblue;
-  width: 150px;
-  height: 50px;
-}
-.d10 {
-  border-top: 5px solid rgb(255, 230, 0);
+.E10 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2.5px solid rgb(255, 230, 0);
   border-bottom: 5px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
   color: aliceblue;
