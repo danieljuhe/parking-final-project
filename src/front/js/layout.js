@@ -37,9 +37,9 @@ const Layout = () => {
             <Route element={<CarsInfo />} path="/mycar" />
             <Route element={<EditCar />} path="/editcar/:car_id" />
             <Route element={<Cars />} path="/cars" />
+            <Route element={<Map />} path="/map" />
             <Route element={<PriceGen />} path="/date" />
           </Routes>
-
           <Footer />
         </ScrollToTop>
       </BrowserRouter>

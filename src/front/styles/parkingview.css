@@ -49,16 +49,11 @@ h6 {
   justify-content: center;
 }
 
-button {
-  border-color: transparent;
-  background-color: transparent;
-}
-
 .A01 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 2px solid rgb(255, 230, 0);
+  border-top: 5px solid rgb(255, 230, 0);
   border-bottom: 5px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
   color: aliceblue;
@@ -98,7 +93,7 @@ button {
   width: 150px;
   height: 50px;
 }
-.A5 {
+.A05 {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -109,7 +104,7 @@ button {
   width: 150px;
   height: 50px;
 }
-.A6 {
+.A06 {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -120,7 +115,7 @@ button {
   width: 150px;
   height: 50px;
 }
-.A7 {
+.A07 {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -131,7 +126,7 @@ button {
   width: 150px;
   height: 50px;
 }
-.A8 {
+.A08 {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -142,7 +137,7 @@ button {
   width: 150px;
   height: 50px;
 }
-.A9 {
+.A09 {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -164,7 +159,7 @@ button {
   width: 150px;
   height: 50px;
 }
-.A11 {
+.B01 {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -175,7 +170,10 @@ button {
   width: 150px;
   height: 50px;
 }
-.b2 {
+.B02 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   border-top: 5px solid rgb(255, 230, 0);
   border-bottom: 5px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
@@ -183,9 +181,10 @@ button {
   width: 150px;
   height: 50px;
 }
-.b3 {
-  background-color: greenyellow;
-  box-shadow: 0 0 10px 40px rgba(172, 255, 47, 0.341);
+.B03 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   border-top: 5px solid rgb(255, 230, 0);
   border-bottom: 5px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
@@ -193,7 +192,10 @@ button {
   width: 150px;
   height: 50px;
 }
-.b4 {
+.B04 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   border-top: 5px solid rgb(255, 230, 0);
   border-bottom: 5px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
@@ -201,7 +203,10 @@ button {
   width: 150px;
   height: 50px;
 }
-.b5 {
+.B05 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   border-top: 5px solid rgb(255, 230, 0);
   border-bottom: 5px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
@@ -209,7 +214,10 @@ button {
   width: 150px;
   height: 50px;
 }
-.b6 {
+.B06 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   border-top: 5px solid rgb(255, 230, 0);
   border-bottom: 5px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
@@ -217,7 +225,10 @@ button {
   width: 150px;
   height: 50px;
 }
-.b7 {
+.B07 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   border-top: 5px solid rgb(255, 230, 0);
   border-bottom: 5px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
@@ -225,7 +236,10 @@ button {
   width: 150px;
   height: 50px;
 }
-.b8 {
+.B08 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   border-top: 5px solid rgb(255, 230, 0);
   border-bottom: 5px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
@@ -233,7 +247,10 @@ button {
   width: 150px;
   height: 50px;
 }
-.b9 {
+.B09 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   border-top: 5px solid rgb(255, 230, 0);
   border-bottom: 5px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
@@ -241,7 +258,10 @@ button {
   width: 150px;
   height: 50px;
 }
-.b10 {
+.B10 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   border-top: 5px solid rgb(255, 230, 0);
   border-bottom: 5px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);

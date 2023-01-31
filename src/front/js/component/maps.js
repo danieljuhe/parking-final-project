@@ -11,6 +11,7 @@ export const Map = () => {
     ></iframe>
   );
 };
+
 // import React, { useState, useEffect } from 'react';
 // import { GoogleMap, useLoadScript, Marker } from 'react-google-maps';
 
@@ -35,3 +36,4 @@ export const Map = () => {
 // };
 
 // export default Map;
+

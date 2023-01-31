@@ -3,7 +3,6 @@ import "../../styles/userprofile.css";
 import { Context } from "../store/appContext";
 import { useNavigate } from "react-router-dom";
 import CreateCar from "../component/createCar";
-import { Link } from "react-router-dom";
 
 export const UserProfile = () => {
   const { store, actions } = useContext(Context);
@@ -45,7 +44,7 @@ export const UserProfile = () => {
               <a href="#">My Cars</a>
             </li>
             <li>
-              <a href="#">Parking</a>
+              <a href="/parking">Parking</a>
             </li>
             <li>
               <a href="#">Bills</a>
