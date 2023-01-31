@@ -1,41 +1,60 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const EditCar = () => {
   const params = useParams();
+  const [categories, setCategories] = useState([]);
+  const [listOfCars, setListOfCars] = useState({});
+
+  useEffect(() => {
+    fetch(process.env.BACKEND_URL + "/api/category")
+      .then((response) => response.json())
+      .then((response) => {
+        setCategories(response);
+      })
+  }, []);
 
   useEffect(() => {
     fetch(process.env.BACKEND_URL + "/api/get_onecar/" + params.car_id)
-      .then((res) => res.json())
-      .then();
-  }, []);
-
-  const handleSubmit = () => {
-    fetch(process.env.BACKEND_URL + "/api/edit_car/", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(),
-    })
       .then((response) => {
         return response.json();
       })
       .then((response) => {
-        listOfCars(response);
+        setListOfCars(response);
+      })
+  }, []);
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    fetch(process.env.BACKEND_URL + "/api/edit_car/" + listOfCars.id, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(listOfCars),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setListOfCars(data);
       });
   };
-  return (
+
+
+  return listOfCars && listOfCars.model ? (
     <form onSubmit={handleSubmit}>
       <div className="mb-3">
         <label for="Plate" className="form-label">
           Plate
         </label>
         <input
-          type="Plate"
+          type="text"
+          placeholder={listOfCars.plate}
           className="form-control"
           id="Plate"
           aria-describedby="emailHelp"
+          onChange={(e) => {
+            setListOfCars({ ...listOfCars, plate: e.target.value });
+          }}
         />
       </div>
       <div className="mb-3">
@@ -44,9 +63,13 @@ const EditCar = () => {
         </label>
         <input
           type="Brand"
+          placeholder={listOfCars.brand}
           className="form-control"
           id="Brand"
           aria-describedby="emailHelp"
+          onChange={(e) => {
+            setListOfCars({ ...listOfCars, brand: e.target.value });
+          }}
         />
       </div>
       <div className="mb-3">
@@ -55,16 +78,49 @@ const EditCar = () => {
         </label>
         <input
           type="Model"
+          placeholder={listOfCars.model}
           className="form-control"
           id="Model"
           aria-describedby="emailHelp"
+          onChange={(e) => {
+            setListOfCars({ ...listOfCars, model: e.target.value });
+          }}
         />
       </div>
-      <button type="button" className="btn btn-secondary">
+      <div className="mb-3">
+        <label htmlFor="inputCategory" className="form-label">
+          Category {listOfCars.category_id.id}
+        </label>
+        <select
+          className="form-select"
+          aria-label="Default select example"
+          name="category_id"
+        >
+          <option
+            disabled selected
+          >
+          </option>
+          {categories.map((value) => {
+            return (
+              <option
+                key={value.id}
+                value={value.id}
+                selected={listOfCars.category_id.id == value.id ? "selected" : ""}
+              >
+                {value.name}
+              </option>
+            );
+          })}
+        </select>
+      </div>
+      <button
+        type="submit"
+        className="btn btn-secondary"
+      >
         Guardar
       </button>
     </form>
-  );
+  ) : "";
 };
 
 export default EditCar;

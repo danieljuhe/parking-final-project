@@ -137,7 +137,6 @@ export const ParkingView = () => {
           )
         })
       }
-
       {showModal && (
         <div className="modal-overlay">
           <div className="modal-content">
@@ -147,7 +146,6 @@ export const ParkingView = () => {
               <br />
               {`se aparcara en la plaza ${modal.site}`}
             </p>
-
             <button className="confirmar"
               onClick={() => {
                 handleCloseModal();

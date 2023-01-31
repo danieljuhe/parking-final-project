@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../styles/login.css";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "../store/appContext";
+import { useParams } from "react-router-dom";
+
 
 export const PriceGen = () => {
   const [startTime, setStartTime] = useState("");
@@ -12,16 +14,23 @@ export const PriceGen = () => {
   const [price, setPrice] = useState(0);
   const navigate = useNavigate();
   const { actions, store } = useContext(Context);
+  const params = useParams();
 
   let currentDate = new Date();
   let currentDateString = currentDate.toISOString().slice(0, 16);
-
+  useEffect(() => {
+    console.log(store.token);
+    if (!localStorage.getItem("token")) {
+      navigate("/login");
+    }
+  }, []);
   const stripe = () => {
-    navigate("/payment");
+    navigate("/payment/" + params.parking_id);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const start = startTime.split(":");
     const end = endTime.split(":");
     let startDateObject = new Date(startDate);
@@ -84,7 +93,7 @@ export const PriceGen = () => {
             End Time:
             <input
               type="time"
-              min={currentDateString.slice(11, 16)}
+              min={currentDateString.slice(0, 10)}
               onChange={(e) => setEndTime(e.target.value)}
             />
           </label>

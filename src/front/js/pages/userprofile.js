@@ -6,7 +6,6 @@ import CreateCar from "../component/createCar";
 
 export const UserProfile = () => {
   const { store, actions } = useContext(Context);
-
   const [user, setUser] = useState();
   const navigate = useNavigate();
 
@@ -66,7 +65,6 @@ export const UserProfile = () => {
       <div className="dashboard">
         <CreateCar />
       </div>{" "}
-      */}
     </div>
   );
 };
