@@ -40,9 +40,10 @@ const Layout = () => {
             <Route element={<EditCar />} path="/editcar/:car_id" />
             <Route element={<DeleteCar />} path="/deletecar/:car_id" />
             <Route element={<Cars />} path="/cars" />
+            <Route element={<Map />} path="/map" />
+            <Route element={<PriceGen />} path="/date" />
             <Route element={<PriceGen />} path="/date/:parking_id" />
           </Routes>
-
           <Footer />
         </ScrollToTop>
       </BrowserRouter>
