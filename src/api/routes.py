@@ -175,6 +175,19 @@ def create_category():
         return jsonify ({"message": str(e)}), 400
     return jsonify({"message": "categoria creada"}), 200
 
+@api.route ('/create_site', methods=['POST'])
+def create_site():
+    site = request.json.get("site", None)
+   
+    try:
+        site= Parking(site = site)
+        db.session.add(site)
+        db.session.commit()
+    except Exception as e:
+        print(e)
+        return jsonify ({"message": str(e)}), 400
+    return jsonify({"message": "categoria creada"}), 200
+
 #@api.route ('/create_mycar', methods=['POST'])
 #def create_car():
 #    data= request.json
