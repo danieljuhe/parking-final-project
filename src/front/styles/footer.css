@@ -1,6 +1,6 @@
-footer {
-  position: absolute;
+.footer {
   color: #fdb53a;
+  position: absolute;
   bottom: 0;
   width: 100%;
   background-color: transparent;
