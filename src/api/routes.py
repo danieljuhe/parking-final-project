@@ -178,9 +178,10 @@ def create_category():
 @api.route ('/create_site', methods=['POST'])
 def create_site():
     site = request.json.get("site", None)
-   
+    category_id = request.json.get("category_id", None)
+
     try:
-        site= Parking(site = site)
+        site= Parking(site = site, category_id = category_id) 
         db.session.add(site)
         db.session.commit()
     except Exception as e:
