@@ -1,10 +1,12 @@
 .mainparking {
-  background-color: rgba(54, 54, 54, 0.801);
+  background-color: rgb(54, 54, 54);
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: 100px;
+  height: fit-content;
+  width: fit-content;
+  padding-top: 10rem;
 }
 
 .parking {
@@ -12,6 +14,8 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  height: fit-content;
+  width: fit-content;
 }
 
 .parking2 {
@@ -19,12 +23,15 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  height: fit-content;
+  width: fit-content;
 }
 
 .col0 {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-right: 6rem;
 }
 .col1 {
   display: flex;
@@ -42,13 +49,15 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-left: 6rem;
 }
 
-.col4 {
+.parking2 .col0 {
   display: flex;
-  vertical-align: top;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
+  align-items: center;
+  margin-top: 8rem;
 }
 
 .A01 {
@@ -56,7 +65,7 @@
   flex-direction: column;
   justify-content: center;
   border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 2.5px solid rgb(255, 230, 0);
+  border-bottom: 4px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
   color: aliceblue;
   width: 150px;
@@ -495,109 +504,109 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 5px solid rgb(255, 230, 0);
+  border-right: 2px solid rgb(255, 230, 0);
   border-bottom: 4px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
   color: aliceblue;
-  width: 150px;
-  height: 50px;
+  height: 150px;
+  width: 70px;
 }
 .E02 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 2.5px solid rgb(255, 230, 0);
+  border-right: 2px solid rgb(255, 230, 0);
   border-bottom: 4px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
   color: aliceblue;
-  width: 150px;
-  height: 50px;
+  height: 150px;
+  width: 70px;
 }
 .E03 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 2.5px solid rgb(255, 230, 0);
+  border-right: 2px solid rgb(255, 230, 0);
   border-bottom: 4px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
   color: aliceblue;
-  width: 150px;
-  height: 50px;
+  height: 150px;
+  width: 70px;
 }
 .E04 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 2.5px solid rgb(255, 230, 0);
+  border-right: 2px solid rgb(255, 230, 0);
   border-bottom: 4px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
   color: aliceblue;
-  width: 150px;
-  height: 50px;
+  height: 150px;
+  width: 70px;
 }
 .E05 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 2.5px solid rgb(255, 230, 0);
+  border-right: 2px solid rgb(255, 230, 0);
   border-bottom: 4px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
   color: aliceblue;
-  width: 150px;
-  height: 50px;
+  height: 150px;
+  width: 70px;
 }
 .E06 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 2.5px solid rgb(255, 230, 0);
+  border-right: 2px solid rgb(255, 230, 0);
   border-bottom: 4px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
   color: aliceblue;
-  width: 150px;
-  height: 50px;
+  height: 150px;
+  width: 70px;
 }
 .E07 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 2.5px solid rgb(255, 230, 0);
+  border-right: 2px solid rgb(255, 230, 0);
   border-bottom: 4px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
   color: aliceblue;
-  width: 150px;
-  height: 50px;
+  height: 150px;
+  width: 70px;
 }
 .E08 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 2.5px solid rgb(255, 230, 0);
+  border-right: 2px solid rgb(255, 230, 0);
   border-bottom: 4px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
   color: aliceblue;
-  width: 150px;
-  height: 50px;
+  height: 150px;
+  width: 70px;
 }
 .E09 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 2.5px solid rgb(255, 230, 0);
+  border-right: 2px solid rgb(255, 230, 0);
   border-bottom: 4px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
   color: aliceblue;
-  width: 150px;
-  height: 50px;
+  height: 150px;
+  width: 70px;
 }
 .E10 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 2.5px solid rgb(255, 230, 0);
+  border-right: 5px solid rgb(255, 230, 0);
   border-bottom: 5px solid rgb(255, 230, 0);
   border-left: 5px solid rgb(255, 230, 0);
   color: aliceblue;
-  width: 150px;
-  height: 50px;
+  height: 150px;
+  width: 70px;
 }
