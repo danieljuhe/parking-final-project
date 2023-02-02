@@ -110,8 +110,8 @@ input {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 140px;
-  height: 40px;
+  width: 100px;
+  height: 30px;
   background-color: rgba(128, 128, 128, 0.064);
   transition: 500ms;
 }

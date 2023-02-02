@@ -333,8 +333,7 @@ export const Register = () => {
             <button
               className="registerbutton"
               disabled={!validName || !validPwd || !validMatch ? true : false}
-            >
-            </button>
+            ></button>
           </form>
 
           <p>
