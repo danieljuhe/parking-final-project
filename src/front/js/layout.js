@@ -34,14 +34,12 @@ const Layout = () => {
             <Route element={<Reg />} path="/register" />
             <Route element={<UserProfile />} path="/privateuser" />
             <Route element={<AppPay />} path="/payment/:parking_id" />
-            <Route element={<PriceGen />} path="/date" />
             <Route element={<h1>Not found!</h1>} />
             <Route element={<CarsInfo />} path="/mycar" />
             <Route element={<EditCar />} path="/editcar/:car_id" />
             <Route element={<DeleteCar />} path="/deletecar/:car_id" />
             <Route element={<Cars />} path="/cars" />
             <Route element={<Map />} path="/map" />
-            <Route element={<PriceGen />} path="/date" />
             <Route element={<PriceGen />} path="/date/:parking_id" />
           </Routes>
           <Footer />
