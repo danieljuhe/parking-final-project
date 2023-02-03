@@ -36,7 +36,6 @@ const Cars = () => {
 
   return (
     <div className="container">
-      <h3>Cars</h3>
       <div className="row text-center">
         {listOfCars?.map((car, index) => {
           return (
