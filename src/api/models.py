@@ -103,6 +103,7 @@ class Bills(db.Model):
     parking_id = db.Column(db.Integer, db.ForeignKey('parking.id'))
     parking = db.relationship('Parking', backref='bills', lazy=True)
 
+
     def serialize(self):
         return {
             "id": self.id,

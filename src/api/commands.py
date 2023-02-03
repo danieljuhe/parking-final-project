@@ -19,10 +19,9 @@ def setup_commands(app):
     def insert_test_data(count):
         print("Creating test users")
         for x in range(1, int(count) + 1):
-            user = User()
-            user.email = "test_user" + str(x) + "@test.com"
-            user.password = "123456"
-            user.is_active = True
+            user.name = User()
+            user.email = "test2" + str(x) + "@test.com"
+            user.password = "test"
             db.session.add(user)
             db.session.commit()
             print("User: ", user.email, " created.")
