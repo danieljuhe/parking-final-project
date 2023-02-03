@@ -34,7 +34,7 @@ export const LoginForm = () => {
   };
 
   return (
-    <>
+    <div className="login">
       <label htmlFor="username">User:</label>
       <input
         type="text"
@@ -52,6 +52,6 @@ export const LoginForm = () => {
         required
       /> <br />
       <button className="registerbutton" onClick={handleClick}></button>
-    </>
+    </div>
   );
 };
