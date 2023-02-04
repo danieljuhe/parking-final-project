@@ -6,6 +6,15 @@ import {
   faCheck,
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
+import { TextField } from "@mui/material";
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import IconButton from '@mui/material/IconButton'
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputLabel from '@mui/material/InputLabel';
+import InputAdornment from '@mui/material/InputAdornment';
+import FormControl from "@mui/material/FormControl";
+import Button from "@mui/material/Button";
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_@.]{3,33}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{5,21}$/;
@@ -40,6 +49,12 @@ export const Register = () => {
 
   const [errMsg, setErrMsg] = useState("");
   const [success, setSuccess] = useState(false);
+
+  const [showPassword, setShowPassword] = React.useState(false);
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
 
   useEffect(() => {
     userRef.current.focus();
@@ -117,9 +132,9 @@ export const Register = () => {
     <>
       {success ? (
         <section>
-          <h1>Succes!</h1>
+          <h1>Usuario registrado</h1>
           <p>
-            <a href="/login">Login</a>
+            <Button variant="contained" className="linky" href="/login">Login</Button>
           </p>
         </section>
       ) : (
@@ -134,17 +149,15 @@ export const Register = () => {
           <h1>Register Form</h1>
           <form onSubmit={handleSubmit}>
             <label htmlFor="username">
-              Name:
-              <span className={validName ? "valid" : "d-none"}>
-                <FontAwesomeIcon icon={faCheck} />
-              </span>
-              <span className={validName || !user ? "d-none" : "invalid"}>
-                <FontAwesomeIcon icon={faTimes} />
-              </span>
+              <span className={validName ? "valid" : "d-none"}> </span>
+              <span className={validName || !user ? "d-none" : "invalid"}> </span>
             </label>
             <br />
-            <input
+            <TextField
               type="text"
+              label="Nombre"
+              variant="outlined"
+              size="small"
               id="username"
               ref={userRef}
               autoComplete="off"
@@ -155,14 +168,12 @@ export const Register = () => {
               onFocus={() => setUserFocus(true)}
               onBlur={() => setUserFocus(false)}
             />
-
             <p
               id="uidnote"
               className={
                 userFocus && user && !validName ? "instructions" : "d-none"
               }
             >
-              <FontAwesomeIcon icon={faCircleInfo} />
               4 a 23 caracteres
               <br />
               Debe empezar con una letra.
@@ -172,17 +183,15 @@ export const Register = () => {
             <br />
 
             <label htmlFor="surname">
-              Surname:
-              <span className={validNameS ? "valid" : "d-none"}>
-                <FontAwesomeIcon icon={faCheck} />
-              </span>
-              <span className={validNameS || !userS ? "d-none" : "invalid"}>
-                <FontAwesomeIcon icon={faTimes} />
-              </span>
+              <span className={validNameS ? "valid" : "d-none"}></span>
+              <span className={validNameS || !userS ? "d-none" : "invalid"}></span>
             </label>
             <br />
-            <input
+            <TextField
               type="text"
+              label="Apellido"
+              variant="outlined"
+              size="small"
               id="surname"
               ref={userRef}
               autoComplete="off"
@@ -192,14 +201,12 @@ export const Register = () => {
               onFocus={() => setUserSFocus(true)}
               onBlur={() => setUserSFocus(false)}
             />
-
             <p
               id="uidnote"
               className={
                 userSFocus && user && !validNameS ? "instructions" : "d-none"
               }
             >
-              <FontAwesomeIcon icon={faCircleInfo} />
               4 a 23 caracteres
               <br />
               Debe empezar con una letra.
@@ -209,17 +216,15 @@ export const Register = () => {
             <br />
 
             <label htmlFor="mobile">
-              Mobile:
-              <span className={validMobile ? "valid" : "d-none"}>
-                <FontAwesomeIcon icon={faCheck} />
-              </span>
-              <span className={validMobile || !user ? "d-none" : "invalid"}>
-                <FontAwesomeIcon icon={faTimes} />
-              </span>
+              <span className={validMobile ? "valid" : "d-none"}></span>
+              <span className={validMobile || !user ? "d-none" : "invalid"}> </span>
             </label>
             <br />
-            <input
+            <TextField
               type="text"
+              label="Movil"
+              variant="outlined"
+              size="small"
               id="mobile"
               ref={userRef}
               autoComplete="off"
@@ -238,7 +243,6 @@ export const Register = () => {
                   : "d-none"
               }
             >
-              <FontAwesomeIcon icon={faCircleInfo} />
               4 a 23 caracteres
               <br />
               Valido guion y mas - +.
@@ -246,17 +250,15 @@ export const Register = () => {
             <br />
 
             <label htmlFor="email">
-              Email:
-              <span className={validEmail ? "valid" : "d-none"}>
-                <FontAwesomeIcon icon={faCheck} />
-              </span>
-              <span className={validEmail || !user ? "d-none" : "invalid"}>
-                <FontAwesomeIcon icon={faTimes} />
-              </span>
+              <span className={validEmail ? "valid" : "d-none"}></span>
+              <span className={validEmail || !user ? "d-none" : "invalid"}></span>
             </label>
             <br />
-            <input
+            <TextField
               type="text"
+              label="Email"
+              variant="outlined"
+              size="small"
               id="email"
               ref={userRef}
               autoComplete="off"
@@ -270,7 +272,6 @@ export const Register = () => {
 
             <br />
             <label htmlFor="password">
-              Password:
               <span className={validPwd ? "valid" : "d-none"}>
                 <FontAwesomeIcon icon={faCheck} />
               </span>
@@ -279,21 +280,37 @@ export const Register = () => {
               </span>
             </label>
             <br />
-            <input
-              type="password"
-              id="password"
-              onChange={(e) => setPwd(e.target.value)}
-              required
-              aria-invalid={validPwd ? "false" : "true"}
-              aria-describedby="pwdnote"
-              onFocus={() => setPwdFocus(true)}
-              onBlur={() => setPwdFocus(false)}
-            />
+            <FormControl sx={{ width: '26ch' }} variant="outlined">
+              <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+              <OutlinedInput
+                id="password"
+                size="small"
+                onChange={(e) => setPwd(e.target.value)}
+                required
+                aria-invalid={validPwd ? "false" : "true"}
+                aria-describedby="pwdnote"
+                onFocus={() => setPwdFocus(true)}
+                onBlur={() => setPwdFocus(false)}
+                type={showPassword ? 'text' : 'password'}
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                      edge="end"
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                }
+                label="Password"
+              />
+            </FormControl>
             <p
               id="pwdnote"
               className={pwdFocus && !validPwd ? "instructions" : "d-none"}
             >
-              <FontAwesomeIcon icon={faCircleInfo} />
               Al menos 6 a 20 caracteres.
               <br />
               Debe de contener mayusculas, minisculas, y un numero obligatorio.{" "}
@@ -302,7 +319,6 @@ export const Register = () => {
             <br />
 
             <label htmlFor="confirm_pwd">
-              Confirm your password:
               <span className={validMatch && matchPwd ? "valid" : "d-none"}>
                 <FontAwesomeIcon icon={faCheck} />
               </span>
@@ -311,17 +327,33 @@ export const Register = () => {
               </span>
             </label>
             <br />
-            <input
-              type="password"
-              id="confirm_pwd"
-              onChange={(e) => setMatchPwd(e.target.value)}
-              required
-              aria-invalid={validMatch ? "false" : "true"}
-              aria-describedby="confirmnote"
-              onFocus={() => setMatchFocus(true)}
-              onBlur={() => setMatchFocus(false)}
-            />
-
+            <FormControl sx={{ width: '26ch' }} variant="outlined">
+              <InputLabel htmlFor="outlined-adornment-password">Confirmar</InputLabel>
+              <OutlinedInput
+                size="small"
+                id="confirm_pwd"
+                onChange={(e) => setMatchPwd(e.target.value)}
+                required
+                aria-invalid={validMatch ? "false" : "true"}
+                aria-describedby="confirmnote"
+                onFocus={() => setMatchFocus(true)}
+                onBlur={() => setMatchFocus(false)}
+                type={showPassword ? 'text' : 'password'}
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                      edge="end"
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                }
+                label="Password"
+              />
+            </FormControl>
             <p
               id="confirmnote"
               className={matchFocus && !validMatch ? "instructions" : "d-none"}
@@ -330,21 +362,16 @@ export const Register = () => {
             </p>
             <br />
             <br />
-            <button
-              className="registerbutton"
-              disabled={!validName || !validPwd || !validMatch ? true : false}
-            ></button>
+            <button className="registerbutton" disabled={!validName || !validPwd || !validMatch ? true : false}>ENVIAR</button>
           </form>
-
           <p>
             Ya estas registrado?</p>
           <br />
           <div className="logearse">
             <span className="line">
-              <a href="/login">Login</a>
+              <Button variant="contained" href="/login" className="linky">Login</Button>
             </span>
           </div>
-
         </section>
       )}
     </>
