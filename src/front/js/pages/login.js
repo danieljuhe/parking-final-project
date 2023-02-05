@@ -3,8 +3,6 @@ import { LoginForm } from "../component/loginform";
 
 export const Login = () => {
   return (
-
     <LoginForm />
-
   );
 };

@@ -3,14 +3,14 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin-top: 250px;
+  margin-top: 10rem;
   justify-content: space-evenly;
   margin-bottom: 250px;
 }
 
 .register {
-  width: 400px;
-  height: fit-content;
+  width: 30rem;
+  height: 50rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -38,6 +38,7 @@ h2 {
 
 #uidnote {
   width: 14rem;
+  height: 1.6rem;
   text-align: left;
   text-decoration: none;
   font-size: 0.9em;
@@ -45,6 +46,7 @@ h2 {
 }
 
 #confirmnote {
+  height: 1.6rem;
   width: 14rem;
   text-align: left;
   text-decoration: none;
@@ -52,6 +54,7 @@ h2 {
   font-weight: 400;
 }
 #pwdnote {
+  height: 1.6rem;
   width: 14rem;
   text-align: left;
   text-decoration: none;
@@ -79,7 +82,6 @@ h2 {
   height: fit-content;
   box-shadow: 0px 0px 119px -6px rgb(168, 168, 168);
   display: flex;
-  background-color: white;
   flex-direction: column;
   align-items: center;
   justify-content: center;

@@ -7,9 +7,7 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import IconButton from '@mui/material/IconButton';
 import OutlinedInput from '@mui/material/OutlinedInput';
-import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';
-import FormControl from "@mui/material/FormControl";
 import Avatar from '@mui/material/Avatar';
 import CssBaseline from '@mui/material/CssBaseline';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -20,7 +18,6 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 function Copyright(props) {
@@ -109,31 +106,47 @@ export const LoginForm = () => {
             </Typography>
             <Box component="form" noValidate sx={{ mt: 1 }}>
               <TextField
-                margin="normal"
+                type="text"
+                label="Email"
+                variant="outlined"
+                onChange={handleChange}
+                name="email"
                 required
+                margin="normal"
                 fullWidth
                 id="email"
-                label="Email Address"
-                name="email"
                 autoComplete="email"
                 autoFocus
               />
-              <TextField
+              <OutlinedInput
                 margin="normal"
                 required
                 fullWidth
+                onChange={handleChange}
                 name="password"
                 label="Password"
-                type="password"
-                id="password"
+                type={showPassword ? 'text' : 'password'}
+                id="outlined-adornment-password"
                 autoComplete="current-password"
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                      edge="end"
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                }
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
+                label="Recordarme"
               />
               <Button
-                type="submit"
+                onClick={handleClick}
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
