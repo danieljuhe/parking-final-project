@@ -43,7 +43,6 @@ const Layout = () => {
             <Route element={<Map />} path="/map" />
             <Route element={<PriceGen />} path="/date/:parking_id" />
           </Routes>
-          <Footer />
         </ScrollToTop>
       </BrowserRouter>
     </div>

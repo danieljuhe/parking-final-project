@@ -37,24 +37,16 @@ export const mainListItems = (
     <React.Fragment>
         <Breadcrumbs aria-label="breadcrumb">
             <StyledBreadcrumb
-                sx={{ fontSize: 10 }}
+                sx={{ fontSize: 14 }}
                 component="a"
-                label="Home"
-            /></Breadcrumbs>
+                icon={<HomeIcon sx={{ fontSize: 14 }} />}
+            /></Breadcrumbs><br />
         <ListItemButton>
             <ListItemIcon>
                 <DashboardIcon />
             </ListItemIcon>
             <ListItemText primary="Dashboard" />
         </ListItemButton>
-        <Breadcrumbs aria-label="breadcrumb">
-            <StyledBreadcrumb
-                sx={{ fontSize: 10 }}
-                component="a"
-                href="#"
-                label="Utilidades"
-                icon={<DirectionsCarFilledOutlinedIcon sx={{ fontSize: 10 }} />}
-            /></Breadcrumbs>
         <ListItemButton>
             <ListItemIcon>
                 <ShoppingCartIcon />
@@ -67,38 +59,18 @@ export const mainListItems = (
             </ListItemIcon>
             <ListItemText primary="Reserva" />
         </ListItemButton>
-        <Breadcrumbs aria-label="breadcrumb">
-            <StyledBreadcrumb
-                sx={{ fontSize: 10 }}
-                component="a"
-                href="#"
-                label=""
-                icon={<LocationOnOutlinedIcon sx={{ fontSize: 10 }} />}
-            /></Breadcrumbs>
         <ListItemButton>
             <ListItemIcon>
                 <PeopleIcon />
             </ListItemIcon>
             <ListItemText primary="Ubicacion" />
         </ListItemButton>
-        <Breadcrumbs aria-label="breadcrumb">
-            <StyledBreadcrumb
-                component="a"
-                href="#"
-                label="Servicios"
-            /></Breadcrumbs>
         <ListItemButton>
             <ListItemIcon>
                 <BarChartIcon />
             </ListItemIcon>
             <ListItemText primary="Facturacion" />
         </ListItemButton>
-        <Breadcrumbs aria-label="breadcrumb">
-            <StyledBreadcrumb
-                component="a"
-                href="#"
-                label="Servicios"
-            /></Breadcrumbs>
         <ListItemButton>
             <ListItemIcon>
                 <LayersIcon />
@@ -108,28 +80,3 @@ export const mainListItems = (
     </React.Fragment>
 );
 
-export const secondaryListItems = (
-    <React.Fragment>
-        <ListSubheader component="div" inset>
-            Saved reports
-        </ListSubheader>
-        <ListItemButton>
-            <ListItemIcon>
-                <AssignmentIcon />
-            </ListItemIcon>
-            <ListItemText primary="Current month" />
-        </ListItemButton>
-        <ListItemButton>
-            <ListItemIcon>
-                <AssignmentIcon />
-            </ListItemIcon>
-            <ListItemText primary="Last quarter" />
-        </ListItemButton>
-        <ListItemButton>
-            <ListItemIcon>
-                <AssignmentIcon />
-            </ListItemIcon>
-            <ListItemText primary="Year-end sale" />
-        </ListItemButton>
-    </React.Fragment>
-);

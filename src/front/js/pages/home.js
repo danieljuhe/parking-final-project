@@ -1,5 +1,6 @@
 import React from "react";
 import "../../styles/home.css";
+import Fondo from "../../../../public/bg_hero_1.svg"
 
 export const Home = () => {
   return (

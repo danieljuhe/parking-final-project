@@ -123,9 +123,8 @@ export const ParkingView = () => {
                           parkingSite.occupied == false &&
                           parkingSite.category_id == cCategory
                         ) {
-                          navigate("/date/" + parkingSite.id);
-                          // setModal(parkingSite);
-                          // handleOpenModal();
+                          setModal(parkingSite);
+                          handleOpenModal();
                         }
                       }}
                       style={divStyle}>
@@ -223,7 +222,8 @@ export const ParkingView = () => {
             <button className="confirmar"
               onClick={() => {
                 handleCloseModal();
-                senddata(modal.id);
+                senddata(modal.id)
+                navigate("/date/");
               }}
             >Reservar y pagar</button>
           </div>
