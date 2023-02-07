@@ -16,19 +16,44 @@
 .container span {
   text-decoration: none;
   font-family: "Montserrat", sans-serif;
-  color: #f6f4e6;
   box-shadow: 0;
   text-decoration: none;
-  font-size: 0.7em;
+  font-size: 1em;
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 500;
   display: inline-block;
   width: 80px;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
 
-.container span:hover {
-  color: #fdb53a;
-  box-shadow: #fdb53a;
+.title3:hover {
+  color: #3afda8;
+}
+.title4:hover {
+  color: #3afda8;
+}
+
+.title1:hover {
+  color: rgb(176, 65, 255);
+}
+
+.title2:hover {
+  color: rgb(176, 65, 255);
+}
+
+.title1 {
+  color: rgb(65, 71, 255);
+}
+
+.title2 {
+  color: rgb(65, 71, 255);
+}
+
+.title3 {
+  color: rgb(255, 255, 255);
+}
+
+.title4 {
+  color: rgb(255, 255, 255);
 }

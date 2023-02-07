@@ -29,3 +29,23 @@ body {
   align-items: center;
   justify-content: center;
 }
+
+.containerhome {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.maindiv {
+  margin-top: 10%;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+img {
+  max-width: 40rem;
+  max-height: 50rem;
+}
