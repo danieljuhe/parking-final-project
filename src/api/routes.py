@@ -97,12 +97,12 @@ def edit_car(id):
     new_plate = request.json.get("plate", car.plate)
     new_brand = request.json.get("brand", car.brand)
     new_model = request.json.get("model", car.model)
-    new_category = request.json.get("category", car.category)
+    new_category = request.json.get("category_id", car.category_id)
 
     setattr(car, "plate", new_plate)
     setattr(car, "brand", new_brand)
     setattr(car, "model", new_model)
-    setattr(car, "category", new_category)
+    setattr(car, "category_id", new_category)
 
     db.session.commit()
     return jsonify (car.serialize()), 200

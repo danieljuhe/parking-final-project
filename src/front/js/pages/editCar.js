@@ -55,6 +55,8 @@ const EditCar = () => {
       }}
       noValidate
       autoComplete="off"
+      type="form"
+      onSubmit={handleSubmit}
     >
       <div className="my-2">
         <TextField
@@ -94,16 +96,18 @@ const EditCar = () => {
           id="category"
           select
           fullWidth label="Categoria"
-          defaultValue={listOfCars.category_id.id}
+          defaultValue={listOfCars.category_id}
           name="category_id"
+          onChange={(e) => {
+            setListOfCars({ ...listOfCars, category_id: e.target.value });
+          }}
         >
           {categories.map((value) => {
             return (
               <MenuItem
-
                 key={value.id}
                 value={value.id}
-                selected={listOfCars.category_id.id == value.id ? "selected" : ""}
+
               >
                 {value.name}
               </MenuItem>
@@ -114,7 +118,6 @@ const EditCar = () => {
           <Button
             variant="outlined"
             type="submit"
-            onClick={handleSubmit}
           >Guardar
           </Button>
           <Button

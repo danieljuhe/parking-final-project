@@ -57,7 +57,8 @@ class Car(db.Model):
             "plate": self.plate,
             "brand": self.brand,
             "model": self.model,
-            "category_id": self.category.serialize()
+            "category_id": self.category_id,
+            "category": self.category.serialize()
         }
         data["user"] = self.my_cars[0].user.serialize() if self.my_cars else None
         return data

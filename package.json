@@ -84,7 +84,7 @@
 		"@fortawesome/react-fontawesome": "^0.2.0",
 		"@material-ui/pickers": "^3.3.10",
 		"@mui/icons-material": "^5.11.0",
-		"@mui/material": "^5.11.7",
+		"@mui/material": "^5.11.8",
 		"@mui/styled-engine-sc": "^5.11.0",
 		"@stripe/react-stripe-js": "^1.16.4",
 		"@stripe/stripe-js": "^1.46.0",
