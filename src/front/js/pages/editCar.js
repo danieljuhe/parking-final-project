@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import MenuItem from '@mui/material/MenuItem';
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
 
 const EditCar = () => {
   const params = useParams();
@@ -41,8 +46,88 @@ const EditCar = () => {
 
 
   return listOfCars && listOfCars.model ? (
-    <form onSubmit={handleSubmit}>
+    <Box
+      className="container mt-3"
+      component="form"
+      sx={{
+        width: 500,
+        maxWidth: '100%',
+      }}
+      noValidate
+      autoComplete="off"
+    >
+      <div className="my-2">
+        <TextField
+          fullWidth label="Marca"
+          required
+          id="Brand"
+          defaultValue={listOfCars.brand}
+          onChange={(e) => {
+            setListOfCars({ ...listOfCars, brand: e.target.value });
+          }}
+        />
+      </div>
+      <div className="my-2">
+        <TextField
+          fullWidth label="Modelo"
+          required
+          id="Model"
+          defaultValue={listOfCars.model}
+          onChange={(e) => {
+            setListOfCars({ ...listOfCars, model: e.target.value });
+          }}
+        />
+      </div>
+      <div className="my-2">
+        <TextField
+          fullWidth label="Matricula"
+          required
+          id="Plate"
+          defaultValue={listOfCars.plate}
+          onChange={(e) => {
+            setListOfCars({ ...listOfCars, plate: e.target.value });
+          }}
+        />
+      </div>
+      <div className="my-2">
+        <TextField
+          id="category"
+          select
+          fullWidth label="Categoria"
+          defaultValue={listOfCars.category_id.id}
+          name="category_id"
+        >
+          {categories.map((value) => {
+            return (
+              <MenuItem
+
+                key={value.id}
+                value={value.id}
+                selected={listOfCars.category_id.id == value.id ? "selected" : ""}
+              >
+                {value.name}
+              </MenuItem>
+            );
+          })}
+        </TextField>
+        <Stack spacing={2} direction="row" className="container my-2">
+          <Button
+            variant="outlined"
+            type="submit"
+            onClick={handleSubmit}
+          >Guardar
+          </Button>
+          <Button
+            variant="outlined"
+          >Cancelar
+          </Button>
+        </Stack>
+      </div>
+    </Box>
+
+    /*<form onSubmit={handleSubmit}>
       <div className="mb-3">
+        image.png
         <label for="Plate" className="form-label">
           Plate
         </label>
@@ -119,7 +204,7 @@ const EditCar = () => {
       >
         Guardar
       </button>
-    </form>
+    </form>*/
   ) : "";
 };
 

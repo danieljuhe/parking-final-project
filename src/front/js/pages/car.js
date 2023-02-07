@@ -1,36 +1,31 @@
 import React from "react";
-import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 
-const bull = (
-  <Box
-    component="span"
-    sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-  >
-    •
-  </Box>
-);
 
 const Car = (props) => {
   return (
-    <Card sx={{ minWidth: 275 }}>
-      <CardContent>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          Tu coche
-        </Typography>
-        <Typography variant="h5" component="div" gutterBottom>
-          {props.brand}  {props.model}
-        </Typography>
-
-        <Typography variant="body2">
-          <p>Plate: {props.plate}</p>
-          <p>Category: {props.category}</p>
-        </Typography>
-      </CardContent>
-    </Card>
+    <div className="container">
+      <div className="row ">
+        <div >
+          <Card container item spacing={3} className="mt-3">
+            <CardContent>
+              <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                Tu coche
+              </Typography>
+              <Typography sx={{ fontSize: 25 }}>
+                {props.brand}  {props.model}
+              </Typography>
+              <Typography variant="body2">
+                <p>Matricula: {props.plate}</p>
+                <p>Categoria: {props.category}</p>
+              </Typography>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    </div>
 
     /*<div>
         <div className="card">

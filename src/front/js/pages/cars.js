@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Car from "./car";
-import "../../styles/modal.css";
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
@@ -59,7 +58,7 @@ const Cars = () => {
 
   return (
     <div className="container">
-      <div className="row col-4">
+      <div className="row ">
         {listOfCars?.map((car, index) => {
           return (
             <div key={index}>
@@ -69,36 +68,38 @@ const Cars = () => {
                 model={car.model}
                 category={car.category_id.name}
               />
-              <Stack spacing={2} direction="row">
+              <Stack spacing={2} direction="row" className="container my-2">
                 <Button variant="outlined"
                   onClick={() => handleEditClick(car.id)}
                 >Editar
                 </Button>
-              </Stack>
-              <Button onClick={() => handleOpen(car)}>Eliminar</Button>
-              <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-              >
-                <Box sx={style}>
-                  <button onClick={handleClose} className="cancelar">X</button>
-                  <Typography id="modal-modal-title" variant="h6" component="h2">
-                    WARNING
-                  </Typography>
-                  <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    Seguro que desea elimiar el {open.brand} {open.model}?
-                  </Typography>
-                  <button className="confirmar"
-                    onClick={() => {
-                      handleDeleteClick(open.id);
-                      handleClose();
-                    }}
-                  >Eliminar</button>
-                </Box>
-              </Modal>
 
+                <Button
+                  variant="contained"
+                  onClick={() => handleOpen(car)}>Eliminar</Button>
+                <Modal
+                  open={open}
+                  onClose={handleClose}
+                  aria-labelledby="modal-modal-title"
+                  aria-describedby="modal-modal-description"
+                >
+                  <Box sx={style}>
+                    <button onClick={handleClose} className="cancelar">X</button>
+                    <Typography id="modal-modal-title" variant="h6" component="h2">
+                      WARNING
+                    </Typography>
+                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                      Seguro que desea elimiar el {open.brand} {open.model}?
+                    </Typography>
+                    <button className="confirmar"
+                      onClick={() => {
+                        handleDeleteClick(open.id);
+                        handleClose();
+                      }}
+                    >Eliminar</button>
+                  </Box>
+                </Modal>
+              </Stack>
             </div>
           )
         })}
