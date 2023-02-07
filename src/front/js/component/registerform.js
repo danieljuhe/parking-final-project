@@ -13,11 +13,12 @@ import FormControl from "@mui/material/FormControl";
 import Button from "@mui/material/Button";
 import Avatar from '@mui/material/Avatar';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import CssBaseline from '@mui/material/CssBaseline';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
 import Paper from '@mui/material/Paper';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
@@ -148,289 +149,277 @@ export const Register = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Grid container component="main" sx={{ height: '100vh' }}>
-        <CssBaseline />
-        <Grid
-          item
-          xs={false}
-          sm={4}
-          md={7}
+      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+        <Box
           sx={{
-            backgroundImage: 'url(https://www.mandtsystem.com/wp-content/uploads/iStock-116501241.jpg)',
-            backgroundRepeat: 'no-repeat',
-            backgroundColor: (t) =>
-              t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
+            my: 8,
+            mx: 4,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
           }}
-        />
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-          <Box
-            sx={{
-              my: 8,
-              mx: 4,
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-            }}
-          >
-            {success ? (
-              <section>
-                <h1>Usuario registrado</h1>
-                <p>
-                  <Button variant="contained" className="linky" href="/login">Login</Button>
-                </p>
-              </section>
-            ) : (
-              <section>
-                <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-                <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                  <LockOutlinedIcon />
-                </Avatar>
-                <Typography component="h1" variant="h5">
-                  Registrate
-                </Typography>
-                <form onSubmit={handleSubmit}>
-                  <label htmlFor="username">
-                    <span className={validName ? "valid" : "d-none"}> </span>
-                    <span className={validName || !user ? "d-none" : "invalid"}> </span>
-                  </label>
-                  <br />
-                  <Grid container spacing={2}>
-                    <Grid item xs={12} sm={6}>
-                      <TextField
-                        type="text"
-                        label="Nombre"
-                        variant="outlined"
-                        size="small"
-                        id="username"
-                        ref={userRef}
-                        autoComplete="off"
-                        onChange={(e) => setUser(e.target.value)}
-                        required
-                        aria-invalid={validName ? "false" : "true"}
-                        aria-describedby="uidnote"
-                        onFocus={() => setUserFocus(true)}
-                        onBlur={() => setUserFocus(false)}
-                      />
-                      <p
-                        id="uidnote"
-                        className={
-                          userFocus && user && !validName ? "instructions" : "d-none"
-                        }
-                      >
-                        4 a 23 caracteres
-                        <br />
-                        Debe empezar con una letra.
-                        <br />
-                        Valido letras, numeros y guion bajo.
-                      </p>
+        >
+          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Registrate
+          </Typography>
+          {success ? (
+            <section>
+              <h1>Usuario registrado</h1>
+              <p>
+                <Button variant="contained" className="linky" href="/login">Login</Button>
+              </p>
+            </section>
+          ) : (
+            <section>
+              <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+              <form onSubmit={handleSubmit}>
+                <label htmlFor="username">
+                  <span className={validName ? "valid" : "d-none"}> </span>
+                  <span className={validName || !user ? "d-none" : "invalid"}> </span>
+                </label>
+                <br />
+                <Grid container spacing={2}>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      type="text"
+                      label="Nombre"
+                      variant="outlined"
+                      size="small"
+                      id="username"
+                      ref={userRef}
+                      autoComplete="off"
+                      onChange={(e) => setUser(e.target.value)}
+                      required
+                      aria-invalid={validName ? "false" : "true"}
+                      aria-describedby="uidnote"
+                      onFocus={() => setUserFocus(true)}
+                      onBlur={() => setUserFocus(false)}
+                    />
+                    <p
+                      id="uidnote"
+                      className={
+                        userFocus && user && !validName ? "instructions" : "d-none"
+                      }
+                    >
+                      4 a 23 caracteres
                       <br />
+                      Debe empezar con una letra.
+                      <br />
+                      Valido letras, numeros y guion bajo.
+                    </p>
+                    <br />
 
-                      <label htmlFor="surname">
-                        <span className={validNameS ? "valid" : "d-none"}></span>
-                        <span className={validNameS || !userS ? "d-none" : "invalid"}></span>
-                      </label>
-                      <br />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <TextField
-                        type="text"
-                        label="Apellido"
-                        variant="outlined"
-                        size="small"
-                        id="surname"
-                        ref={userRef}
-                        autoComplete="off"
-                        onChange={(e) => setUserS(e.target.value)}
-                        aria-invalid={validNameS ? "false" : "true"}
-                        aria-describedby="uidnote"
-                        onFocus={() => setUserSFocus(true)}
-                        onBlur={() => setUserSFocus(false)}
-                      />
-                      <p
-                        id="uidnote"
-                        className={
-                          userSFocus && user && !validNameS ? "instructions" : "d-none"
-                        }
-                      >
-                        4 a 23 caracteres
-                        <br />
-                        Debe empezar con una letra.
-                        <br />
-                        Valido letras, numeros y guion bajo.
-                      </p>
-                      <br />
-
-                      <label htmlFor="mobile">
-                        <span className={validMobile ? "valid" : "d-none"}></span>
-                        <span className={validMobile || !user ? "d-none" : "invalid"}> </span>
-                      </label>
-                      <br />
-                    </Grid>
+                    <label htmlFor="surname">
+                      <span className={validNameS ? "valid" : "d-none"}></span>
+                      <span className={validNameS || !userS ? "d-none" : "invalid"}></span>
+                    </label>
+                    <br />
                   </Grid>
-                  <TextField
-                    type="text"
-                    label="Movil"
-                    variant="outlined"
-                    fullWidth
-                    size="small"
-                    id="mobile"
-                    ref={userRef}
-                    autoComplete="off"
-                    onChange={(e) => setMobile(e.target.value)}
-                    required
-                    aria-invalid={validName ? "false" : "true"}
-                    aria-describedby="uidnote"
-                    onFocus={() => setMobileFocus(true)}
-                    onBlur={() => setMobileFocus(false)}
-                  />
-                  <p
-                    id="uidnote"
-                    className={
-                      mobileFocus && mobile && !validMobile
-                        ? "instructions"
-                        : "d-none"
-                    }
-                  >
-                    4 a 23 caracteres
-                    <br />
-                    Valido guion y mas - +.
-                  </p>
-                  <br />
-
-                  <label htmlFor="email">
-                    <span className={validEmail ? "valid" : "d-none"}></span>
-                    <span className={validEmail || !user ? "d-none" : "invalid"}></span>
-                  </label>
-                  <br />
-                  <TextField
-                    type="text"
-                    label="Email"
-                    variant="outlined"
-                    size="small"
-                    fullWidth
-                    id="email"
-                    ref={userRef}
-                    autoComplete="off"
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                    aria-invalid={validEmail ? "false" : "true"}
-                    aria-describedby="uidnote"
-                    onFocus={() => setEmailFocus(true)}
-                    onBlur={() => setEmailFocus(false)}
-                  />
-
-                  <br />
-                  <label htmlFor="password">
-                    <span className={validPwd ? "valid" : "d-none"}>
-                      <FontAwesomeIcon icon={faCheck} />
-                    </span>
-                    <span className={validPwd || !pwd ? "d-none" : "invalid"}>
-                      <FontAwesomeIcon icon={faTimes} />
-                    </span>
-                  </label>
-                  <br />
-                  <FormControl sx={{ mt: 1 }} variant="outlined" fullWidth>
-                    <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-                    <OutlinedInput
-                      id="password"
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      type="text"
+                      label="Apellido"
+                      variant="outlined"
                       size="small"
-                      fullWidth
-                      onChange={(e) => setPwd(e.target.value)}
-                      required
-                      aria-invalid={validPwd ? "false" : "true"}
-                      aria-describedby="pwdnote"
-                      onFocus={() => setPwdFocus(true)}
-                      onBlur={() => setPwdFocus(false)}
-                      type={showPassword ? 'text' : 'password'}
-                      endAdornment={
-                        <InputAdornment position="end">
-                          <IconButton
-                            aria-label="toggle password visibility"
-                            onClick={handleClickShowPassword}
-                            onMouseDown={handleMouseDownPassword}
-                            edge="end"
-                          >
-                            {showPassword ? <VisibilityOff /> : <Visibility />}
-                          </IconButton>
-                        </InputAdornment>
-                      }
-                      label="Password"
+                      id="surname"
+                      ref={userRef}
+                      autoComplete="off"
+                      onChange={(e) => setUserS(e.target.value)}
+                      aria-invalid={validNameS ? "false" : "true"}
+                      aria-describedby="uidnote"
+                      onFocus={() => setUserSFocus(true)}
+                      onBlur={() => setUserSFocus(false)}
                     />
-                  </FormControl>
-                  <p
-                    id="pwdnote"
-                    className={pwdFocus && !validPwd ? "instructions" : "d-none"}
-                  >
-                    Al menos 6 a 20 caracteres.
+                    <p
+                      id="uidnote"
+                      className={
+                        userSFocus && user && !validNameS ? "instructions" : "d-none"
+                      }
+                    >
+                      4 a 23 caracteres
+                      <br />
+                      Debe empezar con una letra.
+                      <br />
+                      Valido letras, numeros y guion bajo.
+                    </p>
                     <br />
-                    Debe de contener mayusculas, minisculas, y un numero obligatorio.{" "}
-                    <br />
-                  </p>
-                  <br />
 
-                  <label htmlFor="confirm_pwd">
-                    <span className={validMatch && matchPwd ? "valid" : "d-none"}>
-                      <FontAwesomeIcon icon={faCheck} />
-                    </span>
-                    <span className={validMatch || !matchPwd ? "d-none" : "invalid"}>
-                      <FontAwesomeIcon icon={faTimes} />
-                    </span>
-                  </label>
-                  <br />
-                  <FormControl sx={{ mt: 1 }} variant="outlined" fullWidth>
-                    <InputLabel htmlFor="outlined-adornment-password">Confirmar</InputLabel>
-                    <OutlinedInput
-                      size="small"
-                      id="confirm_pwd"
-                      onChange={(e) => setMatchPwd(e.target.value)}
-                      required
-                      aria-invalid={validMatch ? "false" : "true"}
-                      aria-describedby="confirmnote"
-                      onFocus={() => setMatchFocus(true)}
-                      onBlur={() => setMatchFocus(false)}
-                      type={showPassword ? 'text' : 'password'}
-                      endAdornment={
-                        <InputAdornment position="end">
-                          <IconButton
-                            aria-label="toggle password visibility"
-                            onClick={handleClickShowPassword}
-                            onMouseDown={handleMouseDownPassword}
-                            edge="end"
-                          >
-                            {showPassword ? <VisibilityOff /> : <Visibility />}
-                          </IconButton>
-                        </InputAdornment>
-                      }
-                      label="Password"
-                    />
-                  </FormControl>
-                  <p
-                    id="confirmnote"
-                    className={matchFocus && !validMatch ? "instructions" : "d-none"}
-                  >
-                    Debe ser igual al password.
-                  </p>
-                  <br />
-                  <br />
-                  <button className="registerbutton" disabled={!validName || !validPwd || !validMatch ? true : false}>ENVIAR</button>
-                </form>
-                <Grid container justifyContent="flex-end">
-                  <Grid item>
-                    <Link href="#" variant="body2">
-                      Tienes una cuenta? Logeate
-                    </Link>
+                    <label htmlFor="mobile">
+                      <span className={validMobile ? "valid" : "d-none"}></span>
+                      <span className={validMobile || !user ? "d-none" : "invalid"}> </span>
+                    </label>
+                    <br />
                   </Grid>
                 </Grid>
-                <Copyright sx={{ mt: 5 }} />
-              </section>
+                <TextField
+                  type="text"
+                  label="Movil"
+                  variant="outlined"
+                  fullWidth
+                  size="small"
+                  id="mobile"
+                  ref={userRef}
+                  autoComplete="off"
+                  onChange={(e) => setMobile(e.target.value)}
+                  required
+                  aria-invalid={validName ? "false" : "true"}
+                  aria-describedby="uidnote"
+                  onFocus={() => setMobileFocus(true)}
+                  onBlur={() => setMobileFocus(false)}
+                />
+                <p
+                  id="uidnote"
+                  className={
+                    mobileFocus && mobile && !validMobile
+                      ? "instructions"
+                      : "d-none"
+                  }
+                >
+                  4 a 23 caracteres
+                  <br />
+                  Valido guion y mas - +.
+                </p>
+                <br />
 
-            )}
-          </Box>
-        </Grid>
+                <label htmlFor="email">
+                  <span className={validEmail ? "valid" : "d-none"}></span>
+                  <span className={validEmail || !user ? "d-none" : "invalid"}></span>
+                </label>
+                <br />
+                <TextField
+                  type="text"
+                  label="Email"
+                  variant="outlined"
+                  size="small"
+                  fullWidth
+                  id="email"
+                  ref={userRef}
+                  autoComplete="off"
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  aria-invalid={validEmail ? "false" : "true"}
+                  aria-describedby="uidnote"
+                  onFocus={() => setEmailFocus(true)}
+                  onBlur={() => setEmailFocus(false)}
+                />
+
+                <br />
+                <label htmlFor="password">
+                  <span className={validPwd ? "valid" : "d-none"}>
+                    <FontAwesomeIcon icon={faCheck} />
+                  </span>
+                  <span className={validPwd || !pwd ? "d-none" : "invalid"}>
+                    <FontAwesomeIcon icon={faTimes} />
+                  </span>
+                </label>
+                <br />
+                <FormControl sx={{ mt: 1 }} variant="outlined" fullWidth>
+                  <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                  <OutlinedInput
+                    id="password"
+                    size="small"
+                    fullWidth
+                    onChange={(e) => setPwd(e.target.value)}
+                    required
+                    aria-invalid={validPwd ? "false" : "true"}
+                    aria-describedby="pwdnote"
+                    onFocus={() => setPwdFocus(true)}
+                    onBlur={() => setPwdFocus(false)}
+                    type={showPassword ? 'text' : 'password'}
+                    endAdornment={
+                      <InputAdornment position="end">
+                        <IconButton
+                          aria-label="toggle password visibility"
+                          onClick={handleClickShowPassword}
+                          onMouseDown={handleMouseDownPassword}
+                          edge="end"
+                        >
+                          {showPassword ? <VisibilityOff /> : <Visibility />}
+                        </IconButton>
+                      </InputAdornment>
+                    }
+                    label="Password"
+                  />
+                </FormControl>
+                <p
+                  id="pwdnote"
+                  className={pwdFocus && !validPwd ? "instructions" : "d-none"}
+                >
+                  Al menos 6 a 20 caracteres.
+                  <br />
+                  Debe de contener mayusculas, minisculas, y un numero obligatorio.{" "}
+                  <br />
+                </p>
+                <br />
+
+                <label htmlFor="confirm_pwd">
+                  <span className={validMatch && matchPwd ? "valid" : "d-none"}>
+                    <FontAwesomeIcon icon={faCheck} />
+                  </span>
+                  <span className={validMatch || !matchPwd ? "d-none" : "invalid"}>
+                    <FontAwesomeIcon icon={faTimes} />
+                  </span>
+                </label>
+                <br />
+                <FormControl sx={{ mt: 1 }} variant="outlined" fullWidth>
+                  <InputLabel htmlFor="outlined-adornment-password">Confirmar</InputLabel>
+                  <OutlinedInput
+                    size="small"
+                    id="confirm_pwd"
+                    onChange={(e) => setMatchPwd(e.target.value)}
+                    required
+                    aria-invalid={validMatch ? "false" : "true"}
+                    aria-describedby="confirmnote"
+                    onFocus={() => setMatchFocus(true)}
+                    onBlur={() => setMatchFocus(false)}
+                    type={showPassword ? 'text' : 'password'}
+                    endAdornment={
+                      <InputAdornment position="end">
+                        <IconButton
+                          aria-label="toggle password visibility"
+                          onClick={handleClickShowPassword}
+                          onMouseDown={handleMouseDownPassword}
+                          edge="end"
+                        >
+                          {showPassword ? <VisibilityOff /> : <Visibility />}
+                        </IconButton>
+                      </InputAdornment>
+                    }
+                    label="Password"
+                  />
+                </FormControl>
+                <p
+                  id="confirmnote"
+                  className={matchFocus && !validMatch ? "instructions" : "d-none"}
+                >
+                  Debe ser igual al password.
+                </p>
+                <br />
+                <FormControlLabel
+                  control={<Checkbox value="remember" color="primary" />}
+                  label="Recordarme"
+                />
+                <br />
+                <button className="registerbutton" disabled={!validName || !validPwd || !validMatch ? true : false}>ENVIAR</button>
+              </form>
+
+              <Grid container justifyContent="flex-end">
+                <Grid item>
+                  <Link href="/login" variant="body2">
+                    Tienes una cuenta? Accede
+                  </Link>
+                </Grid>
+              </Grid><br />
+              <Button variant="contained" href="/" fullWidth>Home</Button>
+              <Copyright sx={{ mt: 5 }} />
+            </section>
+          )}
+        </Box>
       </Grid>
-    </ThemeProvider>
+    </ThemeProvider >
   );
 }
 

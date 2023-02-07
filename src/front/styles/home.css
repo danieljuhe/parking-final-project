@@ -48,4 +48,10 @@ body {
 img {
   max-width: 40rem;
   max-height: 50rem;
+  border-radius: 5px;
+}
+
+.badgebuttons {
+  display: flex;
+  justify-content: space-evenly;
 }

@@ -23,6 +23,17 @@ import { mainListItems } from '../component/listitem';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import { ParkingView } from "../component/parkingview";
+import { Map } from "../component/maps";
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import LocalParkingOutlinedIcon from '@mui/icons-material/LocalParkingOutlined';
+import EmojiTransportationOutlinedIcon from '@mui/icons-material/EmojiTransportationOutlined';
+import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
+import CreditScoreOutlinedIcon from '@mui/icons-material/CreditScoreOutlined';
+import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
+import { PriceGen } from "../component/pricegendata";
 
 function Copyright(props) {
   return (
@@ -83,6 +94,35 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
     },
   }),
 );
+
+const StyledBadge = styled(Badge)(({ theme }) => ({
+  '& .MuiBadge-badge': {
+    backgroundColor: '#44b700',
+    color: '#44b700',
+    boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
+    '&::after': {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      borderRadius: '50%',
+      animation: 'ripple 1.2s infinite ease-in-out',
+      border: '1px solid currentColor',
+      content: '""',
+    },
+  },
+  '@keyframes ripple': {
+    '0%': {
+      transform: 'scale(.8)',
+      opacity: 1,
+    },
+    '100%': {
+      transform: 'scale(2.4)',
+      opacity: 0,
+    },
+  },
+}));
 
 const mdTheme = createTheme();
 
@@ -166,7 +206,18 @@ export const UserProfile = () => {
               px: [1],
             }}
           >
+            <Stack direction="row" spacing={2}>
+              <StyledBadge
+                overlap="circular"
+                anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+                variant="dot"
+              >
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+              </StyledBadge>
+            </Stack><>&nbsp;</><>&nbsp;</>
+            Hola<>&nbsp;</>{user && user.name}, <>&nbsp;</>{user && user.surname}
             <IconButton onClick={toggleDrawer}>
+
               <ChevronLeftIcon />
             </IconButton>
           </Toolbar>
@@ -174,7 +225,69 @@ export const UserProfile = () => {
 
           <List component="nav"><br />
             <br></br>
-            {mainListItems}
+
+
+            <React.Fragment>
+
+              <ListItemButton>
+                <ListItemIcon>
+
+                </ListItemIcon>
+              </ListItemButton>
+              <br />
+
+              <ListItemButton>
+                <ListItemIcon>
+                  <DashboardIcon />
+                </ListItemIcon>
+                <ListItemText primary="Dashboard" />
+              </ListItemButton>
+
+              <ListItemButton>
+                <ListItemIcon>
+                  <EmojiTransportationOutlinedIcon />
+                </ListItemIcon>
+                <ListItemText primary="Coches" />
+              </ListItemButton>
+
+              <ListItemButton>
+                <ListItemIcon>
+                  <LocalParkingOutlinedIcon />
+                </ListItemIcon>
+                <ListItemText primary="Reserva" />
+              </ListItemButton>
+
+              <ListItemButton>
+                <ListItemIcon>
+                  <LocationOnOutlinedIcon />
+                </ListItemIcon>
+                <ListItemText primary="Ubicacion" />
+              </ListItemButton>
+
+              <ListItemButton>
+                <ListItemIcon>
+                  <CreditScoreOutlinedIcon />
+                </ListItemIcon>
+                <ListItemText primary="Facturacion" />
+              </ListItemButton>
+
+              <ListItemButton>
+                <ListItemIcon>
+                  <ExitToAppOutlinedIcon onClick={() => {
+                    localStorage.removeItem("token");
+                    navigate("/");
+                  }} />
+                </ListItemIcon>
+                <ListItemText primary="Salir" onClick={() => {
+                  localStorage.removeItem("token");
+                  navigate("/");
+                }} />
+              </ListItemButton>
+
+            </React.Fragment>
+
+
+
           </List>
         </Drawer>
         <Box
@@ -198,31 +311,14 @@ export const UserProfile = () => {
                     p: 2,
                     display: 'flex',
                     flexDirection: 'column',
-                    height: 240,
+                    height: 'fit-content',
+                    width: 'fit-content',
                   }}
                 >
-                  <ParkingView />
+                  <PriceGen />
                 </Paper>
               </Grid>
 
-              <Grid item xs={12} md={4} lg={3}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: 240,
-                  }}
-                >
-
-                </Paper>
-              </Grid>
-
-              <Grid item xs={12}>
-                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-
-                </Paper>
-              </Grid>
             </Grid>
             <Copyright sx={{ pt: 4 }} />
           </Container>

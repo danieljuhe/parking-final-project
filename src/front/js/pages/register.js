@@ -4,6 +4,10 @@ import { Register } from "../component/registerform";
 
 export const Reg = () => {
   return (
-    <Register />
+    <div className="main">
+      <div className="register">
+        <Register />
+      </div>
+    </div>
   );
 };

@@ -5,8 +5,8 @@ export const Home = () => {
   return (
     <div className="containerhome">
       <div className="maindiv">
-        <div class="position-relative">
-          <div class="position-relative top-900">
+        <div className="position-relative">
+          <div className="position-relative top-900">
             <div className="page-hero-section bg-image hero-home-1">
               <div className="hero-caption pt-5">
                 <div className="container h-100">
@@ -16,8 +16,10 @@ export const Home = () => {
                       <h1 className="mb-4">Administra facilmente tu Parking</h1>
                       <p className="mb-4">ParkingLot tiene componentes para ver y manejar<br />
                         tu negocio, como el mapeo de plazas y automatizacion de clientes.</p>
-                      <a href="/register" className="btn btn-primary rounded-pill">Registrate ahora</a>
-                      <a href="/login" className="btn btn-primary rounded-pill">Accede a tu cuenta</a>
+                      <div className="badgebuttons">
+                        <a href="/register" className="btn btn-primary rounded-pill">Registrate ahora</a>
+                        <a href="/login" className="btn btn-primary rounded-pill">Accede a tu cuenta</a>
+                      </div>
                     </div>
                     <div className="col-lg-6 d-none d-lg-block wow zoomIn">
                       <div className="img-place mobile-preview shadow floating-animate">
