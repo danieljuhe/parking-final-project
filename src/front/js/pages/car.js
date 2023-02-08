@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 const Car = (props) => {
 
   return (
-    <div className="cardCar container">
+    <div className="container">
       <div className="row">
         <div >
           <Card container item spacing={3} className="mt-3">

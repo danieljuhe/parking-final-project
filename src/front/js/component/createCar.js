@@ -132,7 +132,10 @@ const CreateCar = () => {
         <Button
           variant="outlined"
           type="submit"
-          onClick={alertaEliminar}
+          onClick={() => {
+            alertaEliminar()
+            navigate("/cars")
+          }}
         >Guardar
         </Button>
         <Button

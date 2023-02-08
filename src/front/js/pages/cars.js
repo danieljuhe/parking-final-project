@@ -1,42 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Car from "./car";
-import swal from "sweetalert";
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Stack from '@mui/material/Stack';
-import Box from '@mui/material/Box';
-import Modal from '@mui/material/Modal';
 
-
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
 
 const Cars = () => {
-  const [open, setOpen] = useState(false);
-  const handleOpen = (car) => setOpen(car);
-  const handleClose = () => setOpen(false);
   const [listOfCars, setListOfCars] = useState([]);
   const navigate = useNavigate();
 
-
-  const alertaEliminar = () => {
-    swal({
-      title: "Seguro desea elimar el coche?",
-      icon: "warning",
-      buttons: ["Cancelar", "Elimanar"]
-
-    })
-  }
 
   useEffect(() => {
     fetch(process.env.BACKEND_URL + "/api/list_car")
@@ -67,56 +37,58 @@ const Cars = () => {
 
   return (
     <div className="container">
-      <div className="row ">
+      <div className="row">
         {listOfCars?.map((car, index) => {
           return (
-            <div key={index}>
+            <div className="col-md-6" key={index}>
               <Car
                 brand={car.brand}
                 plate={car.plate}
                 model={car.model}
                 category={car.category.name}
               />
-              <Stack spacing={2} direction="row" className="container my-2">
-                <Button variant="outlined"
-                  onClick={() => handleEditClick(car.id)}
-                >Editar
-                </Button>
-
-                <Button
-                  variant="outlined"
-                  onClick={() => {
-                    alertaEliminar()
-                    handleOpen(car)
-                  }}
-                >Eliminar</Button>
-                <Modal
-                  open={open}
-                  onClose={handleClose}
-                  aria-labelledby="modal-modal-title"
-                  aria-describedby="modal-modal-description"
-                >
-                  <Box sx={style}>
-                    <button onClick={handleClose} className="cancelar">X</button>
-                    <Typography id="modal-modal-title" variant="h6" component="h2">
-                      WARNING
-                    </Typography>
-                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                      Seguro que desea elimiar el {open.brand} {open.model}?
-                    </Typography>
-                    <button className="confirmar"
-                      onClick={() => {
-                        handleDeleteClick(open.id);
-                        handleClose();
-                      }}
-                    >Eliminar</button>
-                  </Box>
-                </Modal>
-                <Button variant="outlined"
-                  onClick={() => navigate("/parking")}
-                >Seleccionar
-                </Button>
-              </Stack>
+              <div className="container">
+                <div className="mx-auto my-2 btn-group btn-group-sm" role="group" aria-label="Basic outlined example">
+                  <button
+                    className="btn btn-outline-primary"
+                    onClick={() => handleEditClick(car.id)}
+                  >Editar
+                  </button>
+                  <button
+                    className="btn btn-outline-primary"
+                    data-bs-target={`#exampleModal${car.id}`}
+                    data-bs-toggle="modal"
+                    type="button"
+                  >Eliminar
+                  </button>
+                  <div className="modal fade" id={`exampleModal${car.id}`} aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div className="modal-dialog">
+                      <div className="modal2">
+                        <div className="modal-header">
+                          <h5 className="modal-title" id="exampleModalLabel">IMPORTANTE!</h5>
+                          <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div className="modal-body">
+                          Seguro que desea elimiar el {car.brand} {car.model}?
+                        </div>
+                        <div className="modal-footer">
+                          <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <button type="button" className="btn btn-primary"
+                            data-bs-dismiss="modal"
+                            onClick={() => {
+                              handleDeleteClick(car.id);
+                            }}>Eliminar</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <button
+                    onClick={() => navigate("/parking")}
+                    className="btn btn-outline-primary"
+                  >Seleccionar
+                  </button>
+                </div>
+              </div>
             </div>
           )
         })}
@@ -147,7 +119,7 @@ export default Cars
               type="button"
               className="btn btn-secondary rounded-circle mt-2 me-2"
             >
-              <i class="far fa-edit"></i>
+              <i className="far fa-edit"></i>
             </button>
             <button
               type="button"
@@ -155,7 +127,7 @@ export default Cars
               data-bs-toggle="modal"
               data-bs-target="#staticBackdrop"
             >
-              <i class="far fa-trash-alt"></i>
+              <i className="far fa-trash-alt"></i>
             </button>
             <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
               <div className="modal-dialog">

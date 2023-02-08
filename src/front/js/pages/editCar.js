@@ -52,12 +52,18 @@ const EditCar = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        setListOfCars(data);
+        if (data.message) {
+          //alertError()
+        } else {
+          setListOfCars(data)
+          alertaGuardar()
+          navigate("/cars")
+        }
+
       });
   };
 
-
-  return listOfCars && listOfCars.model ? (
+  return listOfCars && listOfCars.id ? (
     <Box
       className="container mt-3"
       component="form"
@@ -130,7 +136,9 @@ const EditCar = () => {
         <Button
           variant="outlined"
           type="submit"
-          onClick={alertaGuardar}
+          onClick={() => {
+            handleSubmit()
+          }}
         >Guardar
         </Button>
         <Button

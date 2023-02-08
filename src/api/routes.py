@@ -72,9 +72,9 @@ def create_car():
         db.session.add(car)
         db.session.commit()
         car= Car.query.filter_by(plate=plate).first()
-        my_car= My_car(user=user, car=car)
+        my_car= My_car(user_id=user_id, car_id=car_id)
         user_id = get_jwt_identity()
-        car=Car.query.all()
+        car=Car.query.filter_by(user_id=user_id)
         db.session.add(my_car)
         db.session.commit()
        
@@ -82,6 +82,16 @@ def create_car():
         print(e)
         return jsonify ({"message": str(e)}), 400
     return jsonify({"message": "vehiculo creado"}), 200
+
+
+@api.route ('/my_car', methods=['GET'])
+@jwt_required()
+def show_cars():
+    user_id = get_jwt_identity()
+    cars = My_cars.query.filter_by(user_id= user_id)
+    data = [user_car.serialize() for user_car in cars]   
+
+    return jsonify(data), 200
 
 
 @api.route ('/list_car', methods=['GET'])
@@ -101,6 +111,8 @@ def edit_car(id):
         car = Car.query.get(id)
     except:
         return jsonify({"message": "No se pudo realizar la edicion"}), 400
+    data=request.json
+    print(data)
 
     new_plate = request.json.get("plate", car.plate)
     new_brand = request.json.get("brand", car.brand)
