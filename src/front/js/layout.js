@@ -8,7 +8,6 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { UserProfile } from "./pages/userprofile";
 import { Reg } from "./pages/register";
-import { ParkingView } from "./component/parkingview";
 import CreateCar from "./component/createCar";
 import CarsInfo from "./pages/carsInfo";
 import Cars from "./pages/cars";
@@ -17,7 +16,8 @@ import { PriceGen } from "./component/pricegendata";
 import AppPay from "./component/stripe";
 import DeleteCar from "./pages/deletecar";
 import { NotFound } from "./pages/404";
-import Bills from "./component/bills";
+import Bills from "./pages/bills";
+import { ParkingView } from "./component/parkingview";
 
 const Layout = () => {
   const basename = process.env.BASENAME || "";

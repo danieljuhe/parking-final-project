@@ -12,10 +12,12 @@ import { useContext } from "react";
 import { Context } from "../store/appContext";
 import CreditCardIcon from '@mui/icons-material/CreditCard';
 import swal from "sweetalert";
+import { Base } from "../pages/base";
 
 const stripePromise = loadStripe(
   "pk_test_51MP8c5ATXRJOJbwMBzkJ8FyZ9oXijO0a0ckRcDG8uiV0deCsU8pzOexsPnBUaYjymmtFeAMHFIcEsnEWozrt98Op00fAIhgqmM"
 );
+
 
 
 const CheckoutForm = () => {
@@ -108,12 +110,14 @@ const CheckoutForm = () => {
         )}
       </button>
     </form>
+
   );
 };
 
 function AppPay() {
 
-  return (
+  return <Base>
+
     <Elements stripe={stripePromise}>
       <div className="container p-4">
         <div className="row h-100">
@@ -123,7 +127,8 @@ function AppPay() {
         </div>
       </div>
     </Elements>
-  );
+
+  </Base>
 }
 
 export default AppPay;

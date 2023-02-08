@@ -4,6 +4,7 @@ import "../../styles/parkingview.css";
 import "../../styles/modal.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCar, faChargingStation, faPersonRifle, faVanShuttle, faWheelchair } from "@fortawesome/free-solid-svg-icons";
+import { Base } from "../pages/base";
 
 export const ParkingView = () => {
   const navigate = useNavigate();
@@ -70,7 +71,7 @@ export const ParkingView = () => {
   let arrayparkingstart = parkingSites.slice(0, 4)
   let arrayparkingend = parkingSites.slice(4, 5)
 
-  return (
+  return <Base reserve={true}>
     <div className="mainparking">
       <div className="parking">
         {
@@ -230,5 +231,5 @@ export const ParkingView = () => {
         </div>
       )}
     </div>
-  );
+  </Base>
 };

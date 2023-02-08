@@ -81,11 +81,7 @@ def list_car():
     cars = Car.query.all()
     data = [car.serialize() for car in cars]
     return jsonify(data)
-
-@api.route ('/get_onecar/<int:id>', methods=['GET'])
-def get_onecar(id):
-    car = Car.query.filter_by(id=id).first()
-    return jsonify(car.serialize())
+    
 
 @api.route ('/edit_car/<int:id>', methods= ['PUT'])
 def edit_car(id):
@@ -197,6 +193,7 @@ def show_bill():
     data = [bill.serialize() for bill in bills]   
 
     return jsonify(data), 200
+
 
 #@api.route ('/create_mycar', methods=['POST'])
 #def create_car():

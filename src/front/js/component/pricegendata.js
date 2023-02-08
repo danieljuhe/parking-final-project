@@ -10,6 +10,7 @@ import Container from "@mui/material/Container";
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Base } from "../pages/base";
 
 const theme = createTheme();
 
@@ -61,73 +62,62 @@ export const PriceGen = () => {
     actions.setPrice(hours * 3);
   };
 
-  return (
-    <ThemeProvider theme={theme}>
-      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-        <Container component="main" maxWidth="xs">
-          <CssBaseline />
-          <Box
-            sx={{
-              marginTop: 5,
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-            }}
-          >
-            <form onSubmit={handleSubmit}>
-              <label>
-                Start Date:
-                <input
-                  type="date"
-                  min={currentDateString.slice(0, 10)}
-                  onChange={(e) => setStartDate(e.target.value)}
-                />
-              </label>
-              <>&nbsp;&nbsp;&nbsp;&nbsp;</>
-              <label>
-                Start Time:
-                <input
-                  type="time"
-                  min={currentDateString.slice(11, 16)}
-                  onChange={(e) => setStartTime(e.target.value)}
-                />
-              </label>
+  return <Base>
+    <div className="main">
+      <div className="data">
+        <form onSubmit={handleSubmit}>
+          <label>
+            Start Date:
+            <input
+              type="date"
+              min={currentDateString.slice(0, 10)}
+              onChange={(e) => setStartDate(e.target.value)}
+            />
+          </label>
+          <>&nbsp;&nbsp;&nbsp;&nbsp;</>
+          <label>
+            Start Time:
+            <input
+              type="time"
+              min={currentDateString.slice(11, 16)}
+              onChange={(e) => setStartTime(e.target.value)}
+            />
+          </label>
 
-              <br />
-              <br />
-              <br />
-              <br />
-              <label>
-                End Date:
-                <input
-                  type="date"
-                  min={startDate ? startDate : currentDateString.slice(0, 10)}
-                  onChange={(e) => setEndDate(e.target.value)}
-                />
-              </label>
-              <>&nbsp;&nbsp;&nbsp;&nbsp;</>
-              <label>
-                End Time:
-                <input
-                  type="time"
-                  min={startTime && startDate == endDate ? startTime : ""}
-                  onChange={(e) => setEndTime(e.target.value)}
-                />
-              </label>
-              <br />
-              <br />
-              <br />
-              <button type="submit">Calcula Precio</button>
+          <br />
+          <br />
+          <br />
+          <br />
+          <label>
+            End Date:
+            <input
+              type="date"
+              min={startDate ? startDate : currentDateString.slice(0, 10)}
+              onChange={(e) => setEndDate(e.target.value)}
+            />
+          </label>
+          <>&nbsp;&nbsp;&nbsp;&nbsp;</>
+          <label>
+            End Time:
+            <input
+              type="time"
+              min={startTime && startDate == endDate ? startTime : ""}
+              onChange={(e) => setEndTime(e.target.value)}
+            />
+          </label>
+          <br />
+          <br />
+          <br />
+          <button type="submit">Calcula Precio</button>
 
-              <br />
-              <br />
-              <h2>Precio: €{price}</h2>
-              <br />
-              <button onClick={stripe}>Confirmar</button>
-            </form>
-          </Box>
-        </Container>
-      </Grid>
-    </ThemeProvider>
-  );
+          <br />
+          <br />
+          <h2>Precio: €{price}</h2>
+          <br />
+          <button onClick={stripe}>Confirmar</button>
+        </form>
+
+      </div>
+    </div>
+  </Base>
 };
