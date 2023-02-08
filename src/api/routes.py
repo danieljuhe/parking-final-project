@@ -59,6 +59,7 @@ def parking_site():
     return jsonify(data), 200
 
 @api.route ('/create_car', methods=['POST'])
+@jwt_required()
 def create_car():
     data= request.json
     print(data)
@@ -70,6 +71,13 @@ def create_car():
         car= Car(plate=plate, brand=brand, model=model, category_id=category_id)
         db.session.add(car)
         db.session.commit()
+        car= Car.query.filter_by(plate=plate).first()
+        my_car= My_car(user=user, car=car)
+        user_id = get_jwt_identity()
+        car=Car.query.all()
+        db.session.add(my_car)
+        db.session.commit()
+       
     except Exception as e:
         print(e)
         return jsonify ({"message": str(e)}), 400

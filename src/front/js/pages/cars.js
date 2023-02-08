@@ -31,22 +31,21 @@ const Cars = () => {
 
   const alertaEliminar = () => {
     swal({
-      title: "Esta seguro que desea elimar el coche ",
+      title: "Seguro desea elimar el coche?",
       icon: "warning",
-      buttons: ["Cancelar",]
+      buttons: ["Cancelar", "Elimanar"]
 
     })
   }
 
   useEffect(() => {
     fetch(process.env.BACKEND_URL + "/api/list_car")
+      .then((response) => response.json())
       .then((response) => {
-        return response.json();
-      })
-      .then((response) => {
+        console.log(response);
         setListOfCars(response);
       });
-  }, []);
+  }, [])
 
   const handleEditClick = (id) => {
     navigate("/editcar/" + id);
@@ -85,8 +84,12 @@ const Cars = () => {
                 </Button>
 
                 <Button
-                  variant="contained"
-                  onClick={() => handleOpen(car)}>Eliminar</Button>
+                  variant="outlined"
+                  onClick={() => {
+                    alertaEliminar()
+                    handleOpen(car)
+                  }}
+                >Eliminar</Button>
                 <Modal
                   open={open}
                   onClose={handleClose}
@@ -109,6 +112,10 @@ const Cars = () => {
                     >Eliminar</button>
                   </Box>
                 </Modal>
+                <Button variant="outlined"
+                  onClick={() => navigate("/parking")}
+                >Seleccionar
+                </Button>
               </Stack>
             </div>
           )

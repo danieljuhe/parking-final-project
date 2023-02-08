@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "../../styles/login.css";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
@@ -87,6 +86,7 @@ const CreateCar = () => {
           fullWidth label="Categoria"
           name="category_id"
           onChange={handleChange}
+          required
         >
           {categories.map((value) => {
             return (
@@ -105,6 +105,7 @@ const CreateCar = () => {
           id="Brand"
           onChange={handleChange}
           name="brand"
+          type="text"
         />
       </div>
       <div className="my-2">
@@ -114,6 +115,7 @@ const CreateCar = () => {
           id="Model"
           onChange={handleChange}
           name="model"
+          type="text"
         />
       </div>
       <div className="my-2">
@@ -123,6 +125,7 @@ const CreateCar = () => {
           id="Plate"
           onChange={handleChange}
           name="plate"
+          type="text"
         />
       </div>
       <Stack spacing={2} direction="row" className="container my-2">
