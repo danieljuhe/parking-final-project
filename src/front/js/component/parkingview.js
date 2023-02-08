@@ -4,6 +4,7 @@ import "../../styles/parkingview.css";
 import "../../styles/modal.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCar, faChargingStation, faPersonRifle, faVanShuttle, faWheelchair } from "@fortawesome/free-solid-svg-icons";
+import { Base } from "../pages/base";
 
 export const ParkingView = () => {
   const navigate = useNavigate();
@@ -70,7 +71,7 @@ export const ParkingView = () => {
   let arrayparkingstart = parkingSites.slice(0, 4)
   let arrayparkingend = parkingSites.slice(4, 5)
 
-  return (
+  return <Base reserve={true}>
     <div className="mainparking">
       <div className="parking">
         {
@@ -123,9 +124,8 @@ export const ParkingView = () => {
                           parkingSite.occupied == false &&
                           parkingSite.category_id == cCategory
                         ) {
-                          navigate("/date/" + parkingSite.id);
-                          // setModal(parkingSite);
-                          // handleOpenModal();
+                          setModal(parkingSite);
+                          handleOpenModal();
                         }
                       }}
                       style={divStyle}>
@@ -223,12 +223,13 @@ export const ParkingView = () => {
             <button className="confirmar"
               onClick={() => {
                 handleCloseModal();
-                senddata(modal.id);
+                senddata(modal.id)
+                navigate("/date/" + modal.id);
               }}
             >Reservar y pagar</button>
           </div>
         </div>
       )}
     </div>
-  );
+  </Base>
 };

@@ -99,11 +99,7 @@ def list_car():
     cars = Car.query.all()
     data = [car.serialize() for car in cars]
     return jsonify(data)
-
-@api.route ('/get_onecar/<int:id>', methods=['GET'])
-def get_onecar(id):
-    car = Car.query.filter_by(id=id).first()
-    return jsonify(car.serialize())
+    
 
 @api.route ('/edit_car/<int:id>', methods= ['PUT'])
 def edit_car(id):
@@ -208,6 +204,16 @@ def create_site():
         print(e)
         return jsonify ({"message": str(e)}), 400
     return jsonify({"message": "categoria creada"}), 200
+
+@api.route ('/list_bills', methods=['GET'])
+@jwt_required()
+def show_bill():
+    user_id = get_jwt_identity()
+    bills = Bills.query.filter_by(user_id= user_id)
+    data = [bill.serialize() for bill in bills]   
+
+    return jsonify(data), 200
+
 
 #@api.route ('/create_mycar', methods=['POST'])
 #def create_car():

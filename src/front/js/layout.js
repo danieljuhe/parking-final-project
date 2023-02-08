@@ -8,7 +8,6 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { UserProfile } from "./pages/userprofile";
 import { Reg } from "./pages/register";
-import { ParkingView } from "./component/parkingview";
 import CreateCar from "./component/createCar";
 import CarsInfo from "./pages/carsInfo";
 import Cars from "./pages/cars";
@@ -16,7 +15,9 @@ import EditCar from "./pages/editCar";
 import { PriceGen } from "./component/pricegendata";
 import AppPay from "./component/stripe";
 import DeleteCar from "./pages/deletecar";
-
+import { NotFound } from "./pages/404";
+import Bills from "./pages/bills";
+import { ParkingView } from "./component/parkingview";
 
 const Layout = () => {
   const basename = process.env.BASENAME || "";
@@ -25,7 +26,7 @@ const Layout = () => {
     <div>
       <BrowserRouter basename={basename}>
         <ScrollToTop>
-          <Navbar />
+          {/* <Navbar /> */}
           <Routes>
             <Route element={<Home />} path="/" />
             <Route element={<ParkingView />} path="/parking" />
@@ -34,12 +35,13 @@ const Layout = () => {
             <Route element={<Reg />} path="/register" />
             <Route element={<UserProfile />} path="/privateuser" />
             <Route element={<AppPay />} path="/payment/:parking_id" />
-            <Route element={<h1>Not found!</h1>} />
+            <Route element={<NotFound />} path="*" />
             <Route element={<CarsInfo />} path="/mycar" />
             <Route element={<EditCar />} path="/editcar/:car_id" />
             <Route element={<Cars />} path="/cars" />
             <Route element={<Map />} path="/map" />
             <Route element={<PriceGen />} path="/date/:parking_id" />
+            <Route element={<Bills />} path="/bill" />
           </Routes>
         </ScrollToTop>
       </BrowserRouter>

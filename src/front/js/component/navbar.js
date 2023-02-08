@@ -6,12 +6,12 @@ export const Navbar = () => {
   return (
     <div className="navbar">
       <div className="container">
-        <span className="title1">Time measurement</span>
+        <span className="title1">Logo</span>
         <Link to="/">
           <span className="title2">Home</span>
         </Link>
         <Link to="/register">
-          <span className="title3">Registrate</span>
+          <span className="title3">Registro</span>
         </Link>
         <Link to="/login">
           <span className="title4">Login</span>
