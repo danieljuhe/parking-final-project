@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import swal from "sweetalert";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
@@ -10,6 +12,16 @@ const EditCar = () => {
   const params = useParams();
   const [categories, setCategories] = useState([]);
   const [listOfCars, setListOfCars] = useState({});
+  const navigate = useNavigate();
+
+  const alertaGuardar = () => {
+    swal({
+      title: "Cambios Guardados",
+      icon: "success",
+      button: "ok",
+      timer: "1000"
+    })
+  }
 
   useEffect(() => {
     fetch(process.env.BACKEND_URL + "/api/category")
@@ -107,25 +119,27 @@ const EditCar = () => {
               <MenuItem
                 key={value.id}
                 value={value.id}
-
               >
                 {value.name}
               </MenuItem>
             );
           })}
         </TextField>
-        <Stack spacing={2} direction="row" className="container my-2">
-          <Button
-            variant="outlined"
-            type="submit"
-          >Guardar
-          </Button>
-          <Button
-            variant="outlined"
-          >Cancelar
-          </Button>
-        </Stack>
       </div>
+      <Stack spacing={2} direction="row" className="container my-2">
+        <Button
+          variant="outlined"
+          type="submit"
+          onClick={alertaGuardar}
+        >Guardar
+        </Button>
+        <Button
+          onClick={() => navigate("/cars")}
+          variant="outlined"
+        >Cancelar
+        </Button>
+      </Stack>
+
     </Box>
 
     /*<form onSubmit={handleSubmit}>

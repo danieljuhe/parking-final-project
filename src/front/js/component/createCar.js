@@ -1,10 +1,28 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "../../styles/login.css";
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import MenuItem from '@mui/material/MenuItem';
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
 
 const CreateCar = () => {
   const [formData, setFormData] = useState({});
   const [categories, setCategories] = useState([]);
   const [user, setUser] = useState();
+  const navigate = useNavigate();
+
+  const alertaEliminar = () => {
+    swal({
+      title: "Vehiculo Creado",
+      text: " ",
+      icon: "success",
+      buttons: ["Ok",],
+      timmer: "1000"
+
+    })
+  }
 
   useEffect(() => {
     fetch(process.env.BACKEND_URL + "/api/category")
@@ -49,74 +67,78 @@ const CreateCar = () => {
   };
 
   return (
-    <div className="main">
-      <div className="register">
-        <form onSubmit={handleSubmit} className="container">
-          <div className="mb-3">
-            <label htmlFor="inputCategory" className="form-label">
-              Category
-            </label>
-            <select
-              className="form-select"
-              aria-label="Default select example"
-              name="category_id"
-              onChange={handleChange}
-            >
-              <option disabled selected>
-                Seleccione su categoria
-              </option>
-              {categories.map((value) => {
-                return (
-                  <option key={value.id} value={value.id}>
-                    {value.name}
-                  </option>
-                );
-              })}
-            </select>
-          </div>
-          <div className="mb-3">
-            <label htmlFor="inputPlate" className="form-label">
-              Plate
-            </label>
-            <input
-              name="plate"
-              type="text"
-              className="form-control"
-              id="inputPlate"
-              onChange={handleChange}
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="inputBarnd" className="form-label">
-              Brand
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="inputBarnd"
-              name="brand"
-              onChange={handleChange}
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="inputModel" className="form-label">
-              Model
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="inputModel"
-              name="model"
-              onChange={handleChange}
-            />
-          </div>
 
-          <button type="submit" className="btn btn-primary">
-            Registrar
-          </button>
-        </form>
+    <Box
+      className="container mt-3"
+      component="form"
+      sx={{
+        width: 500,
+        maxWidth: '100%',
+      }}
+      noValidate
+      autoComplete="off"
+      type="form"
+      onSubmit={handleSubmit}
+    >
+      <div className="my-2">
+        <TextField
+          id="category"
+          select
+          fullWidth label="Categoria"
+          name="category_id"
+          onChange={handleChange}
+        >
+          {categories.map((value) => {
+            return (
+              <MenuItem
+                key={value.id} value={value.id}>
+                {value.name}
+              </MenuItem>
+            );
+          })}
+        </TextField>
       </div>
-    </div>
-  );
+      <div className="my-2">
+        <TextField
+          fullWidth label="Marca"
+          required
+          id="Brand"
+          onChange={handleChange}
+          name="brand"
+        />
+      </div>
+      <div className="my-2">
+        <TextField
+          fullWidth label="Modelo"
+          required
+          id="Model"
+          onChange={handleChange}
+          name="model"
+        />
+      </div>
+      <div className="my-2">
+        <TextField
+          fullWidth label="Matricula"
+          required
+          id="Plate"
+          onChange={handleChange}
+          name="plate"
+        />
+      </div>
+      <Stack spacing={2} direction="row" className="container my-2">
+        <Button
+          variant="outlined"
+          type="submit"
+          onClick={alertaEliminar}
+        >Guardar
+        </Button>
+        <Button
+          onClick={() => navigate("/cars")}
+          variant="outlined"
+        >Cancelar
+        </Button>
+      </Stack>
+    </Box>
+  )
 };
 export default CreateCar;

@@ -1,13 +1,15 @@
 import React from "react";
+import "../../styles/cars.css"
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 
 
 const Car = (props) => {
+
   return (
-    <div className="container">
-      <div className="row ">
+    <div className="cardCar container">
+      <div className="row">
         <div >
           <Card container item spacing={3} className="mt-3">
             <CardContent>
@@ -22,6 +24,7 @@ const Car = (props) => {
                 <p>Categoria: {props.category}</p>
               </Typography>
             </CardContent>
+
           </Card>
         </div>
       </div>

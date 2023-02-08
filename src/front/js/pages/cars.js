@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Car from "./car";
+import swal from "sweetalert";
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
@@ -24,12 +25,18 @@ const Cars = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = (car) => setOpen(car);
   const handleClose = () => setOpen(false);
-
   const [listOfCars, setListOfCars] = useState([]);
   const navigate = useNavigate();
-  const handleEditClick = (id) => {
-    navigate("/editcar/" + id);
-  };
+
+
+  const alertaEliminar = () => {
+    swal({
+      title: "Esta seguro que desea elimar el coche ",
+      icon: "warning",
+      buttons: ["Cancelar",]
+
+    })
+  }
 
   useEffect(() => {
     fetch(process.env.BACKEND_URL + "/api/list_car")
@@ -41,6 +48,9 @@ const Cars = () => {
       });
   }, []);
 
+  const handleEditClick = (id) => {
+    navigate("/editcar/" + id);
+  };
 
   const handleDeleteClick = (id) => {
     console.log(id)
@@ -66,7 +76,7 @@ const Cars = () => {
                 brand={car.brand}
                 plate={car.plate}
                 model={car.model}
-                category={car.category_id.name}
+                category={car.category.name}
               />
               <Stack spacing={2} direction="row" className="container my-2">
                 <Button variant="outlined"

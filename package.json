@@ -93,13 +93,14 @@
 		"date-fns": "^2.29.3",
 		"i": "^0.3.7",
 		"install": "^0.13.0",
-		"npm": "^9.4.1",
+		"npm": "^9.4.2",
 		"prop-types": "^15.6.1",
 		"react": "^16.8.4",
 		"react-dom": "^16.8.4",
 		"react-polyfills": "0.0.1",
 		"react-router-dom": "^6.3.0",
 		"stripe": "^11.7.0",
-		"styled-components": "^5.3.6"
+		"styled-components": "^5.3.6",
+		"sweetalert": "^2.1.2"
 	}
 }
