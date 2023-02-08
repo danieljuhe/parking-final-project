@@ -17,7 +17,7 @@ import { PriceGen } from "./component/pricegendata";
 import AppPay from "./component/stripe";
 import DeleteCar from "./pages/deletecar";
 import { NotFound } from "./pages/404";
-
+import Bills from "./component/bills";
 
 const Layout = () => {
   const basename = process.env.BASENAME || "";
@@ -42,6 +42,7 @@ const Layout = () => {
             <Route element={<Cars />} path="/cars" />
             <Route element={<Map />} path="/map" />
             <Route element={<PriceGen />} path="/date/:parking_id" />
+            <Route element={<Bills />} path="/bill" />
           </Routes>
         </ScrollToTop>
       </BrowserRouter>

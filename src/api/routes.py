@@ -189,6 +189,15 @@ def create_site():
         return jsonify ({"message": str(e)}), 400
     return jsonify({"message": "categoria creada"}), 200
 
+@api.route ('/list_bills', methods=['GET'])
+@jwt_required()
+def show_bill():
+    user_id = get_jwt_identity()
+    bills = Bills.query.filter_by(user_id= user_id)
+    data = [bill.serialize() for bill in bills]   
+
+    return jsonify(data), 200
+
 #@api.route ('/create_mycar', methods=['POST'])
 #def create_car():
 #    data= request.json

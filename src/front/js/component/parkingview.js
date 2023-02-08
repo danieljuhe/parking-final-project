@@ -223,7 +223,7 @@ export const ParkingView = () => {
               onClick={() => {
                 handleCloseModal();
                 senddata(modal.id)
-                navigate("/date/");
+                navigate("/date/" + modal.id);
               }}
             >Reservar y pagar</button>
           </div>

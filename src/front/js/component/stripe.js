@@ -7,10 +7,11 @@ import {
   useStripe,
   useElements,
 } from "@stripe/react-stripe-js";
-import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "../store/appContext";
+import CreditCardIcon from '@mui/icons-material/CreditCard';
+import swal from "sweetalert";
 
 const stripePromise = loadStripe(
   "pk_test_51MP8c5ATXRJOJbwMBzkJ8FyZ9oXijO0a0ckRcDG8uiV0deCsU8pzOexsPnBUaYjymmtFeAMHFIcEsnEWozrt98Op00fAIhgqmM"
@@ -31,6 +32,19 @@ const CheckoutForm = () => {
       navigate("/login");
     }
   }, []);
+
+  const mostrarAlerta = () => {
+    swal({
+      title: "App Parking",
+      text: "Pago Realizado con Éxito",
+      icon: "success",
+      button: "Aceptar",
+      timer: "9000"
+
+    })
+    navigate("/Privateuser");
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -61,7 +75,7 @@ const CheckoutForm = () => {
           return res.json();
         })
         .then((data) => {
-          navigate("/Privateuser");
+          mostrarAlerta();
         })
         .catch((error) => {
           console.error("Error:", error);
@@ -75,7 +89,7 @@ const CheckoutForm = () => {
   return (
     <form onSubmit={handleSubmit} className="card card-body my-5 stripe">
       <img
-        src="https://p.turbosquid.com/ts-thumb/pZ/r1ai8T/MB/daciaduster2022_00/jpg/1633694860/600x600/fit_q87/9c5de101f40c3810e0fd2f617ea215fa2c8f2d6b/daciaduster2022_00.jpg"
+        src="https://cdn-01.media-brady.com/store/stes/media/catalog/product/d/m/dmeu_ppma_p_1_std.lang.all.gif"
         alt="Parking Rent"
         className="img-fluid"
       />
