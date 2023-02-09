@@ -5,6 +5,7 @@ import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
+import { Base } from "../pages/base";
 
 const CreateCar = () => {
   const [formData, setFormData] = useState({});
@@ -82,7 +83,7 @@ const CreateCar = () => {
   };
 
 
-  return (
+  return <Base cars={true}>
 
     <Box
       className="container mt-3"
@@ -161,6 +162,6 @@ const CreateCar = () => {
         </Button>
       </Stack>
     </Box>
-  )
+  </Base>
 };
 export default CreateCar;

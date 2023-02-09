@@ -87,21 +87,3 @@ h2 {
   padding-top: 2.5rem;
   padding-bottom: 20px;
 }
-.data {
-  display: flex !important;
-  align-items: center !important;
-
-  background-color: #e058f7;
-}
-
-.test {
-  background-color: #0d6efd;
-  width: 500px;
-  height: 500px;
-  justify-content: center;
-  align-content: center;
-}
-.center {
-  width: 100%;
-  justify-content: center !important;
-}

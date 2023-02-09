@@ -5,6 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 
 
+
 const Car = (props) => {
 
   return (
@@ -40,7 +41,7 @@ const Car = (props) => {
           </ul>
         </div>
       </div>*/
-  );
+  )
 };
 
 export default Car;

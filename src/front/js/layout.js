@@ -18,6 +18,7 @@ import DeleteCar from "./pages/deletecar";
 import { NotFound } from "./pages/404";
 import Bills from "./pages/bills";
 import { ParkingView } from "./component/parkingview";
+import { Map } from "./component/maps";
 
 const Layout = () => {
   const basename = process.env.BASENAME || "";

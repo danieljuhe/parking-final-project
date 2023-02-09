@@ -22,7 +22,6 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import { mainListItems } from '../component/listitem';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
-import { ParkingView } from "../component/parkingview";
 import { Map } from "../component/maps";
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -33,9 +32,8 @@ import EmojiTransportationOutlinedIcon from '@mui/icons-material/EmojiTransporta
 import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
 import CreditScoreOutlinedIcon from '@mui/icons-material/CreditScoreOutlined';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
-import { PriceGen } from "../component/pricegendata";
-import AppPay from "../component/stripe";
-import Bills from "./bills";
+import Cars from "./cars";
+
 
 function Copyright(props) {
     return (
@@ -265,7 +263,9 @@ export const Base = ({ children, dashboard = false, cars = false, reserve = fals
                                 <ListItemText primary="Reserva" />
                             </ListItemButton>
 
-                            <ListItemButton selected={location}>
+                            <ListItemButton selected={location} onClick={() => {
+                                navigate("/map")
+                            }}>
                                 <ListItemIcon>
                                     <LocationOnOutlinedIcon />
                                 </ListItemIcon>
@@ -318,11 +318,12 @@ export const Base = ({ children, dashboard = false, cars = false, reserve = fals
                             <Grid item xs={12} md={8} lg={9}>
                                 <Paper
                                     sx={{
-                                        // p: 2,
-                                        // display: 'flex',
-                                        // flexDirection: 'column',
-                                        // height: 'fit-content',
-                                        // width: 'fit-content',
+                                        marginLeft: '-3rem',
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        height: 'fit-content',
+                                        padding: '2rem',
+                                        width: 'fit-content',
                                     }}
                                 >
                                     {children}
