@@ -222,6 +222,8 @@ export const ParkingView = () => {
               onClick={() => {
                 handleCloseModal();
                 senddata(modal.id)
+                // agregar alerta guapa   plaza reservada con exito!!
+                // agregar alerta del formulario de login
                 navigate("/date/" + modal.id);
               }}
             >Reservar y pagar</button>
