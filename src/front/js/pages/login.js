@@ -1,11 +1,11 @@
 import React from "react";
-import "../../styles/login.css";
+import "../../styles/login.css"
 import { LoginForm } from "../component/loginform";
 
 export const Login = () => {
   return (
     <div className="main">
-      <div className="login">
+      <div className="register">
         <LoginForm />
       </div>
     </div>

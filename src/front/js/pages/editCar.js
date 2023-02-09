@@ -1,70 +1,162 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import swal from "sweetalert";
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import MenuItem from '@mui/material/MenuItem';
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
 
 const EditCar = () => {
   const params = useParams();
+  const [categories, setCategories] = useState([]);
+  const [listOfCars, setListOfCars] = useState({});
+  const navigate = useNavigate();
+
+  const alertaGuardar = () => {
+    swal({
+      title: "Cambios Guardados",
+      icon: "success",
+      button: "ok",
+      timer: "1000"
+    })
+  }
+
+  const alertaError = () => {
+    swal({
+      title: "ERROR",
+      text: "Algo salio mal, intentalo de nuevo ",
+      icon: "warning",
+      timmer: "1000"
+    })
+  }
+
+  useEffect(() => {
+    fetch(process.env.BACKEND_URL + "/api/category")
+      .then((response) => response.json())
+      .then((response) => {
+        setCategories(response);
+      })
+  }, []);
 
   useEffect(() => {
     fetch(process.env.BACKEND_URL + "/api/get_onecar/" + params.car_id)
-      .then((res) => res.json())
-      .then();
+      .then((response) => {
+        return response.json();
+      }).then((response) => {
+        setListOfCars(response);
+      })
   }, []);
 
-  const handleSubmit = () => {
-    fetch(process.env.BACKEND_URL + "/api/edit_car/", {
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    fetch(process.env.BACKEND_URL + "/api/edit_car/" + listOfCars.id, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(),
+      body: JSON.stringify(listOfCars),
     })
-      .then((response) => {
-        return response.json();
-      })
-      .then((response) => {
-        listOfCars(response);
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.message) {
+          alertaError()
+        } else {
+          setListOfCars(data)
+          alertaGuardar()
+          navigate("/cars")
+        }
+
       });
   };
-  return (
-    <form onSubmit={handleSubmit}>
-      <div className="mb-3">
-        <label for="Plate" className="form-label">
-          Plate
-        </label>
-        <input
-          type="Plate"
-          className="form-control"
-          id="Plate"
-          aria-describedby="emailHelp"
-        />
-      </div>
-      <div className="mb-3">
-        <label for="Brand" className="form-label">
-          Brand
-        </label>
-        <input
-          type="Brand"
-          className="form-control"
+
+  return listOfCars && listOfCars.id ? (
+    <Box
+      className="container mt-3"
+      component="form"
+      sx={{
+        width: 500,
+        maxWidth: '100%',
+      }}
+      noValidate
+      autoComplete="off"
+      type="form"
+      onSubmit={handleSubmit}
+    >
+      <div className="my-2">
+        <TextField
+          fullWidth label="Marca"
+          required
           id="Brand"
-          aria-describedby="emailHelp"
+          defaultValue={listOfCars.brand}
+          onChange={(e) => {
+            setListOfCars({ ...listOfCars, brand: e.target.value });
+          }}
         />
       </div>
-      <div className="mb-3">
-        <label for="Model" className="form-label">
-          Model
-        </label>
-        <input
-          type="Model"
-          className="form-control"
+      <div className="my-2">
+        <TextField
+          fullWidth label="Modelo"
+          required
           id="Model"
-          aria-describedby="emailHelp"
+          defaultValue={listOfCars.model}
+          onChange={(e) => {
+            setListOfCars({ ...listOfCars, model: e.target.value });
+          }}
         />
       </div>
-      <button type="button" className="btn btn-secondary">
-        Guardar
-      </button>
-    </form>
-  );
+      <div className="my-2">
+        <TextField
+          fullWidth label="Matricula"
+          required
+          id="Plate"
+          defaultValue={listOfCars.plate}
+          onChange={(e) => {
+            setListOfCars({ ...listOfCars, plate: e.target.value });
+          }}
+        />
+      </div>
+      <div className="my-2">
+        <TextField
+          id="category"
+          select
+          fullWidth label="Categoria"
+          defaultValue={listOfCars.category_id}
+          name="category_id"
+          onChange={(e) => {
+            setListOfCars({ ...listOfCars, category_id: e.target.value });
+          }}
+        >
+          {categories.map((value) => {
+            return (
+              <MenuItem
+                key={value.id}
+                value={value.id}
+              >
+                {value.name}
+              </MenuItem>
+            );
+          })}
+        </TextField>
+      </div>
+      <Stack spacing={2} direction="row" className="container my-2">
+        <Button
+          variant="outlined"
+          type="submit"
+          onClick={() => {
+            handleSubmit()
+          }}
+        >Guardar
+        </Button>
+        <Button
+          onClick={() => navigate("/cars")}
+          variant="outlined"
+        >Cancelar
+        </Button>
+      </Stack>
+    </Box>
+  ) : "";
 };
 
 export default EditCar;

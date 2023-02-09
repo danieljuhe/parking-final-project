@@ -1,61 +1,82 @@
+.mainparking {
+  padding: 2rem;
+  background-color: #4d4e5c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: fit-content;
+  width: fit-content;
+}
+
 .parking {
-  background-color: rgba(54, 54, 54, 0.801);
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding-top: 100px;
-  justify-content: space-evenly;
+  height: fit-content;
+  width: fit-content;
 }
-.botones {
-  height: 300px;
+
+.parking2 {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: fit-content;
+  width: fit-content;
+}
+
+.col0 {
+  margin-top: 3rem;
+  transform: skewY(-12deg);
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-h4 {
-  color: aliceblue;
-}
-h6 {
-  color: aliceblue;
+  margin-right: 12rem;
 }
 .col1 {
+  margin-top: 3rem;
+  transform: skewY(12deg);
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 .col2 {
+  margin-top: 3rem;
+  transform: skewY(-12deg);
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 .col3 {
+  margin-top: 3rem;
+  transform: skewY(12deg);
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-left: 12rem;
 }
 
-.col4 {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.row1 {
+.parking2 .col0 {
+  transform: skewY(0deg) !important;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
+  margin-top: 8rem;
 }
 
 .A01 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -64,9 +85,9 @@ h6 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -75,9 +96,9 @@ h6 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -86,9 +107,9 @@ h6 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -97,9 +118,9 @@ h6 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -108,9 +129,9 @@ h6 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -119,9 +140,9 @@ h6 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -130,9 +151,9 @@ h6 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -141,9 +162,9 @@ h6 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -152,9 +173,9 @@ h6 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 5px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -163,9 +184,9 @@ h6 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-right: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -174,9 +195,9 @@ h6 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-right: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -185,9 +206,9 @@ h6 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-right: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -196,9 +217,9 @@ h6 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-right: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -207,9 +228,9 @@ h6 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-right: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -218,9 +239,9 @@ h6 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-right: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -229,9 +250,9 @@ h6 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-right: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -240,9 +261,9 @@ h6 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-right: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -251,9 +272,9 @@ h6 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-right: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -262,170 +283,340 @@ h6 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 5px solid #fce700;
+  border-right: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
 }
-.c1 {
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+.C01 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
 }
-.c2 {
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+.C02 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
 }
-.c3 {
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+.C03 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
 }
-.c4 {
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+.C04 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
 }
-.c5 {
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+.C05 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
 }
-.c6 {
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+.C06 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
 }
-.c7 {
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+.C07 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
 }
-.c8 {
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+.C08 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
 }
-.c9 {
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+.C09 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
 }
-.c10 {
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+.C10 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2.5px solid #fce700;
+  border-bottom: 5px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
 }
-.d1 {
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+.D01 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-right: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
 }
-.d2 {
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+.D02 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-right: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
 }
-.d3 {
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+.D03 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-right: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
 }
-.d4 {
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+.D04 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-right: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
 }
-.d5 {
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+.D05 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-right: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
 }
-.d6 {
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+.D06 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-right: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
 }
-.d7 {
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+.D07 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-right: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
 }
-.d8 {
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+.D08 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-right: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
 }
-.d9 {
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+.D09 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-right: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
 }
-.d10 {
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+.D10 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 2.5px solid #fce700;
+  border-bottom: 5px solid #fce700;
+  border-right: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
+}
+.E01 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-right: 2px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
+  color: aliceblue;
+  height: 150px;
+  width: 70px;
+}
+.E02 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-right: 2px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
+  color: aliceblue;
+  height: 150px;
+  width: 70px;
+}
+.E03 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-right: 2px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
+  color: aliceblue;
+  height: 150px;
+  width: 70px;
+}
+.E04 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-right: 2px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
+  color: aliceblue;
+  height: 150px;
+  width: 70px;
+}
+.E05 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-right: 2px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
+  color: aliceblue;
+  height: 150px;
+  width: 70px;
+}
+.E06 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-right: 2px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
+  color: aliceblue;
+  height: 150px;
+  width: 70px;
+}
+.E07 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-right: 2px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
+  color: aliceblue;
+  height: 150px;
+  width: 70px;
+}
+.E08 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-right: 2px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
+  color: aliceblue;
+  height: 150px;
+  width: 70px;
+}
+.E09 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-right: 2px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
+  color: aliceblue;
+  height: 150px;
+  width: 70px;
+}
+.E10 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-right: 5px solid #fce700;
+  border-bottom: 5px solid #fce700;
+  border-left: 5px solid #fce700;
+  color: aliceblue;
+  height: 150px;
+  width: 70px;
 }

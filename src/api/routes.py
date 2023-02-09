@@ -1,8 +1,9 @@
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Car, Category, Parking, My_cars 
+from api.models import db, User, Car, Category, Parking, My_cars, Bills 
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 import stripe
+import datetime
 stripe.api_key = "sk_test_51MP8c5ATXRJOJbwMsczEGrPvNzkoY1efoZ0KsWWN2ro8z6yeoB1c5TSpvD28HBSYgBJj6cyf24XUKusV9MpO4HHj00o3sUmWVX"
 
 api = Blueprint('api', __name__)
@@ -58,9 +59,9 @@ def parking_site():
     return jsonify(data), 200
 
 @api.route ('/create_car', methods=['POST'])
+@jwt_required()
 def create_car():
     data= request.json
-    print(data)
     brand = request.json.get("brand", None)
     model = request.json.get("model", None)
     plate = request.json.get("plate", None)
@@ -69,47 +70,69 @@ def create_car():
         car= Car(plate=plate, brand=brand, model=model, category_id=category_id)
         db.session.add(car)
         db.session.commit()
+        car= Car.query.filter_by(plate=plate).first()
+        user_id = get_jwt_identity()
+        my_car= My_cars(car_id=car.id, user_id=user_id)
+        db.session.add(my_car)
+        db.session.commit()
+       
     except Exception as e:
         print(e)
-        return jsonify ({"message": str(e)}), 400
+        return jsonify ({"messageerror": str(e)}), 400
     return jsonify({"message": "vehiculo creado"}), 200
 
 
-@api.route ('/list_car', methods=['GET'])
-def list_car():
-    cars = Car.query.all()
-    data = [car.serialize() for car in cars]
-    return jsonify(data)
+@api.route ('/my_car', methods=['GET'])
+@jwt_required()
+def show_cars():
+    user_id = get_jwt_identity()
+    cars = My_cars.query.filter_by(user_id= user_id)
+    data = [user_car.serialize() for user_car in cars]   
+
+    return jsonify(data), 200
 
 @api.route ('/get_onecar/<int:id>', methods=['GET'])
 def get_onecar(id):
     car = Car.query.filter_by(id=id).first()
-    return jsonify(car.serialize())
+    car = car.serialize()
+    return jsonify(car)
 
-@api.route ('/edit_car', methods= ['PUT'])
-def edit_car():
+
+@api.route ('/list_car', methods=['GET'])
+@jwt_required()
+def list_car():
+    user_id = get_jwt_identity()
+    cars = My_cars.query.filter_by(user_id=user_id)
+    data = [car.serialize() for car in cars]
+    return jsonify(data)
+    
+
+@api.route ('/edit_car/<int:id>', methods= ['PUT'])
+def edit_car(id):
     try:
         car = Car.query.get(id)
     except:
         return jsonify({"message": "No se pudo realizar la edicion"}), 400
+    data=request.json
+    print(data)
 
     new_plate = request.json.get("plate", car.plate)
     new_brand = request.json.get("brand", car.brand)
     new_model = request.json.get("model", car.model)
-    new_category = request.json.get("caregory", car.category)
+    new_category = request.json.get("category_id", car.category_id)
 
     setattr(car, "plate", new_plate)
     setattr(car, "brand", new_brand)
     setattr(car, "model", new_model)
-    setattr(car, "category", new_category)
+    setattr(car, "category_id", new_category)
 
     db.session.commit()
     return jsonify (car.serialize()), 200
 
-@api.route ('/delete_car', methods=['DELETE'])
-def delete_car():
+@api.route ('/delete_car/<int:id>', methods=['DELETE'])
+def delete_car(id):
     try:
-        car = Car.querry.filter_by(id=id).first()
+        car = Car.query.filter_by(id=id).first()
         db.session.delete(car)
         db.session.commit()
     except:
@@ -142,15 +165,21 @@ def parking_lot():
     return jsonify(result)
 
 @api.route ('/stripe', methods=['POST'])
+@jwt_required()
 def create_payment():
     data = request.json
+    user_id = get_jwt_identity()
     intent = stripe.PaymentIntent.create(
             amount=data['amount'],
             currency='eur'
             
         )
-    print(intent);    
-    # bill = Bill(stripe_payment_id = intent['id'], parking_id=x, user_id=x)
+    print(intent)
+    fecha = datetime.datetime.strptime(data['date'], "%Y-%m-%dT%H:%M:%S.%fZ").date()
+    bill = Bills(stripe_id=intent['id'], amount=int(intent['amount']/100), date=fecha, user_id=user_id, parking_id=data['parking_id'])  
+    db.session.add(bill)
+    db.session.commit()
+
     return jsonify({"Message": data }), 200
 
 @api.route ('/create_category', methods=['POST'])
@@ -167,6 +196,30 @@ def create_category():
         print(e)
         return jsonify ({"message": str(e)}), 400
     return jsonify({"message": "categoria creada"}), 200
+
+@api.route ('/create_site', methods=['POST'])
+def create_site():
+    site = request.json.get("site", None)
+    category_id = request.json.get("category_id", None)
+
+    try:
+        site= Parking(site = site, category_id = category_id) 
+        db.session.add(site)
+        db.session.commit()
+    except Exception as e:
+        print(e)
+        return jsonify ({"message": str(e)}), 400
+    return jsonify({"message": "categoria creada"}), 200
+
+@api.route ('/list_bills', methods=['GET'])
+@jwt_required()
+def show_bill():
+    user_id = get_jwt_identity()
+    bills = Bills.query.filter_by(user_id= user_id)
+    data = [bill.serialize() for bill in bills]   
+
+    return jsonify(data), 200
+
 
 #@api.route ('/create_mycar', methods=['POST'])
 #def create_car():

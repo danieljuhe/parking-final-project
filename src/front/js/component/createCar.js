@@ -1,10 +1,36 @@
 import React, { useState, useEffect } from "react";
-import "../../styles/login.css";
+import { useNavigate } from "react-router-dom";
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import MenuItem from '@mui/material/MenuItem';
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
+import { Base } from "../pages/base";
 
 const CreateCar = () => {
   const [formData, setFormData] = useState({});
   const [categories, setCategories] = useState([]);
   const [user, setUser] = useState();
+  const navigate = useNavigate();
+
+  const alertaCrear = () => {
+    swal({
+      title: "Vehiculo Creado",
+      text: " ",
+      icon: "success",
+      button: "Ok",
+      timmer: "1000"
+    })
+  }
+
+  const alertaError = () => {
+    swal({
+      title: "ERROR",
+      text: "Algo salio mal, intentalo de nuevo ",
+      icon: "warning",
+      timmer: "1000"
+    })
+  }
 
   useEffect(() => {
     fetch(process.env.BACKEND_URL + "/api/category")
@@ -38,85 +64,104 @@ const CreateCar = () => {
     fetch(process.env.BACKEND_URL + "/api/create_car", {
       method: "POST",
       headers: {
-        "Content-type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(formData),
     })
       .then((response) => response.json())
       .then((data) => {
-        setFormData(data);
+        if (data.messageerror) {
+          alertaError()
+        } else {
+          setFormData(data);
+          alertaCrear()
+          navigate("/cars")
+        }
+
       });
   };
 
-  return (
-    <div className="main">
-      <div className="register">
-        <form onSubmit={handleSubmit} className="container">
-          <div className="mb-3">
-            <label htmlFor="inputCategory" className="form-label">
-              Category
-            </label>
-            <select
-              className="form-select"
-              aria-label="Default select example"
-              name="category_id"
-              onChange={handleChange}
-            >
-              <option disabled selected>
-                Seleccione su categoria
-              </option>
-              {categories.map((value) => {
-                return (
-                  <option key={value.id} value={value.id}>
-                    {value.name}
-                  </option>
-                );
-              })}
-            </select>
-          </div>
-          <div className="mb-3">
-            <label htmlFor="inputPlate" className="form-label">
-              Plate
-            </label>
-            <input
-              name="plate"
-              type="text"
-              className="form-control"
-              id="inputPlate"
-              onChange={handleChange}
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="inputBarnd" className="form-label">
-              Brand
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="inputBarnd"
-              name="brand"
-              onChange={handleChange}
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="inputModel" className="form-label">
-              Model
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="inputModel"
-              name="model"
-              onChange={handleChange}
-            />
-          </div>
 
-          <button type="submit" className="btn btn-primary">
-            Registrar
-          </button>
-        </form>
+  return <Base cars={true}>
+
+    <Box
+      className="container mt-3"
+      component="form"
+      sx={{
+        width: 500,
+        maxWidth: '100%',
+      }}
+      noValidate
+      autoComplete="off"
+      type="form"
+      onSubmit={handleSubmit}
+    >
+      <div className="my-2">
+        <TextField
+          id="category"
+          select
+          fullWidth label="Categoria"
+          name="category_id"
+          onChange={handleChange}
+          required
+        >
+          {categories.map((value) => {
+            return (
+              <MenuItem
+                key={value.id} value={value.id}>
+                {value.name}
+              </MenuItem>
+            );
+          })}
+        </TextField>
       </div>
-    </div>
-  );
+      <div className="my-2">
+        <TextField
+          fullWidth label="Marca"
+          required
+          id="Brand"
+          onChange={handleChange}
+          name="brand"
+          type="text"
+        />
+      </div>
+      <div className="my-2">
+        <TextField
+          fullWidth label="Modelo"
+          required
+          id="Model"
+          onChange={handleChange}
+          name="model"
+          type="text"
+        />
+      </div>
+      <div className="my-2">
+        <TextField
+          fullWidth label="Matricula"
+          required
+          id="Plate"
+          onChange={handleChange}
+          name="plate"
+          type="text"
+        />
+      </div>
+      <Stack spacing={2} direction="row" className="container my-2">
+        <Button
+          variant="outlined"
+          type="submit"
+          onClick={() => {
+            handleSubmit()
+          }}
+        >Guardar
+        </Button>
+        <Button
+          onClick={() => navigate("/cars")}
+          variant="outlined"
+        >Cancelar
+        </Button>
+      </Stack>
+    </Box>
+  </Base>
 };
 export default CreateCar;

@@ -57,7 +57,8 @@ class Car(db.Model):
             "plate": self.plate,
             "brand": self.brand,
             "model": self.model,
-            "category_id": self.category.serialize()
+            "category_id": self.category_id,
+            "category": self.category.serialize()
         }
         data["user"] = self.my_cars[0].user.serialize() if self.my_cars else None
         return data
@@ -95,6 +96,7 @@ class Category(db.Model):
 
 class Bills(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    stripe_id = db.Column(db.String(30), unique=False, nullable=False)
     amount = db.Column(db.String(10), unique=False, nullable=False)
     date = db.Column(db.String(20), unique=False, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
@@ -102,9 +104,11 @@ class Bills(db.Model):
     parking_id = db.Column(db.Integer, db.ForeignKey('parking.id'))
     parking = db.relationship('Parking', backref='bills', lazy=True)
 
+
     def serialize(self):
         return {
             "id": self.id,
+            "stripe_id": self.stripe_id,
             "amount": self.amount,
             "date": self.date,
             "user": self.user.serialize(),
