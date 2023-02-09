@@ -127,7 +127,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 const mdTheme = createTheme();
 
 
-export const Base = ({ children, dashboard = false, cars = false, reserve = false, location = false, bill = false }) => {
+export const Base = ({ children, dashboard = false, cars = false, reserve = false, location = false, bill = false, listCars = false }) => {
     const [open, setOpen] = React.useState(true);
     const toggleDrawer = () => {
         setOpen(!open);
@@ -252,6 +252,16 @@ export const Base = ({ children, dashboard = false, cars = false, reserve = fals
                                     <EmojiTransportationOutlinedIcon />
                                 </ListItemIcon>
                                 <ListItemText primary="Coches" />
+                            </ListItemButton>
+
+
+                            <ListItemButton selected={listCars} onClick={() => {
+                                navigate("/cars")
+                            }}>
+                                <ListItemIcon>
+                                    <EmojiTransportationOutlinedIcon />
+                                </ListItemIcon>
+                                <ListItemText primary="Listado de Coches" />
                             </ListItemButton>
 
                             <ListItemButton selected={reserve} onClick={() => {
