@@ -247,7 +247,9 @@ export const Base = ({ children, dashboard = false, cars = false, reserve = fals
                                 }} />
                             </ListItemButton>
 
-                            <ListItemButton selected={cars}>
+                            <ListItemButton selected={cars} onClick={() => {
+                                navigate("/car")
+                            }}>
                                 <ListItemIcon>
                                     <EmojiTransportationOutlinedIcon />
                                 </ListItemIcon>
@@ -316,11 +318,11 @@ export const Base = ({ children, dashboard = false, cars = false, reserve = fals
                             <Grid item xs={12} md={8} lg={9}>
                                 <Paper
                                     sx={{
-                                        p: 2,
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        height: 'fit-content',
-                                        width: 'fit-content',
+                                        // p: 2,
+                                        // display: 'flex',
+                                        // flexDirection: 'column',
+                                        // height: 'fit-content',
+                                        // width: 'fit-content',
                                     }}
                                 >
                                     {children}

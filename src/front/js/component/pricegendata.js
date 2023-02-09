@@ -11,6 +11,12 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Base } from "../pages/base";
+import Button from '@mui/material/Button';
+import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
+import Stack from '@mui/material/Stack';
+import EuroIcon from '@mui/icons-material/Euro';
+
+
 
 const theme = createTheme();
 
@@ -62,62 +68,77 @@ export const PriceGen = () => {
     actions.setPrice(hours * 3);
   };
 
-  return <Base>
-    <div className="main">
-      <div className="data">
-        <form onSubmit={handleSubmit}>
-          <label>
-            Start Date:
-            <input
-              type="date"
-              min={currentDateString.slice(0, 10)}
-              onChange={(e) => setStartDate(e.target.value)}
-            />
-          </label>
-          <>&nbsp;&nbsp;&nbsp;&nbsp;</>
-          <label>
-            Start Time:
-            <input
-              type="time"
-              min={currentDateString.slice(11, 16)}
-              onChange={(e) => setStartTime(e.target.value)}
-            />
-          </label>
+  return (
 
-          <br />
-          <br />
-          <br />
-          <br />
-          <label>
-            End Date:
-            <input
-              type="date"
-              min={startDate ? startDate : currentDateString.slice(0, 10)}
-              onChange={(e) => setEndDate(e.target.value)}
-            />
-          </label>
-          <>&nbsp;&nbsp;&nbsp;&nbsp;</>
-          <label>
-            End Time:
-            <input
-              type="time"
-              min={startTime && startDate == endDate ? startTime : ""}
-              onChange={(e) => setEndTime(e.target.value)}
-            />
-          </label>
-          <br />
-          <br />
-          <br />
-          <button type="submit">Calcula Precio</button>
 
-          <br />
-          <br />
-          <h2>Precio: €{price}</h2>
-          <br />
-          <button onClick={stripe}>Confirmar</button>
-        </form>
 
+    <Base>
+      <div className="container">
+        <div className="row col-12 justify-content-center">
+          <div className=" test">
+            <div className="data">
+              <form onSubmit={handleSubmit}>
+                <label>
+                  Start Date:
+                  <input
+                    type="date"
+                    min={currentDateString.slice(0, 10)}
+                    onChange={(e) => setStartDate(e.target.value)}
+                  />
+                </label>
+                <>&nbsp;&nbsp;&nbsp;&nbsp;</>
+                <label>
+                  Start Time:
+                  <input
+                    type="time"
+                    min={currentDateString.slice(11, 16)}
+                    onChange={(e) => setStartTime(e.target.value)}
+                  />
+                </label>
+
+                <br />
+                <br />
+                <br />
+                <br />
+                <label>
+                  End Date:
+                  <input
+                    type="date"
+                    min={startDate ? startDate : currentDateString.slice(0, 10)}
+                    onChange={(e) => setEndDate(e.target.value)}
+                  />
+                </label>
+                <>&nbsp;&nbsp;&nbsp;&nbsp;</>
+                <label>
+                  End Time:
+                  <input
+                    type="time"
+                    min={startTime && startDate == endDate ? startTime : ""}
+                    onChange={(e) => setEndTime(e.target.value)}
+                  />
+                </label>
+                <br />
+                <br />
+                <br />
+                <Button type="submit" variant="contained" endIcon={<EuroIcon />}>Calcular Precio</Button>
+                <br />
+                <br />
+                <h2>Precio: {price}€</h2>
+                <br />
+                <Button onClick={stripe} variant="contained" endIcon={<LocalGroceryStoreIcon />}>
+                  Pagar
+                </Button>
+              </form>
+
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </Base>
+
+
+
+    </Base>
+  )
+
+
 };

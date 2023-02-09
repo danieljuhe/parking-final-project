@@ -26,13 +26,13 @@ export const ParkingView = () => {
       .then((response) => response.json())
       .then((response) => {
         setCarCategory(response);
-        if (response[0].car.category_id.id == 1) {
+        if (response[0].car.category_id == 1) {
           setCCategory(1);
-        } else if (response[0].car.category_id.id == 2) {
+        } else if (response[0].car.category_id == 2) {
           setCCategory(2);
-        } else if (response[0].car.category_id.id == 3) {
+        } else if (response[0].car.category_id == 3) {
           setCCategory(3);
-        } else if (response[0].car.category_id.id == 4) {
+        } else if (response[0].car.category_id == 4) {
           setCCategory(4);
         } else return setCCategory(5);
       });
@@ -52,7 +52,7 @@ export const ParkingView = () => {
       site: modal.site,
       car_plate: carCategory && carCategory[0].car.plate,
       user_id: carCategory && carCategory[0].car.user.id,
-      category_id: carCategory && carCategory[0].car.category_id.id,
+      category_id: carCategory && carCategory[0].car.category_id,
       occupied: true,
     };
     try {
