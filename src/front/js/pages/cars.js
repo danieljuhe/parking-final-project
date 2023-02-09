@@ -33,10 +33,9 @@ const Cars = () => {
       headers: {
         "Content-Type": "application/json",
       },
-    })
-      .then((response) => response.json())
+    }).then((response) => response.json())
       .then((data) => {
-        setListOfCars(listOfCars.filter(car => car.id != id));
+        setListOfCars(listOfCars.filter(car => car.car.id != id));
       });
   };
 
@@ -56,33 +55,34 @@ const Cars = () => {
                 <div className="mx-auto my-2 btn-group btn-group-sm" role="group" aria-label="Basic outlined example">
                   <button
                     className="btn btn-outline-primary"
-                    onClick={() => handleEditClick(car.id)}
+                    onClick={() => handleEditClick(car.car.id)}
                   >Editar
                   </button>
                   <button
                     className="btn btn-outline-primary"
-                    data-bs-target={`#exampleModal${car.id}`}
+                    data-bs-target={`#exampleModal${car.car.id}`}
                     data-bs-toggle="modal"
                     type="button"
                   >Eliminar
                   </button>
-                  <div className="modal fade" id={`exampleModal${car.id}`} aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div className="modal fade" id={`exampleModal${car.car.id}`} aria-labelledby={`#exampleModalLabel${car.car.id}`} aria-hidden="true">
                     <div className="modal-dialog">
-                      <div className="modal2">
+                      <div className="modal-content">
                         <div className="modal-header">
-                          <h5 className="modal-title" id="exampleModalLabel">IMPORTANTE!</h5>
+                          <h5 className="modal-title" id={`exampleModalLabel${car.car.id}`}>IMPORTANTE!</h5>
                           <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
-                          Seguro que desea elimiar el {car.brand} {car.model}?
+                          Seguro que desea elimiar el {car.car.brand} {car.car.model}?
                         </div>
                         <div className="modal-footer">
                           <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button type="button" className="btn btn-primary"
-                            data-bs-dismiss="modal"
+                          {<button type="button" className="btn btn-primary"
+
                             onClick={() => {
-                              handleDeleteClick(car.id);
-                            }}>Eliminar</button>
+                              console.log("holaaaa")
+                              handleDeleteClick(car.car.id);
+                            }}>Eliminar</button>}
                         </div>
                       </div>
                     </div>
@@ -93,7 +93,9 @@ const Cars = () => {
                   >Seleccionar
                   </button>
                 </div>
+
               </div>
+
             </div>
           )
         })}

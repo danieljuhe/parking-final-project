@@ -213,7 +213,7 @@ export const ParkingView = () => {
       </div>
       {showModal && (
         <div className="modal-overlay">
-          <div className="modal-content">
+          <div className="modal-content modal-content2">
             <button onClick={handleCloseModal} className="cancelar">X </button>
             <p>Tu {carCategory && carCategory[0].car.brand},{" "}
               {carCategory && carCategory[0].car.model}

@@ -44,8 +44,7 @@ const EditCar = () => {
     fetch(process.env.BACKEND_URL + "/api/get_onecar/" + params.car_id)
       .then((response) => {
         return response.json();
-      })
-      .then((response) => {
+      }).then((response) => {
         setListOfCars(response);
       })
   }, []);
@@ -156,89 +155,7 @@ const EditCar = () => {
         >Cancelar
         </Button>
       </Stack>
-
     </Box>
-
-    /*<form onSubmit={handleSubmit}>
-      <div className="mb-3">
-        image.png
-        <label for="Plate" className="form-label">
-          Plate
-        </label>
-        <input
-          type="text"
-          placeholder={listOfCars.plate}
-          className="form-control"
-          id="Plate"
-          aria-describedby="emailHelp"
-          onChange={(e) => {
-            setListOfCars({ ...listOfCars, plate: e.target.value });
-          }}
-        />
-      </div>
-      <div className="mb-3">
-        <label for="Brand" className="form-label">
-          Brand
-        </label>
-        <input
-          type="Brand"
-          placeholder={listOfCars.brand}
-          className="form-control"
-          id="Brand"
-          aria-describedby="emailHelp"
-          onChange={(e) => {
-            setListOfCars({ ...listOfCars, brand: e.target.value });
-          }}
-        />
-      </div>
-      <div className="mb-3">
-        <label for="Model" className="form-label">
-          Model
-        </label>
-        <input
-          type="Model"
-          placeholder={listOfCars.model}
-          className="form-control"
-          id="Model"
-          aria-describedby="emailHelp"
-          onChange={(e) => {
-            setListOfCars({ ...listOfCars, model: e.target.value });
-          }}
-        />
-      </div>
-      <div className="mb-3">
-        <label htmlFor="inputCategory" className="form-label">
-          Category {listOfCars.category_id.id}
-        </label>
-        <select
-          className="form-select"
-          aria-label="Default select example"
-          name="category_id"
-        >
-          <option
-            disabled selected
-          >
-          </option>
-          {categories.map((value) => {
-            return (
-              <option
-                key={value.id}
-                value={value.id}
-                selected={listOfCars.category_id.id == value.id ? "selected" : ""}
-              >
-                {value.name}
-              </option>
-            );
-          })}
-        </select>
-      </div>
-      <button
-        type="submit"
-        className="btn btn-secondary"
-      >
-        Guardar
-      </button>
-    </form>*/
   ) : "";
 };
 

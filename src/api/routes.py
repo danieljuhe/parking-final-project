@@ -91,6 +91,12 @@ def show_cars():
 
     return jsonify(data), 200
 
+@api.route ('/get_onecar/<int:id>', methods=['GET'])
+def get_onecar(id):
+    car = Car.query.filter_by(id=id).first()
+    car = car.serialize()
+    return jsonify(car)
+
 
 @api.route ('/list_car', methods=['GET'])
 @jwt_required()
