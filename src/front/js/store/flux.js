@@ -5,6 +5,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       token: null,
       user: "",
       message: null,
+      defaultCar: null,
       demo: [
         {
           title: "FIRST",
@@ -37,6 +38,9 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       setPrice: (price) => {
         setStore({ price: price });
+      },
+      setDefaultCar: (carId) => {
+        setStore({ defaultCar: carId })
       },
       getMessage: async () => {
         try {

@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../styles/parkingview.css";
 import "../../styles/modal.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCar, faChargingStation, faPersonRifle, faVanShuttle, faWheelchair } from "@fortawesome/free-solid-svg-icons";
 import { Base } from "../pages/base";
+import { Context } from "../store/appContext";
 
 export const ParkingView = () => {
   const navigate = useNavigate();
@@ -15,6 +16,9 @@ export const ParkingView = () => {
   const [showModal, setShowModal] = useState(false);
   const handleOpenModal = () => setShowModal(true);
   const handleCloseModal = () => setShowModal(false);
+  const [currentCard, setCurrentCard] = useState();
+
+  const { store } = useContext(Context)
 
   useEffect(() => {
     fetch(process.env.BACKEND_URL + "/api/parking", {
@@ -26,15 +30,9 @@ export const ParkingView = () => {
       .then((response) => response.json())
       .then((response) => {
         setCarCategory(response);
-        if (response[0].car.category_id == 1) {
-          setCCategory(1);
-        } else if (response[0].car.category_id == 2) {
-          setCCategory(2);
-        } else if (response[0].car.category_id == 3) {
-          setCCategory(3);
-        } else if (response[0].car.category_id == 4) {
-          setCCategory(4);
-        } else return setCCategory(5);
+        const currentCard = response.find(car => car.id == store.defaultCar)
+        setCurrentCard(currentCard)
+        setCCategory(currentCard ? currentCard.car.category_id : response[0].car.category_id);
       });
 
     fetch(process.env.BACKEND_URL + "/api/parkingsites", {
@@ -50,9 +48,9 @@ export const ParkingView = () => {
     const parking = {
       id: id,
       site: modal.site,
-      car_plate: carCategory && carCategory[0].car.plate,
-      user_id: carCategory && carCategory[0].car.user.id,
-      category_id: carCategory && carCategory[0].car.category_id,
+      car_plate: currentCard && currentCard.car.plate,
+      user_id: currentCard && currentCard.car.user.id,
+      category_id: currentCard && currentCard.car.category_id,
       occupied: true,
     };
     try {
@@ -215,8 +213,8 @@ export const ParkingView = () => {
         <div className="modal-overlay">
           <div className="modal-content modal-content2">
             <button onClick={handleCloseModal} className="cancelar">X </button>
-            <p>Tu {carCategory && carCategory[0].car.brand},{" "}
-              {carCategory && carCategory[0].car.model}
+            <p>Tu {currentCard && currentCard.car.brand},{" "}
+              {currentCard && currentCard.car.model}
               <br />
               {`se aparcara en la plaza ${modal.site}`}
             </p>

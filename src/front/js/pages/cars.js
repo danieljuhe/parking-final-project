@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Car from "./car";
 import { Base } from "../pages/base";
+import { Context } from "../store/appContext";
 
 
 const Cars = () => {
   const [listOfCars, setListOfCars] = useState();
+  const { store, actions } = useContext(Context)
+
   const navigate = useNavigate();
 
 
@@ -79,8 +82,7 @@ const Cars = () => {
                           </div>
                           <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            {<button type="button" className="btn btn-primary"
-
+                            {<button type="button" className="btn btn-primary" data-bs-dismiss="modal"
                               onClick={() => {
                                 console.log("holaaaa")
                                 handleDeleteClick(car.car.id);
@@ -90,7 +92,10 @@ const Cars = () => {
                       </div>
                     </div>
                     <button
-                      onClick={() => navigate("/parking")}
+                      onClick={() => {
+                        actions.setDefaultCar(car.car.id)
+                        navigate("/parking")
+                      }}
                       className="btn btn-outline-primary"
                     >Seleccionar
                     </button>
@@ -108,62 +113,3 @@ const Cars = () => {
 }
 
 export default Cars
-
-
-
-
-/*    <div className="container">
-    <div className="row text-center">
-      {listOfCars?.map((car, index) => {
-        return (
-          <div className="col-6 col-md-6 mt-2 mb-2" key={index}>
-            <Car
-              brand={car.brand}
-              plate={car.plate}
-              model={car.model}
-              category={car.category_id.name}
-            />
-            <button
-              onClick={() => handleEditClick(car.id)}
-              type="button"
-              className="btn btn-secondary rounded-circle mt-2 me-2"
-            >
-              <i className="far fa-edit"></i>
-            </button>
-            <button
-              type="button"
-              className="btn btn-danger rounded-circle mt-2 ms-2"
-              data-bs-toggle="modal"
-              data-bs-target="#staticBackdrop"
-            >
-              <i className="far fa-trash-alt"></i>
-            </button>
-            <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-              <div className="modal-dialog">
-                <div className="modal-content">
-                  <div className="modal-header">
-                    <h5 className="modal-title" id="staticBackdropLabel">WARNING</h5>
-                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div className="modal-body">
-                    Seguro que desea elimiar el vehiculo seleccionado?
-                  </div>
-                  <div className="modal-footer">
-                    <button type="button"
-                      className="btn btn-secondary"
-                      data-bs-dismiss="modal">
-                      Cerrar</button>
-                    <button type="button"
-                      className="btn btn-danger"
-                      onClick={() => handleDeleteClick(car.id)}>
-                      Eliminar
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        );
-      })}
-    </div>
-  </div>*/

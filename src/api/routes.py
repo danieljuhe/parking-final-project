@@ -133,6 +133,8 @@ def edit_car(id):
 def delete_car(id):
     try:
         car = Car.query.filter_by(id=id).first()
+        my_car=My_cars.query.filter_by(car_id=id).first()
+        db.session.delete(my_car)
         db.session.delete(car)
         db.session.commit()
     except:
