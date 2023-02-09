@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Car from "./car";
-
+import { Base } from "../pages/base";
 
 const Cars = () => {
   const [listOfCars, setListOfCars] = useState([]);
@@ -40,68 +40,69 @@ const Cars = () => {
   };
 
   return (
-    <div className="container">
-      <div className="row">
-        {listOfCars?.map((car, index) => {
-          return (
-            <div className="col-md-6" key={index}>
-              <Car
-                brand={car.car.brand}
-                plate={car.car.plate}
-                model={car.car.model}
-                category={car.car.category.name}
-              />
-              <div className="container">
-                <div className="mx-auto my-2 btn-group btn-group-sm" role="group" aria-label="Basic outlined example">
-                  <button
-                    className="btn btn-outline-primary"
-                    onClick={() => handleEditClick(car.car.id)}
-                  >Editar
-                  </button>
-                  <button
-                    className="btn btn-outline-primary"
-                    data-bs-target={`#exampleModal${car.car.id}`}
-                    data-bs-toggle="modal"
-                    type="button"
-                  >Eliminar
-                  </button>
-                  <div className="modal fade" id={`exampleModal${car.car.id}`} aria-labelledby={`#exampleModalLabel${car.car.id}`} aria-hidden="true">
-                    <div className="modal-dialog">
-                      <div className="modal-content">
-                        <div className="modal-header">
-                          <h5 className="modal-title" id={`exampleModalLabel${car.car.id}`}>IMPORTANTE!</h5>
-                          <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div className="modal-body">
-                          Seguro que desea elimiar el {car.car.brand} {car.car.model}?
-                        </div>
-                        <div className="modal-footer">
-                          <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          {<button type="button" className="btn btn-primary"
+    <Base reserve={true}>
+      <div className="container">
+        <div className="row">
+          {listOfCars?.map((car, index) => {
+            return (
+              <div className="col-md-6" key={index}>
+                <Car
+                  brand={car.car.brand}
+                  plate={car.car.plate}
+                  model={car.car.model}
+                  category={car.car.category.name}
+                />
+                <div className="container">
+                  <div className="mx-auto my-2 btn-group btn-group-sm" role="group" aria-label="Basic outlined example">
+                    <button
+                      className="btn btn-outline-primary"
+                      onClick={() => handleEditClick(car.car.id)}
+                    >Editar
+                    </button>
+                    <button
+                      className="btn btn-outline-primary"
+                      data-bs-target={`#exampleModal${car.car.id}`}
+                      data-bs-toggle="modal"
+                      type="button"
+                    >Eliminar
+                    </button>
+                    <div className="modal fade" id={`exampleModal${car.car.id}`} aria-labelledby={`#exampleModalLabel${car.car.id}`} aria-hidden="true">
+                      <div className="modal-dialog">
+                        <div className="modal-content">
+                          <div className="modal-header">
+                            <h5 className="modal-title" id={`exampleModalLabel${car.car.id}`}>IMPORTANTE!</h5>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div className="modal-body">
+                            Seguro que desea elimiar el {car.car.brand} {car.car.model}?
+                          </div>
+                          <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            {<button type="button" className="btn btn-primary"
 
-                            onClick={() => {
-                              console.log("holaaaa")
-                              handleDeleteClick(car.car.id);
-                            }}>Eliminar</button>}
+                              onClick={() => {
+                                console.log("holaaaa")
+                                handleDeleteClick(car.car.id);
+                              }}>Eliminar</button>}
+                          </div>
                         </div>
                       </div>
                     </div>
+                    <button
+                      onClick={() => navigate("/parking")}
+                      className="btn btn-outline-primary"
+                    >Seleccionar
+                    </button>
                   </div>
-                  <button
-                    onClick={() => navigate("/parking")}
-                    className="btn btn-outline-primary"
-                  >Seleccionar
-                  </button>
+
                 </div>
 
               </div>
-
-            </div>
-          )
-        })}
+            )
+          })}
+        </div>
       </div>
-    </div>
-
+    </Base>
   )
 }
 
