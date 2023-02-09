@@ -71,16 +71,14 @@ def create_car():
         db.session.add(car)
         db.session.commit()
         car= Car.query.filter_by(plate=plate).first()
-        #user= request.json.get("user", None)
-        #my_car = My_cars.query.filter_by(user_id= user_id)
-        #user_id = get_jwt_identity()
-        #car=Car.query.filter_by(user_id=user_id)
-        #db.session.add(my_car)
-        #db.session.commit()
+        user_id = get_jwt_identity()
+        my_car= My_cars(car_id=car.id, user_id=user_id)
+        db.session.add(my_car)
+        db.session.commit()
        
     except Exception as e:
         print(e)
-        return jsonify ({"message": str(e)}), 400
+        return jsonify ({"messageerror": str(e)}), 400
     return jsonify({"message": "vehiculo creado"}), 200
 
 
@@ -95,12 +93,10 @@ def show_cars():
 
 
 @api.route ('/list_car', methods=['GET'])
-#@jwt_required()
+@jwt_required()
 def list_car():
-#    user_id = get_jwt_identity()
-#    cars = My_cars.query.filter_by(id=user_id).first()
-    cars = Car.query.all()
-#    data = [my_cars.serialize() for car in cars]
+    user_id = get_jwt_identity()
+    cars = My_cars.query.filter_by(user_id=user_id)
     data = [car.serialize() for car in cars]
     return jsonify(data)
     

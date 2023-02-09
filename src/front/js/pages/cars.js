@@ -9,15 +9,13 @@ const Cars = () => {
 
 
   useEffect(() => {
-    fetch(process.env.BACKEND_URL + "/api/list_car")
-      /*(process.env.BACKEND_URL + "/api/list_car", {
-        method: "POST",
-   headers: {
-     Authorization: "Bearer " + localStorage.getItem("token"),
-     "Content-Type": "application/json",
-   },
- })*/
-      .then((response) => response.json())
+    fetch(process.env.BACKEND_URL + "/api/list_car", {
+      method: "GET",
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token"),
+        "Content-Type": "application/json",
+      },
+    }).then((response) => response.json())
       .then((response) => {
         console.log(response);
         setListOfCars(response);
@@ -49,10 +47,10 @@ const Cars = () => {
           return (
             <div className="col-md-6" key={index}>
               <Car
-                brand={car.brand}
-                plate={car.plate}
-                model={car.model}
-                category={car.category.name}
+                brand={car.car.brand}
+                plate={car.car.plate}
+                model={car.car.model}
+                category={car.car.category.name}
               />
               <div className="container">
                 <div className="mx-auto my-2 btn-group btn-group-sm" role="group" aria-label="Basic outlined example">

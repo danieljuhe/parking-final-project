@@ -63,13 +63,14 @@ const CreateCar = () => {
     fetch(process.env.BACKEND_URL + "/api/create_car", {
       method: "POST",
       headers: {
-        "Content-type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(formData),
     })
       .then((response) => response.json())
       .then((data) => {
-        if (data.message) {
+        if (data.messageerror) {
           alertaError()
         } else {
           setFormData(data);
