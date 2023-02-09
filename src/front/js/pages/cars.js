@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Car from "./car";
 import { Base } from "../pages/base";
+import { Context } from "../store/appContext";
 
 
 const Cars = () => {
   const [listOfCars, setListOfCars] = useState();
+  const { store, actions } = useContext(Context)
+
   const navigate = useNavigate();
 
 
@@ -90,7 +93,10 @@ const Cars = () => {
                       </div>
                     </div>
                     <button
-                      onClick={() => navigate("/parking")}
+                      onClick={() => {
+                        actions.setDefaultCar(car.car.id)
+                        navigate("/parking")
+                      }}
                       className="btn btn-outline-primary"
                     >Seleccionar
                     </button>

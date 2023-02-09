@@ -25,37 +25,43 @@ const Bills = () => {
     return <Base bill={true} className="table-responsive main">
         <div className="container bill">
             <div className="row text-center">
-                <h3>Mis Facturas</h3>
-                <br />
-                <br />
-                <table className="table table-bordered border-dark table-sm table-striped ">
-                    <thead className="table-info">
-                        <tr>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Fecha</th>
-                            <th scope="col">Monto</th>
-                            <th scope="col">Concepto</th>
-                            <th scope="col">Matrìcula</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                {
+                    showBills && showBills.length ? (<>
+                        <h3>Mis Facturas</h3>
+                        <br />
+                        <br />
+                        <table className="table table-bordered border-dark table-sm table-striped ">
+                            <thead className="table-info">
+                                <tr>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Fecha</th>
+                                    <th scope="col">Monto</th>
+                                    <th scope="col">Concepto</th>
+                                    <th scope="col">Matrìcula</th>
+                                </tr>
+                            </thead>
+                            <tbody>
 
-                        {showBills && showBills.map((bill) => {
+                                {showBills && showBills.map((bill) => {
 
-                            return (<tr>
-                                <th scope="row">{bill.user.name}</th>
-                                <th scope="row">{bill.user.email}</th>
-                                <th scope="row">{bill.date}</th>
-                                <th scope="row">{bill.amount}</th>
-                                <th scope="row">{bill.stripe_id}</th>
-                                <th scope="row">{bill.parking_id.car_plate}</th>
-                            </tr>
-                            )
-                        })}
+                                    return (<tr>
+                                        <th scope="row">{bill.user.name}</th>
+                                        <th scope="row">{bill.user.email}</th>
+                                        <th scope="row">{bill.date}</th>
+                                        <th scope="row">{bill.amount}</th>
+                                        <th scope="row">{bill.stripe_id}</th>
+                                        <th scope="row">{bill.parking_id.car_plate}</th>
+                                    </tr>
+                                    )
+                                })}
 
-                    </tbody>
-                </table>
+                            </tbody>
+                        </table>
+                    </>
+                    ) : <h3>No hay facturas</h3>
+                }
+
 
             </div>
         </div>
