@@ -5,7 +5,7 @@ import { Base } from "../pages/base";
 
 
 const Cars = () => {
-  const [listOfCars, setListOfCars] = useState([]);
+  const [listOfCars, setListOfCars] = useState();
   const navigate = useNavigate();
 
 
@@ -41,10 +41,10 @@ const Cars = () => {
   };
 
   return (
-    <Base reserve={true}>
+    <Base listCars={true}>
       <div className="container">
         <div className="row">
-          {listOfCars?.map((car, index) => {
+          {!listOfCars ? "No hay coches registrado" : listOfCars.map((car, index) => {
             return (
               <div className="col-md-6" key={index}>
                 <Car
