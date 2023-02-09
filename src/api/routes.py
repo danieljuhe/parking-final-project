@@ -62,7 +62,6 @@ def parking_site():
 @jwt_required()
 def create_car():
     data= request.json
-    print(data)
     brand = request.json.get("brand", None)
     model = request.json.get("model", None)
     plate = request.json.get("plate", None)
@@ -72,11 +71,12 @@ def create_car():
         db.session.add(car)
         db.session.commit()
         car= Car.query.filter_by(plate=plate).first()
-        my_car= My_car(user_id=user_id, car_id=car_id)
-        user_id = get_jwt_identity()
-        car=Car.query.filter_by(user_id=user_id)
-        db.session.add(my_car)
-        db.session.commit()
+        #user= request.json.get("user", None)
+        #my_car = My_cars.query.filter_by(user_id= user_id)
+        #user_id = get_jwt_identity()
+        #car=Car.query.filter_by(user_id=user_id)
+        #db.session.add(my_car)
+        #db.session.commit()
        
     except Exception as e:
         print(e)
@@ -95,8 +95,12 @@ def show_cars():
 
 
 @api.route ('/list_car', methods=['GET'])
+#@jwt_required()
 def list_car():
+#    user_id = get_jwt_identity()
+#    cars = My_cars.query.filter_by(id=user_id).first()
     cars = Car.query.all()
+#    data = [my_cars.serialize() for car in cars]
     data = [car.serialize() for car in cars]
     return jsonify(data)
     

@@ -12,14 +12,22 @@ const CreateCar = () => {
   const [user, setUser] = useState();
   const navigate = useNavigate();
 
-  const alertaEliminar = () => {
+  const alertaCrear = () => {
     swal({
       title: "Vehiculo Creado",
       text: " ",
       icon: "success",
-      buttons: ["Ok",],
+      button: "Ok",
       timmer: "1000"
+    })
+  }
 
+  const alertaError = () => {
+    swal({
+      title: "ERROR",
+      text: "Algo salio mal, intentalo de nuevo ",
+      icon: "warning",
+      timmer: "1000"
     })
   }
 
@@ -61,9 +69,17 @@ const CreateCar = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        setFormData(data);
+        if (data.message) {
+          alertaError()
+        } else {
+          setFormData(data);
+          alertaCrear()
+          navigate("/cars")
+        }
+
       });
   };
+
 
   return (
 
@@ -133,8 +149,7 @@ const CreateCar = () => {
           variant="outlined"
           type="submit"
           onClick={() => {
-            alertaEliminar()
-            navigate("/cars")
+            handleSubmit()
           }}
         >Guardar
         </Button>

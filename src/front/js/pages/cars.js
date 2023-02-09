@@ -10,6 +10,13 @@ const Cars = () => {
 
   useEffect(() => {
     fetch(process.env.BACKEND_URL + "/api/list_car")
+      /*(process.env.BACKEND_URL + "/api/list_car", {
+        method: "POST",
+   headers: {
+     Authorization: "Bearer " + localStorage.getItem("token"),
+     "Content-Type": "application/json",
+   },
+ })*/
       .then((response) => response.json())
       .then((response) => {
         console.log(response);

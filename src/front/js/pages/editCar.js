@@ -23,6 +23,15 @@ const EditCar = () => {
     })
   }
 
+  const alertaError = () => {
+    swal({
+      title: "ERROR",
+      text: "Algo salio mal, intentalo de nuevo ",
+      icon: "warning",
+      timmer: "1000"
+    })
+  }
+
   useEffect(() => {
     fetch(process.env.BACKEND_URL + "/api/category")
       .then((response) => response.json())
@@ -53,7 +62,7 @@ const EditCar = () => {
       .then((response) => response.json())
       .then((data) => {
         if (data.message) {
-          //alertError()
+          alertaError()
         } else {
           setListOfCars(data)
           alertaGuardar()
