@@ -98,6 +98,7 @@ const CreateCar = () => {
       onSubmit={handleSubmit}
     >
       <div className="my-2">
+        <h2>Registra tu Coche</h2>
         <TextField
           id="category"
           select

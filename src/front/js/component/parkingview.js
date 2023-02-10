@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCar, faChargingStation, faMinimize, faVanShuttle, faWheelchair } from "@fortawesome/free-solid-svg-icons";
 import { Base } from "../pages/base";
 import { Context } from "../store/appContext";
+import swal from "sweetalert";
 
 export const ParkingView = () => {
   const navigate = useNavigate();
@@ -19,6 +20,18 @@ export const ParkingView = () => {
   const [currentCard, setCurrentCard] = useState();
 
   const { store } = useContext(Context)
+
+  const mostrarAlerta = () => {
+    swal({
+      title: "App Parking",
+      text: "Plaza Seleccionada con Éxito",
+      icon: "success",
+      button: "Aceptar",
+      timer: "9000"
+
+    })
+    navigate("/Privateuser");
+  }
 
   useEffect(() => {
     fetch(process.env.BACKEND_URL + "/api/parking", {
@@ -222,8 +235,7 @@ export const ParkingView = () => {
               onClick={() => {
                 handleCloseModal();
                 senddata(modal.id)
-                // agregar alerta guapa   plaza reservada con exito!!
-                // agregar alerta del formulario de login
+                mostrarAlerta();
                 navigate("/date/" + modal.id);
               }}
             >Reservar y pagar</button>

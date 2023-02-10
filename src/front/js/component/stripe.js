@@ -156,7 +156,8 @@ function AppPay() {
   return <Base>
 
     <Elements stripe={stripePromise}>
-      <div className="">
+      <div className="stripecard">
+        <h3>Ingresa Datos de Pago</h3>
         <div className="">
           <div className="">
             <CheckoutForm />

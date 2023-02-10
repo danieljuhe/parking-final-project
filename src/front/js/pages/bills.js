@@ -31,7 +31,7 @@ const Bills = () => {
                         <br />
                         <br />
                         <table className="table table-bordered border-dark table-sm table-striped ">
-                            <thead className="table-info">
+                            <thead className="tablecolor ">
                                 <tr>
                                     <th scope="col">Nombre</th>
                                     <th scope="col">Email</th>
