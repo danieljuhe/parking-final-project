@@ -47,9 +47,9 @@ const Cars = () => {
     <Base listCars={true}>
       <div className="container">
         <div className="row">
-          {!listOfCars ? "No hay coches registrado" : listOfCars.map((car, index) => {
+          {!listOfCars ? <h3>No hay coches registrados</h3> : listOfCars.map((car, index) => {
             return (
-              <div className="col-md-6" key={index}>
+              <div className="col-8" key={index}>
                 <Car
                   brand={car.car.brand}
                   plate={car.car.plate}
