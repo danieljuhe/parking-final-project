@@ -1,6 +1,8 @@
 import React from "react";
 import "../../styles/map.css"
 import { Base } from "../pages/base";
+import { TextField } from "@mui/material";
+import Button from "@mui/material/Button";
 
 export const Map = () => {
   return <Base location={true}>
@@ -30,6 +32,75 @@ export const Map = () => {
         </div>
       </div>
     </div>
+    <br />
+    <div className="contact">
+      <div className="container">
+        <div className="describetitle">
+          Contacta con nosotros
+        </div>
+        <div className="row input-container">
+          <div className="col-xs-12">
+            <div className="styled-input wide">
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Nombre"
+                name="email"
+                autoComplete="email"
+                autoFocus
+              />
+            </div>
+          </div>
+          <div className="col-md-6 col-sm-12">
+            <div className="styled-input">
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="E-mail"
+                name="email"
+                autoComplete="email"
+                autoFocus
+              />
+            </div>
+          </div>
+          <div className="col-md-6 col-sm-12">
+            <div className="styled-input" >
+              <TextField
+                margin="normal"
+                fullWidth
+                id="email"
+                label="Movil"
+                name="email"
+                autoComplete="email"
+                autoFocus
+              />
+            </div>
+          </div>
+          <div className="col-xs-12">
+            <div className="styled-input wide">
+              <TextField
+                id="filled-multiline-flexible"
+                margin="normal"
+                fullWidth
+                label="Mensaje"
+                multiline
+                maxRows={4}
+                name="email"
+                autoComplete="email"
+                autoFocus
+              />
+            </div>
+          </div>
+          <div className="col-xs-12">
+            <Button variant="contained">Enviar</Button>
+          </div>
+        </div>
+      </div>
+    </div>
   </Base>
 };
 
@@ -48,7 +119,7 @@ export const Map = () => {
 
 //   return (
 //     <GoogleMap
-//       mapContainerStyle={{ height: '400px', width: '100%' }}
+//       mapContainer0px', width: '100%' }}
 //       zoom={14}
 //       center={currentPosition}
 //     >

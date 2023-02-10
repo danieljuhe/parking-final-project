@@ -191,9 +191,6 @@ export const Base = ({ children, dashboard = false, cars = false, reserve = fals
                             Dashboard
                         </Typography>
                         <IconButton color="inherit">
-                            <Badge badgeContent={4} color="secondary">
-                                <NotificationsIcon />
-                            </Badge>
                         </IconButton>
                     </Toolbar>
                 </AppBar>
@@ -331,9 +328,9 @@ export const Base = ({ children, dashboard = false, cars = false, reserve = fals
                                         marginLeft: '1rem',
                                         display: 'flex',
                                         flexDirection: 'column',
-                                        height: 'fit-content',
+                                        minHeight: 'fit-content',
                                         padding: '2rem',
-                                        width: 'fit-content',
+                                        minWidth: 'fit-content',
                                     }}
                                 >
                                     {children}
