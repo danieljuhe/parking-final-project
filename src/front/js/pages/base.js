@@ -328,7 +328,7 @@ export const Base = ({ children, dashboard = false, cars = false, reserve = fals
                             <Grid item xs={12} md={8} lg={9}>
                                 <Paper
                                     sx={{
-                                        marginLeft: '-3rem',
+                                        marginLeft: '1rem',
                                         display: 'flex',
                                         flexDirection: 'column',
                                         height: 'fit-content',

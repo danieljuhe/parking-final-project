@@ -1,0 +1,39 @@
+.locationmain {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+iframe {
+  border-radius: 4px;
+  padding: 1rem;
+}
+.location {
+  display: flex;
+}
+
+.describe {
+  width: 13rem;
+  margin-top: 2rem;
+  display: flex;
+  margin-left: 5rem;
+  margin-right: 5rem;
+  flex-direction: column;
+}
+
+.describetitle {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  color: aliceblue;
+  border-radius: 4px;
+  background-color: #6a5acd;
+  padding: 1rem;
+  font-size: 25px;
+}
+
+.describeletter {
+  background-color: rgb(246, 246, 246);
+  padding: 1rem;
+  border-radius: 4px;
+}
