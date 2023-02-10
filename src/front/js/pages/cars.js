@@ -21,8 +21,11 @@ const Cars = () => {
       },
     }).then((response) => response.json())
       .then((response) => {
-        console.log(response);
-        setListOfCars(response);
+        if (response.message) {
+          console.log(response)
+        } else {
+          setListOfCars(response)
+        }
       });
   }, [])
 
@@ -47,9 +50,9 @@ const Cars = () => {
     <Base listCars={true}>
       <div className="container">
         <div className="row">
-          {!listOfCars ? "No hay coches registrado" : listOfCars.map((car, index) => {
+          {!listOfCars ? <h3>No hay coches registrados</h3> : listOfCars.map((car, index) => {
             return (
-              <div className="col-md-6" key={index}>
+              <div className="col-8" key={index}>
                 <Car
                   brand={car.car.brand}
                   plate={car.car.plate}
@@ -70,8 +73,8 @@ const Cars = () => {
                       type="button"
                     >Eliminar
                     </button>
-                    <div className="modal fade" id={`exampleModal${car.car.id}`} aria-labelledby={`#exampleModalLabel${car.car.id}`} aria-hidden="true">
-                      <div className="modal-dialog">
+                    <div className="modal fade " id={`exampleModal${car.car.id}`} aria-labelledby={`#exampleModalLabel${car.car.id}`} aria-hidden="true">
+                      <div className="modal-dialog modal-dialog-centered">
                         <div className="modal-content">
                           <div className="modal-header">
                             <h5 className="modal-title" id={`exampleModalLabel${car.car.id}`}>IMPORTANTE!</h5>

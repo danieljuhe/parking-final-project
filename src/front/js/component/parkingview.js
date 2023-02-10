@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../../styles/parkingview.css";
 import "../../styles/modal.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCar, faChargingStation, faPersonRifle, faVanShuttle, faWheelchair } from "@fortawesome/free-solid-svg-icons";
+import { faCar, faChargingStation, faMinimize, faVanShuttle, faWheelchair } from "@fortawesome/free-solid-svg-icons";
 import { Base } from "../pages/base";
 import { Context } from "../store/appContext";
 
@@ -130,7 +130,7 @@ export const ParkingView = () => {
                       {parkingSite.category_id == 1 && (<FontAwesomeIcon icon={faChargingStation} />)}
                       {parkingSite.category_id == 2 && (<FontAwesomeIcon icon={faWheelchair} />)}
                       {parkingSite.category_id == 3 && (<FontAwesomeIcon icon={faVanShuttle} />)}
-                      {parkingSite.category_id == 4 && (<FontAwesomeIcon icon={faPersonRifle} />)}
+                      {parkingSite.category_id == 4 && (<FontAwesomeIcon icon={faMinimize} />)}
                       {parkingSite.category_id == 5 && (<FontAwesomeIcon icon={faCar} />)}
                     </div>
                   );

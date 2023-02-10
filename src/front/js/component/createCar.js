@@ -86,7 +86,7 @@ const CreateCar = () => {
   return <Base cars={true}>
 
     <Box
-      className="container mt-3"
+      className="container mt-3 col-8"
       component="form"
       sx={{
         width: 500,

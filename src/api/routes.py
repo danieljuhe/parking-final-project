@@ -101,10 +101,15 @@ def get_onecar(id):
 @api.route ('/list_car', methods=['GET'])
 @jwt_required()
 def list_car():
-    user_id = get_jwt_identity()
-    cars = My_cars.query.filter_by(user_id=user_id)
-    data = [car.serialize() for car in cars]
-    return jsonify(data)
+    try:
+        user_id = get_jwt_identity()
+        cars = My_cars.query.filter_by(user_id=user_id).all()
+        data = [car.serialize() for car in cars]
+        if len(data) == 0:
+            return jsonify({"message": "No hay coches"}), 400
+        return jsonify(data), 200
+    except Exception as e: 
+        return jsonify({"error": e}), 400
     
 
 @api.route ('/edit_car/<int:id>', methods= ['PUT'])
