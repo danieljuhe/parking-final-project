@@ -1,0 +1,48 @@
+.mainDashboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+.cardDasboard {
+  display: flex;
+  flex-direction: row;
+}
+
+.cardtitle {
+  font-family: "Roboto", sans-serif, "arial";
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  color: aliceblue;
+  border-radius: 4px;
+  font-weight: 400;
+  margin-right: 2rem;
+  margin-left: 2rem;
+  padding: 1rem;
+  background-color: #6a5acd;
+}
+
+.cardbody {
+  font-family: "Roboto", sans-serif, "arial";
+  border-radius: 4px;
+  position: 0;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.textDashboard {
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  padding: 1rem;
+}
+
+.mainTitle {
+  font-family: "Roboto", sans-serif, "arial";
+  background-color: rgb(246, 246, 246);
+  border-radius: 4px;
+  font-weight: 400;
+  padding: 2rem;
+}
