@@ -214,7 +214,6 @@ export const Base = ({ children, dashboard = false, cars = false, reserve = fals
                         </Stack>
                         {user && user.name} {user && user.surname}
                         <IconButton onClick={toggleDrawer}>
-
                             <ChevronLeftIcon />
                         </IconButton>
                     </Toolbar>

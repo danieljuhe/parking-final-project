@@ -21,8 +21,11 @@ const Cars = () => {
       },
     }).then((response) => response.json())
       .then((response) => {
-        console.log(response);
-        setListOfCars(response);
+        if (response.message) {
+          console.log(response)
+        } else {
+          setListOfCars(response)
+        }
       });
   }, [])
 
