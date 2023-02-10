@@ -1,9 +1,9 @@
 .test {
   width: fit-content;
   height: fit-content;
-  margin-left: 2rem;
+  margin-left: 15rem;
   margin-right: 2rem;
-  padding-top: 6rem;
+  padding-top: 5rem;
   padding-bottom: 6rem;
 }
 .data {
@@ -11,6 +11,7 @@
   align-items: center;
 }
 input {
+  background-color: aliceblue;
   display: flex;
   align-items: center;
   padding: 0.6rem;
@@ -18,4 +19,5 @@ input {
   border: 1px solid gray;
   padding-left: 1rem;
   padding-right: 1rem;
+  color: black;
 }

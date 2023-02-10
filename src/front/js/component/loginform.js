@@ -20,6 +20,7 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import swal from "sweetalert";
 
 function Copyright(props) {
   return (
@@ -32,6 +33,17 @@ function Copyright(props) {
       {'.'}
     </Typography>
   );
+}
+const mostrarAlerta = () => {
+  swal({
+    title: "App Parking",
+    text: "Pago Realizado con Éxito",
+    icon: "success",
+    button: "Aceptar",
+    timer: "9000"
+
+  })
+  navigate("/Privateuser");
 }
 
 const theme = createTheme();
@@ -68,6 +80,7 @@ export const LoginForm = () => {
       })
       .catch((error) => {
         console.error("Error:", error);
+
       });
   };
 
@@ -89,7 +102,7 @@ export const LoginForm = () => {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-              Sign in
+              Bienvenido
             </Typography>
             <Box component="form" noValidate sx={{ mt: 1 }}>
               <TextField
@@ -137,7 +150,7 @@ export const LoginForm = () => {
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >
-                Sign In
+                Iniciar Sesión
               </Button>
               <Grid container>
                 <Grid item>

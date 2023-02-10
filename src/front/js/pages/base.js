@@ -247,7 +247,7 @@ export const Base = ({ children, dashboard = false, cars = false, reserve = fals
                                 <ListItemIcon>
                                     <EmojiTransportationOutlinedIcon />
                                 </ListItemIcon>
-                                <ListItemText primary="Coches" />
+                                <ListItemText primary="Registro de Coche" />
                             </ListItemButton>
 
 

@@ -67,3 +67,11 @@
   padding: 0 10px;
   color: #ffffff;
 }
+.stripecard {
+  width: fit-content;
+  height: fit-content;
+  margin-left: 8rem;
+  margin-right: 8rem;
+  padding-top: 5rem;
+  padding-bottom: 6rem;
+}

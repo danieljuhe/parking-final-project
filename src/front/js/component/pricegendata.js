@@ -72,6 +72,7 @@ export const PriceGen = () => {
 
   return <Base>
     <div className="test">
+      <h3>Ingresar Fecha y Hora</h3>
       <div className="data">
         <form onSubmit={handleSubmit}>
           <label>
@@ -90,7 +91,7 @@ export const PriceGen = () => {
             <>&nbsp;&nbsp;&nbsp;</>
             <input
               type="time"
-              min={currentDateString.slice(11, 16)}
+              min={startDate == new Date() ? currentDateString.slice(11, 16) : ""}
               onChange={(e) => setStartTime(e.target.value)}
             />
           </label>
