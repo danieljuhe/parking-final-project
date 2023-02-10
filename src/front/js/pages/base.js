@@ -188,7 +188,7 @@ export const Base = ({ children, dashboard = false, cars = false, reserve = fals
                             noWrap
                             sx={{ flexGrow: 1 }}
                         >
-                            Dashboard
+                            Parking App
                         </Typography>
                         <IconButton color="inherit">
                         </IconButton>
@@ -211,8 +211,8 @@ export const Base = ({ children, dashboard = false, cars = false, reserve = fals
                             >
                                 <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
                             </StyledBadge>
-                        </Stack><>&nbsp;</><>&nbsp;</>
-                        Hola<>&nbsp;</>{user && user.name}, <>&nbsp;</>{user && user.surname}
+                        </Stack>
+                        {user && user.name} {user && user.surname}
                         <IconButton onClick={toggleDrawer}>
 
                             <ChevronLeftIcon />
