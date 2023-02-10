@@ -39,8 +39,8 @@ function Copyright(props) {
     return (
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
             {'Copyright © '}
-            <Link color="inherit" href="https://mui.com/">
-                Your Website
+            <Link color="inherit" href="/privateuser">
+                Parking App
             </Link>{' '}
             {new Date().getFullYear()}
             {'.'}
@@ -209,9 +209,9 @@ export const Base = ({ children, dashboard = false, cars = false, reserve = fals
                                 anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
                                 variant="dot"
                             >
-                                <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                                <Avatar alt="Remy Sharp" src="https://www.adslzone.net/app/uploads-adslzone.net/2022/04/free-avatar-apertura.jpg?x=480&y=375&quality=40" />
                             </StyledBadge>
-                        </Stack>
+                        </Stack><>&nbsp;&nbsp;&nbsp;</>
                         {user && user.name} {user && user.surname}
                         <IconButton onClick={toggleDrawer}>
                             <ChevronLeftIcon />

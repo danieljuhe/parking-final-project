@@ -18,7 +18,7 @@ export const Map = () => {
       </div>
       <div className="describe">
         <div className="describetitle">
-          Parking Lot
+          Parking App
         </div><br />
         <div className="describeletter">
           Calle Edison 3, 28006<br />
