@@ -114,3 +114,22 @@ class Bills(db.Model):
             "user": self.user.serialize(),
             "parking_id": self.parking.serialize()
         }
+
+class Contact(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(20), unique=False, nullable=True)
+    email = db.Column(db.String(120), unique=True, nullable=True)
+    telephone = db.Column(db.Integer, unique=True, nullable=True)
+    message = db.Column(db.String(1000), nullable=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user = db.relationship('User', backref='contact', lazy=True)
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "email": self.email,
+            "message": self.message,
+            "telephone": self.telephone,
+            "user": self.user.serialize()
+        }

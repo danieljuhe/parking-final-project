@@ -61,7 +61,7 @@ const CheckoutForm = () => {
       timer: "9000"
 
     })
-    navigate("/payment/:parking_id");
+    // navigate("/payment/:parking_id");
   }
 
   const handleSubmit = async (e) => {
@@ -120,11 +120,9 @@ const CheckoutForm = () => {
           </div>
           <div className="visa_info">
             <img src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/chip.png" alt="" />
-            <p>{card}</p>
           </div>
           <div className="visa_crinfo">
-            <p>02/12</p>
-            <p>Nikhil Bobade</p>
+            <p>{setCard}</p>
           </div>
         </div>
       </div>
@@ -156,6 +154,7 @@ const CheckoutForm = () => {
             "Buy"
           )}
         </button>
+        <button onClick={mostrarAlertaError}>Error test</button>
       </form>
     </>
 

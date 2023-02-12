@@ -1,10 +1,57 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../../styles/map.css"
 import { Base } from "../pages/base";
 import { TextField } from "@mui/material";
 import Button from "@mui/material/Button";
 
+
 export const Map = () => {
+
+  const [contact, setContact] = useState([])
+  const [mensaje, setMensaje] = useState()
+
+  const ruka = (e) => {
+    setMensaje(e.target.value)
+  }
+  const senddata = async () => {
+    const message = {
+      user_id: contact && contact.id,
+      name: contact && contact.name,
+      email: contact && contact.email,
+      telephone: contact && contact.telephone,
+      message: setMensaje,
+
+    };
+    try {
+      const response = await fetch(process.env.BACKEND_URL + "/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", },
+        body: JSON.stringify(message),
+      });
+      const data = await response.json();
+      console.log(data);
+    }
+    catch (error) { console.error("Error:", error); }
+  };
+  useEffect(() => {
+
+    fetch(process.env.BACKEND_URL + "/api/user", {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token"),
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+        setContact(data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }, [])
+
+
   return <Base location={true}>
     <div className="locationmain">
       <div className="location">
@@ -46,7 +93,7 @@ export const Map = () => {
                 required
                 fullWidth
                 id="email"
-                label="Nombre"
+                label={`${contact && contact.name}, ${contact && contact.surname}`}
                 name="email"
                 autoComplete="email"
                 autoFocus
@@ -60,7 +107,7 @@ export const Map = () => {
                 required
                 fullWidth
                 id="email"
-                label="E-mail"
+                label={contact && contact.email}
                 name="email"
                 autoComplete="email"
                 autoFocus
@@ -73,7 +120,7 @@ export const Map = () => {
                 margin="normal"
                 fullWidth
                 id="email"
-                label="Movil"
+                label={contact && contact.telephone}
                 name="email"
                 autoComplete="email"
                 autoFocus
@@ -87,16 +134,17 @@ export const Map = () => {
                 margin="normal"
                 fullWidth
                 label="Mensaje"
+                value={mensaje}
+                onChange={ruka}
                 multiline
-                maxRows={4}
-                name="email"
+                maxRows={8}
                 autoComplete="email"
                 autoFocus
               />
             </div>
           </div>
           <div className="col-xs-12">
-            <Button variant="contained">Enviar</Button>
+            <Button onClick={() => { senddata() }} variant="contained">Enviar</Button>
           </div>
         </div>
       </div>
