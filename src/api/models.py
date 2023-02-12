@@ -114,6 +114,7 @@ class Bills(db.Model):
             "user": self.user.serialize(),
             "parking_id": self.parking.serialize()
         }
+        # revisar
 
 class Contact(db.Model):
     id = db.Column(db.Integer, primary_key=True)

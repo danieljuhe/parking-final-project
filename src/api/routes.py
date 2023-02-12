@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Car, Category, Parking, My_cars, Bills 
+from api.models import db, User, Car, Category, Parking, My_cars, Bills, Contact
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 import stripe
@@ -224,7 +224,6 @@ def show_bill():
     user_id = get_jwt_identity()
     bills = Bills.query.filter_by(user_id= user_id)
     data = [bill.serialize() for bill in bills]   
-
     return jsonify(data), 200
 
 @api.route ('/contact', methods=['POST'])
@@ -232,7 +231,7 @@ def message():
     data = request.json
     print(data)
     try:
-        user = User(name=data["name"], message=data["message"], email=data["email"], telephone=data["telephone"], user_id=data["user_id"])
+        contact = Contact(name=data["name"], message=data["message"], email=data["email"], telephone=data["telephone"], user_id=data["user_id"])
         db.session.add(contact)
         db.session.commit()
     except Exception as e:

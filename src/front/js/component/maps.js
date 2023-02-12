@@ -10,17 +10,13 @@ export const Map = () => {
   const [contact, setContact] = useState([])
   const [mensaje, setMensaje] = useState()
 
-  const ruka = (e) => {
-    setMensaje(e.target.value)
-  }
   const senddata = async () => {
     const message = {
       user_id: contact && contact.id,
       name: contact && contact.name,
       email: contact && contact.email,
       telephone: contact && contact.telephone,
-      message: setMensaje,
-
+      message: mensaje,
     };
     try {
       const response = await fetch(process.env.BACKEND_URL + "/api/contact", {
@@ -135,7 +131,7 @@ export const Map = () => {
                 fullWidth
                 label="Mensaje"
                 value={mensaje}
-                onChange={ruka}
+                onChange={(e) => setMensaje(e.target.value)}
                 multiline
                 maxRows={8}
                 autoComplete="email"
