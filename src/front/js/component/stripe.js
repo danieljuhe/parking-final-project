@@ -52,6 +52,17 @@ const CheckoutForm = () => {
     })
     navigate("/Privateuser");
   }
+  const mostrarAlertaError = () => {
+    swal({
+      title: "App Parking",
+      text: "Error en el Pago Intenta de nuevo",
+      icon: "error",
+      button: "Aceptar",
+      timer: "9000"
+
+    })
+    navigate("/payment/:parking_id");
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -86,6 +97,7 @@ const CheckoutForm = () => {
           mostrarAlerta();
         })
         .catch((error) => {
+          mostrarAlertaError();
           console.error("Error:", error);
         });
 
@@ -144,7 +156,6 @@ const CheckoutForm = () => {
             "Buy"
           )}
         </button>
-
       </form>
     </>
 
