@@ -14,7 +14,7 @@ import CreditCardIcon from '@mui/icons-material/CreditCard';
 import swal from "sweetalert";
 import { Base } from "../pages/base";
 import Button from '@mui/material/Button';
-import CircularProgress from '@mui/material/CircularProgress';
+
 
 
 const stripePromise = loadStripe(
@@ -135,26 +135,25 @@ const CheckoutForm = () => {
         className="img-fluid"
       /> */}
 
-        <h3 className="text-center my-2">Price: {store.price}€</h3>
+        <h3 className="text-center my-2 letter">Pecio: {store.price}€</h3>
         <br />
         <div className="form-group">
           <CardElement className="form-control" />
         </div>
         <br />
-        <button variant="contained" className="btn btn-info" disabled={!stripe}>
-
+        <Button variant="contained" className="btn btn1" disabled={!stripe} endIcon={<CreditCardIcon />}>
           {loading ? (
 
 
             <div className="spinner-border text-danger" role="status">
-              <span className="visually-hidden">Loading...</span>
+              <span className="visually-hidden">Cargando...</span>
             </div>
 
           ) : (
-            "Buy"
+            "Pagar"
           )}
-        </button>
-        <button onClick={mostrarAlertaError}>Error test</button>
+        </Button>
+        {/* <button onClick={mostrarAlertaError}>Error test</button> */}
       </form>
     </>
 
@@ -167,12 +166,9 @@ function AppPay() {
 
     <Elements stripe={stripePromise}>
       <div className="stripecard">
-        <h3>Ingresa Datos de Pago</h3>
-        <div className="">
-          <div className="">
-            <CheckoutForm />
-          </div>
-        </div>
+        <h3 className="letter_T">Datos de Pago</h3>
+        <br />
+        <CheckoutForm />
       </div>
     </Elements>
 
