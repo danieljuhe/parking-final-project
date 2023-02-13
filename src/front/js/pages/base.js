@@ -226,14 +226,14 @@ export const Base = ({ children, dashboard = false, cars = false, reserve = fals
                                 }} />
                             </ListItemButton>
 
-                            <ListItemButton selected={cars} onClick={() => {
+                            {/* <ListItemButton selected={cars} onClick={() => {
                                 navigate("/car")
                             }}>
                                 <ListItemIcon>
                                     <EmojiTransportationOutlinedIcon />
                                 </ListItemIcon>
                                 <ListItemText primary="Registro de Coche" />
-                            </ListItemButton>
+                            </ListItemButton> */}
 
 
                             <ListItemButton selected={listCars} onClick={() => {

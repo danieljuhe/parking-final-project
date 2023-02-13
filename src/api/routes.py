@@ -75,11 +75,12 @@ def create_car():
         my_car= My_cars(car_id=car.id, user_id=user_id)
         db.session.add(my_car)
         db.session.commit()
-       
+        all_my_cars = My_cars.query.filter_by(user_id=user_id).all()
+        all_my_cars = [my_car.serialize() for my_car in all_my_cars]
     except Exception as e:
         print(e)
         return jsonify ({"messageerror": str(e)}), 400
-    return jsonify({"message": "vehiculo creado"}), 200
+    return jsonify(all_my_cars), 200
 
 
 @api.route ('/my_car', methods=['GET'])

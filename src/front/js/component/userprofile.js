@@ -17,25 +17,17 @@ import { CardActionArea } from '@mui/material';
 export const UserProfile = () => {
   const theme = createTheme();
   const [user, setUser] = useState()
-  const [name, setName] = useState()
-  const [surname, setSurname] = useState()
-  const [email, setEmail] = useState()
-  const [telephone, setTelephone] = useState()
-  const [password, setPassword] = useState()
+
+  const handleChange = (event) => {
+    setUser({ ...user, [event.target.name]: event.target.value })
+  }
 
   const senddata = async () => {
-    const usuario = {
-      name: name,
-      surname: surname,
-      email: email,
-      telephone: telephone,
-      password: password,
-    };
     try {
       const response = await fetch(process.env.BACKEND_URL + "/api/edit_user/" + user.id, {
         method: "PUT",
         headers: { "Content-Type": "application/json", },
-        body: JSON.stringify(usuario),
+        body: JSON.stringify(user),
       });
       const data = await response.json();
       console.log(data);
@@ -82,19 +74,18 @@ export const UserProfile = () => {
                   alt="me"
                 />
               </CardActionArea>
-            </Card>
+            </Card><br />
             <br />
             <Typography component="h1" variant="h5">
-              {user && user.name}, {user && user.surname}<br />
-            </Typography>
+              {user && user.name}, {user && user.surname}
+            </Typography><br /><br />
             <Box component="form" noValidate sx={{ mt: 3 }}>
               <Grid container spacing={2}>
                 <Grid item xs={12} sm={6}>
                   <TextField
                     autoComplete="given-name"
-                    name="firstName"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    name="name"
+                    onChange={handleChange}
                     required
                     fullWidth
                     id="firstName"
@@ -105,13 +96,12 @@ export const UserProfile = () => {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <TextField
-                    value={surname}
-                    onChange={(e) => setSurname(e.target.value)}
+                    onChange={handleChange}
                     required
                     fullWidth
                     id="lastName"
                     label={user && user.surname}
-                    name="lastName"
+                    name="surname"
                     autoComplete="family-name"
                     placeholder={user && user.surname}
                   />
@@ -120,11 +110,10 @@ export const UserProfile = () => {
                   <TextField
                     required
                     fullWidth
-                    value={telephone}
-                    onChange={(e) => setTelephone(e.target.value)}
+                    onChange={handleChange}
                     id="movil"
                     label={user && user.telephone}
-                    name="movil"
+                    name="telephone"
                     placeholder={user && user.telephone}
                   />
                 </Grid>
@@ -132,8 +121,7 @@ export const UserProfile = () => {
                   <TextField
                     required
                     fullWidth
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={handleChange}
                     id="email"
                     label={user && user.email}
                     name="email"
@@ -145,8 +133,7 @@ export const UserProfile = () => {
                   <TextField
                     required
                     fullWidth
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={handleChange}
                     name="password"
                     label="Password"
                     type="password"
@@ -154,14 +141,12 @@ export const UserProfile = () => {
                     autoComplete="new-password"
                   />
                 </Grid>
-
               </Grid>
               <Button
                 onClick={() => { senddata() }}
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-              >
+                sx={{ mt: 3, mb: 2 }}>
                 Cambiar
               </Button>
             </Box>
