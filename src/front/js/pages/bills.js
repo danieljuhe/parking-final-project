@@ -2,9 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../../styles/table.css";
 import { Base } from "./base";
 
-
 const Bills = () => {
-
 
     const [showBills, setShowBills] = useState();
     useEffect(() => {
@@ -42,9 +40,7 @@ const Bills = () => {
                                 </tr>
                             </thead>
                             <tbody>
-
                                 {showBills && showBills.map((bill) => {
-
                                     return (<tr>
                                         <th scope="row">{bill.user.name}</th>
                                         <th scope="row">{bill.user.email}</th>
@@ -55,14 +51,11 @@ const Bills = () => {
                                     </tr>
                                     )
                                 })}
-
                             </tbody>
                         </table>
                     </>
                     ) : <h3>No hay facturas</h3>
                 }
-
-
             </div>
         </div>
     </Base>

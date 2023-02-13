@@ -239,13 +239,29 @@ def message():
         return jsonify({"MESSAGE":"Error al mandar el mensaje"}), 400
     return jsonify({"MESSAGE" : "okk"}), 200
 
-@api.route ('/contact_user', methods=['GET'])
-@jwt_required()
-def contact_user():
-    token_user_id = get_jwt_identity()
-    users = User.query.filter_by(user_id=token_user_id)
-    data = [user.serialize() for user in users]
-    return jsonify(data), 200
+@api.route ('/edit_user/<int:id>', methods= ['PUT'])
+def edit_user(id):
+    try:
+        user = User.query.get(id)
+    except:
+        return jsonify({"message": "No se ha podido editar el usuario"}), 400
+    data=request.json
+    print(data)
+
+    new_name = request.json.get("name", user.name)
+    new_surname = request.json.get("surname", user.surname)
+    new_email = request.json.get("email", user.email)
+    new_telephone = request.json.get("telephone", user.telephone)
+    new_password = request.json.get("password", user.password)
+
+    setattr(user, "name", new_name)
+    setattr(user, "surname", new_surname)
+    setattr(user, "email", new_email)
+    setattr(user, "telephone", new_telephone)
+    setattr(user, "password", new_password)
+
+    db.session.commit()
+    return jsonify (user.serialize()), 200
 
 
 
