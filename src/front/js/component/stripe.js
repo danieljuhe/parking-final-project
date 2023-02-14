@@ -52,6 +52,17 @@ const CheckoutForm = () => {
     })
     navigate("/Privateuser");
   }
+  const mostrarAlertaError = () => {
+    swal({
+      title: "App Parking",
+      text: "Error en el Pago Intenta de nuevo",
+      icon: "error",
+      button: "Aceptar",
+      timer: "9000"
+
+    })
+    // navigate("/payment/:parking_id");
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -86,6 +97,7 @@ const CheckoutForm = () => {
           mostrarAlerta();
         })
         .catch((error) => {
+          mostrarAlertaError();
           console.error("Error:", error);
         });
 
@@ -108,11 +120,9 @@ const CheckoutForm = () => {
           </div>
           <div className="visa_info">
             <img src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/chip.png" alt="" />
-            <p>{card}</p>
           </div>
           <div className="visa_crinfo">
-            <p>02/12</p>
-            <p>Nikhil Bobade</p>
+            <p>{setCard}</p>
           </div>
         </div>
       </div>
@@ -144,7 +154,7 @@ const CheckoutForm = () => {
             "Buy"
           )}
         </button>
-
+        <button onClick={mostrarAlertaError}>Error test</button>
       </form>
     </>
 

@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import { Base } from "../pages/base";
 
-const CreateCar = () => {
+const CreateCar = (props) => {
   const [formData, setFormData] = useState({});
   const [categories, setCategories] = useState([]);
   const [user, setUser] = useState();
@@ -74,16 +74,14 @@ const CreateCar = () => {
         if (data.messageerror) {
           alertaError()
         } else {
+          props.setListOfCars(data)
           setFormData(data);
           alertaCrear()
-          navigate("/cars")
         }
-
       });
   };
 
-
-  return <Base cars={true}>
+  return (
 
     <Box
       className="container mt-3 col-8"
@@ -98,7 +96,6 @@ const CreateCar = () => {
       onSubmit={handleSubmit}
     >
       <div className="my-2">
-        <h2>Registra tu Coche</h2>
         <TextField
           id="category"
           select
@@ -149,20 +146,22 @@ const CreateCar = () => {
       </div>
       <Stack spacing={2} direction="row" className="container my-2">
         <Button
-          variant="outlined"
+          variant="contained"
           type="submit"
           onClick={() => {
             handleSubmit()
           }}
+          data-bs-dismiss="modal"
         >Guardar
         </Button>
         <Button
           onClick={() => navigate("/cars")}
-          variant="outlined"
+          variant="contained"
+          data-bs-dismiss="modal"
         >Cancelar
         </Button>
       </Stack>
     </Box>
-  </Base>
+  )
 };
 export default CreateCar;

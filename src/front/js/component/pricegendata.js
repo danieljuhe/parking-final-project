@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../../styles/date.css";
+import "../../styles/login.css";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "../store/appContext";
@@ -11,14 +11,6 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Base } from "../pages/base";
-import Button from '@mui/material/Button';
-import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
-import Stack from '@mui/material/Stack';
-import EuroIcon from '@mui/icons-material/Euro';
-import { Input } from "postcss";
-
-
-
 
 const theme = createTheme();
 
@@ -71,37 +63,33 @@ export const PriceGen = () => {
   };
 
   return <Base>
-    <div className="test">
-      <h3>Ingresar Fecha y Hora</h3>
+    <div className="main">
       <div className="data">
         <form onSubmit={handleSubmit}>
           <label>
             Start Date:
-            <>&nbsp;&nbsp;&nbsp;</>
             <input
               type="date"
               min={currentDateString.slice(0, 10)}
               onChange={(e) => setStartDate(e.target.value)}
-
             />
           </label>
           <>&nbsp;&nbsp;&nbsp;&nbsp;</>
           <label>
             Start Time:
-            <>&nbsp;&nbsp;&nbsp;</>
             <input
               type="time"
-              min={startDate == new Date() ? currentDateString.slice(11, 16) : ""}
+              min={currentDateString.slice(11, 16)}
               onChange={(e) => setStartTime(e.target.value)}
             />
           </label>
+
           <br />
           <br />
           <br />
           <br />
           <label>
             End Date:
-            <>&nbsp;&nbsp;&nbsp;</>
             <input
               type="date"
               min={startDate ? startDate : currentDateString.slice(0, 10)}
@@ -111,7 +99,6 @@ export const PriceGen = () => {
           <>&nbsp;&nbsp;&nbsp;&nbsp;</>
           <label>
             End Time:
-            <>&nbsp;&nbsp;&nbsp;</>
             <input
               type="time"
               min={startTime && startDate == endDate ? startTime : ""}
@@ -121,22 +108,16 @@ export const PriceGen = () => {
           <br />
           <br />
           <br />
-          <Button type="submit" variant="contained" endIcon={<EuroIcon />}>Calcular Precio</Button>
+          <button type="submit">Calcula Precio</button>
+
           <br />
           <br />
-          <h2>Precio: {price}€</h2>
+          <h2>Precio:{price}€</h2>
           <br />
-          <Button onClick={stripe} variant="contained" fullWidth endIcon={<LocalGroceryStoreIcon />}>
-            Pagar
-          </Button>
+          <button onClick={stripe}>Confirmar</button>
         </form>
 
       </div>
     </div>
-
   </Base>
-
-
-
-
 };

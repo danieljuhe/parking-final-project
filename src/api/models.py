@@ -9,6 +9,8 @@ class User(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=True)
     password = db.Column(db.String(80), unique=False, nullable=True)
     telephone = db.Column(db.Integer, unique=True, nullable=True)
+    role_id = db.Column(db.Integer, db.ForeignKey('role.id'))
+    role = db.relationship('Role', backref='user', lazy=True)
 
     def __repr__(self):
         return f'User {self.name}, {self.surname}'
@@ -19,7 +21,9 @@ class User(db.Model):
             "name": self.name,
             "surname": self. surname,
             "email": self.email,
-            "telephone": self.telephone
+            "telephone": self.telephone,
+            "role_id": self.role_id,
+            "role": self.role.name
         }
 
 class My_cars(db.Model):
@@ -113,4 +117,34 @@ class Bills(db.Model):
             "date": self.date,
             "user": self.user.serialize(),
             "parking_id": self.parking.serialize()
+        }
+        # revisar
+
+class Contact(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(20), unique=False, nullable=True)
+    email = db.Column(db.String(120), unique=True, nullable=True)
+    telephone = db.Column(db.Integer, unique=True, nullable=True)
+    message = db.Column(db.String(1000), nullable=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user = db.relationship('User', backref='contact', lazy=True)
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "email": self.email,
+            "message": self.message,
+            "telephone": self.telephone,
+            "user": self.user.serialize()
+        }
+
+class Role(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(20), unique=False, nullable=True)
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "name": self.name,
         }

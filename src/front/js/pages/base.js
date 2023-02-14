@@ -18,11 +18,8 @@ import Paper from '@mui/material/Paper';
 import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import { mainListItems } from '../component/listitem';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
-import { Map } from "../component/maps";
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
@@ -32,7 +29,6 @@ import EmojiTransportationOutlinedIcon from '@mui/icons-material/EmojiTransporta
 import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
 import CreditScoreOutlinedIcon from '@mui/icons-material/CreditScoreOutlined';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
-import Cars from "./cars";
 
 
 function Copyright(props) {
@@ -128,11 +124,9 @@ const mdTheme = createTheme();
 
 
 export const Base = ({ children, dashboard = false, cars = false, reserve = false, location = false, bill = false, listCars = false }) => {
-    const [open, setOpen] = React.useState(true);
-    const toggleDrawer = () => {
-        setOpen(!open);
-    };
 
+    const [open, setOpen] = React.useState(true);
+    const toggleDrawer = () => { setOpen(!open); };
     const { store, actions } = useContext(Context);
     const [user, setUser] = useState();
     const navigate = useNavigate();
@@ -167,8 +161,7 @@ export const Base = ({ children, dashboard = false, cars = false, reserve = fals
                     <Toolbar
                         sx={{
                             pr: '24px', // keep right padding when drawer closed
-                        }}
-                    >
+                        }}>
                         <IconButton
                             edge="start"
                             color="inherit"
@@ -177,8 +170,7 @@ export const Base = ({ children, dashboard = false, cars = false, reserve = fals
                             sx={{
                                 marginRight: '36px',
                                 ...(open && { display: 'none' }),
-                            }}
-                        >
+                            }}>
                             <MenuIcon />
                         </IconButton>
                         <Typography
@@ -186,8 +178,7 @@ export const Base = ({ children, dashboard = false, cars = false, reserve = fals
                             variant="h6"
                             color="inherit"
                             noWrap
-                            sx={{ flexGrow: 1 }}
-                        >
+                            sx={{ flexGrow: 1 }}>
                             Parking App
                         </Typography>
                         <IconButton color="inherit">
@@ -195,20 +186,17 @@ export const Base = ({ children, dashboard = false, cars = false, reserve = fals
                     </Toolbar>
                 </AppBar>
                 <Drawer variant="permanent" open={open}>
-                    <Toolbar
-                        sx={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'flex-end',
-                            px: [1],
-                        }}
-                    >
+                    <Toolbar sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'flex-end',
+                        px: [1],
+                    }}>
                         <Stack direction="row" spacing={2}>
                             <StyledBadge
                                 overlap="circular"
                                 anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-                                variant="dot"
-                            >
+                                variant="dot">
                                 <Avatar alt="Remy Sharp" src="https://www.adslzone.net/app/uploads-adslzone.net/2022/04/free-avatar-apertura.jpg?x=480&y=375&quality=40" />
                             </StyledBadge>
                         </Stack><>&nbsp;&nbsp;&nbsp;</>
@@ -221,10 +209,7 @@ export const Base = ({ children, dashboard = false, cars = false, reserve = fals
 
                     <List component="nav"><br />
                         <br></br>
-
-
                         <React.Fragment>
-
                             <ListItemButton>
                                 <ListItemIcon>
 
@@ -241,14 +226,14 @@ export const Base = ({ children, dashboard = false, cars = false, reserve = fals
                                 }} />
                             </ListItemButton>
 
-                            <ListItemButton selected={cars} onClick={() => {
+                            {/* <ListItemButton selected={cars} onClick={() => {
                                 navigate("/car")
                             }}>
                                 <ListItemIcon>
                                     <EmojiTransportationOutlinedIcon />
                                 </ListItemIcon>
                                 <ListItemText primary="Registro de Coche" />
-                            </ListItemButton>
+                            </ListItemButton> */}
 
 
                             <ListItemButton selected={listCars} onClick={() => {
@@ -299,11 +284,7 @@ export const Base = ({ children, dashboard = false, cars = false, reserve = fals
                                     navigate("/");
                                 }} />
                             </ListItemButton>
-
                         </React.Fragment>
-
-
-
                     </List>
                 </Drawer>
                 <Box
