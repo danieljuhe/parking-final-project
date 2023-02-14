@@ -9,6 +9,8 @@ class User(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=True)
     password = db.Column(db.String(80), unique=False, nullable=True)
     telephone = db.Column(db.Integer, unique=True, nullable=True)
+    role_id = db.Column(db.Integer, db.ForeignKey('role.id'))
+    role = db.relationship('Role', backref='user', lazy=True)
 
     def __repr__(self):
         return f'User {self.name}, {self.surname}'
@@ -19,7 +21,9 @@ class User(db.Model):
             "name": self.name,
             "surname": self. surname,
             "email": self.email,
-            "telephone": self.telephone
+            "telephone": self.telephone,
+            "role_id": self.role_id,
+            "role": self.role.name
         }
 
 class My_cars(db.Model):
@@ -133,4 +137,14 @@ class Contact(db.Model):
             "message": self.message,
             "telephone": self.telephone,
             "user": self.user.serialize()
+        }
+
+class Role(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(20), unique=False, nullable=True)
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "name": self.name,
         }

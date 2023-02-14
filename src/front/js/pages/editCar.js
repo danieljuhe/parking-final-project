@@ -146,7 +146,8 @@ const EditCar = () => {
           </div>
           <Stack spacing={2} direction="row" className="container my-2">
             <Button
-              variant="outlined"
+              size="small"
+              variant="contained"
               type="submit"
               onClick={() => {
                 handleSubmit()
@@ -155,7 +156,8 @@ const EditCar = () => {
             </Button>
             <Button
               onClick={() => navigate("/cars")}
-              variant="outlined"
+              size="small"
+              variant="contained"
             >Cancelar
             </Button>
           </Stack>

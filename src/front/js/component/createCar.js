@@ -146,7 +146,7 @@ const CreateCar = (props) => {
       </div>
       <Stack spacing={2} direction="row" className="container my-2">
         <Button
-          variant="outlined"
+          variant="contained"
           type="submit"
           onClick={() => {
             handleSubmit()
@@ -156,7 +156,7 @@ const CreateCar = (props) => {
         </Button>
         <Button
           onClick={() => navigate("/cars")}
-          variant="outlined"
+          variant="contained"
           data-bs-dismiss="modal"
         >Cancelar
         </Button>
