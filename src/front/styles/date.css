@@ -1,0 +1,23 @@
+.test {
+  width: fit-content;
+  height: fit-content;
+  margin-left: 15rem;
+  margin-right: 2rem;
+  padding-top: 5rem;
+  padding-bottom: 6rem;
+}
+.data {
+  display: flex;
+  align-items: center;
+}
+input {
+  background-color: aliceblue;
+  display: flex;
+  align-items: center;
+  padding: 0.6rem;
+  border-radius: 4px;
+  border: 1px solid gray;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  color: black;
+}

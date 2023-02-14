@@ -49,6 +49,7 @@ const DeleteCar = () => {
             <button
               type="submit"
               className="btn btn-secondary"
+              ata-bs-dismiss="modal"
               onClick={handleClick}>
               Eliminar
             </button>

@@ -1,12 +1,12 @@
 .mainparking {
-  background-color: rgb(54, 54, 54);
+  padding: 2rem;
+  background-color: #4d4e5c;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: fit-content;
   width: fit-content;
-  padding-top: 10rem;
 }
 
 .parking {
@@ -19,6 +19,7 @@
 }
 
 .parking2 {
+  margin-top: 3rem;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -28,31 +29,40 @@
 }
 
 .col0 {
+  margin-top: 3rem;
+  transform: skewY(-12deg);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-right: 6rem;
+  margin-right: 12rem;
 }
 .col1 {
+  margin-top: 3rem;
+  transform: skewY(12deg);
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 .col2 {
+  margin-top: 3rem;
+  transform: skewY(-12deg);
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 .col3 {
+  margin-top: 3rem;
+  transform: skewY(12deg);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-left: 6rem;
+  margin-left: 12rem;
 }
 
 .parking2 .col0 {
+  transform: skewY(0deg) !important;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -64,9 +74,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 4px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -75,9 +85,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 2.5px solid rgb(255, 230, 0);
-  border-bottom: 4px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -86,9 +96,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 2.5px solid rgb(255, 230, 0);
-  border-bottom: 4px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -97,9 +107,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 2.5px solid rgb(255, 230, 0);
-  border-bottom: 4px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -108,9 +118,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 2.5px solid rgb(255, 230, 0);
-  border-bottom: 4px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -119,9 +129,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 2.5px solid rgb(255, 230, 0);
-  border-bottom: 4px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -130,9 +140,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 2.5px solid rgb(255, 230, 0);
-  border-bottom: 4px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -141,9 +151,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 2.5px solid rgb(255, 230, 0);
-  border-bottom: 4px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -152,9 +162,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 2.5px solid rgb(255, 230, 0);
-  border-bottom: 4px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -163,9 +173,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 2.5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 5px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -174,9 +184,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 4px solid rgb(255, 230, 0);
-  border-right: 5px solid rgb(255, 230, 0);
+  border-top: 5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-right: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -185,9 +195,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 2.5px solid rgb(255, 230, 0);
-  border-bottom: 4px solid rgb(255, 230, 0);
-  border-right: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-right: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -196,9 +206,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 2.5px solid rgb(255, 230, 0);
-  border-bottom: 4px solid rgb(255, 230, 0);
-  border-right: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-right: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -207,9 +217,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 2.5px solid rgb(255, 230, 0);
-  border-bottom: 4px solid rgb(255, 230, 0);
-  border-right: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-right: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -218,9 +228,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 2.5px solid rgb(255, 230, 0);
-  border-bottom: 4px solid rgb(255, 230, 0);
-  border-right: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-right: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -229,9 +239,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 2.5px solid rgb(255, 230, 0);
-  border-bottom: 4px solid rgb(255, 230, 0);
-  border-right: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-right: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -240,9 +250,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 2.5px solid rgb(255, 230, 0);
-  border-bottom: 4px solid rgb(255, 230, 0);
-  border-right: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-right: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -251,9 +261,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 2.5px solid rgb(255, 230, 0);
-  border-bottom: 4px solid rgb(255, 230, 0);
-  border-right: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-right: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -262,9 +272,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 2.5px solid rgb(255, 230, 0);
-  border-bottom: 4px solid rgb(255, 230, 0);
-  border-right: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-right: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -273,9 +283,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 2.5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-right: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 5px solid #fce700;
+  border-right: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -284,9 +294,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 4px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -295,9 +305,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 2.5px solid rgb(255, 230, 0);
-  border-bottom: 4px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -306,9 +316,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 2.5px solid rgb(255, 230, 0);
-  border-bottom: 4px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -317,9 +327,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 2.5px solid rgb(255, 230, 0);
-  border-bottom: 4px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -328,9 +338,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 2.5px solid rgb(255, 230, 0);
-  border-bottom: 4px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -339,9 +349,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 2.5px solid rgb(255, 230, 0);
-  border-bottom: 4px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -350,9 +360,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 2.5px solid rgb(255, 230, 0);
-  border-bottom: 4px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -361,9 +371,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 2.5px solid rgb(255, 230, 0);
-  border-bottom: 4px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -372,9 +382,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 2.5px solid rgb(255, 230, 0);
-  border-bottom: 4px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -383,9 +393,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 2.5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 5px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -394,9 +404,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 5px solid rgb(255, 230, 0);
-  border-bottom: 4px solid rgb(255, 230, 0);
-  border-right: 5px solid rgb(255, 230, 0);
+  border-top: 5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-right: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -405,9 +415,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 2.5px solid rgb(255, 230, 0);
-  border-bottom: 4px solid rgb(255, 230, 0);
-  border-right: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-right: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -416,9 +426,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 2.5px solid rgb(255, 230, 0);
-  border-bottom: 4px solid rgb(255, 230, 0);
-  border-right: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-right: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -427,9 +437,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 2.5px solid rgb(255, 230, 0);
-  border-bottom: 4px solid rgb(255, 230, 0);
-  border-right: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-right: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -438,9 +448,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 2.5px solid rgb(255, 230, 0);
-  border-bottom: 4px solid rgb(255, 230, 0);
-  border-right: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-right: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -449,9 +459,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 2.5px solid rgb(255, 230, 0);
-  border-bottom: 4px solid rgb(255, 230, 0);
-  border-right: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-right: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -460,9 +470,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 2.5px solid rgb(255, 230, 0);
-  border-bottom: 4px solid rgb(255, 230, 0);
-  border-right: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-right: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -471,9 +481,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 2.5px solid rgb(255, 230, 0);
-  border-bottom: 4px solid rgb(255, 230, 0);
-  border-right: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-right: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -482,9 +492,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 2.5px solid rgb(255, 230, 0);
-  border-bottom: 4px solid rgb(255, 230, 0);
-  border-right: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-right: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -493,9 +503,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-top: 2.5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-right: 5px solid rgb(255, 230, 0);
+  border-top: 2.5px solid #fce700;
+  border-bottom: 5px solid #fce700;
+  border-right: 5px solid #fce700;
   color: aliceblue;
   width: 150px;
   height: 50px;
@@ -504,9 +514,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-right: 2px solid rgb(255, 230, 0);
-  border-bottom: 4px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-right: 2px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   height: 150px;
   width: 70px;
@@ -515,9 +525,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-right: 2px solid rgb(255, 230, 0);
-  border-bottom: 4px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-right: 2px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   height: 150px;
   width: 70px;
@@ -526,9 +536,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-right: 2px solid rgb(255, 230, 0);
-  border-bottom: 4px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-right: 2px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   height: 150px;
   width: 70px;
@@ -537,9 +547,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-right: 2px solid rgb(255, 230, 0);
-  border-bottom: 4px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-right: 2px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   height: 150px;
   width: 70px;
@@ -548,9 +558,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-right: 2px solid rgb(255, 230, 0);
-  border-bottom: 4px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-right: 2px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   height: 150px;
   width: 70px;
@@ -559,9 +569,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-right: 2px solid rgb(255, 230, 0);
-  border-bottom: 4px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-right: 2px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   height: 150px;
   width: 70px;
@@ -570,9 +580,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-right: 2px solid rgb(255, 230, 0);
-  border-bottom: 4px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-right: 2px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   height: 150px;
   width: 70px;
@@ -581,9 +591,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-right: 2px solid rgb(255, 230, 0);
-  border-bottom: 4px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-right: 2px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   height: 150px;
   width: 70px;
@@ -592,9 +602,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-right: 2px solid rgb(255, 230, 0);
-  border-bottom: 4px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-right: 2px solid #fce700;
+  border-bottom: 4px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   height: 150px;
   width: 70px;
@@ -603,9 +613,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-right: 5px solid rgb(255, 230, 0);
-  border-bottom: 5px solid rgb(255, 230, 0);
-  border-left: 5px solid rgb(255, 230, 0);
+  border-right: 5px solid #fce700;
+  border-bottom: 5px solid #fce700;
+  border-left: 5px solid #fce700;
   color: aliceblue;
   height: 150px;
   width: 70px;

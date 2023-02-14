@@ -4,7 +4,15 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "../store/appContext";
 import { useParams } from "react-router-dom";
+import Paper from "@mui/material/Paper";
+import CssBaseline from '@mui/material/CssBaseline';
+import Container from "@mui/material/Container";
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Base } from "../pages/base";
 
+const theme = createTheme();
 
 export const PriceGen = () => {
   const [startTime, setStartTime] = useState("");
@@ -54,9 +62,9 @@ export const PriceGen = () => {
     actions.setPrice(hours * 3);
   };
 
-  return (
+  return <Base>
     <div className="main">
-      <div className="login">
+      <div className="data">
         <form onSubmit={handleSubmit}>
           <label>
             Start Date:
@@ -104,11 +112,12 @@ export const PriceGen = () => {
 
           <br />
           <br />
-          <h2>Precio: €{price}</h2>
+          <h2>Precio:{price}€</h2>
           <br />
           <button onClick={stripe}>Confirmar</button>
         </form>
+
       </div>
     </div>
-  );
+  </Base>
 };

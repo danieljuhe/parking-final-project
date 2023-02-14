@@ -1,10 +1,38 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import swal from "sweetalert";
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import MenuItem from '@mui/material/MenuItem';
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
+import { Base } from "../pages/base";
+
 
 const EditCar = () => {
   const params = useParams();
   const [categories, setCategories] = useState([]);
   const [listOfCars, setListOfCars] = useState({});
+  const navigate = useNavigate();
+
+  const alertaGuardar = () => {
+    swal({
+      title: "Cambios Guardados",
+      icon: "success",
+      button: "ok",
+      timer: "1000"
+    })
+  }
+
+  const alertaError = () => {
+    swal({
+      title: "ERROR",
+      text: "Algo salio mal, intentalo de nuevo ",
+      icon: "warning",
+      timmer: "1000"
+    })
+  }
 
   useEffect(() => {
     fetch(process.env.BACKEND_URL + "/api/category")
@@ -18,8 +46,7 @@ const EditCar = () => {
     fetch(process.env.BACKEND_URL + "/api/get_onecar/" + params.car_id)
       .then((response) => {
         return response.json();
-      })
-      .then((response) => {
+      }).then((response) => {
         setListOfCars(response);
       })
   }, []);
@@ -35,92 +62,110 @@ const EditCar = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        setListOfCars(data);
+        if (data.message) {
+          alertaError()
+        } else {
+          setListOfCars(data)
+          alertaGuardar()
+          navigate("/cars")
+        }
+
       });
   };
 
-
-  return listOfCars && listOfCars.model ? (
-    <form onSubmit={handleSubmit}>
-      <div className="mb-3">
-        <label for="Plate" className="form-label">
-          Plate
-        </label>
-        <input
-          type="text"
-          placeholder={listOfCars.plate}
-          className="form-control"
-          id="Plate"
-          aria-describedby="emailHelp"
-          onChange={(e) => {
-            setListOfCars({ ...listOfCars, plate: e.target.value });
+  return (
+    <Base EditCar={true}>{
+      listOfCars && listOfCars.id ? (
+        <Box
+          className="container mt-3"
+          component="form"
+          sx={{
+            width: 500,
+            maxWidth: '100%',
           }}
-        />
-      </div>
-      <div className="mb-3">
-        <label for="Brand" className="form-label">
-          Brand
-        </label>
-        <input
-          type="Brand"
-          placeholder={listOfCars.brand}
-          className="form-control"
-          id="Brand"
-          aria-describedby="emailHelp"
-          onChange={(e) => {
-            setListOfCars({ ...listOfCars, brand: e.target.value });
-          }}
-        />
-      </div>
-      <div className="mb-3">
-        <label for="Model" className="form-label">
-          Model
-        </label>
-        <input
-          type="Model"
-          placeholder={listOfCars.model}
-          className="form-control"
-          id="Model"
-          aria-describedby="emailHelp"
-          onChange={(e) => {
-            setListOfCars({ ...listOfCars, model: e.target.value });
-          }}
-        />
-      </div>
-      <div className="mb-3">
-        <label htmlFor="inputCategory" className="form-label">
-          Category {listOfCars.category_id.id}
-        </label>
-        <select
-          className="form-select"
-          aria-label="Default select example"
-          name="category_id"
+          noValidate
+          autoComplete="off"
+          type="form"
+          onSubmit={handleSubmit}
         >
-          <option
-            disabled selected
-          >
-          </option>
-          {categories.map((value) => {
-            return (
-              <option
-                key={value.id}
-                value={value.id}
-                selected={listOfCars.category_id.id == value.id ? "selected" : ""}
-              >
-                {value.name}
-              </option>
-            );
-          })}
-        </select>
-      </div>
-      <button
-        type="submit"
-        className="btn btn-secondary"
-      >
-        Guardar
-      </button>
-    </form>
-  ) : "";
+          <div className="my-2">
+            <TextField
+              fullWidth label="Marca"
+              required
+              id="Brand"
+              defaultValue={listOfCars.brand}
+              onChange={(e) => {
+                setListOfCars({ ...listOfCars, brand: e.target.value });
+              }}
+            />
+          </div>
+          <div className="my-2">
+            <TextField
+              fullWidth label="Modelo"
+              required
+              id="Model"
+              defaultValue={listOfCars.model}
+              onChange={(e) => {
+                setListOfCars({ ...listOfCars, model: e.target.value });
+              }}
+            />
+          </div>
+          <div className="my-2">
+            <TextField
+              fullWidth label="Matricula"
+              required
+              id="Plate"
+              defaultValue={listOfCars.plate}
+              onChange={(e) => {
+                setListOfCars({ ...listOfCars, plate: e.target.value });
+              }}
+            />
+          </div>
+          <div className="my-2">
+            <TextField
+              id="category"
+              select
+              fullWidth label="Categoria"
+              defaultValue={listOfCars.category_id}
+              name="category_id"
+              onChange={(e) => {
+                setListOfCars({ ...listOfCars, category_id: e.target.value });
+              }}
+            >
+              {categories.map((value) => {
+                return (
+                  <MenuItem
+                    key={value.id}
+                    value={value.id}
+                  >
+                    {value.name}
+                  </MenuItem>
+                );
+              })}
+            </TextField>
+          </div>
+          <Stack spacing={2} direction="row" className="container my-2">
+            <Button
+              size="small"
+              variant="contained"
+              type="submit"
+              onClick={() => {
+                handleSubmit()
+              }}
+            >Guardar
+            </Button>
+            <Button
+              onClick={() => navigate("/cars")}
+              size="small"
+              variant="contained"
+            >Cancelar
+            </Button>
+          </Stack>
+        </Box>
+      ) : ""
+    }
+    </Base>
+  )
 };
 
 export default EditCar;
