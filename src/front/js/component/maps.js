@@ -59,21 +59,7 @@ export const Map = () => {
           referrerpolicy="no-referrer-when-downgrade"
         ></iframe>
       </div>
-      <div className="describe">
-        <div className="describetitle">
-          Parking App
-        </div><br />
-        <div className="describeletter">
-          Calle Edison 3, 28006<br />
-          Madrid, España.</div><br /><br />
-        <div className="describetitle">
-          Horario
-        </div><br />
-        <div className="describeletter">
-          De Lunes a Domingo.<br />
-          Abierto 24H.
-        </div>
-      </div>
+
     </div>
     <br />
     <div className="contact">
@@ -81,7 +67,22 @@ export const Map = () => {
         <div className="describetitle">
           Contacta con nosotros
         </div>
-        <div className="row input-container">
+        <div className="describe">
+          <div className="describetitle">
+            Parking App
+          </div><br />
+          <div className="describeletter">
+            Calle Edison 3, 28006<br />
+            Madrid, España.</div><br /><br />
+          <div className="describetitle">
+            Horario
+          </div><br />
+          <div className="describeletter">
+            De Lunes a Domingo.<br />
+            Abierto 24H.
+          </div>
+        </div>
+        {/* <div className="row input-container">
           <div className="col-xs-12">
             <div className="styled-input wide">
               <TextField
@@ -142,7 +143,7 @@ export const Map = () => {
           <div className="col-xs-12">
             <Button onClick={() => { senddata() }} variant="contained">Enviar</Button>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   </Base>
