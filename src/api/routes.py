@@ -14,6 +14,7 @@ def get_categories():
     data = [category.serialize() for category in categories]
     return jsonify(data), 200
 
+
 @api.route('/user', methods=['GET'])
 @jwt_required()
 def get_user():
@@ -76,6 +77,7 @@ def create_car():
         db.session.add(my_car)
         db.session.commit()
         all_my_cars = My_cars.query.filter_by(user_id=user_id).all()
+        print(all_my_cars)
         all_my_cars = [my_car.serialize() for my_car in all_my_cars]
     except Exception as e:
         print(e)
