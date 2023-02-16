@@ -2,16 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Base } from "../pages/base";
 import "../../styles/userprofile.css"
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Container from '@mui/material/Container';
-import Card from '@mui/material/Card';
-import CardMedia from '@mui/material/CardMedia';
-import { CardActionArea } from '@mui/material';
 
 
 export const UserProfile = () => {

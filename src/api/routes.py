@@ -42,7 +42,7 @@ def create_user():
     data = request.json
     print(data)
     try:
-        user = User(name=data["name"], surname=data["surname"], email=data["email"], password=data["password"], telephone=data["telephone"])
+        user = User(name=data["name"], surname=data["surname"], email=data["email"], password=data["password"], telephone=data["telephone"], role_id=1)
         db.session.add(user)
         db.session.commit()
     except Exception as e:
@@ -266,8 +266,16 @@ def edit_user(id):
 
 
 
+# @api.route('/login', methods=["POST"])
+# def login():
+#     data = request.json
+#     user = User.query.filter_by(email=data['email'], password=data['password']).first()
+#     if user:
+#         if user.role_id == 2:
+#             token= create_access_token(identity=user.id) 
+#             return jsonify({"token": token}), 200
 
-
+#     return jsonify({"message": "Usuario / contraseña incorrectos"}), 400
 
 
 
