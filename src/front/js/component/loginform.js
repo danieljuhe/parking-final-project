@@ -41,9 +41,7 @@ const mostrarAlerta = () => {
     icon: "success",
     button: "Aceptar",
     timer: "9000"
-
   })
-  navigate("/Privateuser");
 }
 
 const theme = createTheme();
