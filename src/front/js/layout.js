@@ -16,6 +16,9 @@ import { NotFound } from "./pages/404";
 import Bills from "./pages/bills";
 import { ParkingView } from "./component/parkingview";
 import { Map } from "./component/maps";
+import { AdminLoginPage } from "./pages/adminlogin";
+import { AdminBase } from "./pages/adminbase";
+import { AdminUsers } from "./component/adminusers";
 
 const Layout = () => {
   const basename = process.env.BASENAME || "";
@@ -37,6 +40,9 @@ const Layout = () => {
             <Route element={<CarsInfo />} path="/mycar" />
             <Route element={<EditCar />} path="/editcar/:car_id" />
             <Route element={<Cars />} path="/cars" />
+            <Route element={<AdminLoginPage />} path="/role/admin/login" />
+            <Route element={<AdminBase />} path="/role/admin/admindashboard" />
+            <Route element={<AdminUsers />} path="/role/admin/adminusers" />
             <Route element={<Map />} path="/map" />
             <Route element={<PriceGen />} path="/date/:parking_id" />
             <Route element={<Bills />} path="/bill" />

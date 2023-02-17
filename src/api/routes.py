@@ -266,16 +266,23 @@ def edit_user(id):
 
 
 
-# @api.route('/login', methods=["POST"])
-# def login():
-#     data = request.json
-#     user = User.query.filter_by(email=data['email'], password=data['password']).first()
-#     if user:
-#         if user.role_id == 2:
-#             token= create_access_token(identity=user.id) 
-#             return jsonify({"token": token}), 200
+# ADMIN ROUTES
 
-#     return jsonify({"message": "Usuario / contraseña incorrectos"}), 400
+@api.route('/admin_login', methods=["POST"])
+def admin_login():
+    data = request.json
+    user = User.query.filter_by(email=data['email'], password=data['password']).first()
+    if user:
+        if user.role_id == 2:
+            token= create_access_token(identity=user.id) 
+            return jsonify({"token": token}), 200
 
+    return jsonify({"message": "Usuario / contraseña incorrectos"}), 400
 
+@api.route ('/list_users', methods=['GET'])
+@jwt_required()
+def get_all_users():
+    users = User.query.all()
+    data = [user.serialize() for user in users]
+    return jsonify(data)
 

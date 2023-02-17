@@ -24,7 +24,7 @@ export const ParkingView = () => {
   const mostrarAlerta = () => {
     swal({
       title: "App Parking",
-      text: "Plaza Seleccionada con Éxito",
+      text: "Plaza seleccionada con exito",
       icon: "success",
       button: "Aceptar",
       timer: "9000"

@@ -75,6 +75,7 @@ export const LoginForm = () => {
         if (data.token) {
           localStorage.setItem("token", data.token);
           actions.setToken(data.token);
+          mostrarAlerta();
           navigate("/privateuser");
         }
       })
