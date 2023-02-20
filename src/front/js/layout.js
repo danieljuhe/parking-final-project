@@ -19,6 +19,7 @@ import { Map } from "./component/maps";
 import { AdminLoginPage } from "./pages/adminlogin";
 import { AdminBase } from "./pages/adminbase";
 import { AdminUsers } from "./component/adminusers";
+import { AdminCars } from "./component/admincars";
 
 const Layout = () => {
   const basename = process.env.BASENAME || "";
@@ -43,6 +44,7 @@ const Layout = () => {
             <Route element={<AdminLoginPage />} path="/role/admin/login" />
             <Route element={<AdminBase />} path="/role/admin/admindashboard" />
             <Route element={<AdminUsers />} path="/role/admin/adminusers" />
+            <Route element={<AdminCars />} path="/role/admin/admincars" />
             <Route element={<Map />} path="/map" />
             <Route element={<PriceGen />} path="/date/:parking_id" />
             <Route element={<Bills />} path="/bill" />

@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Car, Category, Parking, My_cars, Bills, Contact
+from api.models import db, User, Car, Category, Parking, My_cars, Bills, Contact, Role
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 import stripe
@@ -7,6 +7,10 @@ import datetime
 stripe.api_key = "sk_test_51MP8c5ATXRJOJbwMsczEGrPvNzkoY1efoZ0KsWWN2ro8z6yeoB1c5TSpvD28HBSYgBJj6cyf24XUKusV9MpO4HHj00o3sUmWVX"
 
 api = Blueprint('api', __name__)
+
+# USER ROUTES
+
+# USER PROFILE
 
 @api.route('/category', methods=['GET'])
 def get_categories():
@@ -268,21 +272,76 @@ def edit_user(id):
 
 # ADMIN ROUTES
 
-@api.route('/admin_login', methods=["POST"])
-def admin_login():
-    data = request.json
-    user = User.query.filter_by(email=data['email'], password=data['password']).first()
-    if user:
-        if user.role_id == 2:
-            token= create_access_token(identity=user.id) 
-            return jsonify({"token": token}), 200
+    # LOGIN
+    @api.route('/admin_login', methods=["POST"])
+    def admin_login():
+        data = request.json
+        user = User.query.filter_by(email=data['email'], password=data['password']).first()
+        if user:
+            if user.role_id == 2:
+                token= create_access_token(identity=user.id) 
+                return jsonify({"token": token}), 200
 
-    return jsonify({"message": "Usuario / contraseña incorrectos"}), 400
+        return jsonify({"message": "Usuario / contraseña incorrectos"}), 400
 
-@api.route ('/list_users', methods=['GET'])
-@jwt_required()
-def get_all_users():
-    users = User.query.all()
-    data = [user.serialize() for user in users]
-    return jsonify(data)
+
+    # USERS EDIT PAGE
+
+    # USERS LIST
+    @api.route ('/list_users', methods=['GET'])
+    @jwt_required()
+    def get_all_users():
+        users = User.query.all()
+        data = [user.serialize() for user in users]
+        return jsonify(data)
+
+
+    # USERS ROLE
+    @api.route ('/users_role', methods=['GET'])
+    @jwt_required()
+    def get_users_role():
+        roles = Role.query.all()
+        data = [role.serialize() for role in roles]
+        return jsonify(data)
+
+
+    # MODIFY USERS INFO
+    @api.route ('/modify_users', methods=['PUT'])
+    @jwt_required()
+    def modify_users_info():
+        try:
+            user = User.query.get(id)
+        except:
+            return jsonify({"message": "No se ha podido editar el usuario"}), 400
+        data=request.json
+        print(data)
+
+        new_name = request.json.get("name", user.name)
+        new_surname = request.json.get("surname", user.surname)
+        new_email = request.json.get("email", user.email)
+        new_telephone = request.json.get("telephone", user.telephone)
+        new_role = request.json.get("role", user.role)
+
+        setattr(user, "name", new_name)
+        setattr(user, "surname", new_surname)
+        setattr(user, "email", new_email)
+        setattr(user, "telephone", new_telephone)
+        setattr(user, "role", new_role)
+
+        db.session.commit()
+        return jsonify (user.serialize()), 200
+
+
+
+    # USERS CARS
+
+    # USERS LIST OF CARS
+    @api.route ('/users_cars_list', methods=['GET'])
+    @jwt_required()
+    def get_cars_list():
+        cars = Car.query.all()
+        data = [car.serialize() for car in cars]
+        return jsonify(data)
+
+
 

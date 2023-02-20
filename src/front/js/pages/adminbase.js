@@ -123,7 +123,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 const mdTheme = createTheme();
 
 
-export const AdminBase = ({ children, adminusers = false }) => {
+export const AdminBase = ({ children, adminusers = false, admincars = false }) => {
 
     const [open, setOpen] = React.useState(true);
     const toggleDrawer = () => { setOpen(!open); };
@@ -229,22 +229,23 @@ export const AdminBase = ({ children, adminusers = false }) => {
                             </ListItemButton>
 
 
-                            <ListItemButton onClick={() => {
-                                navigate("/cars")
-                            }}>
+                            <ListItemButton selected={admincars}>
                                 <ListItemIcon>
-                                    <EmojiTransportationOutlinedIcon />
+                                    <EmojiTransportationOutlinedIcon onClick={() => {
+                                        navigate("/role/admin/admincars")
+                                    }} />
                                 </ListItemIcon>
-                                <ListItemText primary="Listado de Coches" />
+                                <ListItemText primary="All Cars" onClick={() => {
+                                    navigate("/role/admin/admincars")
+                                }} />
                             </ListItemButton>
 
-                            <ListItemButton onClick={() => {
-                                navigate("/parking")
-                            }}>
+
+                            <ListItemButton >
                                 <ListItemIcon>
                                     <LocalParkingOutlinedIcon />
                                 </ListItemIcon>
-                                <ListItemText primary="Reserva" />
+                                <ListItemText primary="Plazas" />
                             </ListItemButton>
 
                             <ListItemButton onClick={() => {

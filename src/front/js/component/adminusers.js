@@ -18,22 +18,23 @@ import MenuItem from '@mui/material/MenuItem';
 
 export const AdminUsers = () => {
     const [users, setUsers] = useState();
-    const currencies = [
-        {
-            value: '1',
-            label: 'Usuario',
-        },
-        {
-            value: '2',
-            label: 'Administrador',
-        },
-    ];
+    const [roles, setRoles] = useState();
+    const [userData, setUserData] = useState({
 
-    const handleChange = (event) => {
-        setUser({ ...user, [event.target.name]: event.target.value })
-    }
+    });
+
 
     const senddata = async () => {
+
+        // const userbody = {
+        //     name: ,
+        //     surname: ,
+        //     email: ,
+        //     telephone: ,
+        //     role: ,
+        //     role_id; ,
+        // }
+
         try {
             const response = await fetch(process.env.BACKEND_URL + "/api/edit_user/" + user.id, {
                 method: "PUT",
@@ -58,6 +59,21 @@ export const AdminUsers = () => {
             .then((data) => {
                 console.log("Success:", data);
                 setUsers(data);
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+            });
+
+        fetch(process.env.BACKEND_URL + "/api/users_role", {
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem("token"),
+                "Content-Type": "application/json",
+            },
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log("Success:", data);
+                setRoles(data);
             })
             .catch((error) => {
                 console.error("Error:", error);
@@ -128,12 +144,11 @@ export const AdminUsers = () => {
                                                     size="small"
                                                     select
                                                     fullWidth
-                                                    label="Rol"
                                                     defaultValue="None"
                                                 >
-                                                    {currencies.map((option) => (
-                                                        <MenuItem key={option.value} value={option.value}>
-                                                            {option.label}
+                                                    {roles?.map((role) => (
+                                                        <MenuItem key={role.id} value={role.name}>
+                                                            {role.name}
                                                         </MenuItem>
                                                     ))}
                                                 </TextField><br /><br />
@@ -145,7 +160,6 @@ export const AdminUsers = () => {
                                                             size="small"
                                                             autoComplete="given-name"
                                                             name="name"
-                                                            onChange={handleChange}
                                                             id="firstName"
                                                             label={user.name}
                                                             autoFocus
@@ -158,7 +172,6 @@ export const AdminUsers = () => {
                                                             id="lastName"
                                                             label={user.surname}
                                                             name="surname"
-                                                            onChange={handleChange}
                                                             autoComplete="family-name"
                                                             placeholder={user.surname}
                                                         />
@@ -172,7 +185,6 @@ export const AdminUsers = () => {
                                                     fullWidth
                                                     label={user.email}
                                                     name="email"
-                                                    onChange={handleChange}
                                                     autoComplete="email"
                                                     placeholder={user.email}
                                                 /><br /><br />
@@ -184,7 +196,6 @@ export const AdminUsers = () => {
                                                     id="movil"
                                                     label={user.telephone}
                                                     name="telephone"
-                                                    onChange={handleChange}
                                                     placeholder={user.telephone}
                                                 /><br /><br />
 
@@ -195,7 +206,6 @@ export const AdminUsers = () => {
                                                     name="password"
                                                     label="Password"
                                                     type="password"
-                                                    onChange={handleChange}
                                                     id="password"
                                                     autoComplete="new-password"
                                                 />
