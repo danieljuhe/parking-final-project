@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { AdminBase } from "../pages/adminbase";
+import { AdminBase } from "../../pages/adminbase";
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -11,33 +11,9 @@ import { AdminUserList } from "./adminuserlist";
 
 
 export const AdminUsers = () => {
+
     const [users, setUsers] = useState();
     const [roles, setRoles] = useState();
-
-
-    const senddata = async () => {
-
-        // const userbody = {
-        //     name: ,
-        //     surname: ,
-        //     email: ,
-        //     telephone: ,
-        //     role: ,
-        //     role_id; ,
-        // }
-
-        try {
-            const response = await fetch(process.env.BACKEND_URL + "/api/edit_user/" + user.id, {
-                method: "PUT",
-                headers: { "Content-Type": "application/json", },
-                body: JSON.stringify(user),
-            });
-            const data = await response.json();
-            console.log(data);
-        }
-        catch (error) { console.error("Error:", error); }
-    };
-
 
     useEffect(() => {
         fetch(process.env.BACKEND_URL + "/api/list_users", {
