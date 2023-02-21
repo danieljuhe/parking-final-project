@@ -14,6 +14,7 @@ import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import MenuItem from '@mui/material/MenuItem';
+import { AdminCarList } from "./admincarlist";
 
 
 export const AdminCars = () => {
@@ -37,7 +38,7 @@ export const AdminCars = () => {
                 console.error("Error:", error);
             });
 
-    })
+    }, [])
 
 
     return (
@@ -53,6 +54,8 @@ export const AdminCars = () => {
                             <TableCell align="right">Brand</TableCell>
                             <TableCell align="right">Model</TableCell>
                             <TableCell align="right">Category</TableCell>
+                            <TableCell align="right">Edit</TableCell>
+                            <TableCell align="right">Delete</TableCell>
                         </TableRow>
 
                     </TableHead>
@@ -60,32 +63,9 @@ export const AdminCars = () => {
                     <TableBody>
 
                         {carsList?.map((car, index) => (
-                            <TableRow
-                                className={car.id}
-                                key={index}
-                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                                <TableCell component="th" scope="row">{car.id}</TableCell>
-                                <TableCell align="right">{car.plate}</TableCell>
-                                <TableCell align="right">{car.brand}</TableCell>
-                                <TableCell align="right">{car.model}</TableCell>
-                                <TableCell align="right">{car.category}</TableCell>
-                                <TableCell align="right">
-                                    <Button
-                                        variant="contained"
-                                        size="small"
-                                        data-bs-target={`#exampleModal${car.id}`}
-                                        data-bs-toggle="modal"
-                                        type="button">
-                                        <EditOutlinedIcon />
-                                    </Button>
-                                </TableCell>
-                                <TableCell align="right">
-                                    <Button variant="contained" >
-                                        <DeleteForeverOutlinedIcon />
-                                    </Button>
-                                </TableCell>
-                            </TableRow>
+                            <AdminCarList car={car} key={index} />
                         ))}
+
                     </TableBody>
                 </Table>
             </TableContainer>
