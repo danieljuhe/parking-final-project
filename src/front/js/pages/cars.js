@@ -147,7 +147,7 @@ const Cars = () => {
               justifyContent="center"
               alignItems="center">
               <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                +
+                Añadir Coche +
               </button>
             </Box>
           </div>
