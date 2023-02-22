@@ -13,6 +13,7 @@ import { AdminCarList } from "./admincarlist";
 export const AdminCars = () => {
 
     const [carsList, setCarsList] = useState();
+    const [myCars, setMyCars] = useState();
 
     useEffect(() => {
 
@@ -26,6 +27,21 @@ export const AdminCars = () => {
             .then((data) => {
                 console.log("Success:", data);
                 setCarsList(data);
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+            });
+
+        fetch(process.env.BACKEND_URL + "/api/users_mycars", {
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem("token"),
+                "Content-Type": "application/json",
+            },
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log("Success:", data);
+                setMyCars(data);
             })
             .catch((error) => {
                 console.error("Error:", error);

@@ -291,7 +291,7 @@ def admin_login():
 @api.route ('/list_users', methods=['GET'])
 @jwt_required()
 def get_all_users():
-    users = User.query.all()
+    users = User.query.order_by(User.id.asc()).all()
     data = [user.serialize() for user in users]
     return jsonify(data)
 
@@ -348,6 +348,19 @@ def get_cars_list():
     cars = Car.query.all()
     data = [car.serialize() for car in cars]
     return jsonify(data)
+
+
+    # USERS CAR REFERENCE (MY_CARS)
+@api.route('/users_mycars', methods=['GET'])
+@jwt_required()
+def get_my_cars_list():
+    try:
+        my_cars = My_cars.query.all()
+        data = [my_cars.serialize() for my_car in my_cars]
+        return jsonify(data), 200
+    except Exception as e:
+        return jsonify({"message": str(e)}), 400
+
 
 
 

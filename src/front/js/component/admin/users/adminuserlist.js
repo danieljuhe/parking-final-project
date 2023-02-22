@@ -34,6 +34,5 @@ export const AdminUserList = ({ user, roles }) => {
             </TableCell>
             <AdminUserModal user={user} roles={roles} />
         </TableRow>
-
     )
 }

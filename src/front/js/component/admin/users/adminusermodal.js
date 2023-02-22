@@ -26,6 +26,7 @@ export const AdminUserModal = ({ user, roles }) => {
             console.log(data);
         }
         catch (error) { console.error("Error:", error); }
+
     };
 
     useEffect(() => {
