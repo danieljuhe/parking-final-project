@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { AdminBase } from "../../pages/adminbase";
+import { AdminBase } from "../../../pages/adminbase";
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';

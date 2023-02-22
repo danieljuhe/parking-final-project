@@ -18,8 +18,8 @@ import { ParkingView } from "./component/parkingview";
 import { Map } from "./component/maps";
 import { AdminLoginPage } from "./pages/adminlogin";
 import { AdminBase } from "./pages/adminbase";
-import { AdminUsers } from "./component/admin/adminusers";
-import { AdminCars } from "./component/admin/admincars";
+import { AdminUsers } from "./component/admin/users/adminusers";
+import { AdminCars } from "./component/admin/cars/admincars";
 
 const Layout = () => {
   const basename = process.env.BASENAME || "";
