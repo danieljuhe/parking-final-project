@@ -351,6 +351,7 @@ def get_cars_list():
 
 
     # USERS CAR REFERENCE (MY_CARS)
+    
 @api.route('/users_mycars', methods=['GET'])
 @jwt_required()
 def get_my_cars_list():

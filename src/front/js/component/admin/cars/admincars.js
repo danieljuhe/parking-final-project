@@ -8,6 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { AdminCarList } from "./admincarlist";
+import { UsersCarList } from "../http/provider";
 
 
 export const AdminCars = () => {
@@ -17,21 +18,7 @@ export const AdminCars = () => {
 
     useEffect(() => {
 
-        fetch(process.env.BACKEND_URL + "/api/users_cars_list", {
-            headers: {
-                Authorization: "Bearer " + localStorage.getItem("token"),
-                "Content-Type": "application/json",
-            },
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log("Success:", data);
-                setCarsList(data);
-            })
-            .catch((error) => {
-                console.error("Error:", error);
-            });
-
+        <UsersCarList />
         fetch(process.env.BACKEND_URL + "/api/users_mycars", {
             headers: {
                 Authorization: "Bearer " + localStorage.getItem("token"),

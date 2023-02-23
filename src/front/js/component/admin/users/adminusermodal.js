@@ -22,6 +22,13 @@ export const AdminUserModal = ({ user, roles }) => {
                 },
                 body: JSON.stringify(userData),
             });
+            // const statusCode = response.status;
+            // if (statusCode == 400){
+            //     console.log('error 400')
+            //     throw new Error('')
+            // }else if (!statusCode.ok){
+            //     throw 
+            // }
             const data = await response.json();
             console.log(data);
         }
