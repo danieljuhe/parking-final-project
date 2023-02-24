@@ -11,7 +11,6 @@
   align-items: center;
 }
 input {
-  background-color: aliceblue;
   display: flex;
   align-items: center;
   padding: 0.6rem;
@@ -19,5 +18,37 @@ input {
   border: 1px solid gray;
   padding-left: 1rem;
   padding-right: 1rem;
-  color: black;
+}
+.input_date {
+  background-color: #7a6ae1 !important;
+  padding: 1rem;
+}
+.btn {
+  border: 3px solid rgba(100, 100, 100, 0.1);
+  margin-bottom: 20px;
+  padding: 20px;
+  width: auto;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #fff !important;
+  background-size: 300%;
+}
+.btn1 {
+  background-image: linear-gradient(to left, #6a5acd, #052aca, #6a5acd);
+}
+.letter {
+  font-family: "Uchen", serif;
+  font-size: 35px;
+  margin-right: 12rem;
+}
+.letter2 {
+  font-family: "Uchen", serif;
+  font-size: 22px;
+}
+.letter_T {
+  font-family: "Uchen", serif;
+  font-size: 33px;
 }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import "../../styles/cars.css";
 import Car from "./car";
 import { Base } from "../pages/base";
 import { Context } from "../store/appContext";
@@ -11,6 +12,7 @@ import CreateCar from "../component/createCar";
 import { Button } from "@mui/material";
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Grid from "@mui/material/Grid";
+import ToysIcon from '@mui/icons-material/Toys';
 
 
 
@@ -92,12 +94,14 @@ const Cars = () => {
                       <div className="mx-auto my-2 btn-group btn-group-sm" role="group" aria-label="Basic outlined example">
                         <ButtonGroup variant="contained" aria-label="outlined primary button group">
                           <Button
+                            className="btn btn1"
                             size="small"
                             variant="contained"
                             onClick={() => handleEditClick(car.car.id)}
                           >Editar
                           </Button>
                           <Button
+                            className="btn btn1"
                             size="small"
                             variant="contained"
                             data-bs-target={`#exampleModal${car.car.id}`}
@@ -126,7 +130,7 @@ const Cars = () => {
                               </div>
                             </div>
                           </div>
-                          <Button
+                          <Button className="btn btn1"
                             onClick={() => {
                               actions.setDefaultCar(car.car.id)
                               navigate("/parking")
@@ -146,9 +150,9 @@ const Cars = () => {
               direction="row"
               justifyContent="center"
               alignItems="center">
-              <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Añadir Coche +
-              </button>
+              <Button type="button" class="btn btn1" data-bs-toggle="modal" data-bs-target="#exampleModal" endIcon={<ToysIcon />}>
+                Añadir Coche
+              </Button>
             </Box>
           </div>
           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -172,3 +176,7 @@ const Cars = () => {
 }
 
 export default Cars
+
+{/* <Button variant="contained" endIcon={<SendIcon />}>
+
+</Button> */}

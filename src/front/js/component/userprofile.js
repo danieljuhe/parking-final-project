@@ -167,7 +167,7 @@ export const UserProfile = () => {
             </div>
             <div className="row">
               <div className="col-sm-12">
-                <Button
+                <Button className="btn btn1"
                   onClick={() => { senddata() }}
                   fullWidth
                   variant="contained"
