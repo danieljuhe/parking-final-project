@@ -8,32 +8,41 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { AdminCarList } from "./admincarlist";
-import { UsersCarList } from "../http/provider";
 
 
 export const AdminCars = () => {
 
     const [carsList, setCarsList] = useState();
-    const [myCars, setMyCars] = useState();
+
+    const UsersCarList = async () => {
+        try {
+            const response = await fetch(process.env.BACKEND_URL + '/api/users_cars_list',
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: "Bearer " + localStorage.getItem("token")
+                    }
+                });
+            console.log(response);
+            if (response.ok) {
+                const listData = await response.json();
+                setCarsList(listData)
+            } else if (response.status === 400) {
+                throw new Error('Bad request. Client error')
+            } else if (response.status === 401) {
+                throw new Error('Unauthorized. API authentication needed')
+            } else if (response.status === 204) {
+                throw new Error('Not content')
+            } else {
+                throw new Error('Unknown error, please review terminal')
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     useEffect(() => {
-
-        <UsersCarList />
-        fetch(process.env.BACKEND_URL + "/api/users_mycars", {
-            headers: {
-                Authorization: "Bearer " + localStorage.getItem("token"),
-                "Content-Type": "application/json",
-            },
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log("Success:", data);
-                setMyCars(data);
-            })
-            .catch((error) => {
-                console.error("Error:", error);
-            });
-
+        UsersCarList()
     }, [])
 
 
