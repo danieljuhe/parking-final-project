@@ -127,7 +127,7 @@ const CheckoutForm = () => {
         </div>
       </div>
 
-      <form onSubmit={handleSubmit} onChange={inputValue} className="card card-body my-5 stripe">
+      <form onSubmit={handleSubmit} onChange={inputValue} className="card card-body my-5 stripe mx-auto">
 
         {/* <img
         src="https://cdn-01.media-brady.com/store/stes/media/catalog/product/d/m/dmeu_ppma_p_1_std.lang.all.gif"
@@ -135,13 +135,13 @@ const CheckoutForm = () => {
         className="img-fluid"
       /> */}
 
-        <h3 className="text-center my-2">Price: {store.price}€</h3>
+        <h3 className="text-center my-2">Precio: {store.price}€</h3>
         <br />
         <div className="form-group">
           <CardElement className="form-control" />
         </div>
         <br />
-        <button variant="contained" className="btn btn-info" disabled={!stripe}>
+        <button variant="contained" className="btn btn1 btn-info" disabled={!stripe}>
 
           {loading ? (
 
@@ -154,7 +154,6 @@ const CheckoutForm = () => {
             "Buy"
           )}
         </button>
-        <button onClick={mostrarAlertaError}>Error test</button>
       </form>
     </>
 
@@ -166,8 +165,9 @@ function AppPay() {
   return <Base>
 
     <Elements stripe={stripePromise}>
-      <div className="stripecard">
-        <h3>Ingresa Datos de Pago</h3>
+      <div className="stripecard mx-auto">
+        <h3 className="h3">Ingresa Datos de Pago</h3>
+        <br />
         <div className="">
           <div className="">
             <CheckoutForm />

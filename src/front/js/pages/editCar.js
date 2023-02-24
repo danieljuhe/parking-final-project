@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "../../styles/editcars.css";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import swal from "sweetalert";
@@ -146,6 +147,7 @@ const EditCar = () => {
           </div>
           <Stack spacing={2} direction="row" className="container my-2">
             <Button
+              className="btn btn1"
               size="small"
               variant="contained"
               type="submit"
@@ -155,6 +157,7 @@ const EditCar = () => {
             >Guardar
             </Button>
             <Button
+              className="btn btn1"
               onClick={() => navigate("/cars")}
               size="small"
               variant="contained"

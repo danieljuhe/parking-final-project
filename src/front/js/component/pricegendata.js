@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from "react";
-import "../../styles/login.css";
+import "../../styles/date.css";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "../store/appContext";
 import { useParams } from "react-router-dom";
-import Paper from "@mui/material/Paper";
-import CssBaseline from '@mui/material/CssBaseline';
-import Container from "@mui/material/Container";
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Base } from "../pages/base";
+import Button from '@mui/material/Button';
+import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 
 const theme = createTheme();
 
@@ -63,12 +60,15 @@ export const PriceGen = () => {
   };
 
   return <Base>
-    <div className="main">
+    <div className="test mx-auto">
+      <h3>Horario de Reserva</h3>
+      <br />
       <div className="data">
         <form onSubmit={handleSubmit}>
           <label>
-            Start Date:
+            Fecha de Entrada:
             <input
+              className="input_date"
               type="date"
               min={currentDateString.slice(0, 10)}
               onChange={(e) => setStartDate(e.target.value)}
@@ -76,8 +76,9 @@ export const PriceGen = () => {
           </label>
           <>&nbsp;&nbsp;&nbsp;&nbsp;</>
           <label>
-            Start Time:
+            Hora de Inicio:
             <input
+              className="input_date"
               type="time"
               min={currentDateString.slice(11, 16)}
               onChange={(e) => setStartTime(e.target.value)}
@@ -89,8 +90,9 @@ export const PriceGen = () => {
           <br />
           <br />
           <label>
-            End Date:
+            Fecha de Salida:
             <input
+              className="input_date"
               type="date"
               min={startDate ? startDate : currentDateString.slice(0, 10)}
               onChange={(e) => setEndDate(e.target.value)}
@@ -98,8 +100,9 @@ export const PriceGen = () => {
           </label>
           <>&nbsp;&nbsp;&nbsp;&nbsp;</>
           <label>
-            End Time:
+            Fecha de Salida:
             <input
+              className="input_date"
               type="time"
               min={startTime && startDate == endDate ? startTime : ""}
               onChange={(e) => setEndTime(e.target.value)}
@@ -108,16 +111,19 @@ export const PriceGen = () => {
           <br />
           <br />
           <br />
-          <button type="submit">Calcula Precio</button>
-
+          <Button className="btn btn1" variant="contained" type="submit">
+            Calcular Precio
+          </Button>
           <br />
           <br />
-          <h2>Precio:{price}€</h2>
+          <h2>Importe: {price}€</h2>
           <br />
-          <button onClick={stripe}>Confirmar</button>
+          <Button className="btn btn1" variant="contained" onClick={stripe} endIcon={<ShoppingCartCheckoutIcon />}>
+            Confirmar
+          </Button>
         </form>
 
       </div>
     </div>
-  </Base>
+  </Base >
 };
