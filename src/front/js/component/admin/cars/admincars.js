@@ -34,6 +34,8 @@ export const AdminCars = () => {
                 throw new Error('Unauthorized. API authentication needed')
             } else if (response.status === 204) {
                 throw new Error('Not content')
+            } else if (response.status === 500) {
+                throw new Error("Internal server error")
             } else {
                 throw new Error('Unknown error, please review terminal')
             }

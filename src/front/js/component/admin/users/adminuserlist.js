@@ -6,9 +6,10 @@ import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
 import { AdminUserModal } from "./adminusermodal";
 
-export const AdminUserList = ({ user, roles }) => {
+export const AdminUserList = ({ user, roles, index }) => {
     return (
         <TableRow
+            key={index}
             className={user.id}
             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
             <TableCell component="th" scope="row">{user.id}</TableCell>

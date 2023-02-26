@@ -7,22 +7,23 @@ import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableHead from "@mui/material/TableHead";
 import TableBody from "@mui/material/TableBody";
+import { AdminParkingList } from "./adminparkinglist";
 
 
 export const AdminParking = () => {
 
     const [usersParkingLot, setUsersParkingLot] = useState();
-
+    console.log(usersParkingLot)
     const getUsersParkinglot = async () => {
 
         try {
-            const response = await fetch((process.env.BACKEND_URL + '/api/users_parking_lot',
-            {
-                headers: {
-                    "Content-type": "application/json",
-                    Authorization: "Bearer " + localStorage.getItem("token")
-                }
-            }))
+            const response = await fetch(process.env.BACKEND_URL + '/api/users_parking_lot',
+                {
+                    headers: {
+                        "Content-type": "application/json",
+                        Authorization: "Bearer " + localStorage.getItem("token")
+                    }
+                })
             console.log(response)
 
             if (response.ok) {
@@ -39,9 +40,8 @@ export const AdminParking = () => {
             } else {
                 throw new Error("Unknown error, please review the terminal")
             }
-        }
-        catch (error) {
-            console.log(error);
+        } catch (error) {
+            console.log(error)
         }
     }
 
@@ -62,7 +62,7 @@ export const AdminParking = () => {
                             <TableCell align="right">Plate</TableCell>
                             <TableCell align="right">User ID</TableCell>
                             <TableCell align="right">Category ID</TableCell>
-                            <TableCell align="right">Ocuppied</TableCell>
+                            <TableCell align="right">Occupied</TableCell>
                             <TableCell align="right">Edit</TableCell>
                             <TableCell align="right">Delete</TableCell>
                         </TableRow>
@@ -70,7 +70,9 @@ export const AdminParking = () => {
                     </TableHead>
 
                     <TableBody>
-
+                        {usersParkingLot?.map((parkingLot, value) => (
+                            <AdminParkingList parkingLot={parkingLot} key={value} />
+                        ))}
                     </TableBody>
                 </Table>
             </TableContainer>
