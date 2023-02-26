@@ -14,6 +14,7 @@ export const AdminUserModal = ({ user, roles }) => {
     const senddata = async () => {
 
         try {
+
             const response = await fetch(process.env.BACKEND_URL + "/api/modify_users/" + user.id, {
                 method: "PUT",
                 headers: {
@@ -22,13 +23,6 @@ export const AdminUserModal = ({ user, roles }) => {
                 },
                 body: JSON.stringify(userData),
             });
-            // const statusCode = response.status;
-            // if (statusCode == 400){
-            //     console.log('error 400')
-            //     throw new Error('')
-            // }else if (!statusCode.ok){
-            //     throw 
-            // }
             const data = await response.json();
             console.log(data);
         }

@@ -1,0 +1,35 @@
+import React from "react";
+import TableCell from '@mui/material/TableCell';
+import TableRow from '@mui/material/TableRow';
+import { Button } from "@mui/material";
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
+import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
+
+export const AdminParkingList = (parkingLot) => {
+    return (
+        <TableRow
+            className={parkingLot.id}
+            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+            <TableCell component="th" scope="row">{parkingLot.id}</TableCell>
+            <TableCell align="right">{parkingLot.plate}</TableCell>
+            <TableCell align="right">{parkingLot.brand}</TableCell>
+            <TableCell align="right">{parkingLot.model}</TableCell>
+            <TableCell align="right">{parkingLot.category.name}</TableCell>
+            <TableCell align="right">
+                <Button
+                    variant="contained"
+                    size="small"
+                    data-bs-target={`#exampleModal${car.id}`}
+                    data-bs-toggle="modal"
+                    type="button">
+                    <EditOutlinedIcon />
+                </Button>
+            </TableCell>
+            <TableCell align="right">
+                <Button variant="contained" >
+                    <DeleteForeverOutlinedIcon />
+                </Button>
+            </TableCell>
+        </TableRow>
+    )
+}

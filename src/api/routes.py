@@ -363,5 +363,26 @@ def get_my_cars_list():
         return jsonify({"message": str(e)}), 400
 
 
+    # PARKING
+
+    # USERS PARKING LIST
+
+@api.route('/users_parking_lot', methods=['GET'])
+@jwt_required()
+def get_all_users_parkinglot():
+    try:
+        parking_lots = Parking.query.all()
+        data = [parking.serialize() for parking_lot in parking_lots]
+        return jsonify(data), 200
+    except Exception as e:
+        return jsonify({"message": str(e)}), 400
+    # except requests.exceptions.HTTPError as errh:
+    #     print(errh)
+    # except requests.exceptions.ConnectionError as errc:
+    #     print(errc)
+    # except requests.exceptions.Timeout as errt:
+    #     print(errt)
+    # except requests.exceptions.RequestException as err:
+    #     print(err)
 
 

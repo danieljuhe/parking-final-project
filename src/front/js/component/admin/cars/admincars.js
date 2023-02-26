@@ -15,6 +15,7 @@ export const AdminCars = () => {
     const [carsList, setCarsList] = useState();
 
     const UsersCarList = async () => {
+
         try {
             const response = await fetch(process.env.BACKEND_URL + '/api/users_cars_list',
                 {
@@ -39,6 +40,7 @@ export const AdminCars = () => {
         } catch (error) {
             console.log(error)
         }
+
     }
 
     useEffect(() => {
