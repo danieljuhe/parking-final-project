@@ -107,13 +107,8 @@ const CheckoutForm = () => {
   };
 
   return (
-    <>
+    <div className="">
       <div className="containercard">
-        <div className="circles">
-          <div className="circle circle-1"></div>
-          <div className="circle circle-2"></div>
-        </div>
-
         <div className="card">
           <div className="visa_logo">
             <img src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/visa.png" alt="" />
@@ -155,7 +150,7 @@ const CheckoutForm = () => {
           )}
         </button>
       </form>
-    </>
+    </div>
 
   );
 };
@@ -165,11 +160,11 @@ function AppPay() {
   return <Base>
 
     <Elements stripe={stripePromise}>
-      <div className="stripecard mx-auto">
-        <h3 className="h3">Ingresa Datos de Pago</h3>
-        <br />
-        <div className="">
-          <div className="">
+      <div className="container p-4">
+        <div className="row h-100">
+          <div className="col-md-4 offset-md-4 h-100">
+            <h3 className="h3">Ingresa Datos de Pago</h3>
+            <br />
             <CheckoutForm />
           </div>
         </div>

@@ -92,7 +92,7 @@ const Cars = () => {
                     />
                     <div className="container">
                       <div className="mx-auto my-2 btn-group btn-group-sm" role="group" aria-label="Basic outlined example">
-                        <ButtonGroup variant="contained" aria-label="outlined primary button group">
+                        <ButtonGroup variant="text" aria-label="text button group">
                           <Button
                             className="btn btn1"
                             size="small"
