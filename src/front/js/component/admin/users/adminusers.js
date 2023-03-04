@@ -8,6 +8,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { AdminUserList } from "./adminuserlist";
+import { UsersList } from "../http/provider";
+import { UsersRoleList } from "../http/provider";
 
 
 export const AdminUsers = () => {
@@ -16,35 +18,8 @@ export const AdminUsers = () => {
     const [roles, setRoles] = useState();
 
     useEffect(() => {
-        fetch(process.env.BACKEND_URL + "/api/list_users", {
-            headers: {
-                Authorization: "Bearer " + localStorage.getItem("token"),
-                "Content-Type": "application/json",
-            },
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log("Success:", data);
-                setUsers(data);
-            })
-            .catch((error) => {
-                console.error("Error:", error);
-            });
-
-        fetch(process.env.BACKEND_URL + "/api/users_role", {
-            headers: {
-                Authorization: "Bearer " + localStorage.getItem("token"),
-                "Content-Type": "application/json",
-            },
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log("Success:", data);
-                setRoles(data);
-            })
-            .catch((error) => {
-                console.error("Error:", error);
-            });
+        UsersList(setUsers)
+        UsersRoleList(setRoles)
     }, [])
 
     return (
