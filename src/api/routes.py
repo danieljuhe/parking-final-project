@@ -377,4 +377,16 @@ def get_all_users_parkinglot():
         return jsonify({"Message": str(e)}), 500
     return jsonify(data)
 
+    # USERS CAR CATEGORIES
+
+@api.route('/users_car_categories', methods=['GET'])
+@jwt_required()
+def get_users_car_categories():
+    try:
+        categories = Category.query.all()
+        data = [category.serialize() for category in categories]
+    except Exception as e:
+        return jsonify({"Message": str(e)}), 500
+    return jsonify(data)
+
 

@@ -4,11 +4,13 @@ import TableRow from '@mui/material/TableRow';
 import { Button } from "@mui/material";
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
+import { AdminCarsModal } from "./admincarsmodal";
 
 
-export const AdminCarList = ({ car }) => {
+export const AdminCarList = ({ car, index }) => {
     return (
         <TableRow
+            key={index}
             className={car.id}
             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
             <TableCell component="th" scope="row">{car.id}</TableCell>
@@ -31,6 +33,7 @@ export const AdminCarList = ({ car }) => {
                     <DeleteForeverOutlinedIcon />
                 </Button>
             </TableCell>
+            <AdminCarsModal car={car} />
         </TableRow>
     )
 }
