@@ -82,7 +82,7 @@ export const ParkingView = () => {
   let arrayparkingstart = parkingSites.slice(0, 4)
   let arrayparkingend = parkingSites.slice(4, 5)
 
-  return <Base reserve={true}>
+  return <>
     <div className="mainparking">
       <div className="parking">
         {
@@ -243,5 +243,5 @@ export const ParkingView = () => {
         </div>
       )}
     </div>
-  </Base>
+  </>
 };

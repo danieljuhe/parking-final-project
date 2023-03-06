@@ -57,7 +57,7 @@ export const UserProfile = () => {
   }, [])
 
   return (
-    <Base dashboard={true}>
+    <>
       <div className="profilecontainer">
         <div className="profilemain">
           <div className="cardavatar">
@@ -228,7 +228,7 @@ export const UserProfile = () => {
           </Box>
         </Container>
       </ThemeProvider> */}
-    </Base >
-  );
+    </>
+  )
 }
 
