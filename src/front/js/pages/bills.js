@@ -44,7 +44,7 @@ const Bills = () => {
                                         <th scope="row">{bill.user.name}</th>
                                         <th scope="row">{bill.user.email}</th>
                                         <th scope="row">{bill.date}</th>
-                                        <th scope="row">{bill.amount}</th>
+                                        <th scope="row">{bill.amount}€</th>
                                         <th scope="row">{bill.parking_id.car_plate}</th>
                                     </tr>
                                     )
