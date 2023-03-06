@@ -273,75 +273,108 @@ def edit_user(id):
 # ADMIN ROUTES
 
     # LOGIN
-    @api.route('/admin_login', methods=["POST"])
-    def admin_login():
-        data = request.json
-        user = User.query.filter_by(email=data['email'], password=data['password']).first()
-        if user:
-            if user.role_id == 2:
-                token= create_access_token(identity=user.id) 
-                return jsonify({"token": token}), 200
+@api.route('/admin_login', methods=["POST"])
+def admin_login():
+    data = request.json
+    user = User.query.filter_by(email=data['email'], password=data['password']).first()
+    if user:
+        if user.role_id == 2:
+            token= create_access_token(identity=user.id) 
+            return jsonify({"token": token}), 200
 
-        return jsonify({"message": "Usuario / contraseña incorrectos"}), 400
+    return jsonify({"message": "Usuario / contraseña incorrectos"}), 400
 
 
     # USERS EDIT PAGE
 
     # USERS LIST
-    @api.route ('/list_users', methods=['GET'])
-    @jwt_required()
-    def get_all_users():
-        users = User.query.all()
-        data = [user.serialize() for user in users]
-        return jsonify(data)
+@api.route ('/list_users', methods=['GET'])
+@jwt_required()
+def get_all_users():
+    users = User.query.order_by(User.id.asc()).all()
+    data = [user.serialize() for user in users]
+    return jsonify(data)
 
 
     # USERS ROLE
-    @api.route ('/users_role', methods=['GET'])
-    @jwt_required()
-    def get_users_role():
-        roles = Role.query.all()
-        data = [role.serialize() for role in roles]
-        return jsonify(data)
+@api.route ('/users_role', methods=['GET'])
+@jwt_required()
+def get_users_role():
+    roles = Role.query.all()
+    data = [role.serialize() for role in roles]
+    return jsonify(data)
 
 
     # MODIFY USERS INFO
-    @api.route ('/modify_users', methods=['PUT'])
-    @jwt_required()
-    def modify_users_info():
-        try:
-            user = User.query.get(id)
-        except:
-            return jsonify({"message": "No se ha podido editar el usuario"}), 400
-        data=request.json
-        print(data)
 
+@api.route ('/modify_users/<int:id>', methods=['PUT'])
+@jwt_required()
+def modify_users_info(id):
+    try:
+        user = User.query.get(id)
+        print(user)
+    except:
+        return jsonify({"message": "No se ha podido editar el usuario"}), 400
+    data=request.json
+    print(data)
+    try:
         new_name = request.json.get("name", user.name)
         new_surname = request.json.get("surname", user.surname)
         new_email = request.json.get("email", user.email)
         new_telephone = request.json.get("telephone", user.telephone)
-        new_role = request.json.get("role", user.role)
+        new_role_id = request.json.get("role_id", user.role_id)
+        new_password = request.json.get("password", user.password)
 
         setattr(user, "name", new_name)
         setattr(user, "surname", new_surname)
         setattr(user, "email", new_email)
         setattr(user, "telephone", new_telephone)
-        setattr(user, "role", new_role)
+        setattr(user, "role_id", new_role_id)
+        setattr(user, "password", new_password)
 
         db.session.commit()
         return jsonify (user.serialize()), 200
-
+    except Exception as e:
+        return jsonify({"message": str(e)}), 666
 
 
     # USERS CARS
 
     # USERS LIST OF CARS
-    @api.route ('/users_cars_list', methods=['GET'])
-    @jwt_required()
-    def get_cars_list():
-        cars = Car.query.all()
-        data = [car.serialize() for car in cars]
-        return jsonify(data)
 
+@api.route ('/users_cars_list', methods=['GET'])
+@jwt_required()
+def get_cars_list():
+    cars = Car.query.all()
+    data = [car.serialize() for car in cars]
+    return jsonify(data)
+
+
+    # USERS CAR REFERENCE (MY_CARS)
+    
+@api.route('/users_mycars', methods=['GET'])
+@jwt_required()
+def get_my_cars_list():
+    try:
+        my_cars = My_cars.query.all()
+        data = [my_cars.serialize() for my_car in my_cars]
+        return jsonify(data), 200
+    except Exception as e:
+        return jsonify({"message": str(e)}), 400
+
+
+    # PARKING
+
+    # USERS PARKING LIST
+
+@api.route('/users_parking_lot', methods=['GET'])
+@jwt_required()
+def get_all_users_parkinglot():
+    try:
+        parkings = Parking.query.all()
+        data = [parking.serialize() for parking in parkings]
+    except Exception as e:
+        return jsonify({"Message": str(e)}), 500
+    return jsonify(data)
 
 
