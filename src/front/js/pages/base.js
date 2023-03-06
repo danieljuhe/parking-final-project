@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
+import "../../styles/base.css";
 import { useNavigate } from "react-router-dom";
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -29,7 +30,7 @@ import EmojiTransportationOutlinedIcon from '@mui/icons-material/EmojiTransporta
 import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
 import CreditScoreOutlinedIcon from '@mui/icons-material/CreditScoreOutlined';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
-
+import parkLogo from "../../img/parklogo.png";
 
 function Copyright(props) {
     return (
@@ -193,7 +194,9 @@ export const Base = ({ children, dashboard = false, cars = false, reserve = fals
                         px: [1],
                     }}>
                         <Stack direction="row" spacing={2}>
-                            <img src="https://www.brandemia.org/wp-content/uploads/2013/01/Parking_Logo.jpg" width="180" height="100" />
+
+                            <img src={parkLogo} className="logo" />
+
                         </Stack>
                         <IconButton onClick={toggleDrawer}>
                             <ChevronLeftIcon />
