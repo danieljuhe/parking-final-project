@@ -252,18 +252,14 @@ export const AdminBase = ({ children, adminusers = false, admincars = false, adm
                                 }} />
                             </ListItemButton>
 
-                            <ListItemButton onClick={() => {
-                                navigate("/map")
-                            }}>
+                            <ListItemButton >
                                 <ListItemIcon>
                                     <LocationOnOutlinedIcon />
                                 </ListItemIcon>
                                 <ListItemText primary="Ubicacion" />
                             </ListItemButton>
 
-                            <ListItemButton onClick={() => {
-                                navigate("/bill")
-                            }}>
+                            <ListItemButton >
                                 <ListItemIcon>
                                     <CreditScoreOutlinedIcon />
                                 </ListItemIcon>

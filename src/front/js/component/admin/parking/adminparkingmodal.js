@@ -4,25 +4,25 @@ import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 
 
-export const AdminCarsModal = ({ car }) => {
+export const AdminParkingModal = ({ parkingLot }) => {
 
-    const [carsData, setCarsData] = useState({})
+    const [parkingData, setParkingData] = useState({})
 
     const handleChange = (event) => {
-        setCarsData({ ...carsData, [event.target.name]: event.target.value })
+        setParkingData({ ...parkingData, [event.target.name]: event.target.value })
     }
 
     const senddata = async () => {
 
         try {
-            const call = await fetch(process.env.BACKEND_URL + "/api/modify_users_cars/" + car.id,
+            const call = await fetch(process.env.BACKEND_URL + "/api/modify_parking_info/" + parking.id,
                 {
                     method: "PUT",
                     headers: {
                         "Content-Type": "application/json",
                         Authorization: "Bearer " + localStorage.getItem("token"),
                     },
-                    body: JSON.stringify(carsData),
+                    body: JSON.stringify(parkingData),
                 })
 
             const data = await call.json()
@@ -34,11 +34,11 @@ export const AdminCarsModal = ({ car }) => {
     }
 
     useEffect(() => {
-        setCarsData(car)
+        setParkingData(parkingLot)
     }, [])
 
     return (
-        <div className="modal fade" id={`exampleModal${car.id}`} aria-labelledby={`#exampleModalLabel${car.id}`} aria-hidden="true">
+        <div className="modal fade" id={`exampleModal${parkingLot.id}`} aria-labelledby={`#exampleModalLabel${parkingLot.id}`} aria-hidden="true">
             <div className="modal-dialog modal-dialog-centered">
                 <div className="modal-content">
                     <div className="modal-header">
@@ -47,43 +47,32 @@ export const AdminCarsModal = ({ car }) => {
                     </div>
                     <div className="modal-body">
 
-                        <Typography component="h5">Plate</Typography><br />
+                        <Typography component="h5">Site</Typography><br />
                         <Grid container spacing={2}>
                             <Grid item xs={12} sm={6}>
                                 <TextField
                                     size="small"
-                                    autoComplete="plate"
-                                    name="plate"
+                                    autoComplete="site"
+                                    name="site"
                                     onChange={handleChange}
-                                    id="plate"
-                                    label={car.plate}
+                                    id="site"
+                                    label={parkingLot.site}
                                     autoFocus
-                                    placeholder={car.plate}
+                                    placeholder={parkingLot.site}
                                 />
                             </Grid>
                         </Grid><br />
 
-                        <Typography component="h5">Brand</Typography><br />
+                        <Typography component="h5">Occupied</Typography><br />
                         <TextField
                             size="small"
-                            id="brand"
+                            id="occupied"
                             fullWidth
                             onChange={handleChange}
-                            label={car.brand}
-                            name="brand"
-                            autoComplete="brand"
-                            placeholder={car.brand}
-                        /><br /><br />
-
-                        <Typography component="h5">Model</Typography><br />
-                        <TextField
-                            size="small"
-                            fullWidth
-                            onChange={handleChange}
-                            id="model"
-                            label={car.model}
-                            name="model"
-                            placeholder={car.model}
+                            label={parkingLot.occupied}
+                            name="occupied"
+                            autoComplete="occupied"
+                            placeholder={parkingLot.occupied}
                         /><br /><br />
 
                     </div>

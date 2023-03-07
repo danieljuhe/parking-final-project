@@ -337,6 +337,19 @@ def modify_users_info(id):
     except Exception as e:
         return jsonify({"message": str(e)}), 666
 
+    # DELETE USER
+
+@api.route ('/delete_users/<int:id>', methods=['DELETE'])
+def delete_user(id):
+    try:
+        user = User.query.filter_by(id=id).first()
+        db.session.delete(user)
+        db.session.commit()
+    except:
+        return jsonify({"message": "User cant be deleted"}), 400
+    return jsonify ({"message": "User deleted successfully"}), 200
+
+
 
     # USERS CARS
 
@@ -362,6 +375,32 @@ def get_my_cars_list():
     except Exception as e:
         return jsonify({"message": str(e)}), 400
 
+    # MODIFY USERS CAR 
+
+@api.route ('/modify_users_cars/<int:id>', methods=['PUT'])
+@jwt_required()
+def modify_users_car(id):
+    try:
+        car = Car.query.get(id)
+        print(car)
+    except:
+        return jsonify({"message": "Cant be modify the car info"}), 400
+    data = request.json
+    print(data)
+    try:
+        new_plate = request.json.get("plate", car.plate)
+        new_brand = request.json.get("brand", car.brand)
+        new_model = request.json.get("model", car.model)
+
+        setattr(car, "plate", new_plate)
+        setattr(car, "brand", new_brand)
+        setattr(car, "model", new_model)
+
+        db.session.commit()
+        return jsonify (car.serialize()), 200
+    except Exception as e:
+        return jsonify({"message": str(e)}), 500
+
 
     # PARKING
 
@@ -377,16 +416,29 @@ def get_all_users_parkinglot():
         return jsonify({"Message": str(e)}), 500
     return jsonify(data)
 
-    # USERS CAR CATEGORIES
 
-@api.route('/users_car_categories', methods=['GET'])
+    # MODIFY PARKING INFO
+
+@api.route('/modify_parking_info/<int:id>', methods=["PUT"])
 @jwt_required()
-def get_users_car_categories():
+def modify_parking_info():
     try:
-        categories = Category.query.all()
-        data = [category.serialize() for category in categories]
+        parking = Parking.query.get(id)
+        print(parking)
+    except:
+        return jsonify({"Message":"Info cant be modified"}), 400
+    data = request.json
+    print(data)
+    try:
+        new_site = request.json.get("site", parking.site)
+        new_occupied = request.json.get("occupied", parking.occupied)
+
+        setattr(parking, "site", new_site)
+        setattr(parking, "occupied", new_occupied)
+
+        db.session.commit()
+        return jsonify (parking.serialize()), 200
     except Exception as e:
-        return jsonify({"Message": str(e)}), 500
-    return jsonify(data)
+        return jsonify({"message": str(e)}), 500
 
 

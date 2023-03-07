@@ -29,8 +29,6 @@ import EmojiTransportationOutlinedIcon from '@mui/icons-material/EmojiTransporta
 import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
 import CreditScoreOutlinedIcon from '@mui/icons-material/CreditScoreOutlined';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
-import { UserProfile } from "../component/userprofile";
-import { ParkingView } from "../component/parkingview";
 
 
 function Copyright(props) {
@@ -132,16 +130,6 @@ export const Base = ({ children, dashboard = false, cars = false, reserve = fals
     const { store, actions } = useContext(Context);
     const [user, setUser] = useState();
     const navigate = useNavigate();
-    const [render, setRender] = useState();
-    let RenderComponent;
-    switch (render) {
-        case 'dashboard':
-            RenderComponent = <UserProfile />;
-            break;
-        case 'parkingview':
-            RenderComponent = <ParkingView />;
-            break;
-    }
 
     useEffect(() => {
         console.log(store.token);
@@ -229,13 +217,13 @@ export const Base = ({ children, dashboard = false, cars = false, reserve = fals
                             </ListItemButton>
                             <br />
 
-                            <ListItemButton selected={dashboard}>
+                            <ListItemButton selected={dashboard} onClick={() => {
+                                navigate("/privateuser")
+                            }} >
                                 <ListItemIcon>
                                     <DashboardIcon />
                                 </ListItemIcon>
-                                <ListItemText primary="Dashboard" onClick={() => {
-                                    setRender('dashboard')
-                                }} />
+                                <ListItemText primary="Dashboard" />
                             </ListItemButton>
 
                             {/* <ListItemButton selected={cars} onClick={() => {
@@ -257,13 +245,13 @@ export const Base = ({ children, dashboard = false, cars = false, reserve = fals
                                 <ListItemText primary="Listado de Coches" />
                             </ListItemButton>
 
-                            <ListItemButton selected={reserve}>
+                            <ListItemButton selected={reserve} onClick={() => {
+                                navigate("/parking")
+                            }}>
                                 <ListItemIcon>
                                     <LocalParkingOutlinedIcon />
                                 </ListItemIcon>
-                                <ListItemText primary="Reserva" onClick={() => {
-                                    setRender('parkingview')
-                                }} />
+                                <ListItemText primary="Reserva" />
                             </ListItemButton>
 
                             <ListItemButton selected={location} onClick={() => {
@@ -324,16 +312,6 @@ export const Base = ({ children, dashboard = false, cars = false, reserve = fals
                                     {children}
                                 </Paper>
                             </Grid>
-                            <Grid item xs={12} md={4} lg={3}>
-                                <Paper
-                                    sx={{
-                                        p: 2,
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                    }}>
-                                    {RenderComponent}
-                                </Paper>
-                            </Grid>
                         </Grid>
                         <Copyright sx={{ pt: 4 }} />
                     </Container>
@@ -342,4 +320,3 @@ export const Base = ({ children, dashboard = false, cars = false, reserve = fals
         </ThemeProvider>
     );
 }
-
