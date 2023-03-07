@@ -320,4 +320,3 @@ export const Base = ({ children, dashboard = false, cars = false, reserve = fals
         </ThemeProvider>
     );
 }
-

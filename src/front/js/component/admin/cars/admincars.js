@@ -9,15 +9,18 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { AdminCarList } from "./admincarlist";
 import { UsersCarList } from "../http/provider"
+import { UsersCarCategories } from "../http/provider";
 
 
 export const AdminCars = () => {
 
     const [carsList, setCarsList] = useState();
+    const [carCategories, setCarCategories] = useState();
 
 
     useEffect(() => {
-        UsersCarList(setCarsList)
+        UsersCarList(setCarsList);
+        UsersCarCategories(setCarCategories);
     }, [])
 
 
