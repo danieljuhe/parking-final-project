@@ -8,7 +8,6 @@ import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
-import { Base } from "../pages/base";
 
 
 const EditCar = () => {
@@ -75,99 +74,94 @@ const EditCar = () => {
   };
 
   return (
-    <Base EditCar={true}>{
-      listOfCars && listOfCars.id ? (
-        <Box
-          className="container mt-3"
-          component="form"
-          sx={{
-            width: 500,
-            maxWidth: '100%',
+    <Box
+      className="container mt-3"
+      component="form"
+      sx={{
+        width: 500,
+        maxWidth: '100%',
+      }}
+      noValidate
+      autoComplete="off"
+      type="form"
+      onSubmit={handleSubmit}
+    >
+      <div className="my-2">
+        <TextField
+          fullWidth label="Marca"
+          required
+          id="Brand"
+          defaultValue={listOfCars.brand}
+          onChange={(e) => {
+            setListOfCars({ ...listOfCars, brand: e.target.value });
           }}
-          noValidate
-          autoComplete="off"
-          type="form"
-          onSubmit={handleSubmit}
+        />
+      </div>
+      <div className="my-2">
+        <TextField
+          fullWidth label="Modelo"
+          required
+          id="Model"
+          defaultValue={listOfCars.model}
+          onChange={(e) => {
+            setListOfCars({ ...listOfCars, model: e.target.value });
+          }}
+        />
+      </div>
+      <div className="my-2">
+        <TextField
+          fullWidth label="Matricula"
+          required
+          id="Plate"
+          defaultValue={listOfCars.plate}
+          onChange={(e) => {
+            setListOfCars({ ...listOfCars, plate: e.target.value });
+          }}
+        />
+      </div>
+      <div className="my-2">
+        <TextField
+          id="category"
+          select
+          fullWidth label="Categoria"
+          defaultValue={listOfCars.category_id}
+          name="category_id"
+          onChange={(e) => {
+            setListOfCars({ ...listOfCars, category_id: e.target.value });
+          }}
         >
-          <div className="my-2">
-            <TextField
-              fullWidth label="Marca"
-              required
-              id="Brand"
-              defaultValue={listOfCars.brand}
-              onChange={(e) => {
-                setListOfCars({ ...listOfCars, brand: e.target.value });
-              }}
-            />
-          </div>
-          <div className="my-2">
-            <TextField
-              fullWidth label="Modelo"
-              required
-              id="Model"
-              defaultValue={listOfCars.model}
-              onChange={(e) => {
-                setListOfCars({ ...listOfCars, model: e.target.value });
-              }}
-            />
-          </div>
-          <div className="my-2">
-            <TextField
-              fullWidth label="Matricula"
-              required
-              id="Plate"
-              defaultValue={listOfCars.plate}
-              onChange={(e) => {
-                setListOfCars({ ...listOfCars, plate: e.target.value });
-              }}
-            />
-          </div>
-          <div className="my-2">
-            <TextField
-              id="category"
-              select
-              fullWidth label="Categoria"
-              defaultValue={listOfCars.category_id}
-              name="category_id"
-              onChange={(e) => {
-                setListOfCars({ ...listOfCars, category_id: e.target.value });
-              }}
-            >
-              {categories.map((value) => {
-                return (
-                  <MenuItem
-                    key={value.id}
-                    value={value.id}
-                  >
-                    {value.name}
-                  </MenuItem>
-                );
-              })}
-            </TextField>
-          </div>
-          <Stack spacing={2} direction="row" className="container my-2">
-            <Button
-              className="btn btn1"
-              size="small"
-              variant="contained"
-              type="submit"
-              onClick={() => {
-                handleSubmit()
-              }}
-            >Guardar
-            </Button>
-            <Button
-              className="btn btn1"
-              onClick={() => navigate("/cars")}
-              size="small"
-              variant="contained"
-            >Cancelar
-            </Button>
-          </Stack>
-        </Box>
-      ) : ""
-    }
-    </Base>
+          {categories.map((value) => {
+            return (
+              <MenuItem
+                key={value.id}
+                value={value.id}
+              >
+                {value.name}
+              </MenuItem>
+            );
+          })}
+        </TextField>
+      </div>
+      <Stack spacing={2} direction="row" className="container my-2">
+        <Button
+          className="btn btn1"
+          size="small"
+          variant="contained"
+          type="submit"
+          onClick={() => {
+            handleSubmit()
+          }}
+        >Guardar
+        </Button>
+        <Button
+          className="btn btn1"
+          onClick={() => navigate("/cars")}
+          size="small"
+          variant="contained"
+        >Cancelar
+        </Button>
+      </Stack>
+    </Box>
   )
 };
 

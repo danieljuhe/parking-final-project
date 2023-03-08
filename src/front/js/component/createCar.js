@@ -5,7 +5,6 @@ import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
-import { Base } from "../pages/base";
 
 const CreateCar = (props) => {
   const [formData, setFormData] = useState({});
@@ -146,6 +145,7 @@ const CreateCar = (props) => {
       </div>
       <Stack spacing={2} direction="row" className="container my-2">
         <Button
+          className="btn btn1"
           variant="contained"
           type="submit"
           onClick={() => {
@@ -155,6 +155,7 @@ const CreateCar = (props) => {
         >Guardar
         </Button>
         <Button
+          className="btn btn1"
           onClick={() => navigate("/cars")}
           variant="contained"
           data-bs-dismiss="modal"

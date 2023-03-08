@@ -10,9 +10,10 @@ import SpeedDial from '@mui/material/SpeedDial';
 import DirectionsCarOutlinedIcon from '@mui/icons-material/DirectionsCarOutlined';
 import CreateCar from "../component/createCar";
 import { Button } from "@mui/material";
-import ButtonGroup from '@mui/material/ButtonGroup';
-import Grid from "@mui/material/Grid";
 import ToysIcon from '@mui/icons-material/Toys';
+import EditCar from "./editCar";
+import EditModal from "../component/editModal";
+import DeleteModal from "../component/deleteModal";
 
 
 
@@ -83,64 +84,28 @@ const Cars = () => {
             {listOfCars && listOfCars.map((car, index) => {
               return (
                 <>
-                  <div className="col-8" key={index}>
+                  <div className="col-12 col-md-6" key={index}>
                     <Car
                       brand={car.car.brand}
                       plate={car.car.plate}
                       model={car.car.model}
                       category={car.car.category.name}
                     />
-                    <div className="container">
-                      <div className="mx-auto my-2 btn-group btn-group-sm" role="group" aria-label="Basic outlined example">
-                        <ButtonGroup variant="contained" aria-label="outlined primary button group">
-                          <Button
-                            className="btn btn1"
-                            size="small"
-                            variant="contained"
-                            onClick={() => handleEditClick(car.car.id)}
-                          >Editar
-                          </Button>
-                          <Button
-                            className="btn btn1"
-                            size="small"
-                            variant="contained"
-                            data-bs-target={`#exampleModal${car.car.id}`}
-                            data-bs-toggle="modal"
-                            type="button"
-                          >Eliminar
-                          </Button>
-                          <div className="modal fade " id={`exampleModal${car.car.id}`} aria-labelledby={`#exampleModalLabel${car.car.id}`} aria-hidden="true">
-                            <div className="modal-dialog modal-dialog-centered">
-                              <div className="modal-content">
-                                <div className="modal-header">
-                                  <h5 className="modal-title" id={`exampleModalLabel${car.car.id}`}>IMPORTANTE!</h5>
-                                  <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div className="modal-body">
-                                  Seguro que desea elimiar el {car.car.brand} {car.car.model}?
-                                </div>
-                                <div className="modal-footer">
-                                  <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                  {<button type="button" className="btn btn-primary" data-bs-dismiss="modal"
-                                    onClick={() => {
-                                      console.log("holaaaa")
-                                      handleDeleteClick(car.car.id);
-                                    }}>Eliminar</button>}
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <Button className="btn btn1"
-                            onClick={() => {
-                              actions.setDefaultCar(car.car.id)
-                              navigate("/parking")
-                            }}
-                            variant="contained"
-                            size="small"
-                          >Seleccionar
-                          </Button>
-                        </ButtonGroup>
-                      </div>
+                    <div className="container mt-2"
+                      direction="row"
+                      justifyContent="center"
+                      alignItems="center">
+                      <EditModal car={car} />
+                      <DeleteModal car={car} handleDeleteClick={handleDeleteClick} />
+                      <Button className="btn btn1 mx-1"
+                        onClick={() => {
+                          actions.setDefaultCar(car.car.id)
+                          navigate("/parking")
+                        }}
+                        variant="contained"
+                        size="small"
+                      >Seleccionar
+                      </Button>
                     </div>
                   </div>
                 </>
