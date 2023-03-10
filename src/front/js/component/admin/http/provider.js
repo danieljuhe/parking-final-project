@@ -34,7 +34,7 @@ export const UsersCarList = async (setCarsList) => {
 
 export const UsersCarCategories = async (setCarCategories) => {
     try {
-        const response = await fetch(process.env.BACKEND_URL + '/api/users_car_categories',
+        const response = await fetch(process.env.BACKEND_URL + '/api/users_cars_categories',
             {
                 method: "GET",
                 headers: {
@@ -123,3 +123,5 @@ export const UsersRoleList = async (setRoles) => {
     }
 
 }
+
+

@@ -10,6 +10,7 @@ export const AdminParkingModal = ({ parkingLot }) => {
 
     const handleChange = (event) => {
         setParkingData({ ...parkingData, [event.target.name]: event.target.value })
+        console.log(parkingData)
     }
 
     const senddata = async () => {
@@ -24,7 +25,6 @@ export const AdminParkingModal = ({ parkingLot }) => {
                     },
                     body: JSON.stringify(parkingData),
                 })
-
             const data = await call.json()
             console.log(data)
         }
@@ -62,6 +62,42 @@ export const AdminParkingModal = ({ parkingLot }) => {
                                 />
                             </Grid>
                         </Grid><br />
+
+                        <Typography component="h5">Plate</Typography><br />
+                        <TextField
+                            size="small"
+                            id="car_plate"
+                            fullWidth
+                            onChange={handleChange}
+                            label={parkingLot.car_plate}
+                            name="car_plate"
+                            autoComplete="car_plate"
+                            placeholder={parkingLot.car_plate}
+                        /><br /><br />
+
+                        <Typography component="h5">User ID</Typography><br />
+                        <TextField
+                            size="small"
+                            id="user_id"
+                            fullWidth
+                            onChange={handleChange}
+                            label={parkingLot.user_id}
+                            name="user_id"
+                            autoComplete="user_id"
+                            placeholder={parkingLot.user_id}
+                        /><br /><br />
+
+                        <Typography component="h5">Category ID</Typography><br />
+                        <TextField
+                            size="small"
+                            id="category_id"
+                            fullWidth
+                            onChange={handleChange}
+                            label={parkingLot.category_id}
+                            name="category_id"
+                            autoComplete="category_id"
+                            placeholder={parkingLot.category_id}
+                        /><br /><br />
 
                         <Typography component="h5">Occupied</Typography><br />
                         <TextField

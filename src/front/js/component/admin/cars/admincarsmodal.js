@@ -2,11 +2,14 @@ import React, { useState, useEffect } from "react";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
+import MenuItem from '@mui/material/MenuItem';
+import { UsersCarCategories } from "../http/provider";
 
 
 export const AdminCarsModal = ({ car }) => {
 
     const [carsData, setCarsData] = useState({})
+    const [carCategories, setCarCategories] = useState()
 
     const handleChange = (event) => {
         setCarsData({ ...carsData, [event.target.name]: event.target.value })
@@ -35,6 +38,7 @@ export const AdminCarsModal = ({ car }) => {
 
     useEffect(() => {
         setCarsData(car)
+        UsersCarCategories(setCarCategories)
     }, [])
 
     return (
@@ -85,6 +89,23 @@ export const AdminCarsModal = ({ car }) => {
                             name="model"
                             placeholder={car.model}
                         /><br /><br />
+
+                        <Typography component="h5">Category</Typography><br />
+                        <TextField
+                            id="outlined-select-currency"
+                            size="small"
+                            onChange={handleChange}
+                            name="category_id"
+                            defaultValue="None"
+                            select
+                            fullWidth
+                        >
+                            {carCategories?.map((category) => (
+                                <MenuItem key={category.id} value={category.id}>
+                                    {category.id}-{category.name}
+                                </MenuItem>
+                            ))}
+                        </TextField><br /><br />
 
                     </div>
                     <div class="modal-footer">
