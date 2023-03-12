@@ -464,3 +464,15 @@ def get_users_bills():
     except Exception as e:
         return jsonify ({"Message": str(e)}), 500
     return jsonify(data)
+
+    # GET USER MESSAGES
+
+@api.route('/users_messages', methods=["GET"])
+@jwt_required()
+def get_users_messages():
+    try:
+        contacts = Contact.query.all()
+        data = [contact.serialize() for contac in contacts]
+    except Exception as e:
+        return jsonify ({"Message": str(e)}), 500
+    return jsonify(data)
