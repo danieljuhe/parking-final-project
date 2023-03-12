@@ -6,7 +6,7 @@ import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
 import { AdminParkingModal } from "./adminparkingmodal";
 
-export const AdminParkingList = ({ parkingLot, value }) => {
+export const AdminParkingList = ({ parkingLot, value, setUsersParkingLot }) => {
     return (
         <TableRow
             key={value}

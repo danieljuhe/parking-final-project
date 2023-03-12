@@ -6,7 +6,7 @@ import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
 import { AdminUserModal } from "./adminusermodal";
 
-export const AdminUserList = ({ user, roles, index }) => {
+export const AdminUserList = ({ user, roles, index, setUsers, setRoles }) => {
     return (
         <TableRow
             key={index}
@@ -33,7 +33,7 @@ export const AdminUserList = ({ user, roles, index }) => {
                     <DeleteForeverOutlinedIcon />
                 </Button>
             </TableCell>
-            <AdminUserModal user={user} roles={roles} />
+            <AdminUserModal user={user} roles={roles} setUsers={setUsers} />
         </TableRow>
     )
 }

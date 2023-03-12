@@ -363,17 +363,18 @@ def get_cars_list():
     return jsonify(data)
 
 
-    # USERS CAR REFERENCE (MY_CARS)
+    # USERS CAR CATEGORIES
     
-@api.route('/users_mycars', methods=['GET'])
+@api.route('/users_cars_categories', methods=['GET'])
 @jwt_required()
 def get_my_cars_list():
     try:
-        my_cars = My_cars.query.all()
-        data = [my_cars.serialize() for my_car in my_cars]
-        return jsonify(data), 200
+        categories = Category.query.all()
+        data = [category.serialize() for category in categories]
     except Exception as e:
         return jsonify({"message": str(e)}), 400
+    return jsonify(data)
+
 
     # MODIFY USERS CAR 
 
@@ -391,10 +392,12 @@ def modify_users_car(id):
         new_plate = request.json.get("plate", car.plate)
         new_brand = request.json.get("brand", car.brand)
         new_model = request.json.get("model", car.model)
+        new_category_id = request.json.get("category_id", car.category_id)
 
         setattr(car, "plate", new_plate)
         setattr(car, "brand", new_brand)
         setattr(car, "model", new_model)
+        setattr(car, "category_id", new_category_id)
 
         db.session.commit()
         return jsonify (car.serialize()), 200
@@ -421,7 +424,7 @@ def get_all_users_parkinglot():
 
 @api.route('/modify_parking_info/<int:id>', methods=["PUT"])
 @jwt_required()
-def modify_parking_info():
+def modify_parking_info(id):
     try:
         parking = Parking.query.get(id)
         print(parking)
@@ -431,9 +434,15 @@ def modify_parking_info():
     print(data)
     try:
         new_site = request.json.get("site", parking.site)
+        new_car_plate = request.json.get("car_plate", parking.car_plate)
+        new_user_id = request.json.get("user_id", parking.user_id)
+        new_category_id = request.json.get("category_id", parking.category_id)
         new_occupied = request.json.get("occupied", parking.occupied)
 
         setattr(parking, "site", new_site)
+        setattr(parking, "car_plate", new_car_plate)
+        setattr(parking, "user_id", new_user_id)
+        setattr(parking, "category_id", new_category_id)
         setattr(parking, "occupied", new_occupied)
 
         db.session.commit()
@@ -442,3 +451,28 @@ def modify_parking_info():
         return jsonify({"message": str(e)}), 500
 
 
+    # USERS BILLS
+
+    # GET USERS BILLS
+
+@api.route('/users_bills', methods=["GET"])
+@jwt_required()
+def get_users_bills():
+    try:
+        factura = Bills.query.all()
+        data = [bills.serialize() for bills in factura]
+    except Exception as e:
+        return jsonify ({"Message": str(e)}), 500
+    return jsonify(data)
+
+    # GET USER MESSAGES
+
+@api.route('/users_messages', methods=["GET"])
+@jwt_required()
+def get_users_messages():
+    try:
+        contacts = Contact.query.all()
+        data = [contact.serialize() for contac in contacts]
+    except Exception as e:
+        return jsonify ({"Message": str(e)}), 500
+    return jsonify(data)

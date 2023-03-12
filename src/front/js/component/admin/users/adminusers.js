@@ -45,7 +45,7 @@ export const AdminUsers = () => {
                     <TableBody>
 
                         {users?.map((user, index) => (
-                            <AdminUserList user={user} roles={roles} key={index} />
+                            <AdminUserList user={user} roles={roles} key={index} setUsers={setUsers} setRoles={setRoles} />
                         ))}
 
                     </TableBody>
