@@ -8,45 +8,15 @@ import Table from "@mui/material/Table";
 import TableHead from "@mui/material/TableHead";
 import TableBody from "@mui/material/TableBody";
 import { AdminParkingList } from "./adminparkinglist";
+import { getUsersParkinglot } from "../http/provider";
 
 
 export const AdminParking = () => {
 
     const [usersParkingLot, setUsersParkingLot] = useState();
-    console.log(usersParkingLot)
-    const getUsersParkinglot = async () => {
-
-        try {
-            const response = await fetch(process.env.BACKEND_URL + '/api/users_parking_lot',
-                {
-                    headers: {
-                        "Content-type": "application/json",
-                        Authorization: "Bearer " + localStorage.getItem("token")
-                    }
-                })
-            console.log(response)
-
-            if (response.ok) {
-                const parkingList = await response.json();
-                setUsersParkingLot(parkingList);
-            } else if (response.status === 400) {
-                throw new Error("Bad request. Client Error")
-            } else if (response.status === 500) {
-                throw new Error("Internal server Error")
-            } else if (response.status === 404) {
-                throw new Error("Not found")
-            } else if (response.status === 403) {
-                throw new Error("Unauthorized request")
-            } else {
-                throw new Error("Unknown error, please review the terminal")
-            }
-        } catch (error) {
-            console.log(error)
-        }
-    }
 
     useEffect(() => {
-        getUsersParkinglot();
+        getUsersParkinglot(setUsersParkingLot);
     }, [])
 
     return (
@@ -71,7 +41,7 @@ export const AdminParking = () => {
 
                     <TableBody>
                         {usersParkingLot?.map((parkingLot, value) => (
-                            <AdminParkingList parkingLot={parkingLot} key={value} />
+                            <AdminParkingList parkingLot={parkingLot} key={value} setUsersParkingLot={setUsersParkingLot} />
                         ))}
                     </TableBody>
                 </Table>

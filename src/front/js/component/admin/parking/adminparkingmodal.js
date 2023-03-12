@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
+import { getUsersParkinglot } from "../http/provider"
 
 
-export const AdminParkingModal = ({ parkingLot }) => {
+export const AdminParkingModal = ({ parkingLot, setUsersParkingLot }) => {
 
     const [parkingData, setParkingData] = useState({})
+    const navigate = useNavigate();
 
     const handleChange = (event) => {
         setParkingData({ ...parkingData, [event.target.name]: event.target.value })
@@ -16,7 +19,7 @@ export const AdminParkingModal = ({ parkingLot }) => {
     const senddata = async () => {
 
         try {
-            const call = await fetch(process.env.BACKEND_URL + "/api/modify_parking_info/" + parking.id,
+            const call = await fetch(process.env.BACKEND_URL + "/api/modify_parking_info/" + parkingLot.id,
                 {
                     method: "PUT",
                     headers: {
@@ -35,6 +38,7 @@ export const AdminParkingModal = ({ parkingLot }) => {
 
     useEffect(() => {
         setParkingData(parkingLot)
+        getUsersParkinglot(setUsersParkingLot)
     }, [])
 
     return (
@@ -113,7 +117,10 @@ export const AdminParkingModal = ({ parkingLot }) => {
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" onClick={senddata}>Guardar cambios</button>
+                        <button type="button" class="btn btn-primary" onClick={() => {
+                            senddata();
+                            navigate("/role/admin/adminparking");
+                        }}>Guardar cambios</button>
                     </div>
                 </div>
             </div>

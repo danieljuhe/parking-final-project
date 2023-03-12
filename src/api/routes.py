@@ -424,7 +424,7 @@ def get_all_users_parkinglot():
 
 @api.route('/modify_parking_info/<int:id>', methods=["PUT"])
 @jwt_required()
-def modify_parking_info():
+def modify_parking_info(id):
     try:
         parking = Parking.query.get(id)
         print(parking)
@@ -451,3 +451,16 @@ def modify_parking_info():
         return jsonify({"message": str(e)}), 500
 
 
+    # USERS BILLS
+
+    # GET USERS BILLS
+
+@api.route('/users_bills', methods=["GET"])
+@jwt_required()
+def get_users_bills():
+    try:
+        factura = Bills.query.all()
+        data = [bills.serialize() for bills in factura]
+    except Exception as e:
+        return jsonify ({"Message": str(e)}), 500
+    return jsonify(data)
