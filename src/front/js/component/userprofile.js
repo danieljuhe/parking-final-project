@@ -13,6 +13,18 @@ export const UserProfile = () => {
   const [user, setUser] = useState();
   const [listOfCars, setListOfCars] = useState([]);
 
+  const mostrarAlerta = () => {
+    swal({
+      title: "App Parking",
+      text: "Datos Actualizados",
+      icon: "success",
+      button: "Aceptar",
+      timer: "9000"
+
+    })
+    navigate("/privateuser");
+  }
+
   const handleChange = (event) => {
     setUser({ ...user, [event.target.name]: event.target.value })
   }
@@ -168,7 +180,7 @@ export const UserProfile = () => {
             <div className="row">
               <div className="col-sm-12">
                 <Button className="btn btn1"
-                  onClick={() => { senddata() }}
+                  onClick={() => { senddata(), mostrarAlerta() }}
                   fullWidth
                   variant="contained"
                   sx={{ mt: 3, mb: 2 }}>

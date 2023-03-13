@@ -20,7 +20,7 @@ const Bills = () => {
             });
     }, []);
 
-    return <Base bill={true} className="table-responsive main">
+    return <Base bill={true} className="container p-4">
         <div className="container bill">
             <div className="row text-center">
                 {
@@ -35,7 +35,6 @@ const Bills = () => {
                                     <th scope="col">Email</th>
                                     <th scope="col">Fecha</th>
                                     <th scope="col">Monto</th>
-                                    <th scope="col">Concepto</th>
                                     <th scope="col">Matrìcula</th>
                                 </tr>
                             </thead>
@@ -45,8 +44,7 @@ const Bills = () => {
                                         <th scope="row">{bill.user.name}</th>
                                         <th scope="row">{bill.user.email}</th>
                                         <th scope="row">{bill.date}</th>
-                                        <th scope="row">{bill.amount}</th>
-                                        <th scope="row">{bill.stripe_id}</th>
+                                        <th scope="row">{bill.amount}€</th>
                                         <th scope="row">{bill.parking_id.car_plate}</th>
                                     </tr>
                                     )
