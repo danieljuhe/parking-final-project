@@ -481,7 +481,7 @@ def get_users_bills():
 def get_users_messages():
     try:
         contacts = Contact.query.all()
-        data = [contact.serialize() for contac in contacts]
+        data = [contact.serialize() for contact in contacts]
     except Exception as e:
         return jsonify ({"Message": str(e)}), 500
     return jsonify(data)

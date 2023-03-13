@@ -11,6 +11,7 @@ import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
+import ChatIcon from '@mui/icons-material/Chat';
 import Badge from '@mui/material/Badge';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
@@ -123,7 +124,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 const mdTheme = createTheme();
 
 
-export const AdminBase = ({ children, adminusers = false, admincars = false, adminparking = false, adminbills = false }) => {
+export const AdminBase = ({ children, adminusers = false, admincars = false, adminparking = false, adminbills = false, admincontact = false }) => {
 
     const [open, setOpen] = React.useState(true);
     const toggleDrawer = () => { setOpen(!open); };
@@ -260,6 +261,17 @@ export const AdminBase = ({ children, adminusers = false, admincars = false, adm
                                 </ListItemIcon>
                                 <ListItemText primary="Facturacion" onClick={() => {
                                     navigate("/role/admin/adminbills")
+                                }} />
+                            </ListItemButton>
+
+                            <ListItemButton selected={admincontact} onClick={() => {
+                                navigate("/role/admin/admincontact")
+                            }}>
+                                <ListItemIcon>
+                                    <ChatIcon />
+                                </ListItemIcon>
+                                <ListItemText primary="Contacto" onClick={() => {
+                                    navigate("/role/admin/admincontact")
                                 }} />
                             </ListItemButton>
 

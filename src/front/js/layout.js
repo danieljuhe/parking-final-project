@@ -23,6 +23,7 @@ import { AdminCars } from "./component/admin/cars/admincars";
 import { AdminParking } from "./component/admin/parking/adminparking";
 import { AdminBills } from "./component/admin/bills/adminbills";
 import { Contacto } from "./component/contacto";
+import { AdminContact } from "./component/admin/contact/admincontact";
 
 const Layout = () => {
   const basename = process.env.BASENAME || "";
@@ -50,6 +51,7 @@ const Layout = () => {
             <Route element={<AdminCars />} path="/role/admin/admincars" />
             <Route element={<AdminParking />} path="/role/admin/adminparking" />
             <Route element={<AdminBills />} path="/role/admin/adminbills" />
+            <Route element={<AdminContact />} path="/role/admin/admincontact" />
             <Route element={<Map />} path="/map" />
             <Route element={<Contacto />} path="/contact" />
             <Route element={<PriceGen />} path="/date/:parking_id" />
