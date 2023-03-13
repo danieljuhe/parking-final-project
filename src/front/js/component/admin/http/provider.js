@@ -190,7 +190,7 @@ export const getUsersParkinglot = async (setUsersParkingLot) => {
 export const AdminMessages = async (setContact) => {
 
     try {
-        const call = await fetch(process.env.BACKEND_URL + "/api/users_messages",
+        const response = await fetch(process.env.BACKEND_URL + "/api/users_messages",
             {
                 method: "GET",
                 headers: {
@@ -198,9 +198,9 @@ export const AdminMessages = async (setContact) => {
                     Authorization: "Bearer " + localStorage.getItem("token")
                 }
             })
-        if (call.ok) {
-            const response = await call.json()
-            setContact(response)
+        if (response.ok) {
+            const call = await response.json()
+            setContact(call)
         } else if (call.status === 400) {
             throw new Error("Bad request, client error. Please review the backend")
         } else if (response.status === 500) {
@@ -214,6 +214,6 @@ export const AdminMessages = async (setContact) => {
         }
     }
     catch (e) {
-        cnsole.log(e)
+        console.log(e)
     }
 }
