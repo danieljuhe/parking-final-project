@@ -59,7 +59,10 @@ export const Contacto = () => {
         <Base contacto={true}>
             <div className="row input-container">
                 <div className="col-xs-12">
+                    <h3 className="htitle">Déjanos tu Mensaje</h3>
+                    <br />
                     <div className="styled-input wide">
+                        <h4 >Nombre y Apellido</h4>
                         <TextField
                             margin="normal"
                             required
@@ -70,10 +73,12 @@ export const Contacto = () => {
                             autoComplete="email"
                             autoFocus
                         />
+
                     </div>
                 </div>
                 <div className="col-md-6 col-sm-12">
                     <div className="styled-input">
+                        <h4>Correo Electrónico</h4>
                         <TextField
                             margin="normal"
                             required
@@ -88,6 +93,7 @@ export const Contacto = () => {
                 </div>
                 <div className="col-md-6 col-sm-12">
                     <div className="styled-input" >
+                        <h4>Número Telefónico</h4>
                         <TextField
                             margin="normal"
                             fullWidth
