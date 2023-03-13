@@ -231,18 +231,27 @@ def show_bill():
     data = [bill.serialize() for bill in bills]   
     return jsonify(data), 200
 
+
 @api.route ('/contact', methods=['POST'])
 def message():
     data = request.json
-    print(data)
+    contact = Contact(
+        name=data["name"], 
+        message=data["message"], 
+        email=data["email"], 
+        telephone=data["telephone"], 
+        user_id=data["user_id"]
+    )
+    print(contact)
     try:
-        contact = Contact(name=data["name"], message=data["message"], email=data["email"], telephone=data["telephone"], user_id=data["user_id"])
+
         db.session.add(contact)
         db.session.commit()
     except Exception as e:
         print(e)
         return jsonify({"MESSAGE":"Error al mandar el mensaje"}), 400
     return jsonify({"MESSAGE" : "okk"}), 200
+
 
 @api.route ('/edit_user/<int:id>', methods= ['PUT'])
 def edit_user(id):
@@ -337,6 +346,19 @@ def modify_users_info(id):
     except Exception as e:
         return jsonify({"message": str(e)}), 666
 
+    # DELETE USER
+
+@api.route ('/delete_users/<int:id>', methods=['DELETE'])
+def delete_user(id):
+    try:
+        user = User.query.filter_by(id=id).first()
+        db.session.delete(user)
+        db.session.commit()
+    except:
+        return jsonify({"message": "User cant be deleted"}), 400
+    return jsonify ({"message": "User deleted successfully"}), 200
+
+
 
     # USERS CARS
 
@@ -350,17 +372,46 @@ def get_cars_list():
     return jsonify(data)
 
 
-    # USERS CAR REFERENCE (MY_CARS)
+    # USERS CAR CATEGORIES
     
-@api.route('/users_mycars', methods=['GET'])
+@api.route('/users_cars_categories', methods=['GET'])
 @jwt_required()
 def get_my_cars_list():
     try:
-        my_cars = My_cars.query.all()
-        data = [my_cars.serialize() for my_car in my_cars]
-        return jsonify(data), 200
+        categories = Category.query.all()
+        data = [category.serialize() for category in categories]
     except Exception as e:
         return jsonify({"message": str(e)}), 400
+    return jsonify(data)
+
+
+    # MODIFY USERS CAR 
+
+@api.route ('/modify_users_cars/<int:id>', methods=['PUT'])
+@jwt_required()
+def modify_users_car(id):
+    try:
+        car = Car.query.get(id)
+        print(car)
+    except:
+        return jsonify({"message": "Cant be modify the car info"}), 400
+    data = request.json
+    print(data)
+    try:
+        new_plate = request.json.get("plate", car.plate)
+        new_brand = request.json.get("brand", car.brand)
+        new_model = request.json.get("model", car.model)
+        new_category_id = request.json.get("category_id", car.category_id)
+
+        setattr(car, "plate", new_plate)
+        setattr(car, "brand", new_brand)
+        setattr(car, "model", new_model)
+        setattr(car, "category_id", new_category_id)
+
+        db.session.commit()
+        return jsonify (car.serialize()), 200
+    except Exception as e:
+        return jsonify({"message": str(e)}), 500
 
 
     # PARKING
@@ -378,3 +429,59 @@ def get_all_users_parkinglot():
     return jsonify(data)
 
 
+    # MODIFY PARKING INFO
+
+@api.route('/modify_parking_info/<int:id>', methods=["PUT"])
+@jwt_required()
+def modify_parking_info(id):
+    try:
+        parking = Parking.query.get(id)
+        print(parking)
+    except:
+        return jsonify({"Message":"Info cant be modified"}), 400
+    data = request.json
+    print(data)
+    try:
+        new_site = request.json.get("site", parking.site)
+        new_car_plate = request.json.get("car_plate", parking.car_plate)
+        new_user_id = request.json.get("user_id", parking.user_id)
+        new_category_id = request.json.get("category_id", parking.category_id)
+        new_occupied = request.json.get("occupied", parking.occupied)
+
+        setattr(parking, "site", new_site)
+        setattr(parking, "car_plate", new_car_plate)
+        setattr(parking, "user_id", new_user_id)
+        setattr(parking, "category_id", new_category_id)
+        setattr(parking, "occupied", new_occupied)
+
+        db.session.commit()
+        return jsonify (parking.serialize()), 200
+    except Exception as e:
+        return jsonify({"message": str(e)}), 500
+
+
+    # USERS BILLS
+
+    # GET USERS BILLS
+
+@api.route('/users_bills', methods=["GET"])
+@jwt_required()
+def get_users_bills():
+    try:
+        factura = Bills.query.all()
+        data = [bills.serialize() for bills in factura]
+    except Exception as e:
+        return jsonify ({"Message": str(e)}), 500
+    return jsonify(data)
+
+    # GET USER MESSAGES
+
+@api.route('/users_messages', methods=["GET"])
+@jwt_required()
+def get_users_messages():
+    try:
+        contacts = Contact.query.all()
+        data = [contact.serialize() for contac in contacts]
+    except Exception as e:
+        return jsonify ({"Message": str(e)}), 500
+    return jsonify(data)

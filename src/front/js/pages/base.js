@@ -19,6 +19,7 @@ import Paper from '@mui/material/Paper';
 import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChatIcon from '@mui/icons-material/Chat';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -124,7 +125,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 const mdTheme = createTheme();
 
 
-export const Base = ({ children, dashboard = false, cars = false, reserve = false, location = false, bill = false, listCars = false }) => {
+export const Base = ({ children, dashboard = false, cars = false, reserve = false, location = false, bill = false, listCars = false, contacto = false }) => {
 
     const [open, setOpen] = React.useState(true);
     const toggleDrawer = () => { setOpen(!open); };
@@ -266,14 +267,28 @@ export const Base = ({ children, dashboard = false, cars = false, reserve = fals
                                 <ListItemText primary="Ubicacion" />
                             </ListItemButton>
 
+                            <ListItemButton selected={contacto} onClick={() => {
+                                navigate("/contact")
+                            }}>
+                                <ListItemIcon>
+                                    <ChatIcon />
+                                </ListItemIcon>
+                                <ListItemText primary="Contacto" onClick={() => {
+                                    navigate("/contact")
+                                }} />
+                            </ListItemButton>
+
                             <ListItemButton selected={bill} onClick={() => {
                                 navigate("/bill")
                             }}>
                                 <ListItemIcon>
                                     <CreditScoreOutlinedIcon />
                                 </ListItemIcon>
-                                <ListItemText primary="Facturacion" />
+                                <ListItemText primary="Facturacion" onClick={() => {
+                                    navigate("/bill")
+                                }} />
                             </ListItemButton>
+
 
                             <ListItemButton>
                                 <ListItemIcon>
@@ -323,4 +338,3 @@ export const Base = ({ children, dashboard = false, cars = false, reserve = fals
         </ThemeProvider>
     );
 }
-

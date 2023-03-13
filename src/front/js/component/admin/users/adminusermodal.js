@@ -3,9 +3,10 @@ import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import MenuItem from '@mui/material/MenuItem';
+import { UsersList } from "../http/provider";
 
 
-export const AdminUserModal = ({ user, roles }) => {
+export const AdminUserModal = ({ user, roles, setUsers }) => {
 
     const [userData, setUserData] = useState({})
     const handleChange = (event) => {
@@ -25,6 +26,7 @@ export const AdminUserModal = ({ user, roles }) => {
             });
             const data = await response.json();
             console.log(data);
+            UsersList(setUsers)
         }
         catch (error) { console.error("Error:", error); }
 
@@ -55,7 +57,7 @@ export const AdminUserModal = ({ user, roles }) => {
                         >
                             {roles?.map((role) => (
                                 <MenuItem key={role.id} value={role.id}>
-                                    {role.name}
+                                    {role.id}-{role.name}
                                 </MenuItem>
                             ))}
                         </TextField><br /><br />

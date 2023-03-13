@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { AdminBase } from "../../../pages/adminbase";
+import { UsersBills } from "../http/provider";
+import { AdminBillsList } from "./adminbillslist"
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -7,22 +9,14 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { AdminCarList } from "./admincarlist";
-import { UsersCarList } from "../http/provider"
-import { UsersCarCategories } from "../http/provider";
 
+export const AdminBills = () => {
 
-export const AdminCars = () => {
-
-    const [carsList, setCarsList] = useState();
-    const [carCategories, setCarCategories] = useState();
-
+    const [bills, setBills] = useState()
 
     useEffect(() => {
-        UsersCarList(setCarsList);
-        UsersCarCategories(setCarCategories);
+        UsersBills(setBills)
     }, [])
-
 
     return (
         <AdminBase dashboard={true}>
@@ -33,20 +27,18 @@ export const AdminCars = () => {
 
                         <TableRow>
                             <TableCell>ID</TableCell>
-                            <TableCell align="right">Plate</TableCell>
-                            <TableCell align="right">Brand</TableCell>
-                            <TableCell align="right">Model</TableCell>
-                            <TableCell align="right">Category</TableCell>
-                            <TableCell align="right">Edit</TableCell>
-                            <TableCell align="right">Delete</TableCell>
+                            <TableCell align="right">Stripe ID</TableCell>
+                            <TableCell align="right">User Name</TableCell>
+                            <TableCell align="right">Date</TableCell>
+                            <TableCell align="right">Amount</TableCell>
                         </TableRow>
 
                     </TableHead>
 
                     <TableBody>
 
-                        {carsList?.map((car, index) => (
-                            <AdminCarList car={car} key={index} />
+                        {bills?.map((bill, index) => (
+                            <AdminBillsList bill={bill} key={index} />
                         ))}
 
                     </TableBody>

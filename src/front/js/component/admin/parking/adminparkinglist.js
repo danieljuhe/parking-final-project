@@ -4,8 +4,9 @@ import TableRow from '@mui/material/TableRow';
 import { Button } from "@mui/material";
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
+import { AdminParkingModal } from "./adminparkingmodal";
 
-export const AdminParkingList = ({ parkingLot, value }) => {
+export const AdminParkingList = ({ parkingLot, value, setUsersParkingLot }) => {
     return (
         <TableRow
             key={value}
@@ -32,6 +33,7 @@ export const AdminParkingList = ({ parkingLot, value }) => {
                     <DeleteForeverOutlinedIcon />
                 </Button>
             </TableCell>
+            <AdminParkingModal parkingLot={parkingLot} />
         </TableRow>
     )
 }
