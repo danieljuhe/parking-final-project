@@ -12,10 +12,10 @@ export const Contacto = () => {
 
     const senddata = async () => {
         const message = {
-            user_id: user && user.id,
-            name: user && user.name,
-            email: user && user.email,
-            telephone: user && user.telephone,
+            user_id: user.id,
+            name: user.name,
+            email: user.email,
+            telephone: user.telephone,
             message: mensaje,
         };
         try {
@@ -27,7 +27,7 @@ export const Contacto = () => {
             const data = await response.json();
             console.log(data);
         }
-        catch (error) { console.error("Error:", error); }
+        catch (error) { console.error("Error:", error) }
     };
 
     const GetUser = async () => {

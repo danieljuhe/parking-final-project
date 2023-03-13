@@ -231,18 +231,27 @@ def show_bill():
     data = [bill.serialize() for bill in bills]   
     return jsonify(data), 200
 
+
 @api.route ('/contact', methods=['POST'])
 def message():
     data = request.json
-    print(data)
+    contact = Contact(
+        name=data["name"], 
+        message=data["message"], 
+        email=data["email"], 
+        telephone=data["telephone"], 
+        user_id=data["user_id"]
+    )
+    print(contact)
     try:
-        contact = Contact(name=data["name"], message=data["message"], email=data["email"], telephone=data["telephone"], user_id=data["user_id"])
+
         db.session.add(contact)
         db.session.commit()
     except Exception as e:
         print(e)
         return jsonify({"MESSAGE":"Error al mandar el mensaje"}), 400
     return jsonify({"MESSAGE" : "okk"}), 200
+
 
 @api.route ('/edit_user/<int:id>', methods= ['PUT'])
 def edit_user(id):
