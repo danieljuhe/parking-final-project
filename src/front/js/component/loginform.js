@@ -41,9 +41,7 @@ const mostrarAlerta = () => {
     icon: "success",
     button: "Aceptar",
     timer: "9000"
-
   })
-  navigate("/Privateuser");
 }
 
 const theme = createTheme();
@@ -75,6 +73,7 @@ export const LoginForm = () => {
         if (data.token) {
           localStorage.setItem("token", data.token);
           actions.setToken(data.token);
+          mostrarAlerta();
           navigate("/privateuser");
         }
       })

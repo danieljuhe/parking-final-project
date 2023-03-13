@@ -1,22 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Base } from "../pages/base";
-import "../../styles/mainDashboard.css"
+import "../../styles/userprofile.css"
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Container from '@mui/material/Container';
-import Card from '@mui/material/Card';
-import CardMedia from '@mui/material/CardMedia';
-import { CardActionArea } from '@mui/material';
 
 
 export const UserProfile = () => {
   const theme = createTheme();
-  const [user, setUser] = useState()
+  const [user, setUser] = useState();
+  const [listOfCars, setListOfCars] = useState([]);
 
   const handleChange = (event) => {
     setUser({ ...user, [event.target.name]: event.target.value })
@@ -50,11 +45,148 @@ export const UserProfile = () => {
       .catch((error) => {
         console.error("Error:", error);
       });
+
+    fetch(process.env.BACKEND_URL + "/api/list_car", {
+      method: "GET",
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token"),
+        "Content-Type": "application/json",
+      },
+    }).then((response) => response.json())
+      .then((response) => setListOfCars(response));
   }, [])
 
   return (
-    <Base dashboard={true}>
-      <ThemeProvider theme={theme}>
+    <Base reserve={true}>
+      <div className="profilecontainer">
+        <div className="profilemain">
+          <div className="cardavatar">
+            <div className="card-body">
+              <div className="d-flex flex-column align-items-center text-center">
+                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" className="rounded-circle" width="150" />
+                <div className="mt-3">
+                  <Typography component="h1" variant="h5">
+                    {user && user.name}, {user && user.surname}
+                  </Typography>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="profileedit">
+
+          <div className="card-body">
+            <div className="row">
+              <h4>Editar mis datos</h4>
+              <br />
+              <div className="col-sm-9">
+                <Typography component="h5">Nombre completo</Typography>
+              </div><br /><br />
+              <div className="col-sm-9 text-secondary">
+                <Grid container spacing={2}>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      size="small"
+                      autoComplete="given-name"
+                      name="name"
+                      onChange={handleChange}
+                      required
+                      id="firstName"
+                      label={user && user.name}
+                      autoFocus
+                      placeholder={user && user.name}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      size="small"
+                      onChange={handleChange}
+                      required
+                      id="lastName"
+                      label={user && user.surname}
+                      name="surname"
+                      autoComplete="family-name"
+                      placeholder={user && user.surname}
+                    />
+                  </Grid>
+                </Grid>
+              </div>
+            </div>
+            <hr />
+            <div className="row">
+              <div className="col-sm-3">
+                <Typography component="h5">Email</Typography>
+              </div><br />
+              <div className="col-sm-9 text-secondary">
+                <TextField
+                  size="small"
+                  required
+                  onChange={handleChange}
+                  id="email"
+                  label={user && user.email}
+                  name="email"
+                  autoComplete="email"
+                  placeholder={user && user.email}
+                />
+              </div>
+            </div>
+            <hr />
+            <div className="row">
+              <div className="col-sm-3">
+                <Typography component="h5">Movil</Typography>
+              </div><br />
+              <div className="col-sm-9 text-secondary">
+                <TextField
+                  size="small"
+                  required
+                  onChange={handleChange}
+                  id="movil"
+                  label={user && user.telephone}
+                  name="telephone"
+                  placeholder={user && user.telephone}
+                />
+              </div>
+            </div>
+            <hr />
+            <div className="row">
+              <div className="col-sm-3">
+                <Typography component="h5">Password</Typography>
+              </div><br />
+              <div className="col-sm-9 text-secondary">
+                <TextField
+                  size="small"
+                  required
+                  onChange={handleChange}
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  autoComplete="new-password"
+                />
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-sm-12">
+                <Button
+                  onClick={() => { senddata() }}
+                  fullWidth
+                  variant="contained"
+                  sx={{ mt: 3, mb: 2 }}>
+                  Cambiar
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="row gutters-sm">
+          <div className="col-sm-6 mb-3">
+          </div>
+          <div className="col-sm-6 mb-3">
+          </div>
+        </div>
+      </div>
+
+      {/* <ThemeProvider theme={theme}>
         <Container component="main" maxWidth="xs">
           <CssBaseline />
           <Box
@@ -76,84 +208,27 @@ export const UserProfile = () => {
               </CardActionArea>
             </Card><br />
             <br />
-            <Typography component="h1" variant="h5">
-              {user && user.name}, {user && user.surname}
-            </Typography><br /><br />
+            <br /><br />
             <Box component="form" noValidate sx={{ mt: 3 }}>
               <Grid container spacing={2}>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    autoComplete="given-name"
-                    name="name"
-                    onChange={handleChange}
-                    required
-                    fullWidth
-                    id="firstName"
-                    label={user && user.name}
-                    autoFocus
-                    placeholder={user && user.name}
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    onChange={handleChange}
-                    required
-                    fullWidth
-                    id="lastName"
-                    label={user && user.surname}
-                    name="surname"
-                    autoComplete="family-name"
-                    placeholder={user && user.surname}
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    required
-                    fullWidth
-                    onChange={handleChange}
-                    id="movil"
-                    label={user && user.telephone}
-                    name="telephone"
-                    placeholder={user && user.telephone}
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    required
-                    fullWidth
-                    onChange={handleChange}
-                    id="email"
-                    label={user && user.email}
-                    name="email"
-                    autoComplete="email"
-                    placeholder={user && user.email}
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    required
-                    fullWidth
-                    onChange={handleChange}
-                    name="password"
-                    label="Password"
-                    type="password"
-                    id="password"
-                    autoComplete="new-password"
-                  />
-                </Grid>
+
               </Grid>
-              <Button
-                onClick={() => { senddata() }}
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}>
-                Cambiar
-              </Button>
+              <Grid item xs={12}>
+
+              </Grid>
+              <Grid item xs={12}>
+
+              </Grid>
+              <Grid item xs={12}>
+
+              </Grid>
+
+
             </Box>
           </Box>
         </Container>
-      </ThemeProvider>
+      </ThemeProvider> */}
     </Base>
-  );
+  )
 }
 

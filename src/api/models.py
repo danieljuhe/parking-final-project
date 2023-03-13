@@ -116,15 +116,14 @@ class Bills(db.Model):
             "amount": self.amount,
             "date": self.date,
             "user": self.user.serialize(),
-            "parking_id": self.parking.serialize()
+            "parking_id": self.parking_id
         }
-        # revisar
 
 class Contact(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(20), unique=False, nullable=True)
-    email = db.Column(db.String(120), unique=True, nullable=True)
-    telephone = db.Column(db.Integer, unique=True, nullable=True)
+    email = db.Column(db.String(120), unique=False, nullable=True)
+    telephone = db.Column(db.Integer, unique=False, nullable=True)
     message = db.Column(db.String(1000), nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     user = db.relationship('User', backref='contact', lazy=True)
