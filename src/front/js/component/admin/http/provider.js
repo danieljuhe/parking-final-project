@@ -1,3 +1,4 @@
+import { FaceRetouchingOffTwoTone } from "@mui/icons-material";
 
 
 export const UsersCarList = async (setCarsList) => {
@@ -182,5 +183,37 @@ export const getUsersParkinglot = async (setUsersParkingLot) => {
         }
     } catch (error) {
         console.log(error)
+    }
+}
+
+
+export const AdminMessages = async (setContact) => {
+
+    try {
+        const call = await fetch(process.env.BACKEND_URL + "/api/users_messages",
+            {
+                method: "GET",
+                headers: {
+                    "Content-type": "application/json",
+                    Authorization: "Bearer " + localStorage.getItem("token")
+                }
+            })
+        if (call.ok) {
+            const response = await call.json()
+            setContact(response)
+        } else if (call.status === 400) {
+            throw new Error("Bad request, client error. Please review the backend")
+        } else if (response.status === 500) {
+            throw new Error("Internal server Error")
+        } else if (response.status === 404) {
+            throw new Error("Not found")
+        } else if (response.status === 403) {
+            throw new Error("Unauthorized request")
+        } else {
+            throw new Error("Unknown error, please review the terminal")
+        }
+    }
+    catch (e) {
+        cnsole.log(e)
     }
 }
