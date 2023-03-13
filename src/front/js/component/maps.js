@@ -27,7 +27,7 @@ export const Map = () => {
       const data = await response.json();
       console.log(data);
     }
-    catch (error) { console.error("Error:", error); }
+    catch (error) { console.error("Error:", error); console.log(message) }
   };
   useEffect(() => {
 
