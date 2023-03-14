@@ -4,3 +4,10 @@
 .tablecolor {
   background-color: #a99bfd;
 }
+
+@media (max-width: 600px) {
+  .tablediv {
+    width: 100%;
+    font-size: x-small;
+  }
+}

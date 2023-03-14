@@ -320,7 +320,7 @@ export const Base = ({ children, dashboard = false, cars = false, reserve = fals
                     <Toolbar />
                     <Container maxWidth="xl" sx={{ mt: 4, mb: 4 }}>
                         <Grid container spacing={3}>
-                            <Grid item xs={12} md={8} lg={9}>
+                            <Grid item xs={12} md={12} lg={12}>
                                 <Paper
                                     sx={{
                                         p: 2,

@@ -108,7 +108,7 @@ const CheckoutForm = () => {
 
   return (
     <div className="">
-      <div className="containercard">
+      <div className="containercard mx-auto carddiv">
         <div className="card">
           <div className="visa_logo">
             <img src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/visa.png" alt="" />
@@ -122,7 +122,7 @@ const CheckoutForm = () => {
         </div>
       </div>
 
-      <form onSubmit={handleSubmit} onChange={inputValue} className="card card-body my-5 stripe mx-auto">
+      <form onSubmit={handleSubmit} onChange={inputValue} className="card card-body my-5 stripe mx-auto formdiv">
 
         {/* <img
         src="https://cdn-01.media-brady.com/store/stes/media/catalog/product/d/m/dmeu_ppma_p_1_std.lang.all.gif"
@@ -160,9 +160,9 @@ function AppPay() {
   return <Base>
 
     <Elements stripe={stripePromise}>
-      <div className="container p-4">
+      <div className="container masterdiv">
         <div className="row h-100">
-          <div className="col-md-4 offset-md-4 h-100">
+          <div className="col-12 mx-auto h-100">
             <h3 className="h3">Ingresa Datos de Pago</h3>
             <br />
             <CheckoutForm />
