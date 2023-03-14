@@ -66,3 +66,9 @@ h4 {
 .btn1 {
   background-image: linear-gradient(to left, #6a5acd, #052aca, #6a5acd);
 }
+
+@media (max-width: 600px) {
+  .user {
+    display: none;
+  }
+}

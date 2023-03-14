@@ -115,3 +115,16 @@ textarea {
 .htitle {
   text-align: center;
 }
+
+@media (max-width: 600px) {
+  .mapdiv {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .wrapper1 {
+    display: grid;
+    grid-template-columns: auto;
+    width: 80%;
+    margin: 0 auto;
+  }
+}

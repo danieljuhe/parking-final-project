@@ -95,3 +95,15 @@
 .h3 {
   text-align: center;
 }
+
+@media (max-width: 1000px) {
+  .masterdiv {
+    width: 100%;
+  }
+  .carddiv {
+    width: 100%;
+  }
+  .formdiv {
+    width: 100%;
+  }
+}
