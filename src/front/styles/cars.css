@@ -41,3 +41,8 @@
   border-color: #9687f3;
   border-radius: 80%;
 }
+
+.centrarCaja {
+  position: relative;
+  left: 43%;
+}

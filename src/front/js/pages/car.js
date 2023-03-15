@@ -9,8 +9,6 @@ import Typography from '@mui/material/Typography';
 const Car = (props) => {
 
   return (
-
-
     <div>
       <Card container item spacing={3} className="mt-3 colorcard">
         <CardContent>
