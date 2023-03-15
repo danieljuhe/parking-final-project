@@ -76,100 +76,94 @@ const Cars = () => {
 
   return (
     <Base listCars={true}>
-      <div className="container">
-        <div className="row">
-          <h3 className="htitle">Mis Coches</h3>
-          <br />
-          <div class="row row-cols-1 row-cols-md-2 g-4">
-            {listOfCars && listOfCars.map((car, index) => {
-              return (
-                <>
-                  <div className="col-8" key={index}>
-                    <Car
-                      brand={car.car.brand}
-                      plate={car.car.plate}
-                      model={car.car.model}
-                      category={car.car.category.name}
-                    />
-                    <div className="container">
-                      <div className="mx-auto my-2 btn-group btn-group-sm" role="group" aria-label="Basic outlined example">
-                        <ButtonGroup variant="text" aria-label="text button group">
-                          <Button
-                            className="btn btn1"
-                            size="small"
-                            variant="contained"
-                            onClick={() => handleEditClick(car.car.id)}
-                          >Editar
-                          </Button>
-                          <Button
-                            className="btn btn1"
-                            size="small"
-                            variant="contained"
-                            data-bs-target={`#exampleModal${car.car.id}`}
-                            data-bs-toggle="modal"
-                            type="button"
-                          >Eliminar
-                          </Button>
-                          <div className="modal fade " id={`exampleModal${car.car.id}`} aria-labelledby={`#exampleModalLabel${car.car.id}`} aria-hidden="true">
-                            <div className="modal-dialog modal-dialog-centered">
-                              <div className="modal-content">
-                                <div className="modal-header">
-                                  <h5 className="modal-title" id={`exampleModalLabel${car.car.id}`}>IMPORTANTE!</h5>
-                                  <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div className="modal-body">
-                                  Seguro que desea elimiar el {car.car.brand} {car.car.model}?
-                                </div>
-                                <div className="modal-footer">
-                                  <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                  {<button type="button" className="btn btn-primary" data-bs-dismiss="modal"
-                                    onClick={() => {
-                                      console.log("holaaaa")
-                                      handleDeleteClick(car.car.id);
-                                    }}>Eliminar</button>}
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <Button className="btn btn1"
+      <h3 className="htitle">Mis Coches</h3>
+      <br />
+      <div class="row row-cols-8 row-cols-md-2 g-4">
+        {listOfCars && listOfCars.map((car, index) => {
+          return (
+            <>
+              <div className="col-8" key={index}>
+                <Car
+                  brand={car.car.brand}
+                  plate={car.car.plate}
+                  model={car.car.model}
+                  category={car.car.category.name}
+                />
+
+                <div className="my-2" role="group" aria-label="Basic outlined example">
+
+                  <Button
+                    className="btn btn1 mx-1"
+                    size="small"
+                    variant="contained"
+                    onClick={() => handleEditClick(car.car.id)}
+                  >Editar
+                  </Button>
+
+                  <Button
+                    className="btn btn1 my-1 mx-1"
+                    size="small"
+                    variant="contained"
+                    data-bs-target={`#exampleModal${car.car.id}`}
+                    data-bs-toggle="modal"
+                    type="button"
+                  >Eliminar
+                  </Button>
+
+                  <div className="modal fade " id={`exampleModal${car.car.id}`} aria-labelledby={`#exampleModalLabel${car.car.id}`} aria-hidden="true">
+                    <div className="modal-dialog modal-dialog-centered">
+                      <div className="modal-content">
+                        <div className="modal-header">
+                          <h5 className="modal-title" id={`exampleModalLabel${car.car.id}`}>IMPORTANTE!</h5>
+                          <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div className="modal-body">
+                          Seguro que desea elimiar el {car.car.brand} {car.car.model}?
+                        </div>
+                        <div className="modal-footer">
+                          <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          {<button type="button" className="btn btn-primary" data-bs-dismiss="modal"
                             onClick={() => {
-                              actions.setDefaultCar(car.car.id)
-                              navigate("/parking")
-                            }}
-                            variant="contained"
-                            size="small"
-                          >Seleccionar
-                          </Button>
-                        </ButtonGroup>
+                              console.log("holaaaa")
+                              handleDeleteClick(car.car.id);
+                            }}>Eliminar</button>}
+                        </div>
                       </div>
                     </div>
                   </div>
-                </>
-              )
-            })}
-            <Box sx={{ position: 'relative', mt: 16, left: 146, height: 320 }} container
-              direction="row"
-              justifyContent="center"
-              alignItems="center">
-              <Button type="button" class="btn btn1" data-bs-toggle="modal" data-bs-target="#exampleModal" endIcon={<ToysIcon />}>
-                Añadir Coche
-              </Button>
-            </Box>
-          </div>
-          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="exampleModalLabel">Añadir coche</h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  <Button className="btn btn1 mx-1"
+                    onClick={() => {
+                      actions.setDefaultCar(car.car.id)
+                      navigate("/parking")
+                    }}
+                    variant="contained"
+                    size="small"
+                  >Seleccionar
+                  </Button>
+
                 </div>
-                <div class="modal-body">
-                  <CreateCar listOfCars={listOfCars} setListOfCars={setListOfCars} />
-                </div>
+
               </div>
+            </>
+          )
+        })}
+
+        <Button type="button" class="btn btn1 mx-auto" data-bs-toggle="modal" data-bs-target="#exampleModal" endIcon={<ToysIcon />}>
+          Añadir Coche
+        </Button>
+
+      </div>
+      <div className="modal fade cardiv" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Añadir coche</h1>
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <CreateCar listOfCars={listOfCars} setListOfCars={setListOfCars} />
             </div>
           </div>
-
         </div>
       </div>
     </Base >

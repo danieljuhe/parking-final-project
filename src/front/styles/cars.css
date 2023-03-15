@@ -20,6 +20,7 @@
   background-size: 300%;
 }
 .btn1 {
+  border-radius: 50%;
   background-image: linear-gradient(to left, #6a5acd, #052aca, #6a5acd);
 }
 .btn2 {
@@ -27,4 +28,16 @@
 }
 .htitle {
   text-align: center;
+}
+
+@media (max-heigth: 600px) {
+  .cardiv {
+    width: 100%;
+  }
+}
+
+.colorcard {
+  border-style: solid;
+  border-color: #9687f3;
+  border-radius: 80%;
 }
