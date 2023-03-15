@@ -485,3 +485,36 @@ def get_users_messages():
     except Exception as e:
         return jsonify ({"Message": str(e)}), 500
     return jsonify(data)
+
+
+@api.route ('/delete_cars/<int:id>', methods=['DELETE'])
+def delete_cars(id):
+    try:
+        car = Car.query.filter_by(id=id).first()
+        db.session.delete(car)
+        db.session.commit()
+    except:
+        return jsonify({"message": "No se pudo eliminar el vehiculo"}), 400
+    return jsonify ({"message": "vehiculo eliminado"}), 200
+
+
+@api.route ('/delete_parking/<int:id>', methods=['DELETE'])
+def delete_parking(id):
+    try:
+        parking = Parking.query.filter_by(id=id).first()
+        db.session.delete(parking)
+        db.session.commit()
+    except:
+        return jsonify({"message": "No se pudo eliminar el vehiculo"}), 400
+    return jsonify ({"message": "vehiculo eliminado"}), 200
+
+
+@api.route ('/delete_chat/<int:id>', methods=['DELETE'])
+def delete_chat(id):
+    try:
+        contact = Contact.query.filter_by(id=id).first()
+        db.session.delete(contact)
+        db.session.commit()
+    except:
+        return jsonify({"message": "No se pudo eliminar el vehiculo"}), 400
+    return jsonify ({"message": "vehiculo eliminado"}), 200

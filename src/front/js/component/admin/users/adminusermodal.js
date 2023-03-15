@@ -26,7 +26,7 @@ export const AdminUserModal = ({ user, roles, setUsers }) => {
             });
             const data = await response.json();
             console.log(data);
-            UsersList(setUsers)
+            UsersList(setUsers);
         }
         catch (error) { console.error("Error:", error); }
 

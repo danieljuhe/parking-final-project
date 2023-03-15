@@ -7,6 +7,21 @@ import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined
 import { AdminParkingModal } from "./adminparkingmodal";
 
 export const AdminParkingList = ({ parkingLot, value, setUsersParkingLot }) => {
+
+    const EraseParking = async () => {
+
+        const response = await fetch(process.env.BACKEND_URL + "/api/delete_parking/" + parkingLot.id,
+            {
+                method: "DELETE",
+                headers: {
+                    "Content-type": "application/json",
+                    Authorization: "Bearer " + localStorage.getItem("token")
+                },
+                body: JSON.stringify(parkingLot),
+            })
+    };
+
+
     return (
         <TableRow
             key={value}
@@ -29,7 +44,7 @@ export const AdminParkingList = ({ parkingLot, value, setUsersParkingLot }) => {
                 </Button>
             </TableCell>
             <TableCell align="right">
-                <Button variant="contained" >
+                <Button variant="contained" onClick={EraseParking}>
                     <DeleteForeverOutlinedIcon />
                 </Button>
             </TableCell>

@@ -8,6 +8,24 @@ import { AdminCarsModal } from "./admincarsmodal";
 
 
 export const AdminCarList = ({ car, index }) => {
+
+    const EraseCars = async () => {
+
+        const response = await fetch(process.env.BACKEND_URL + "/api/delete_cars/" + car.id,
+            {
+                method: "DELETE",
+                headers: {
+                    "Content-type": "application/json",
+                    Authorization: "Bearer " + localStorage.getItem("token")
+                },
+                body: JSON.stringify(car),
+            })
+        if (response.ok) {
+            setCar((prevCar) => prevCar.filter((prevCar) => prevCar.id !== car.id));
+        }
+    };
+
+
     return (
         <TableRow
             key={index}
@@ -29,7 +47,7 @@ export const AdminCarList = ({ car, index }) => {
                 </Button>
             </TableCell>
             <TableCell align="right">
-                <Button variant="contained" >
+                <Button variant="contained" onClick={EraseCars}>
                     <DeleteForeverOutlinedIcon />
                 </Button>
             </TableCell>
