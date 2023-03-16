@@ -16,7 +16,7 @@ export const AdminContact = () => {
             <h1>Messages</h1>
             {
                 contact?.map((con, index) => (
-                    <AdminContactList con={con} index={index} />
+                    <AdminContactList con={con} index={index} setContact={setContact} />
                 ))
             }
         </AdminBase>

@@ -5,8 +5,21 @@ import { Button } from "@mui/material";
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
 import { AdminParkingModal } from "./adminparkingmodal";
+import { getUsersParkinglot } from "../http/provider";
+import swal from "sweetalert";
 
 export const AdminParkingList = ({ parkingLot, value, setUsersParkingLot }) => {
+
+    const mostrarAlerta = () => {
+        swal({
+            title: "Plaza eliminada con exito",
+            text: "",
+            icon: "success",
+            button: "Aceptar",
+            timer: "9000"
+
+        })
+    }
 
     const EraseParking = async () => {
 
@@ -19,6 +32,8 @@ export const AdminParkingList = ({ parkingLot, value, setUsersParkingLot }) => {
                 },
                 body: JSON.stringify(parkingLot),
             })
+        mostrarAlerta()
+        getUsersParkinglot(setUsersParkingLot);
     };
 
 

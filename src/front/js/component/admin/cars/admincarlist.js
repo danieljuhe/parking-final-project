@@ -5,9 +5,22 @@ import { Button } from "@mui/material";
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
 import { AdminCarsModal } from "./admincarsmodal";
+import { UsersCarList } from "../http/provider";
+import swal from "sweetalert";
 
 
-export const AdminCarList = ({ car, index }) => {
+export const AdminCarList = ({ car, index, setCarsList }) => {
+
+    const mostrarAlerta = () => {
+        swal({
+            title: "Coche eliminado con exito",
+            text: "",
+            icon: "success",
+            button: "Aceptar",
+            timer: "9000"
+
+        })
+    }
 
     const EraseCars = async () => {
 
@@ -20,9 +33,8 @@ export const AdminCarList = ({ car, index }) => {
                 },
                 body: JSON.stringify(car),
             })
-        if (response.ok) {
-            setCar((prevCar) => prevCar.filter((prevCar) => prevCar.id !== car.id));
-        }
+        UsersCarList(setCarsList);
+        mostrarAlerta()
     };
 
 
