@@ -36,8 +36,6 @@
 3. Intall FontAwesome:
    `$ npm i --save @fortawesome/fontawesome-svg-core npm install --save @fortawesome/free-solid-svg-icons npm install --save @fortawesome/react-fontawesome`
 4. Install Mui:
-   `npm install @mui/material @emotion/react @emotion/styled --force`
-   `npm install @mui/material @mui/styled-engine-sc styled-components --force`
-   `npm install @fontsource/roboto --force`
+   `npm install @mui/material @emotion/react @emotion/styled --force npm install @mui/material @mui/styled-engine-sc styled-components --force npm install @fontsource/roboto --force`
 5. Install SweetAlert:
    `npm install sweetalert --force`
