@@ -71,44 +71,25 @@ export const Contacto = () => {
         <Base contacto={true}>
             <div className="row input-container">
                 <div className="col-xs-12">
+                    <h3 className="htitle">Déjanos tu Mensaje</h3>
+                    <br />
                     <div className="styled-input wide">
-                        <TextField
-                            margin="normal"
-                            required
-                            fullWidth
-                            id="email"
-                            label={`${user && user.name}, ${user && user.surname}`}
-                            name="email"
-                            autoComplete="email"
-                            autoFocus
-                        />
+                        <h4 >Nombre y Apellido</h4>
+
+                        <h6>{user && user.name}, {user && user.surname} </h6>
+
                     </div>
                 </div>
                 <div className="col-md-6 col-sm-12">
                     <div className="styled-input">
-                        <TextField
-                            margin="normal"
-                            required
-                            fullWidth
-                            id="email"
-                            label={user && user.email}
-                            name="email"
-                            autoComplete="email"
-                            autoFocus
-                        />
+                        <h4>Correo Electrónico</h4>
+                        <h6>{user && user.email}</h6>
                     </div>
                 </div>
                 <div className="col-md-6 col-sm-12">
                     <div className="styled-input" >
-                        <TextField
-                            margin="normal"
-                            fullWidth
-                            id="email"
-                            label={user && user.telephone}
-                            name="email"
-                            autoComplete="email"
-                            autoFocus
-                        />
+                        <h4>Número Telefónico</h4>
+                        <h6>{user && user.telephone}</h6>
                     </div>
                 </div>
                 <div className="col-xs-12">
