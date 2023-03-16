@@ -61,7 +61,7 @@ export const PriceGen = () => {
 
   return <Base>
     <div className="test mx-auto">
-      <h3>Horario de Reserva</h3>
+      <h3 className="describetitle">Horario de Reserva</h3>
       <br />
       <div className="data">
         <form onSubmit={handleSubmit}>

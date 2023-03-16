@@ -11,16 +11,17 @@
   align-items: center;
 }
 input {
+  color: black !important;
   display: flex;
   align-items: center;
   padding: 0.6rem;
   border-radius: 4px;
-  border: 1px solid gray;
+  border: 1px solid gray !important;
   padding-left: 1rem;
   padding-right: 1rem;
 }
 .input_date {
-  background-color: #7a6ae1 !important;
+  background-color: transparent !important;
   padding: 1rem;
 }
 .btn {
@@ -51,4 +52,15 @@ input {
 .letter_T {
   font-family: "Uchen", serif;
   font-size: 33px;
+}
+.describetitle {
+  font-family: "Roboto", sans-serif, "arial";
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  color: aliceblue;
+  border-radius: 4px;
+  background-color: #6a5acd;
+  padding: 1rem;
+  font-weight: 400;
 }

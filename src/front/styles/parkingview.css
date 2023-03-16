@@ -94,15 +94,42 @@
   .col0,
   .col1,
   .col2,
-  .col3 {
+  .col3,
+  .parking2 .col0 {
     transform: skewY(0deg);
     margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   .col0,
   .col3 {
     margin-right: 0;
     margin-left: 0;
+  }
+  .A01,
+  .E01 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-top: 5px solid #fce700;
+    border-bottom: 4px solid #fce700;
+    border-left: 5px solid #fce700;
+    color: aliceblue;
+  }
+
+  .A01 {
+    width: 150px;
+    height: 50px;
+  }
+
+  .E01 {
+    width: 70px;
+    height: 150px;
+    border-right: 2px solid #fce700;
+    border-left: 2px solid #fce700;
   }
 }
 
