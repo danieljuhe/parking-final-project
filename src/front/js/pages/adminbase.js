@@ -211,10 +211,10 @@ export const AdminBase = ({ children, adminusers = false, admincars = false, adm
                                         overlap="circular"
                                         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
                                         variant="dot">
-                                        <Avatar alt="The Boss" src="https://static.vecteezy.com/system/resources/previews/002/534/535/original/tiger-boss-logo-free-vector.jpg" />
+                                        <Avatar alt="The Boss" src="https://d2gg9evh47fn9z.cloudfront.net/1600px_COLOURBOX9896883.jpg" />
                                     </StyledBadge>
                                 </ListItemIcon>
-                                THE BOSS
+                                ADMIN
                             </ListItemButton>
                             <br />
 

@@ -46,7 +46,7 @@ export const AdminCars = () => {
                     <TableBody>
 
                         {carsList?.map((car, index) => (
-                            <AdminCarList car={car} key={index} />
+                            <AdminCarList car={car} key={index} setCarsList={setCarsList} />
                         ))}
 
                     </TableBody>

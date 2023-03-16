@@ -12,14 +12,14 @@ export const AdminUserList = ({ user, roles, index, setUsers, setRoles }) => {
 
     const mostrarAlerta = () => {
         swal({
-            title: "App Parking",
-            text: "Plaza seleccionada con exito",
+            title: "Usuario eliminado con exito",
+            text: "",
             icon: "success",
             button: "Aceptar",
             timer: "9000"
 
         })
-        navigate("/Privateuser");
+        navigate("/role/admin/adminusers");
     }
 
     const EraseUser = async () => {
@@ -35,6 +35,7 @@ export const AdminUserList = ({ user, roles, index, setUsers, setRoles }) => {
             })
         if (response.ok) {
             setUsers((prevUsers) => prevUsers.filter((prevUser) => prevUser.id !== user.id));
+            mostrarAlerta()
         }
     };
 

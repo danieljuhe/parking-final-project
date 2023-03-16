@@ -3,12 +3,22 @@ import "../../styles/map.css"
 import { Base } from "../pages/base";
 import { TextField } from "@mui/material";
 import Button from "@mui/material/Button";
+import swal from "sweetalert";
 
 export const Contacto = () => {
 
     const [user, setUser] = useState()
     const [mensaje, setMensaje] = useState()
 
+    const mostrarAlerta = () => {
+        swal({
+            title: "Mensaje",
+            text: "El mensaje se envio correctamente",
+            icon: "success",
+            button: "Aceptar",
+            timer: "9000"
+        })
+    }
 
     const senddata = async () => {
         const message = {
@@ -26,6 +36,8 @@ export const Contacto = () => {
             });
             const data = await response.json();
             console.log(data);
+            setMensaje("")
+            mostrarAlerta()
         }
         catch (error) { console.error("Error:", error) }
     };
@@ -89,6 +101,7 @@ export const Contacto = () => {
                             label="Mensaje"
                             onChange={(e) => setMensaje(e.target.value)}
                             multiline
+                            value={mensaje}
                             rows={8}
                             autoFocus
                         />

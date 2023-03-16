@@ -1,7 +1,22 @@
 import React, { useState, useEffect } from "react";
 import Button from '@mui/material/Button';
+import swal from "sweetalert";
+import { AdminMessages } from "../http/provider"
 
-export const AdminContactList = ({ con, index }) => {
+
+export const AdminContactList = ({ con, index, setContact }) => {
+
+
+    const mostrarAlerta = () => {
+        swal({
+            title: "Mensaje eliminado con exito",
+            text: "",
+            icon: "success",
+            button: "Aceptar",
+            timer: "9000"
+
+        })
+    }
 
 
     const EraseChat = async () => {
@@ -15,6 +30,8 @@ export const AdminContactList = ({ con, index }) => {
                 },
                 body: JSON.stringify(con),
             })
+        AdminMessages(setContact)
+        mostrarAlerta()
     };
 
     return (

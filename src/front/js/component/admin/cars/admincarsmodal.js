@@ -4,15 +4,31 @@ import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import MenuItem from '@mui/material/MenuItem';
 import { UsersCarCategories } from "../http/provider";
+import { UsersCarList } from "../http/provider"
+import swal from "sweetalert";
+import { useNavigate } from "react-router-dom";
 
 
-export const AdminCarsModal = ({ car }) => {
+export const AdminCarsModal = ({ car, setCarsList }) => {
 
     const [carsData, setCarsData] = useState({})
     const [carCategories, setCarCategories] = useState()
+    const navigate = useNavigate();
 
     const handleChange = (event) => {
         setCarsData({ ...carsData, [event.target.name]: event.target.value })
+    }
+
+    const mostrarAlerta = () => {
+        swal({
+            title: "Coche modificado con exito",
+            text: "",
+            icon: "success",
+            button: "Aceptar",
+            timer: "9000"
+
+        })
+        navigate("/role/admin/admincars");
     }
 
     const senddata = async () => {
@@ -30,6 +46,9 @@ export const AdminCarsModal = ({ car }) => {
 
             const data = await call.json()
             console.log(data)
+            mostrarAlerta()
+            navigate("/role/admin/admincars");
+
         }
         catch (error) {
             console.log(error)
