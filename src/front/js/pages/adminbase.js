@@ -11,6 +11,7 @@ import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
+import ChatIcon from '@mui/icons-material/Chat';
 import Badge from '@mui/material/Badge';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
@@ -18,7 +19,6 @@ import Paper from '@mui/material/Paper';
 import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChatIcon from '@mui/icons-material/Chat';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -124,7 +124,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 const mdTheme = createTheme();
 
 
-export const Base = ({ children, dashboard = false, cars = false, reserve = false, location = false, bill = false, listCars = false, contacto = false }) => {
+export const AdminBase = ({ children, adminusers = false, admincars = false, adminparking = false, adminbills = false, admincontact = false }) => {
 
     const [open, setOpen] = React.useState(true);
     const toggleDrawer = () => { setOpen(!open); };
@@ -211,81 +211,69 @@ export const Base = ({ children, dashboard = false, cars = false, reserve = fals
                                         overlap="circular"
                                         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
                                         variant="dot">
-                                        <Avatar alt="Remy Sharp" src="https://bootdey.com/img/Content/avatar/avatar7.png" />
+                                        <Avatar alt="The Boss" src="https://d2gg9evh47fn9z.cloudfront.net/1600px_COLOURBOX9896883.jpg" />
                                     </StyledBadge>
                                 </ListItemIcon>
-                                {user && user.name} {user && user.surname}
+                                ADMIN
                             </ListItemButton>
                             <br />
 
-                            <ListItemButton selected={dashboard} onClick={() => {
-                                navigate("/privateuser")
-                            }} >
+                            <ListItemButton selected={adminusers}>
                                 <ListItemIcon>
-                                    <DashboardIcon />
+                                    <DashboardIcon onClick={() => {
+                                        navigate("/role/admin/adminusers")
+                                    }} />
                                 </ListItemIcon>
-                                <ListItemText primary="Dashboard" />
+                                <ListItemText primary="Users" onClick={() => {
+                                    navigate("/role/admin/adminusers")
+                                }} />
                             </ListItemButton>
 
-                            {/* <ListItemButton selected={cars} onClick={() => {
-                                navigate("/car")
-                            }}>
-                                <ListItemIcon>
-                                    <EmojiTransportationOutlinedIcon />
-                                </ListItemIcon>
-                                <ListItemText primary="Registro de Coche" />
-                            </ListItemButton> */}
 
-
-                            <ListItemButton selected={listCars} onClick={() => {
-                                navigate("/cars")
-                            }}>
+                            <ListItemButton selected={admincars}>
                                 <ListItemIcon>
-                                    <EmojiTransportationOutlinedIcon />
+                                    <EmojiTransportationOutlinedIcon onClick={() => {
+                                        navigate("/role/admin/admincars")
+                                    }} />
                                 </ListItemIcon>
-                                <ListItemText primary="Listado de Coches" />
+                                <ListItemText primary="All Cars" onClick={() => {
+                                    navigate("/role/admin/admincars")
+                                }} />
                             </ListItemButton>
 
-                            <ListItemButton selected={reserve} onClick={() => {
-                                navigate("/parking")
-                            }}>
+
+                            <ListItemButton selected={adminparking}>
                                 <ListItemIcon>
-                                    <LocalParkingOutlinedIcon />
+                                    <LocalParkingOutlinedIcon onClick={() => {
+                                        navigate("/role/admin/adminparking")
+                                    }} />
                                 </ListItemIcon>
-                                <ListItemText primary="Reserva" />
+                                <ListItemText primary="Parking Lot" onClick={() => {
+                                    navigate("/role/admin/adminparking")
+                                }} />
                             </ListItemButton>
 
-                            <ListItemButton selected={location} onClick={() => {
-                                navigate("/map")
-                            }}>
+                            <ListItemButton selected={adminbills}>
                                 <ListItemIcon>
-                                    <LocationOnOutlinedIcon />
+                                    <CreditScoreOutlinedIcon onClick={() => {
+                                        navigate("/role/admin/adminbills")
+                                    }} />
                                 </ListItemIcon>
-                                <ListItemText primary="Ubicacion" />
+                                <ListItemText primary="Facturacion" onClick={() => {
+                                    navigate("/role/admin/adminbills")
+                                }} />
                             </ListItemButton>
 
-                            <ListItemButton selected={contacto} onClick={() => {
-                                navigate("/contact")
+                            <ListItemButton selected={admincontact} onClick={() => {
+                                navigate("/role/admin/admincontact")
                             }}>
                                 <ListItemIcon>
                                     <ChatIcon />
                                 </ListItemIcon>
                                 <ListItemText primary="Contacto" onClick={() => {
-                                    navigate("/contact")
+                                    navigate("/role/admin/admincontact")
                                 }} />
                             </ListItemButton>
-
-                            <ListItemButton selected={bill} onClick={() => {
-                                navigate("/bill")
-                            }}>
-                                <ListItemIcon>
-                                    <CreditScoreOutlinedIcon />
-                                </ListItemIcon>
-                                <ListItemText primary="Facturacion" onClick={() => {
-                                    navigate("/bill")
-                                }} />
-                            </ListItemButton>
-
 
                             <ListItemButton>
                                 <ListItemIcon>

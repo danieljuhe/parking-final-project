@@ -7,6 +7,14 @@
   justify-content: center;
   height: fit-content;
   width: fit-content;
+  border-radius: 5px;
+}
+@media only screen and (max-width: 768px) {
+  .mainparking {
+    padding: 1rem;
+    height: auto;
+    width: 100%;
+  }
 }
 
 .parking {
@@ -68,6 +76,34 @@
   justify-content: center;
   align-items: center;
   margin-top: 8rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .parking {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .parking2 {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .col0,
+  .col1,
+  .col2,
+  .col3 {
+    transform: skewY(0deg);
+    margin: 2rem 0;
+  }
+
+  .col0,
+  .col3 {
+    margin-right: 0;
+    margin-left: 0;
+  }
 }
 
 .A01 {
