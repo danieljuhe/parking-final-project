@@ -148,8 +148,8 @@ const Cars = () => {
           Añadir Coche
         </Button>
       </div>
-      <div className="modal fade cardiv" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
+      <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog position-absolute top-50 start-50 translate-middle carmax">
           <div class="modal-content">
             <div class="modal-header">
               <h1 class="modal-title fs-5" id="exampleModalLabel">Añadir coche</h1>
