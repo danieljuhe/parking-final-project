@@ -13,6 +13,18 @@ export const UserProfile = () => {
   const [user, setUser] = useState();
   const [listOfCars, setListOfCars] = useState([]);
 
+  const mostrarAlerta = () => {
+    swal({
+      title: "App Parking",
+      text: "Datos Actualizados",
+      icon: "success",
+      button: "Aceptar",
+      timer: "9000"
+
+    })
+    navigate("/privateuser");
+  }
+
   const handleChange = (event) => {
     setUser({ ...user, [event.target.name]: event.target.value })
   }
@@ -60,7 +72,7 @@ export const UserProfile = () => {
     <Base reserve={true}>
       <div className="profilecontainer">
         <div className="profilemain">
-          <div className="cardavatar">
+          <div className="cardavatar user">
             <div className="card-body">
               <div className="d-flex flex-column align-items-center text-center">
                 <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" className="rounded-circle" width="150" />
@@ -167,8 +179,8 @@ export const UserProfile = () => {
             </div>
             <div className="row">
               <div className="col-sm-12">
-                <Button
-                  onClick={() => { senddata() }}
+                <Button className="btn btn1"
+                  onClick={() => { senddata(), mostrarAlerta() }}
                   fullWidth
                   variant="contained"
                   sx={{ mt: 3, mb: 2 }}>

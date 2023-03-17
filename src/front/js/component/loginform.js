@@ -37,10 +37,9 @@ function Copyright(props) {
 const mostrarAlerta = () => {
   swal({
     title: "App Parking",
-    text: "Pago Realizado con Éxito",
+    text: "Bienvenido",
     icon: "success",
-    button: "Aceptar",
-    timer: "9000"
+    timer: "2000"
   })
 }
 

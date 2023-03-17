@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "../../styles/cars.css";
 import { useNavigate } from "react-router-dom";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -146,6 +147,7 @@ const CreateCar = (props) => {
       </div>
       <Stack spacing={2} direction="row" className="container my-2">
         <Button
+          className="btn btn1"
           variant="contained"
           type="submit"
           onClick={() => {
@@ -155,6 +157,7 @@ const CreateCar = (props) => {
         >Guardar
         </Button>
         <Button
+          className="btn btn1"
           onClick={() => navigate("/cars")}
           variant="contained"
           data-bs-dismiss="modal"

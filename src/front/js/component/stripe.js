@@ -107,13 +107,8 @@ const CheckoutForm = () => {
   };
 
   return (
-    <>
-      <div className="containercard">
-        <div className="circles">
-          <div className="circle circle-1"></div>
-          <div className="circle circle-2"></div>
-        </div>
-
+    <div className="">
+      <div className="containercard mx-auto carddiv">
         <div className="card">
           <div className="visa_logo">
             <img src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/visa.png" alt="" />
@@ -127,7 +122,7 @@ const CheckoutForm = () => {
         </div>
       </div>
 
-      <form onSubmit={handleSubmit} onChange={inputValue} className="card card-body my-5 stripe">
+      <form onSubmit={handleSubmit} onChange={inputValue} className="card card-body my-5 stripe mx-auto formdiv">
 
         {/* <img
         src="https://cdn-01.media-brady.com/store/stes/media/catalog/product/d/m/dmeu_ppma_p_1_std.lang.all.gif"
@@ -135,13 +130,13 @@ const CheckoutForm = () => {
         className="img-fluid"
       /> */}
 
-        <h3 className="text-center my-2">Price: {store.price}€</h3>
+        <h3 className="text-center my-2">Precio: {store.price}€</h3>
         <br />
         <div className="form-group">
           <CardElement className="form-control" />
         </div>
         <br />
-        <button variant="contained" className="btn btn-info" disabled={!stripe}>
+        <button variant="contained" className="btn btn1 btn-info" disabled={!stripe}>
 
           {loading ? (
 
@@ -154,9 +149,8 @@ const CheckoutForm = () => {
             "Buy"
           )}
         </button>
-        <button onClick={mostrarAlertaError}>Error test</button>
       </form>
-    </>
+    </div>
 
   );
 };
@@ -166,10 +160,11 @@ function AppPay() {
   return <Base>
 
     <Elements stripe={stripePromise}>
-      <div className="stripecard">
-        <h3>Ingresa Datos de Pago</h3>
-        <div className="">
-          <div className="">
+      <div className="container masterdiv">
+        <div className="row h-100">
+          <div className="col-12 mx-auto h-100">
+            <h3 className="h3">Ingresa Datos de Pago</h3>
+            <br />
             <CheckoutForm />
           </div>
         </div>

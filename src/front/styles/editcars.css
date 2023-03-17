@@ -1,0 +1,16 @@
+.btn {
+  border: 3px solid rgba(100, 100, 100, 0.1);
+  margin-bottom: 20px;
+  padding: 20px;
+  width: auto;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #fff !important;
+  background-size: 300%;
+}
+.btn1 {
+  background-image: linear-gradient(to left, #6a5acd, #052aca, #6a5acd);
+}
